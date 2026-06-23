@@ -28,3 +28,6 @@ recipes/input/*.json
 recipes/output/*
 !recipes/input/.gitkeep
 !recipes/output/.gitkeep
+
+# verify snapshots contain production dataset row counts — keep local
+recipes/verify/

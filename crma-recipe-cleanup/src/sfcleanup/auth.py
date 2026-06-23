@@ -102,27 +102,34 @@ def get_session() -> SfSession:
 # --------------------------------------------------------------------------- #
 # REST transport (works for both auth modes) + connectivity smoke test
 # --------------------------------------------------------------------------- #
-def _cli_rest(alias: str, path: str) -> dict | list:
-    """GET a REST resource via the CLI's own (decrypted) auth.
-
-    `sf api request rest` writes the raw response body to stdout. Salesforce
-    API errors come back as a list like [{"errorCode": ..., "message": ...}].
-    """
-    proc = subprocess.run(
-        ["sf", "api", "request", "rest", path, "--target-org", alias],
-        capture_output=True, text=True,
-    )
-    body = proc.stdout.strip()
-    if not body:
-        raise RuntimeError(f"sf api request returned no output: {proc.stderr.strip()}")
-    try:
-        data = json.loads(body)
-    except json.JSONDecodeError:
-        raise RuntimeError(f"unexpected response from sf api request: {body[:300]}")
+def _raise_if_error(data: dict | list) -> dict | list:
     if isinstance(data, list) and data and isinstance(data[0], dict) and data[0].get("errorCode"):
         err = data[0]
         raise SalesforceRestError(err.get("errorCode", "ERROR"), err.get("message", ""))
     return data
+
+
+def _cli_rest(alias: str, path: str, method: str = "GET",
+              body: dict | None = None) -> dict | list:
+    """Call a REST resource via the CLI's own (decrypted) auth.
+
+    `sf api request rest` writes the raw response body to stdout. Salesforce
+    API errors come back as a list like [{"errorCode": ..., "message": ...}].
+    The JSON body (for POST/PATCH) is passed as literal content on argv, so
+    there are no shell-quoting concerns.
+    """
+    args = ["sf", "api", "request", "rest", path, "--target-org", alias, "-X", method]
+    if body is not None:
+        args += ["--body", json.dumps(body)]
+    proc = subprocess.run(args, capture_output=True, text=True)
+    out = proc.stdout.strip()
+    if not out:
+        raise RuntimeError(f"sf api request returned no output: {proc.stderr.strip()}")
+    try:
+        data = json.loads(out)
+    except json.JSONDecodeError:
+        raise RuntimeError(f"unexpected response from sf api request: {out[:300]}")
+    return _raise_if_error(data)
 
 
 def rest_get(session: SfSession, path: str, params: dict | None = None) -> dict | list:
@@ -140,6 +147,21 @@ def rest_get(session: SfSession, path: str, params: dict | None = None) -> dict 
         f"{session.instance_url}{path}",
         headers={"Authorization": f"Bearer {session.access_token}"},
         timeout=60,
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def rest_post(session: SfSession, path: str, body: dict) -> dict | list:
+    """POST a JSON body to a Salesforce REST resource, regardless of auth mode."""
+    if session.auth_mode == "cli" and session.alias:
+        return _cli_rest(session.alias, path, method="POST", body=body)
+    resp = requests.post(
+        f"{session.instance_url}{path}",
+        headers={"Authorization": f"Bearer {session.access_token}",
+                 "Content-Type": "application/json"},
+        json=body,
+        timeout=120,
     )
     resp.raise_for_status()
     return resp.json()

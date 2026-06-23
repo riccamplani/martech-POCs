@@ -107,6 +107,39 @@ def aggregate_report(objects_yaml: str) -> None:
     console.print(f"[green]Workbook:[/green] {out}")
 
 
+def verify(action: str, recipe: str | None, label: str, suffix: str,
+           before: str | None, after: str | None) -> None:
+    from .crma import verify as V
+    from .auth import get_session
+    if action == "snapshot":
+        session = get_session()
+        rp = _Path(recipe)
+        console.print(f"[bold]Snapshotting outputs of {rp.stem}"
+                      f"{' (suffix '+suffix+')' if suffix else ''}…[/bold]")
+        snap = V.snapshot(session, rp, label=label, suffix=suffix)
+        found = sum(1 for o in snap["outputs"].values() if o["found"])
+        total_rows = sum(o["rows"] or 0 for o in snap["outputs"].values() if o["found"])
+        console.print(f"  {found}/{len(snap['outputs'])} output datasets found, "
+                      f"{total_rows} rows total")
+        console.print(f"[green]Snapshot:[/green] {snap['_path']}")
+        return
+    # compare
+    b = json.loads(_Path(before).read_text())
+    a = json.loads(_Path(after).read_text())
+    report = V.compare(b, a)
+    table = Table(title=f"Equivalence: {b['label']} vs {a['label']}")
+    for c in ("Output dataset", "Before", "After", "Verdict"):
+        table.add_column(c)
+    colour = {"PASS": "green", "FAIL": "red", "MISSING": "yellow"}
+    for r in report["rows"]:
+        v = r["verdict"]
+        table.add_row(r["dataset"], str(r["before"]), str(r["after"]),
+                      f"[{colour[v]}]{v}[/{colour[v]}]")
+    console.print(table)
+    verdict = "[green]✓ EQUIVALENT[/green]" if report["ok"] else "[red]✗ DIFFERENCES FOUND[/red]"
+    console.print(f"\n{verdict}  (pass={report['pass']}  fail/missing={report['fail']})")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(prog="sfcleanup.crma")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -116,6 +149,15 @@ def main() -> None:
     sub.add_parser("analyze", help="analyze + propose cleanup for recipes/input/")
     a = sub.add_parser("aggregate", help="cross-recipe field usage -> Excel workbook")
     a.add_argument("--objects", default="config/objects.yaml")
+    v = sub.add_parser("verify", help="before/after row-count equivalence check")
+    vsub = v.add_subparsers(dest="vcmd", required=True)
+    vs = vsub.add_parser("snapshot", help="record output row counts for a recipe")
+    vs.add_argument("--recipe", required=True, help="path to extracted recipe JSON")
+    vs.add_argument("--label", default="before", help="snapshot label (e.g. before/after)")
+    vs.add_argument("--suffix", default="", help="suffix on cleaned output dataset names")
+    vc = vsub.add_parser("compare", help="diff two snapshots")
+    vc.add_argument("--before", required=True)
+    vc.add_argument("--after", required=True)
     args = p.parse_args()
     if args.cmd == "extract":
         extract(args.scope, args.all)
@@ -123,6 +165,10 @@ def main() -> None:
         analyze()
     elif args.cmd == "aggregate":
         aggregate_report(args.objects)
+    elif args.cmd == "verify":
+        verify(args.vcmd, getattr(args, "recipe", None), getattr(args, "label", "before"),
+               getattr(args, "suffix", ""), getattr(args, "before", None),
+               getattr(args, "after", None))
 
 
 if __name__ == "__main__":
