@@ -1,0 +1,70 @@
+{
+  "version": "62.0",
+  "nodes": {
+    "LOAD_ACCOUNT": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "Account",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "Account"
+        },
+        "fields": [
+          "Id", "Name", "Type", "RecordTypeId", "AnnualRevenue",
+          "Industry", "BillingCountry",
+          "Legacy_CCDW_Code__c", "Old_Warehouse_Segment__c", "Unused_Flag__c"
+        ]
+      }
+    },
+    "LOAD_OPP": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "type": "connectedDataset",
+          "label": "Opportunity",
+          "connectionName": "SFDC_LOCAL",
+          "sourceObjectName": "Opportunity"
+        },
+        "fields": ["Id", "AccountId", "Amount", "StageName", "Deprecated_Field__c"]
+      }
+    },
+    "FILTER_CUSTOMERS": {
+      "action": "filter",
+      "sources": ["LOAD_ACCOUNT"],
+      "parameters": {
+        "filterExpressions": [
+          {"field": "Type", "operator": "==", "operand": ["Customer"]}
+        ]
+      }
+    },
+    "JOIN_1": {
+      "action": "join",
+      "sources": ["FILTER_CUSTOMERS", "LOAD_OPP"],
+      "parameters": {
+        "leftKeys": ["Id"],
+        "rightKeys": ["AccountId"],
+        "joinType": "LOOKUP"
+      }
+    },
+    "FORMULA_REVBAND": {
+      "action": "formula",
+      "sources": ["JOIN_1"],
+      "parameters": {
+        "fields": [
+          {"name": "RevBand",
+           "formula": "if(AnnualRevenue > 1000000, 'High', 'Low')",
+           "type": "TEXT"}
+        ]
+      }
+    },
+    "OUTPUT_1": {
+      "action": "save",
+      "sources": ["FORMULA_REVBAND"],
+      "parameters": {
+        "fields": ["Id", "Name", "Industry", "BillingCountry", "Amount", "StageName", "RevBand"],
+        "dataset": {"type": "analyticsDataset", "label": "Accounts_Clean", "name": "Accounts_Clean"}
+      }
+    }
+  }
+}

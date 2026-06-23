@@ -1,0 +1,41 @@
+groups:
+  Account:
+  - Account
+  Account_Structure_Summary:
+  - Account_Structure__c
+  - Account_Summary__c
+  Subscription:
+  - Subscription
+  Subscription_Item:
+  - Subscription_Item
+  Agreement_&Item:
+  - Agreement__c
+  - Agreement_Item__c
+  AccLoc_BSS_Con_PO:
+  - Account_Location__c
+  - BSS_Event__c
+  - Contact
+  - Shortcut_to_Product_Offer_ID__c
+  PS_User_TS_S_EU:
+  - Payment_Status__c
+  - User
+  - Terminated_Subscription__c
+  - Suspect__c
+  - External_User__c
+objects:
+- Account
+- Account_Structure__c
+- Account_Summary__c
+- Subscription
+- Subscription_Item
+- Agreement__c
+- Agreement_Item__c
+- Account_Location__c
+- BSS_Event__c
+- Contact
+- Shortcut_to_Product_Offer_ID__c
+- Payment_Status__c
+- User
+- Terminated_Subscription__c
+- Suspect__c
+- External_User__c

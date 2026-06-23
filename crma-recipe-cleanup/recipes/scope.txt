@@ -1,0 +1,51 @@
+# Auto-generated from CRMA_Recipes.xlsx — in-scope recipes
+SFDC_LOCAL_SEGMENTATION
+C360 210 - Logic Calculated Items
+C360 220 - Logic Suppressions
+C360 310 - Logic Service Model SE
+C360 320 - Logic Deep Sale
+C360 330 -  Logic New Sales MV
+C360 340 - Logic Fiber Rebinding
+C360 350 - Logic Fiber and TBB Newsale
+C360 410 - Logic New Sales MV Campaign
+C360 420 - Logic Fiber Rebinding Campaign
+C360 421 - Logic Migrasjon TBB til Fiber Campaign
+C360 430 - Logic Fiber and TBB Newsale Campaign
+C360 431 - Logic Fiber Newsale Feil nummer Campaign
+C360 432 - Logic Oppfølging opportunities fra KS - Fiber og TBB Campaign
+C360 433 - Logic Fiber deepsale Medium Campaign
+C360 434 - Logic Fiber Newsale and deepsale Medium DMU Campaign
+C360 438 -  Logic Møtebooking DPSS Medium Campaign Loyalty
+C360 439 -  Logic Møtebooking-pilot Hunter M Campaign
+C360 440 -  Logic Mobile Voice Rebinding
+C360 450 - Logic New Sales MV Agrol
+C360 460 - Logic Vekst to Verdi Campaign
+C360 461 - Logic New Sales SafeZone Oppdatert
+C360 470 - Rebinding MT Red group Portugal Pilot
+C360 480 - Rebinding Forbund
+C360 490 - Logic Førstegangssamtale Small Campaign
+C360 491 - Mobile Voice Rebinding Agrol
+C360 492 - New Sales MV Daughter Outside Mother Agreement
+C360 493 - New Sales MV NHO Service og Handel
+C360 494 - New Sales MV Churn Customer last 12-30 months
+C360 495 - Holdback NHO Byggenæringen
+C360 496 - Pilot SafeZone og Oppdatert bundle
+C360 497 - New Sales MV Campaign - Medium
+C360 510 - Append Sales Tips - Account
+C360 520 - Append Sales Tips - Subscription
+C360 610 - Insert Sales Tips
+C360 620 - Update Sales Tips - Response Code
+C360 630 - Update Sales Tips - Personalization fields
+C360 635 - Update Sales Tips - Channel and Agency
+C360 640 - Update Subscriptions
+C360 - MC - Always On - Onboarding ny Mobil Tale kunde
+C360 - MC - Always On - Onboarding ny SafeZone Mobil kunde
+C360 - MC - Always On - Onboarding ny SafeZone Mobil kunde oppsalg oppdatert
+C360 - MC - Always On - Nysalg Fiber ved ikke svar
+C360 - MC - Always On - Fiber rebinding ved ikke svar
+C360 - MC - Always On - Fiber nysalg - Har fiber gjennom utleier_3.part
+C360 - MC - Always On - Velkomstprogram nye medlemmer Forbund
+C360 - MC - Always On - Append C360 eDM Master
+Backup_C360_eDM_master
+MC - Automatised Rebinding - Deep sales using SafeZone
+MC - Moonrise
