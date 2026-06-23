@@ -18,11 +18,15 @@ python3 --version                   # need 3.11+
 Done when `sf --version`, `git --version`, and `claude --version` all print.
 
 **Step 0.2 — Resolve the access blocker FIRST.** You authenticate via SSO, so the
-username/password flow is a dead end and the Connected App attempt was declined
-because your user lacks **API Enabled**. Send `scripts/ADMIN_REQUEST.md` to Martin
-or Per. You need a Permission Set granting: API Enabled, Use CRM Analytics, View
-Setup and Configuration, and read/FLS on the 16 in-scope objects. No full admin.
-Done when the admin confirms the permission set is assigned to your user.
+username/password flow is a dead end. **Verified blocker:** API access is already
+fine — the gap is **CRM Analytics**. You need BOTH, assigned to your user:
+1. a **CRM Analytics Plus license** (PSL), and
+2. the **CRM Analytics Plus Admin** permission set (`EinsteinAnalyticsPlusAdmin`)
+   — the license alone returns `FUNCTIONALITY_NOT_ENABLED`; the permission set is
+   what turns the feature on.
+
+Send `scripts/ADMIN_REQUEST.md` to Martin or Per (no full admin needed). Done when
+`smoke_test` (see Quick reference) prints **✓ CRM Analytics reachable**.
 
 ---
 
@@ -68,8 +72,14 @@ sf org display --target-org prod      # confirm an access token + instance URL
 In `.env` keep `SF_AUTH_MODE=cli` and `SF_CLI_ALIAS=prod`.
 Done when `sf org display` shows `Connected Status: Connected`.
 
-> If this still fails with `API_DISABLED_FOR_ORG` or a permission error, Phase 0.2
-> isn't complete — the API Enabled grant is missing. Don't proceed until it works.
+> If `extract` fails with `FUNCTIONALITY_NOT_ENABLED` or "No valid licenses found",
+> Phase 0.2 isn't complete — the CRM Analytics license and/or the
+> `EinsteinAnalyticsPlusAdmin` permission set isn't assigned yet. Confirm with
+> `smoke_test` before proceeding.
+>
+> Note: recent `sf` CLI masks the access token in `sf org display`, so the tool
+> routes REST calls through `sf api request rest` under the hood (see `auth.py`).
+> `sf org display` showing `Connected` is enough; you don't need a visible token.
 
 ---
 
@@ -131,13 +141,46 @@ kickoff) — they should surface as UNUSED.
 
 ## Phase 6 — Apply and verify (the proven loop)
 
+The gate: a cleaned recipe must produce the **same output row counts** as the
+original, per output dataset. The `verify` command automates that check
+(SAQL count of every dataset the recipe writes), so it's a PASS/FAIL, not a
+manual eyeball.
+
 For each approved recipe:
-1. Apply the field removals from `<recipe>.cleaned.json` in the CRMA recipe editor.
-2. Run BOTH the original and cleaned recipe.
-3. Compare outputs — they must be **identical** (this is the equivalence check
-   already validated manually). If identical, keep the cleaned version.
-4. Commit the `recipes/input/` (original) and `recipes/output/` (cleaned) pair for
-   provenance.
+
+**Step 6.1 — Baseline the live outputs BEFORE changing anything.**
+```bash
+python -m sfcleanup.crma_cli verify snapshot \
+  --recipe recipes/input/<recipe>__<id>.json --label before
+```
+Writes `recipes/verify/<recipe>__before.json` with the current row count of every
+output dataset. (These snapshots hold production audience sizes and are gitignored.)
+
+**Step 6.2 — Apply the removals to a Save-As COPY, not the live recipe.** In CRM
+Analytics Studio → Data Manager → Recipes, open the recipe, **Save As** a copy
+(e.g. `<recipe> CLEANTEST`). In each Input node, untick exactly the fields listed
+in `recipes/output/<recipe>.diff.md`. Save and run the copy.
+
+**Step 6.3 — Snapshot the cleaned copy's outputs.** If the copy writes to renamed
+datasets, pass the suffix you used so `verify` reads the copy's outputs:
+```bash
+python -m sfcleanup.crma_cli verify snapshot \
+  --recipe recipes/input/<recipe>__<id>.json --label after --suffix _CLEANTEST
+```
+
+**Step 6.4 — Compare.**
+```bash
+python -m sfcleanup.crma_cli verify compare \
+  --before recipes/verify/<recipe>__before.json \
+  --after  recipes/verify/<recipe>__after.json
+```
+Done when it prints **✓ EQUIVALENT** (every output dataset PASS). Any `FAIL`
+(row counts differ) or `MISSING` (dataset not found) means do NOT promote — a
+removed field was actually used downstream; revert that field and re-check.
+
+**Step 6.5 — Promote and record.** Once the copy is EQUIVALENT, apply the same
+field removals to the real recipe. Commit the `recipes/input/` (original) and
+`recipes/output/` (cleaned) pair for provenance. (`recipes/verify/` stays local.)
 
 ---
 
@@ -171,5 +214,13 @@ sf org login web --alias prod                                    # SSO auth
 python -m sfcleanup.crma_cli extract --scope recipes/scope.txt   # download recipes
 python -m sfcleanup.crma_cli analyze                             # per-recipe cleanup
 python -m sfcleanup.crma_cli aggregate                           # object rollup xlsx
+python -m sfcleanup.crma_cli verify snapshot --recipe <f> --label before   # baseline outputs
+python -m sfcleanup.crma_cli verify snapshot --recipe <f> --label after --suffix _CLEANTEST
+python -m sfcleanup.crma_cli verify compare --before <b.json> --after <a.json>  # PASS/FAIL gate
 python -m sfcleanup.cli analyze --object Account                 # object-level (later)
+```
+
+Quick connectivity check (auth + whether CRM Analytics is reachable):
+```bash
+python -c "from src.sfcleanup.auth import get_session, smoke_test; print(smoke_test(get_session()))"
 ```
