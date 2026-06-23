@@ -21,7 +21,7 @@ from rich.table import Table
 
 from pathlib import Path as _Path
 
-from .auth import get_session
+from .auth import get_session, SalesforceRestError
 from .crma.client import list_recipes, get_recipe, save_recipe_json, INPUT_DIR
 from .crma.recipe_analyzer import analyze_recipe
 from .crma.clean import write_cleaned
@@ -42,7 +42,14 @@ def extract(scope_path: str | None, take_all: bool) -> None:
     session = get_session()
     scope = _load_scope(scope_path)
     console.print("[bold]Listing recipes…[/bold]")
-    recipes = list_recipes(session)
+    try:
+        recipes = list_recipes(session)
+    except SalesforceRestError as e:
+        console.print(f"[red]✗ CRM Analytics not accessible[/red] [{e.code}]: {e.message}")
+        if e.code in ("FUNCTIONALITY_NOT_ENABLED", "720"):
+            console.print("  → this user needs a CRM Analytics license assigned. "
+                          "See [bold]scripts/ADMIN_REQUEST.md[/bold].")
+        return
     console.print(f"  {len(recipes)} recipes in org")
 
     selected = recipes if (take_all or not scope) else [

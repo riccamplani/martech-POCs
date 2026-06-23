@@ -16,48 +16,40 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import requests
-
-from ..auth import SfSession
+from ..auth import SfSession, rest_get
 
 INPUT_DIR = Path("recipes/input")
 
 
-def _headers(session: SfSession) -> dict:
-    return {"Authorization": f"Bearer {session.access_token}",
-            "Content-Type": "application/json"}
-
-
-def _base(session: SfSession) -> str:
-    return f"{session.instance_url}/services/data/v{session.api_version}/wave"
+def _base_path(session: SfSession) -> str:
+    return f"/services/data/v{session.api_version}/wave"
 
 
 def list_recipes(session: SfSession, name_filter: str | None = None) -> list[dict]:
-    """Return [{id, name, label}] for all recipes, optionally filtered by name."""
-    url = f"{_base(session)}/recipes"
-    params = {"q": name_filter} if name_filter else {}
+    """Return [{id, name, label}] for all recipes, optionally filtered by name.
+
+    Uses the shared `rest_get` transport, so it works under both CLI auth
+    (routed through `sf api request rest`) and JWT auth (direct bearer token).
+    """
+    path = f"{_base_path(session)}/recipes"
+    params = {"q": name_filter} if name_filter else None
     out: list[dict] = []
-    while url:
-        resp = requests.get(url, headers=_headers(session), params=params, timeout=60)
-        resp.raise_for_status()
-        body = resp.json()
+    while path:
+        body = rest_get(session, path, params=params)
         for r in body.get("recipes", body.get("items", [])):
             out.append({"id": r.get("id"),
                         "name": r.get("name"),
                         "label": r.get("label") or r.get("name")})
-        # follow pagination if present
-        nxt = body.get("nextPageUrl")
-        url = f"{session.instance_url}{nxt}" if nxt else None
-        params = {}
+        # follow pagination if present (nextPageUrl is an absolute API path)
+        path = body.get("nextPageUrl")
+        params = None
     return out
 
 
 def get_recipe(session: SfSession, recipe_id: str, fmt: str = "R3") -> dict:
     """Fetch one recipe's full definition (nodes live under the returned JSON)."""
-    url = f"{_base(session)}/recipes/{recipe_id}"
-    resp = requests.get(url, headers=_headers(session), params={"format": fmt}, timeout=120)
-    resp.raise_for_status()
-    return resp.json()
+    path = f"{_base_path(session)}/recipes/{recipe_id}"
+    return rest_get(session, path, params={"format": fmt})
 
 
 def save_recipe_json(recipe: dict, recipe_meta: dict) -> Path:
