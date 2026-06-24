@@ -31,3 +31,6 @@ recipes/output/*
 
 # verify snapshots contain production dataset row counts — keep local
 recipes/verify/
+
+# extracted clean/test copies of prod recipes — keep local
+recipes/clean_copies/
