@@ -31,6 +31,12 @@ from .crma.report_xlsx import write_workbook
 console = Console()
 
 
+def _norm(s: str) -> str:
+    """Collapse internal whitespace + strip, so scope labels match org labels
+    that differ only by spacing (e.g. 'C360 420 - Logic' vs 'C360 420 -  Logic')."""
+    return " ".join(s.split()) if isinstance(s, str) else s
+
+
 def _load_scope(path: str | None) -> set[str] | None:
     if not path:
         return None
@@ -52,8 +58,12 @@ def extract(scope_path: str | None, take_all: bool) -> None:
         return
     console.print(f"  {len(recipes)} recipes in org")
 
+    norm_scope = {_norm(s) for s in scope} if scope else set()
     selected = recipes if (take_all or not scope) else [
-        r for r in recipes if r["name"] in scope or r["id"] in scope or r["label"] in scope
+        r for r in recipes
+        if r["id"] in scope
+        or _norm(r["name"]) in norm_scope
+        or _norm(r["label"]) in norm_scope
     ]
     console.print(f"[bold]Extracting {len(selected)} recipe(s)…[/bold]")
     for r in selected:
