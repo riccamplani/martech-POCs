@@ -19,6 +19,8 @@ from dataclasses import dataclass, field as dc_field
 _LOAD_ACTIONS = {"load", "digest", "edgemart", "connectedDataset", "input"}
 # tokens that look like Salesforce field API names
 _TOKEN = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:__[a-z]{1,2})?")
+# qualified dotted paths, e.g. "TRANSFORM1.Kurt_Id" or "AlleMails.Email"
+_QUALIFIED = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+")
 
 
 @dataclass
@@ -64,17 +66,31 @@ def _loaded_fields(params: dict) -> tuple[str, list[str]]:
 
 
 def _collect_referenced_tokens(nodes: dict, load_node_ids: set[str]) -> set[str]:
-    """Every identifier token used anywhere EXCEPT inside load nodes' field lists."""
+    """Every identifier token used anywhere EXCEPT inside load nodes' field lists.
+
+    Walks both dict VALUES and KEYS (field references can appear as map keys in
+    schema/rename specs), and captures qualified dotted paths whole, so that a
+    name like ``TRANSFORM1.Kurt_Id`` is recorded as ``TRANSFORM1.Kurt_Id`` *and*
+    contributes its bare tail ``Kurt_Id``.
+    """
     tokens: set[str] = set()
+
+    def add(text: str) -> None:
+        # bare identifiers (split on dots) ...
+        tokens.update(_TOKEN.findall(text))
+        # ... plus whole qualified dotted paths (e.g. Alias.Field__c)
+        tokens.update(_QUALIFIED.findall(text))
 
     def walk(value):
         if isinstance(value, str):
-            tokens.update(_TOKEN.findall(value))
+            add(value)
         elif isinstance(value, list):
             for v in value:
                 walk(v)
         elif isinstance(value, dict):
-            for v in value.values():
+            for k, v in value.items():
+                if isinstance(k, str):   # keys can hold field references too
+                    add(k)
                 walk(v)
 
     for nid, node in nodes.items():
@@ -88,6 +104,17 @@ def _collect_referenced_tokens(nodes: dict, load_node_ids: set[str]) -> set[str]
     return tokens
 
 
+def _is_used(field: str, referenced: set[str]) -> bool:
+    """Conservative usage test. A loaded field is "used" if its full name OR its
+    bare tail (after the last '.') is referenced downstream. Errs toward KEEP:
+    qualified inputs like ``TRANSFORM1.Kurt_Id`` are never dropped just because
+    the recipe refers to them by a different qualifier."""
+    if field in referenced:
+        return True
+    tail = field.rsplit(".", 1)[-1]
+    return tail != field and tail in referenced
+
+
 def analyze_recipe(recipe: dict) -> RecipeAnalysis:
     nodes = _find_nodes(recipe)
     load_nodes = {nid: n for nid, n in nodes.items()
@@ -97,8 +124,8 @@ def analyze_recipe(recipe: dict) -> RecipeAnalysis:
     analysis = RecipeAnalysis()
     for nid, node in load_nodes.items():
         obj, loaded = _loaded_fields(node.get("parameters", {}) or {})
-        used = [f for f in loaded if f in referenced]
-        unused = [f for f in loaded if f not in referenced]
+        used = [f for f in loaded if _is_used(f, referenced)]
+        unused = [f for f in loaded if not _is_used(f, referenced)]
         analysis.objects.append(
             ObjectUsage(object_name=obj, node_id=nid,
                         loaded=loaded, used=used, unused=unused)

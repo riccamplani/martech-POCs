@@ -42,3 +42,33 @@ def test_totals():
     a = analyze_recipe(recipe)
     assert a.total_loaded == 15      # 10 Account + 5 Opportunity
     assert a.total_unused == 5        # 4 Account + 1 Opportunity
+
+
+def test_qualified_field_names_not_false_removed():
+    """Regression: append/staged recipes load fields qualified with a dot
+    (e.g. 'TRANSFORM1.Kurt_Id'). They must count as used when referenced
+    downstream by their full name OR their bare tail — never false-removed."""
+    recipe = {
+        "nodes": {
+            "LOAD0": {"action": "load", "parameters": {
+                "dataset": {"label": "Staged"},
+                "fields": [
+                    "TRANSFORM1.Kurt_Id",        # referenced downstream by full name
+                    "AlleMails.Email",            # referenced downstream by bare tail
+                    "TRANSFORM1.Truly_Unused__c",  # referenced nowhere -> removable
+                ],
+            }},
+            "APPEND0": {"action": "appendV2", "parameters": {
+                "sources": ["TRANSFORM1.Kurt_Id"],
+            }},
+            "FORMULA0": {"action": "formula", "parameters": {
+                # bare tail reference (downstream re-qualified / renamed source)
+                "expression": "trim(Email)",
+            }},
+        }
+    }
+    a = analyze_recipe(recipe)
+    staged = a.objects[0]
+    assert staged.unused == ["TRANSFORM1.Truly_Unused__c"]
+    assert "TRANSFORM1.Kurt_Id" in staged.used
+    assert "AlleMails.Email" in staged.used
