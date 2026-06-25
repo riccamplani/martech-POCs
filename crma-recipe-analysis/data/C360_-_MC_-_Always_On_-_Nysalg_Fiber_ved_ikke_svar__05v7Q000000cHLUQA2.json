@@ -1,1555 +1,1495 @@
 {
-  "conversionDetails": [],
-  "createdBy": {
-    "id": "005b0000001J0bcAAC",
-    "name": "Berit Ruud",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "createdDate": "2024-04-30T11:09:20.000Z",
-  "dataflowLastUpdate": "2024-05-07T21:13:36.000Z",
-  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000cHLUQA2/file",
-  "format": "R3",
-  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000cHLUQA2/histories",
-  "id": "05v7Q000000cHLUQA2",
-  "label": "C360 - MC - Always On - Nysalg Fiber ved ikke svar",
-  "lastModifiedBy": {
-    "id": "005b0000001J0bcAAC",
-    "name": "Berit Ruud",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "lastModifiedDate": "2024-05-07T21:13:36.000Z",
-  "licenseAttributes": {
-    "type": "einsteinanalytics"
-  },
-  "name": "Withdrawn_by_dialer",
-  "publishingTarget": "Dataset",
-  "recipeDefinition": {
-    "nodes": {
-      "LOAD_DATASET0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "CustomerCampaignItem__c",
-            "sourceObjectName": "CustomerCampaignItem__c",
-            "type": "connectedDataset"
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "CustomerCampaignItem__c",
+          "sourceObjectName": "CustomerCampaignItem__c",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "CreatedDate",
+          "Campaign__c",
+          "Account__c",
+          "Callback_Valid_To_Date__c",
+          "CampaignID__c",
+          "CampaignName__c",
+          "Campaign_Valid_to__c",
+          "Response_Code__c",
+          "Response_Date__c",
+          "Response_Name__c",
+          "Campaign_Channels__c",
+          "Reason_Sub_code__c",
+          "Dialer_Account_Id__c",
+          "Dialer_Strategy__c",
+          "Dialer_call_attempts__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3 AND (4 OR 5)",
+        "filterExpressions": [
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "68"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
           },
-          "fields": [
-            "CreatedDate",
-            "Campaign__c",
-            "Account__c",
-            "Callback_Valid_To_Date__c",
-            "CampaignID__c",
-            "CampaignName__c",
-            "Campaign_Valid_to__c",
-            "Response_Code__c",
-            "Response_Date__c",
-            "Response_Name__c",
-            "Campaign_Channels__c",
-            "Reason_Sub_code__c",
-            "Dialer_Account_Id__c",
-            "Dialer_Strategy__c",
-            "Dialer_call_attempts__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "4"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -2,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": -1,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Callback_Valid_To_Date__c",
+            "operands": [
+              {
+                "argument": -9999,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": -1,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Callback_Valid_To_Date__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "DATETIME"
           }
-        },
-        "sources": []
-      },
-      "FILTER0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2 AND 3 AND (4 OR 5)",
-          "filterExpressions": [
-            {
-              "field": "Reason_Sub_code__c",
-              "operands": [
-                "68"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "Response_Code__c",
-              "operands": [
-                "4"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "Response_Date__c",
-              "operands": [
-                {
-                  "argument": -2,
-                  "type": "N_DAYS"
-                },
-                {
-                  "argument": -1,
-                  "type": "N_DAYS"
-                }
-              ],
-              "operator": "IN_RANGE",
-              "type": "DATETIME"
-            },
-            {
-              "field": "Callback_Valid_To_Date__c",
-              "operands": [
-                {
-                  "argument": -9999,
-                  "type": "N_DAYS"
-                },
-                {
-                  "argument": -1,
-                  "type": "N_DAYS"
-                }
-              ],
-              "operator": "IN_RANGE",
-              "type": "DATETIME"
-            },
-            {
-              "field": "Callback_Valid_To_Date__c",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "DATETIME"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET0"
         ]
       },
-      "OUTPUT0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "C360 - MC - Always On - Nysalg Fiber ved ikke svar",
-            "name": "Withdrawn_by_dialer",
-            "type": "analyticsDataset"
-          },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 - MC - Always On - Nysalg Fiber ved ikke svar",
+          "name": "Withdrawn_by_dialer",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS12"
+      ]
+    },
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "Name",
+          "CampaignID__c",
+          "Channels__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_10",
+              "C360_11",
+              "C360_12",
+              "C360_7",
+              "C360_8",
+              "C360_9"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "CampaignID__c"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "Fibernysal"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
           "fields": [],
-          "measuresToCurrencies": []
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER0",
+        "FILTER1"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Customers have Primary Contact with eMail",
+          "name": "Customers_have_Primary_Contact_with_eMail",
+          "type": "analyticsDataset"
         },
-        "sources": [
-          "DROP_FIELDS12"
+        "fields": [
+          "Key_PC_mail"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Open Opportunity Fiber Flag",
+          "name": "Open_Opportunity_Fiber_Flag",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Open_Opp_Fiber_Flg"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "COM_CUSTOMER_EDM_RESERVATION__c",
+          "Id",
+          "KurtID__c",
+          "Segment__c",
+          "StatusKURT__c",
+          "TSP_Dealer__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Account__c"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "Account"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN0",
+        "FILTER4"
+      ]
+    },
+    "FILTER2": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Segment__c",
+            "operands": [
+              "Småbedrift 4",
+              "Småbedrift 3",
+              "Småbedrift 5"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
         ]
       },
-      "LOAD_DATASET1": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Campaign",
-            "sourceObjectName": "Campaign",
-            "type": "connectedDataset"
+      "sources": [
+        "LOAD_DATASET4"
+      ]
+    },
+    "FILTER3": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "TSP_Dealer__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER2"
+      ]
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Open_Opp_Fiber_Flg"
+        ],
+        "rightQualifier": "OpenOpport"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN1",
+        "LOAD_DATASET3"
+      ]
+    },
+    "JOIN3": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "Key_PC_mail"
+        ],
+        "rightQualifier": "Customersh"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN2",
+        "LOAD_DATASET2"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "OpenOpport.Key_Suppressions_Open_Opp_Fiber_Flg",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN3"
+      ]
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber newsalesadresses 1 for a customer",
+          "name": "Fiber_newsalesadresses_1_for_a_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "IA_full_new_sale_text_adresses",
+          "Mulig_Installasjonsadresse",
+          "Location_Owner__c",
+          "Capacity_code__c",
+          "Coverage_4G_Plus__c",
+          "Coverage_4GP40__c",
+          "Coverage_5G_P__c",
+          "Coverage_4G__c",
+          "Fiber_cost__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN4": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "Fibernewsa"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER9",
+        "DROP_FIELDS0"
+      ]
+    },
+    "FILTER6": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Fiber_cost__c",
+            "operands": [
+              "10000",
+              "40000"
+            ],
+            "operator": "IN_RANGE",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET5"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Mulig_Installasjonsadresse",
+            "Location_Owner__c",
+            "Fiber_cost__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER6"
+      ]
+    },
+    "DROP_FIELDS1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Dialer_Strategy__c",
+            "Account.Id",
+            "Account.KurtID__c",
+            "Fibernewsa.Mulig_Installasjonsadresse",
+            "Fibernewsa.Fiber_cost__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN4"
+      ]
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;C360_96&#39;",
+            "label": "Campaign_cd",
+            "name": "Campaign_cd",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS1"
+      ]
+    },
+    "FORMULA1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Dialer_Strategy__c=&#39;B_Loyalty_Fib&#39; then &#39;A1&#39;\r\nwhen Dialer_Strategy__c=&#39;B_Gjovik_Fib&#39; then &#39;A2&#39; else &#39;0&#39;\r\nend",
+            "label": "Personalization_1__c",
+            "name": "Personalization_1__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA33": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa.Mulig_Installasjonsadresse&quot;",
+            "label": "Personalization_2__c",
+            "name": "Personalization_2__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1"
+      ]
+    },
+    "FORMULA34": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when &quot;Fibernewsa.Fiber_cost__c&quot; = 10000\r\nthen &#39;Fiberkost på adressen er 10K&#39;\r\nwhen &quot;Fibernewsa.Fiber_cost__c&quot; = 40000\r\nthen &#39;Fiberkost på adressen er 40K&#39;\r\nelse &#39;0&#39;\r\nend",
+            "label": "Personalization_3__c",
+            "name": "Personalization_3__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA33"
+      ]
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360_eDM_Master",
+          "name": "C360_eDM_Master",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Email",
+          "Personalization_1__c",
+          "Send_timestamp_string",
+          "Personalization_3__c",
+          "KurtID",
+          "Personalization_20__c",
+          "CampaignName",
+          "MobilePhone",
+          "Personalization_15__c",
+          "Personalization_13__c",
+          "Personalization_17__c",
+          "Personalization_7__c",
+          "Personalization_9__c",
+          "Personalization_19__c",
+          "Personalization_5__c",
+          "Personalization_11__c",
+          "AccountID",
+          "Personalization_2__c",
+          "ContactID",
+          "CampaignCD",
+          "Send_timestamp",
+          "Personalization_12__c",
+          "Personalization_14__c",
+          "Personalization_16__c",
+          "CampaignID",
+          "Personalization_8__c",
+          "Personalization_18__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Personalization_10__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER8": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignCD",
+            "operands": [
+              "C360_96"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
           },
+          {
+            "field": "Send_timestamp",
+            "operands": [
+              {
+                "argument": -60,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7"
+      ]
+    },
+    "DROP_FIELDS2": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "AccountID"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER8"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "AccountID",
+            "label": "Key_this_camp_last_60",
+            "name": "Key_this_camp_last_60",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "DROP_FIELDS3": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_this_camp_last_60"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "JOIN5": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "Key_this_camp_last_60"
+        ],
+        "rightQualifier": "Transform2"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER5",
+        "DROP_FIELDS3"
+      ]
+    },
+    "FILTER9": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Transform2.Key_this_camp_last_60",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN5"
+      ]
+    },
+    "FILTER10": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_96"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "JOIN6": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_cd"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "C360_96"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA34",
+        "DROP_FIELDS13"
+      ]
+    },
+    "DROP_FIELDS4": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
           "fields": [
             "Id",
             "Name",
-            "CampaignID__c",
-            "Channels__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
-      },
-      "FILTER1": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "CampaignID__c",
-              "operands": [
-                "C360_10",
-                "C360_11",
-                "C360_12",
-                "C360_7",
-                "C360_8",
-                "C360_9"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET1"
-        ]
-      },
-      "JOIN0": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
             "CampaignID__c"
           ],
-          "rightKeys": [
-            "Id"
-          ],
-          "rightQualifier": "Fibernysal"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER10"
+      ]
+    },
+    "FORMULA32": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Name",
+            "label": "CampaignName",
+            "name": "CampaignName",
+            "precision": 255,
+            "type": "TEXT"
           }
-        },
-        "sources": [
-          "FILTER0",
-          "FILTER1"
         ]
+      },
+      "sources": [
+        "DROP_FIELDS4"
+      ]
+    },
+    "DROP_FIELDS13": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "CampaignID__c",
+            "CampaignName"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA32"
+      ]
+    },
+    "DROP_FIELDS11_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Primarymed.AccountId",
+            "Primarymed.HasOptedOutOfEmail",
+            "Primarymed.AccountId__c",
+            "Primarymed.Data_Quality_Email_Mob__c",
+            "Primarymed.et4ae5__HasOptedOutOfMobile__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA31"
+      ]
+    },
+    "FORMULA30_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "formulaExpression": "now()",
+            "label": "Send_timestamp",
+            "name": "Send_timestamp",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN6"
+      ]
+    },
+    "FORMULA31": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "string(Send_timestamp)",
+            "label": "Send_timestamp_string",
+            "name": "Send_timestamp_string",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA30_copy0"
+      ]
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Primary Contact with email",
+          "name": "Primary_Contact_with_email",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "AccountId",
+          "Email",
+          "Id",
+          "MobilePhone"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN7": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "AccountId"
+        ],
+        "rightQualifier": "PrimaryCon"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS11_copy0",
+        "LOAD_DATASET8"
+      ]
+    },
+    "DROP_FIELDS12": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account.Id",
+            "Account.KurtID__c",
+            "Campaign_cd",
+            "Personalization_1__c",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "C360_96.Id",
+            "C360_96.CampaignName",
+            "Send_timestamp",
+            "Send_timestamp_string",
+            "PrimaryCon.Email",
+            "PrimaryCon.Id",
+            "PrimaryCon.MobilePhone"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN7"
+      ]
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "CustomerCampaignItem__c",
+        "type": "LOAD_DATASET",
+        "top": 250.3,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER0": {
+        "label": "Responsedate 1-2 days ago",
+        "description": "",
+        "type": "FILTER",
+        "top": 250.3,
+        "left": 252
+      },
+      "OUTPUT0": {
+        "label": "C360 - MC - Always On - Nysalg Fiber ved ikke svar",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 252.5,
+        "left": 2212
+      },
+      "LOAD_DATASET1": {
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 390.3,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER1": {
+        "label": "Fiber nysalg 10K og 40K og 60K",
+        "description": "",
+        "type": "FILTER",
+        "top": 390.3,
+        "left": 252
+      },
+      "JOIN0": {
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 250.3,
+        "left": 392
       },
       "LOAD_DATASET2": {
-        "action": "load",
+        "label": "Customers have Primary Contact with eMail",
+        "type": "LOAD_DATASET",
+        "top": 810.3,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Customers have Primary Contact with eMail",
-            "name": "Customers_have_Primary_Contact_with_eMail",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_PC_mail"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET3": {
-        "action": "load",
+        "label": "Open Opportunity Fiber Flag",
+        "type": "LOAD_DATASET",
+        "top": 670.3,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Open Opportunity Fiber Flag",
-            "name": "Open_Opportunity_Fiber_Flag",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Open_Opp_Fiber_Flg"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET4": {
-        "action": "load",
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 530.3,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "COM_CUSTOMER_EDM_RESERVATION__c",
-            "Id",
-            "KurtID__c",
-            "Segment__c",
-            "StatusKURT__c",
-            "TSP_Dealer__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN1": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Account__c"
-          ],
-          "rightKeys": [
-            "Id"
-          ],
-          "rightQualifier": "Account"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN0",
-          "FILTER4"
-        ]
+        "label": "Join 1",
+        "type": "JOIN",
+        "top": 250.3,
+        "left": 532
       },
       "FILTER2": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "StatusKURT__c",
-              "operands": [
-                "K - Personen/foretaket er OK, levende"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "Segment__c",
-              "operands": [
-                "Sm\u00e5bedrift 4",
-                "Sm\u00e5bedrift 3",
-                "Sm\u00e5bedrift 5"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET4"
-        ]
+        "label": "Segment SE3-5",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 252
       },
       "FILTER3": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "TSP_Dealer__c",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER2"
-        ]
+        "label": "TSP UT",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 392
       },
       "FILTER4": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "COM_CUSTOMER_EDM_RESERVATION__c",
-              "operands": [
-                "false"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER3"
-        ]
+        "label": "UT edm reservasjon",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 532
       },
       "JOIN2": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Account.Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Open_Opp_Fiber_Flg"
-          ],
-          "rightQualifier": "OpenOpport"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN1",
-          "LOAD_DATASET3"
-        ]
+        "label": "Join 2",
+        "type": "JOIN",
+        "top": 250.2,
+        "left": 672
       },
       "JOIN3": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Account.Id"
-          ],
-          "rightKeys": [
-            "Key_PC_mail"
-          ],
-          "rightQualifier": "Customersh"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN2",
-          "LOAD_DATASET2"
-        ]
+        "label": "Join 3",
+        "type": "JOIN",
+        "top": 250.2,
+        "left": 812
       },
       "FILTER5": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "OpenOpport.Key_Suppressions_Open_Opp_Fiber_Flg",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN3"
-        ]
+        "label": "UT open opportunity",
+        "description": "",
+        "type": "FILTER",
+        "top": 250.3,
+        "left": 952
       },
       "LOAD_DATASET5": {
-        "action": "load",
+        "label": "Fiber newsalesadresses 1 for a customer",
+        "type": "LOAD_DATASET",
+        "top": 950.3,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Fiber newsalesadresses 1 for a customer",
-            "name": "Fiber_newsalesadresses_1_for_a_customer",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "IA_full_new_sale_text_adresses",
-            "Mulig_Installasjonsadresse",
-            "Location_Owner__c",
-            "Capacity_code__c",
-            "Coverage_4G_Plus__c",
-            "Coverage_4GP40__c",
-            "Coverage_5G_P__c",
-            "Coverage_4G__c",
-            "Fiber_cost__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN4": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Account.Id"
-          ],
-          "rightKeys": [
-            "Location_Owner__c"
-          ],
-          "rightQualifier": "Fibernewsa"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER9",
-          "DROP_FIELDS0"
-        ]
+        "label": "Join 4",
+        "type": "JOIN",
+        "top": 252.5,
+        "left": 1372.2
       },
       "FILTER6": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Fiber_cost__c",
-              "operands": [
-                "10000",
-                "40000"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET5"
-        ]
+        "label": "kvalifiserer 10K og 40K",
+        "description": "",
+        "type": "FILTER",
+        "top": 950.3,
+        "left": 252
       },
-      "DROP_FIELDS0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Mulig_Installasjonsadresse",
-              "Location_Owner__c",
-              "Fiber_cost__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM0": {
+        "label": "Drop columns",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 950.3,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER6"
-        ]
+        "connectors": []
       },
-      "DROP_FIELDS1": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Dialer_Strategy__c",
-              "Account.Id",
-              "Account.KurtID__c",
-              "Fibernewsa.Mulig_Installasjonsadresse",
-              "Fibernewsa.Fiber_cost__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM1": {
+        "label": "Beregnede felt",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252.5,
+        "left": 1512.2,
+        "graph": {
+          "DROP_FIELDS1": {
+            "label": "Drop Columns"
+          },
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "campaign_cd"
+          },
+          "FORMULA1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_1__c"
+          },
+          "FORMULA33": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_2__c"
+          },
+          "FORMULA34": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_3__c"
           }
         },
-        "sources": [
-          "JOIN4"
-        ]
-      },
-      "FORMULA0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&#39;C360_96&#39;",
-              "label": "Campaign_cd",
-              "name": "Campaign_cd",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS1"
-        ]
-      },
-      "FORMULA1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when Dialer_Strategy__c=&#39;B_Loyalty_Fib&#39; then &#39;A1&#39;\r\nwhen Dialer_Strategy__c=&#39;B_Gjovik_Fib&#39; then &#39;A2&#39; else &#39;0&#39;\r\nend",
-              "label": "Personalization_1__c",
-              "name": "Personalization_1__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0"
-        ]
-      },
-      "FORMULA33": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa.Mulig_Installasjonsadresse&quot;",
-              "label": "Personalization_2__c",
-              "name": "Personalization_2__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA1"
-        ]
-      },
-      "FORMULA34": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when &quot;Fibernewsa.Fiber_cost__c&quot; = 10000\r\nthen &#39;Fiberkost p\u00e5 adressen er 10K&#39;\r\nwhen &quot;Fibernewsa.Fiber_cost__c&quot; = 40000\r\nthen &#39;Fiberkost p\u00e5 adressen er 40K&#39;\r\nelse &#39;0&#39;\r\nend",
-              "label": "Personalization_3__c",
-              "name": "Personalization_3__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA33"
+        "connectors": [
+          {
+            "source": "DROP_FIELDS1",
+            "target": "FORMULA0"
+          },
+          {
+            "source": "FORMULA0",
+            "target": "FORMULA1"
+          },
+          {
+            "source": "FORMULA1",
+            "target": "FORMULA33"
+          },
+          {
+            "source": "FORMULA33",
+            "target": "FORMULA34"
+          }
         ]
       },
       "LOAD_DATASET7": {
-        "action": "load",
+        "label": "C360_eDM_Master",
+        "type": "LOAD_DATASET",
+        "top": 1090.3,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "C360_eDM_Master",
-            "name": "C360_eDM_Master",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Email",
-            "Personalization_1__c",
-            "Send_timestamp_string",
-            "Personalization_3__c",
-            "KurtID",
-            "Personalization_20__c",
-            "CampaignName",
-            "MobilePhone",
-            "Personalization_15__c",
-            "Personalization_13__c",
-            "Personalization_17__c",
-            "Personalization_7__c",
-            "Personalization_9__c",
-            "Personalization_19__c",
-            "Personalization_5__c",
-            "Personalization_11__c",
-            "AccountID",
-            "Personalization_2__c",
-            "ContactID",
-            "CampaignCD",
-            "Send_timestamp",
-            "Personalization_12__c",
-            "Personalization_14__c",
-            "Personalization_16__c",
-            "CampaignID",
-            "Personalization_8__c",
-            "Personalization_18__c",
-            "Personalization_6__c",
-            "Personalization_4__c",
-            "Personalization_10__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "FILTER8": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "CampaignCD",
-              "operands": [
-                "C360_96"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
+        "label": "This campaign last 60 days",
+        "description": "",
+        "type": "FILTER",
+        "top": 1090.3,
+        "left": 252
+      },
+      "TRANSFORM2": {
+        "label": "Transform 2",
+        "type": "TRANSFORM",
+        "top": 1090.3,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS2": {
+            "label": "Drop Columns"
+          },
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
             },
-            {
-              "field": "Send_timestamp",
-              "operands": [
-                {
-                  "argument": -60,
-                  "type": "N_DAYS"
-                },
-                {
-                  "argument": 0,
-                  "type": "N_DAYS"
-                }
-              ],
-              "operator": "IN_RANGE",
-              "type": "DATETIME"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET7"
-        ]
-      },
-      "DROP_FIELDS2": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "AccountID"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+            "label": "Formula"
+          },
+          "DROP_FIELDS3": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER8"
-        ]
-      },
-      "FORMULA2": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "AccountID",
-              "label": "Key_this_camp_last_60",
-              "name": "Key_this_camp_last_60",
-              "precision": 18,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS2"
-        ]
-      },
-      "DROP_FIELDS3": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Key_this_camp_last_60"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+        "connectors": [
+          {
+            "source": "DROP_FIELDS2",
+            "target": "FORMULA2"
+          },
+          {
+            "source": "FORMULA2",
+            "target": "DROP_FIELDS3"
           }
-        },
-        "sources": [
-          "FORMULA2"
         ]
       },
       "JOIN5": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Account.Id"
-          ],
-          "rightKeys": [
-            "Key_this_camp_last_60"
-          ],
-          "rightQualifier": "Transform2"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER5",
-          "DROP_FIELDS3"
-        ]
+        "label": "Join 5",
+        "type": "JOIN",
+        "top": 250.3,
+        "left": 1092
       },
       "FILTER9": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Transform2.Key_this_camp_last_60",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN5"
-        ]
+        "label": "UT denne kampanjen siste 60 dager",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.3,
+        "left": 1232
       },
       "FILTER10": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "CampaignID__c",
-              "operands": [
-                "C360_96"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET1"
-        ]
+        "label": "C360_96",
+        "description": "",
+        "type": "FILTER",
+        "top": 392.4,
+        "left": 1512
       },
       "JOIN6": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Campaign_cd"
-          ],
-          "rightKeys": [
-            "CampaignID__c"
-          ],
-          "rightQualifier": "C360_96"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
+        "label": "Join 6",
+        "type": "JOIN",
+        "top": 252,
+        "left": 1652
+      },
+      "TRANSFORM3": {
+        "label": "Transform 3",
+        "type": "TRANSFORM",
+        "top": 392.1,
+        "left": 1652,
+        "graph": {
+          "DROP_FIELDS4": {
+            "label": "Drop Columns"
+          },
+          "FORMULA32": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS13": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FORMULA34",
-          "DROP_FIELDS13"
+        "connectors": [
+          {
+            "source": "DROP_FIELDS4",
+            "target": "FORMULA32"
+          },
+          {
+            "source": "FORMULA32",
+            "target": "DROP_FIELDS13"
+          }
         ]
       },
-      "DROP_FIELDS4": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id",
-              "Name",
-              "CampaignID__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM14_copy0": {
+        "label": "timestamp",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252,
+        "left": 1792,
+        "graph": {
+          "DROP_FIELDS11_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA30_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Send_timestamp"
+          },
+          "FORMULA31": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
           }
         },
-        "sources": [
-          "FILTER10"
-        ]
-      },
-      "FORMULA32": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Name",
-              "label": "CampaignName",
-              "name": "CampaignName",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS4"
-        ]
-      },
-      "DROP_FIELDS13": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id",
-              "CampaignID__c",
-              "CampaignName"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+        "connectors": [
+          {
+            "source": "FORMULA31",
+            "target": "DROP_FIELDS11_copy0"
+          },
+          {
+            "source": "FORMULA30_copy0",
+            "target": "FORMULA31"
           }
-        },
-        "sources": [
-          "FORMULA32"
-        ]
-      },
-      "DROP_FIELDS11_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Primarymed.AccountId",
-              "Primarymed.HasOptedOutOfEmail",
-              "Primarymed.AccountId__c",
-              "Primarymed.Data_Quality_Email_Mob__c",
-              "Primarymed.et4ae5__HasOptedOutOfMobile__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FORMULA31"
-        ]
-      },
-      "FORMULA30_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "format": "yyyy-MM-dd HH:mm:ss",
-              "formulaExpression": "now()",
-              "label": "Send_timestamp",
-              "name": "Send_timestamp",
-              "type": "DATETIME"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN6"
-        ]
-      },
-      "FORMULA31": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "string(Send_timestamp)",
-              "label": "Send_timestamp_string",
-              "name": "Send_timestamp_string",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA30_copy0"
         ]
       },
       "LOAD_DATASET8": {
-        "action": "load",
+        "label": "Primary Contact with email",
+        "type": "LOAD_DATASET",
+        "top": 670.8,
+        "left": 1654.1,
         "parameters": {
-          "dataset": {
-            "label": "Primary Contact with email",
-            "name": "Primary_Contact_with_email",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "AccountId",
-            "Email",
-            "Id",
-            "MobilePhone"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN7": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Account.Id"
-          ],
-          "rightKeys": [
-            "AccountId"
-          ],
-          "rightQualifier": "PrimaryCon"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "DROP_FIELDS11_copy0",
-          "LOAD_DATASET8"
-        ]
+        "label": "Join 7",
+        "type": "JOIN",
+        "top": 252,
+        "left": 1932
       },
-      "DROP_FIELDS12": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Account.Id",
-              "Account.KurtID__c",
-              "Campaign_cd",
-              "Personalization_1__c",
-              "Personalization_2__c",
-              "Personalization_3__c",
-              "C360_96.Id",
-              "C360_96.CampaignName",
-              "Send_timestamp",
-              "Send_timestamp_string",
-              "PrimaryCon.Email",
-              "PrimaryCon.Id",
-              "PrimaryCon.MobilePhone"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM15": {
+        "label": "Transform 15",
+        "type": "TRANSFORM",
+        "top": 252.7,
+        "left": 2072,
+        "graph": {
+          "DROP_FIELDS12": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "JOIN7"
-        ]
+        "connectors": []
       }
     },
-    "runMode": "full",
-    "ui": {
-      "nodes": {
-        "LOAD_DATASET0": {
-          "label": "CustomerCampaignItem__c",
-          "type": "LOAD_DATASET",
-          "top": 250.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER0": {
-          "label": "Responsedate 1-2 days ago",
-          "description": "",
-          "type": "FILTER",
-          "top": 250.3,
-          "left": 252
-        },
-        "OUTPUT0": {
-          "label": "C360 - MC - Always On - Nysalg Fiber ved ikke svar",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 252.5,
-          "left": 2212
-        },
-        "LOAD_DATASET1": {
-          "label": "Campaign",
-          "type": "LOAD_DATASET",
-          "top": 390.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER1": {
-          "label": "Fiber nysalg 10K og 40K og 60K",
-          "description": "",
-          "type": "FILTER",
-          "top": 390.3,
-          "left": 252
-        },
-        "JOIN0": {
-          "label": "Join 0",
-          "type": "JOIN",
-          "top": 250.3,
-          "left": 392
-        },
-        "LOAD_DATASET2": {
-          "label": "Customers have Primary Contact with eMail",
-          "type": "LOAD_DATASET",
-          "top": 810.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET3": {
-          "label": "Open Opportunity Fiber Flag",
-          "type": "LOAD_DATASET",
-          "top": 670.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET4": {
-          "label": "Account",
-          "type": "LOAD_DATASET",
-          "top": 530.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN1": {
-          "label": "Join 1",
-          "type": "JOIN",
-          "top": 250.3,
-          "left": 532
-        },
-        "FILTER2": {
-          "label": "Segment SE3-5",
-          "description": "",
-          "type": "FILTER",
-          "top": 530.3,
-          "left": 252
-        },
-        "FILTER3": {
-          "label": "TSP UT",
-          "description": "",
-          "type": "FILTER",
-          "top": 530.3,
-          "left": 392
-        },
-        "FILTER4": {
-          "label": "UT edm reservasjon",
-          "description": "",
-          "type": "FILTER",
-          "top": 530.3,
-          "left": 532
-        },
-        "JOIN2": {
-          "label": "Join 2",
-          "type": "JOIN",
-          "top": 250.2,
-          "left": 672
-        },
-        "JOIN3": {
-          "label": "Join 3",
-          "type": "JOIN",
-          "top": 250.2,
-          "left": 812
-        },
-        "FILTER5": {
-          "label": "UT open opportunity",
-          "description": "",
-          "type": "FILTER",
-          "top": 250.3,
-          "left": 952
-        },
-        "LOAD_DATASET5": {
-          "label": "Fiber newsalesadresses 1 for a customer",
-          "type": "LOAD_DATASET",
-          "top": 950.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN4": {
-          "label": "Join 4",
-          "type": "JOIN",
-          "top": 252.5,
-          "left": 1372.2
-        },
-        "FILTER6": {
-          "label": "kvalifiserer 10K og 40K",
-          "description": "",
-          "type": "FILTER",
-          "top": 950.3,
-          "left": 252
-        },
-        "TRANSFORM0": {
-          "label": "Drop columns",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 950.3,
-          "left": 392,
-          "graph": {
-            "DROP_FIELDS0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        },
-        "TRANSFORM1": {
-          "label": "Beregnede felt",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 252.5,
-          "left": 1512.2,
-          "graph": {
-            "DROP_FIELDS1": {
-              "label": "Drop Columns"
-            },
-            "FORMULA0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "campaign_cd"
-            },
-            "FORMULA1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_1__c"
-            },
-            "FORMULA33": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_2__c"
-            },
-            "FORMULA34": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_3__c"
-            }
-          },
-          "connectors": [
-            {
-              "source": "DROP_FIELDS1",
-              "target": "FORMULA0"
-            },
-            {
-              "source": "FORMULA0",
-              "target": "FORMULA1"
-            },
-            {
-              "source": "FORMULA1",
-              "target": "FORMULA33"
-            },
-            {
-              "source": "FORMULA33",
-              "target": "FORMULA34"
-            }
-          ]
-        },
-        "LOAD_DATASET7": {
-          "label": "C360_eDM_Master",
-          "type": "LOAD_DATASET",
-          "top": 1090.3,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER8": {
-          "label": "This campaign last 60 days",
-          "description": "",
-          "type": "FILTER",
-          "top": 1090.3,
-          "left": 252
-        },
-        "TRANSFORM2": {
-          "label": "Transform 2",
-          "type": "TRANSFORM",
-          "top": 1090.3,
-          "left": 392,
-          "graph": {
-            "DROP_FIELDS2": {
-              "label": "Drop Columns"
-            },
-            "FORMULA2": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            },
-            "DROP_FIELDS3": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "DROP_FIELDS2",
-              "target": "FORMULA2"
-            },
-            {
-              "source": "FORMULA2",
-              "target": "DROP_FIELDS3"
-            }
-          ]
-        },
-        "JOIN5": {
-          "label": "Join 5",
-          "type": "JOIN",
-          "top": 250.3,
-          "left": 1092
-        },
-        "FILTER9": {
-          "label": "UT denne kampanjen siste 60 dager",
-          "description": "",
-          "type": "FILTER",
-          "top": 252.3,
-          "left": 1232
-        },
-        "FILTER10": {
-          "label": "C360_96",
-          "description": "",
-          "type": "FILTER",
-          "top": 392.4,
-          "left": 1512
-        },
-        "JOIN6": {
-          "label": "Join 6",
-          "type": "JOIN",
-          "top": 252,
-          "left": 1652
-        },
-        "TRANSFORM3": {
-          "label": "Transform 3",
-          "type": "TRANSFORM",
-          "top": 392.1,
-          "left": 1652,
-          "graph": {
-            "DROP_FIELDS4": {
-              "label": "Drop Columns"
-            },
-            "FORMULA32": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            },
-            "DROP_FIELDS13": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "DROP_FIELDS4",
-              "target": "FORMULA32"
-            },
-            {
-              "source": "FORMULA32",
-              "target": "DROP_FIELDS13"
-            }
-          ]
-        },
-        "TRANSFORM14_copy0": {
-          "label": "timestamp",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 252,
-          "left": 1792,
-          "graph": {
-            "DROP_FIELDS11_copy0": {
-              "label": "Drop Columns"
-            },
-            "FORMULA30_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Send_timestamp"
-            },
-            "FORMULA31": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA31",
-              "target": "DROP_FIELDS11_copy0"
-            },
-            {
-              "source": "FORMULA30_copy0",
-              "target": "FORMULA31"
-            }
-          ]
-        },
-        "LOAD_DATASET8": {
-          "label": "Primary Contact with email",
-          "type": "LOAD_DATASET",
-          "top": 670.8,
-          "left": 1654.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN7": {
-          "label": "Join 7",
-          "type": "JOIN",
-          "top": 252,
-          "left": 1932
-        },
-        "TRANSFORM15": {
-          "label": "Transform 15",
-          "type": "TRANSFORM",
-          "top": 252.7,
-          "left": 2072,
-          "graph": {
-            "DROP_FIELDS12": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        }
+    "connectors": [
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER0"
       },
-      "connectors": [
-        {
-          "source": "LOAD_DATASET0",
-          "target": "FILTER0"
-        },
-        {
-          "source": "LOAD_DATASET1",
-          "target": "FILTER1"
-        },
-        {
-          "source": "FILTER0",
-          "target": "JOIN0"
-        },
-        {
-          "source": "FILTER1",
-          "target": "JOIN0"
-        },
-        {
-          "source": "JOIN0",
-          "target": "JOIN1"
-        },
-        {
-          "source": "FILTER4",
-          "target": "JOIN1"
-        },
-        {
-          "source": "LOAD_DATASET4",
-          "target": "FILTER2"
-        },
-        {
-          "source": "FILTER2",
-          "target": "FILTER3"
-        },
-        {
-          "source": "FILTER3",
-          "target": "FILTER4"
-        },
-        {
-          "source": "JOIN1",
-          "target": "JOIN2"
-        },
-        {
-          "source": "LOAD_DATASET3",
-          "target": "JOIN2"
-        },
-        {
-          "source": "JOIN2",
-          "target": "JOIN3"
-        },
-        {
-          "source": "LOAD_DATASET2",
-          "target": "JOIN3"
-        },
-        {
-          "source": "JOIN3",
-          "target": "FILTER5"
-        },
-        {
-          "source": "FILTER9",
-          "target": "JOIN4"
-        },
-        {
-          "source": "TRANSFORM0",
-          "target": "JOIN4"
-        },
-        {
-          "source": "LOAD_DATASET5",
-          "target": "FILTER6"
-        },
-        {
-          "source": "FILTER6",
-          "target": "TRANSFORM0"
-        },
-        {
-          "source": "JOIN4",
-          "target": "TRANSFORM1"
-        },
-        {
-          "source": "LOAD_DATASET7",
-          "target": "FILTER8"
-        },
-        {
-          "source": "FILTER8",
-          "target": "TRANSFORM2"
-        },
-        {
-          "source": "FILTER5",
-          "target": "JOIN5"
-        },
-        {
-          "source": "TRANSFORM2",
-          "target": "JOIN5"
-        },
-        {
-          "source": "JOIN5",
-          "target": "FILTER9"
-        },
-        {
-          "source": "LOAD_DATASET1",
-          "target": "FILTER10"
-        },
-        {
-          "source": "TRANSFORM1",
-          "target": "JOIN6"
-        },
-        {
-          "source": "TRANSFORM3",
-          "target": "JOIN6"
-        },
-        {
-          "source": "FILTER10",
-          "target": "TRANSFORM3"
-        },
-        {
-          "source": "JOIN6",
-          "target": "TRANSFORM14_copy0"
-        },
-        {
-          "source": "TRANSFORM14_copy0",
-          "target": "JOIN7"
-        },
-        {
-          "source": "LOAD_DATASET8",
-          "target": "JOIN7"
-        },
-        {
-          "source": "JOIN7",
-          "target": "TRANSFORM15"
-        },
-        {
-          "source": "TRANSFORM15",
-          "target": "OUTPUT0"
-        }
-      ],
-      "hiddenColumns": []
-    },
-    "version": "62.0"
-  },
-  "scheduleAttributes": {
-    "assetId": "05v7Q000000cHLUQA2",
-    "events": {
-      "events": [
-        {
-          "createdBy": {
-            "id": "005b0000001J0bcAAC",
-            "name": "Berit Ruud",
-            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
-          },
-          "createdDate": "2024-09-06T11:29:09.000Z",
-          "eventType": "JobScheduleModified"
-        },
-        {
-          "createdBy": {
-            "id": "005b0000001J0bcAAC",
-            "name": "Berit Ruud",
-            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
-          },
-          "createdDate": "2024-05-03T14:01:31.000Z",
-          "eventType": "JobScheduled"
-        }
-      ]
-    },
-    "frequency": "eventdriven",
-    "triggerRule": "recipe:05v7Q000000cHyxQAE"
-  },
-  "scheduleType": "eventdriven",
-  "status": "Success",
-  "targetDataflowId": "02K7Q000004DSdPUAW",
-  "type": "recipe",
-  "url": "/services/data/v62.0/wave/recipes/05v7Q000000cHLUQA2?format=R3",
-  "validationDetails": []
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER1"
+      },
+      {
+        "source": "FILTER0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "FILTER1",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "JOIN1"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "FILTER2"
+      },
+      {
+        "source": "FILTER2",
+        "target": "FILTER3"
+      },
+      {
+        "source": "FILTER3",
+        "target": "FILTER4"
+      },
+      {
+        "source": "JOIN1",
+        "target": "JOIN2"
+      },
+      {
+        "source": "LOAD_DATASET3",
+        "target": "JOIN2"
+      },
+      {
+        "source": "JOIN2",
+        "target": "JOIN3"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "JOIN3"
+      },
+      {
+        "source": "JOIN3",
+        "target": "FILTER5"
+      },
+      {
+        "source": "FILTER9",
+        "target": "JOIN4"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "JOIN4"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "FILTER6"
+      },
+      {
+        "source": "FILTER6",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "JOIN4",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "FILTER8"
+      },
+      {
+        "source": "FILTER8",
+        "target": "TRANSFORM2"
+      },
+      {
+        "source": "FILTER5",
+        "target": "JOIN5"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "JOIN5"
+      },
+      {
+        "source": "JOIN5",
+        "target": "FILTER9"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER10"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "JOIN6"
+      },
+      {
+        "source": "TRANSFORM3",
+        "target": "JOIN6"
+      },
+      {
+        "source": "FILTER10",
+        "target": "TRANSFORM3"
+      },
+      {
+        "source": "JOIN6",
+        "target": "TRANSFORM14_copy0"
+      },
+      {
+        "source": "TRANSFORM14_copy0",
+        "target": "JOIN7"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "JOIN7"
+      },
+      {
+        "source": "JOIN7",
+        "target": "TRANSFORM15"
+      },
+      {
+        "source": "TRANSFORM15",
+        "target": "OUTPUT0"
+      }
+    ],
+    "hiddenColumns": []
+  }
 }

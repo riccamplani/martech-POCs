@@ -1,3268 +1,3217 @@
 {
-  "conversionDetails": [],
-  "createdBy": {
-    "id": "005b0000001J0bcAAC",
-    "name": "Berit Ruud",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "createdDate": "2024-09-11T11:54:23.000Z",
-  "dataflowLastUpdate": "2025-02-28T11:07:42.000Z",
-  "fileUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wkVLIAY/file",
-  "format": "R3",
-  "historiesUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wkVLIAY/histories",
-  "id": "05vJ7000000wkVLIAY",
-  "label": "C360 431 - Logic Fiber Newsale Feil nummer Campaign",
-  "lastModifiedBy": {
-    "id": "005b0000001J0bcAAC",
-    "name": "Berit Ruud",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "lastModifiedDate": "2025-02-28T11:07:42.000Z",
-  "licenseAttributes": {
-    "type": "einsteinanalytics"
-  },
-  "name": "C360_431_Logic_Fiber_Newsale_Feil_nummer_Campaign",
-  "publishingTarget": "Dataset",
-  "recipeDefinition": {
-    "nodes": {
-      "LOAD_DATASET1": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "CustomerCampaignItem__c",
-            "sourceObjectName": "CustomerCampaignItem__c",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "Status__c",
-            "Id",
-            "IsDeleted",
-            "Name",
-            "CreatedDate",
-            "CreatedById",
-            "LastModifiedDate",
-            "LastModifiedById",
-            "SystemModstamp",
-            "LastViewedDate",
-            "LastReferencedDate",
-            "Campaign__c",
-            "Account__c",
-            "Callback_Valid_To_Date__c",
-            "CampaignID__c",
-            "CampaignName__c",
-            "Campaign_Description__c",
-            "Campaign_Response_Description__c",
-            "Campaign_Valid_to__c",
-            "DealerID__c",
-            "Dealer_Account__c",
-            "KSBID__c",
-            "KurtID__c",
-            "No_of_accounts__c",
-            "Response_Code__c",
-            "Response_Date__c",
-            "Response_Name__c",
-            "Callback_By__c",
-            "Decline_Reason__c",
-            "AgentID__c",
-            "CampaignChannelsX__c",
-            "Campaign_Report_Name__c",
-            "Channel_Name__c",
-            "No_of_Subscriptions__c",
-            "Reserved_Item__c",
-            "Treatment__c",
-            "Last_edit_devision__c",
-            "My_County__c",
-            "Campaign_Priority__c",
-            "Campaign_Channels__c",
-            "Campaign_Start_Date__c",
-            "Campaign_Type__c",
-            "Dealer_Chain__c",
-            "MyResponse__c",
-            "Modified_by_dealer__c",
-            "Response_Last_Modified_By__c",
-            "Dealer_Account2__c",
-            "Response_Last_Modified_By_Role__c",
-            "Campaign_End_Date__c",
-            "Dealer_Visible_County__c",
-            "Campaign_Score_Propensity_Value__c",
-            "Reason_Sub_code__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "CustomerCampaignItem__c",
+          "sourceObjectName": "CustomerCampaignItem__c",
+          "type": "connectedDataset"
         },
-        "sources": []
+        "fields": [
+          "Status__c",
+          "Id",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "LastViewedDate",
+          "LastReferencedDate",
+          "Campaign__c",
+          "Account__c",
+          "Callback_Valid_To_Date__c",
+          "CampaignID__c",
+          "CampaignName__c",
+          "Campaign_Description__c",
+          "Campaign_Response_Description__c",
+          "Campaign_Valid_to__c",
+          "DealerID__c",
+          "Dealer_Account__c",
+          "KSBID__c",
+          "KurtID__c",
+          "No_of_accounts__c",
+          "Response_Code__c",
+          "Response_Date__c",
+          "Response_Name__c",
+          "Callback_By__c",
+          "Decline_Reason__c",
+          "AgentID__c",
+          "CampaignChannelsX__c",
+          "Campaign_Report_Name__c",
+          "Channel_Name__c",
+          "No_of_Subscriptions__c",
+          "Reserved_Item__c",
+          "Treatment__c",
+          "Last_edit_devision__c",
+          "My_County__c",
+          "Campaign_Priority__c",
+          "Campaign_Channels__c",
+          "Campaign_Start_Date__c",
+          "Campaign_Type__c",
+          "Dealer_Chain__c",
+          "MyResponse__c",
+          "Modified_by_dealer__c",
+          "Response_Last_Modified_By__c",
+          "Dealer_Account2__c",
+          "Response_Last_Modified_By_Role__c",
+          "Campaign_End_Date__c",
+          "Dealer_Visible_County__c",
+          "Campaign_Score_Propensity_Value__c",
+          "Reason_Sub_code__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
       },
-      "FILTER0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Reason_Sub_code__c",
-              "operands": [
-                "48"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "Response_Date__c",
-              "operands": [
-                {
-                  "argument": -90,
-                  "type": "N_DAYS"
-                },
-                {
-                  "argument": -30,
-                  "type": "N_DAYS"
-                }
-              ],
-              "operator": "IN_RANGE",
-              "type": "DATETIME"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET1"
+      "sources": []
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "48"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -90,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": -30,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
         ]
       },
-      "LOAD_DATASET3": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "label": "Fiber TBB Newsale qualified customer",
-            "name": "Fiber_TBB_Newsale_qualified_customer",
-            "type": "analyticsDataset"
-          },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber TBB Newsale qualified customer",
+          "name": "Fiber_TBB_Newsale_qualified_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions__c",
+          "CangetFib1.HavenotIA.SEogAgrol.NACE_Subclass_Code__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions_Actual__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Id",
+          "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
+          "CangetFib1.HavenotIA.SEogAgrol.TSP_Dealer__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Segment__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Company_Family_Name__c",
+          "CangetFib1.HavenotIA.SEogAgrol.KurtID__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Industry__c",
+          "Capacity_code__c",
+          "Coverage_4G_Plus__c",
+          "CangetFib1.HavenotIA.SEogAgrol.NumberOfEmployees",
+          "Coverage_5G_P__c",
+          "CangetFib1.HavenotIA.SEogAgrol.SubsMobileVoice__c",
+          "CangetFib1.HavenotIA.SEogAgrol.Mobile_Voice_Penetration__c",
+          "Coverage_4GP40__c",
+          "Coverage_4G__c",
+          "Fiber_cost__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
+            "operands": [
+              "Small"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET3"
+      ]
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "DPSS_Segment__c",
+          "Id",
+          "IsDeleted",
+          "Name",
+          "NumberOfEmployees",
+          "CompanyFamily__c",
+          "CustomerType__c",
+          "KurtID__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "VisitingCounty__c",
+          "External_Credit_Rating__c",
+          "NACE_Subclass_Code__c",
+          "NACE_Subclass_Description__c",
+          "COM_CUSTOMER_TM_RESERVATION__c",
+          "Phonenumber_type__c",
+          "Reservation_Date_IA_Outbound__c",
+          "Has_Subscriptions_Actual__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Blacklist customers",
+          "name": "Blacklist_customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Id"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber TBB have buildingtype 142-146",
+          "name": "Fiber_TBB_have_buildingtype_142_146",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Location_Owner__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Opportunity Fiber flag",
+          "name": "Opportunity_Fiber_flag",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_Flg"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Case nysalg Fiber cancelled",
+          "name": "Case_nysalg_Fiber_cancelled",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_suppression_cancelled_Case_fiber_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET9": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Case nysalg Fiber TBB open",
+          "name": "Case_nysalg_Fiber_TBB_open",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_suppression_open_Case_fiber_tbb_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET10": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber leads last 30 days",
+          "name": "Fiberleads",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Blacklist"
+        ],
+        "rightQualifier": "Transform0"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET4",
+        "DROP_FIELDS4_copy0"
+      ]
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "FiberTBBha"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN0",
+        "LOAD_DATASET6"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_suppression_cancelled_Case_fiber_newsale"
+        ],
+        "rightQualifier": "Casenysalg"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN1",
+        "LOAD_DATASET8"
+      ]
+    },
+    "JOIN3": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_suppression_open_Case_fiber_tbb_newsale"
+        ],
+        "rightQualifier": "Casenysalg1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN2",
+        "LOAD_DATASET9"
+      ]
+    },
+    "JOIN4": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "rightQualifier": "Fiberleads"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN3",
+        "LOAD_DATASET10"
+      ]
+    },
+    "JOIN5": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Opp_Fib_Flg"
+        ],
+        "rightQualifier": "Opportunit"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN4",
+        "LOAD_DATASET7"
+      ]
+    },
+    "FORMULA1_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Blacklist",
+            "name": "Blacklist",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET5"
+      ]
+    },
+    "DROP_FIELDS4_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
           "fields": [
-            "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions__c",
-            "CangetFib1.HavenotIA.SEogAgrol.NACE_Subclass_Code__c",
-            "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions_Actual__c",
+            "Blacklist"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA1_copy0"
+      ]
+    },
+    "FORMULA6_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Fiberleads.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "label": "Opportunity_Fiber_leads",
+            "name": "Opportunity_Fiber_leads",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN7"
+      ]
+    },
+    "FORMULA7_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg1.Key_suppression_open_Case_fiber_tbb_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "label": "Case_IA_Open",
+            "name": "Case_IA_Open",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA6_copy0"
+      ]
+    },
+    "FORMULA8_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Opportunit.Key_Suppressions_Opp_Fib_Flg&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "label": "Opportunity_Fiber_flag",
+            "name": "Opportunity_Fiber_flag",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA7_copy0"
+      ]
+    },
+    "FORMULA9_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg.Key_suppression_cancelled_Case_fiber_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "label": "Case_canceled",
+            "name": "Case_canceled",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8_copy0"
+      ]
+    },
+    "FORMULA10_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Transform0.Blacklist&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "label": "Blacklist",
+            "name": "Blacklist",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA9_copy0"
+      ]
+    },
+    "FORMULA11_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Suppressio.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "label": "TM_Suppression",
+            "name": "TM_Suppression",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA10_copy0"
+      ]
+    },
+    "FORMULA14_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen &quot;CompanyFamily__c&quot;=&#39;TELENORBUTIKKEN O365&#39;\r\n    then 1\r\n    else 0\r\n    end",
+            "label": "TN_butikken",
+            "name": "TN_butikken",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA11_copy0"
+      ]
+    },
+    "FORMULA15_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when&quot;CustomerType__c&quot; = &#39;BRL&#39;\r\nthen 1\r\nwhen &quot;CustomerType__c&quot; = &#39;ESEK&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; = &#39;68201&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; =&#39;68209&#39; then 1\r\nwhen (&quot;CustomerType__c&quot; =&#39;FLI&#39; and &quot;NumberOfEmployees&quot; = 0)\r\nthen 1\r\nelse 0\r\nend\r\n",
+            "label": "Borettslag_FLI",
+            "name": "Borettslag_FLI",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA14_copy0"
+      ]
+    },
+    "FORMULA17_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;StatusKURT__c&quot;= &#39;K - Personen/foretaket er OK, levende&#39;\r\nthen 0 else 1\r\nend",
+            "label": "Ikke_levende kunder",
+            "name": "Ikke_levende_kunder",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA15_copy0"
+      ]
+    },
+    "FORMULA18_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;VisitingCounty__c&quot;=&#39;Svalbard&#39; then 1 else 0\r\nend",
+            "label": "Svalbard",
+            "name": "Svalbard",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA17_copy0"
+      ]
+    },
+    "FORMULA19_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen &quot;External_Credit_Rating__c&quot; =&#39;VHR&#39; then 1\r\nelse 0\r\nend",
+            "label": "creditrating",
+            "name": "creditrating",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA18_copy0"
+      ]
+    },
+    "FORMULA20_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Name&quot;, &#39;DØDSBO&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "label": "Dødsbo",
+            "name": "Dodsbo",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA19_copy0"
+      ]
+    },
+    "FORMULA21_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;COM_CUSTOMER_TM_RESERVATION__c&quot; = &#39;true&#39; then 1\r\nelse 0\r\nend",
+            "label": "tm_reservation",
+            "name": "tm_reservation",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA20_copy0"
+      ]
+    },
+    "FORMULA22_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;Phonenumber_type__c&quot; = &#39;mobil&#39; then 0\r\nwhen &quot;Phonenumber_type__c&quot; =&#39;pots&#39; then 0\r\nelse 1\r\nend",
+            "label": "phonetype not dialer",
+            "name": "Phone_type_not_dialer",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA21_copy0"
+      ]
+    },
+    "FORMULA23_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;Has_Subscriptions_Actual__c&quot;=&#39;false&#39; then 0\r\nelse 1\r\nend",
+            "label": "Has Subscription",
+            "name": "Has_subscription",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA22_copy0"
+      ]
+    },
+    "FORMULA24_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen \r\n    Has_subscription = 0 and\r\n        (contains(&quot;Name&quot;, &#39;HOLDING&#39;))\r\n    then 1\r\n    when \r\n     Has_subscription = 0 and\r\n    (contains(&quot;Name&quot;, &#39;Holding&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "label": "Holding",
+            "name": "Holding",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA23_copy0"
+      ]
+    },
+    "FORMULA25_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nWhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Andre kombinerte tjenester tilknyttet eiendomsdrift&#39; then 1\r\nWhen Has_subscription =0 and\r\n &quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsforvaltning&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsmegling&#39; then 1\r\nwhen Has_subscription =0 and \r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Finansielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Kjøp og salg av egen fast eiendom&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Leasing av immateriell eiendom og lignende produkter&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Spesielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utleie av egen eller leid fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utvikling og salg av egen fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;unntatt opphavsrettsbeskyttede verker&#39; then 1\r\nelse 0\r\nend",
+            "label": "Eiendom",
+            "name": "Eiendom",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA24_copy0"
+      ]
+    },
+    "FORMULA26_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand (Holding = 1 or Eiendom = 1) then 1\r\nelse 0\r\nend",
+            "label": "Eiendom_holding_ikke_TN",
+            "name": "Eiendom_holding_ikke_TN",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA25_copy0"
+      ]
+    },
+    "FORMULA29_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when &quot;Reservation_Date_IA_Outbound__c&quot; &gt; NOW() then 1\r\nelse 0\r\nend",
+            "label": "Outbound_Contact_recency",
+            "name": "Outbound_Contact_recency",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA40_copy0"
+      ]
+    },
+    "FORMULA30_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\nTN_butikken = 1 or Ikke_levende_kunder = 1 \r\nor Borettslag_FLI = 1 or Svalbard = 1  or creditrating = 1 or Blacklist = 1 or Dodsbo = 1 or tm_reservation = 1 or Phone_type_not_dialer = 1 or Eiendom_holding_ikke_TN = 1 or ENK_ikke_TN_kunde = 1 or VPFO_ikke_tn_0_ansatte= 1\r\nthen 1\r\nelse 0\r\nend",
+            "label": "Suppression_hard_TM",
+            "name": "Suppression_hard_TM",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA29_copy0"
+      ]
+    },
+    "FORMULA31_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\nOpportunity_Fiber_flag = 1 or Opportunity_Fiber_leads = 1 or Case_IA_Open = 1 or Case_canceled = 1 then 1\r\nelse 0\r\nend",
+            "label": "Suppression_soft_TM",
+            "name": "Suppression_soft_TM",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA30_copy0"
+      ]
+    },
+    "FORMULA32_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when \r\n&quot;SubsMobileVoice__c&quot;&gt;= 1\r\nthen 1 else 0\r\nend",
+            "label": "HaveMV",
+            "name": "HaveMV",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA31_copy0"
+      ]
+    },
+    "DROP_FIELDS26_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "KurtID__c",
+            "Reservation_Date_IA_Outbound__c",
+            "Fiberkost1.Fiber_cost__c",
+            "Opportunity_Fiber_leads",
+            "Case_IA_Open",
+            "Opportunity_Fiber_flag",
+            "Case_canceled",
+            "Blacklist",
+            "TM_Suppression",
+            "TN_butikken",
+            "Borettslag_FLI",
+            "Ikke_levende_kunder",
+            "Svalbard",
+            "creditrating",
+            "Dodsbo",
+            "tm_reservation",
+            "Phone_type_not_dialer",
+            "Has_subscription",
+            "Holding",
+            "Eiendom",
+            "Eiendom_holding_ikke_TN",
+            "ENK_ikke_TN_kunde",
+            "VPFO_ikke_tn_0_ansatte",
+            "Outbound_Contact_recency",
+            "Suppression_hard_TM",
+            "Suppression_soft_TM",
+            "HaveMV"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA32_copy0"
+      ]
+    },
+    "FORMULA37_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\nHas_subscription = 1\r\nthen &#39;Er Telenorkunde&#39;\r\nelse &#39;Er ikke Telenorkunde&#39;\r\nend",
+            "label": "Type_kunde",
+            "name": "Type_kunde",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS26_copy0"
+      ]
+    },
+    "FORMULA38_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;Id&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "label": "Account",
+            "name": "Account",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA37_copy0"
+      ]
+    },
+    "FORMULA39_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen &quot;Has_subscription&quot; = 0\r\nand &quot;CustomerType__c&quot; = &#39;ENK&#39; and Have_buildingtype =&#39;1&#39; then 1\r\nelse 0\r\nend",
+            "label": "ENK ikke TN kunde buildningtype",
+            "name": "ENK_ikke_TN_kunde",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA42_copy0"
+      ]
+    },
+    "FORMULA40_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand &quot;CustomerType__c&quot; = &#39;VPFO&#39; and &quot;NumberOfEmployees&quot; = 0 then 1\r\nelse 0\r\nend",
+            "label": "VPFO ikke TN 0 ansatte",
+            "name": "VPFO_ikke_tn_0_ansatte",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA39_copy0"
+      ]
+    },
+    "FORMULA41_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when &quot;Fiberkost1.Fiber_cost__c&quot; = 10000 then &#39;10K&#39;\r\nwhen &quot;Fiberkost1.Fiber_cost__c&quot; = 40000 then &#39;40K&#39;\r\nelse &#39;60K&#39;\r\nend",
+            "label": "Fibercost gruppe",
+            "name": "Fibercost_gruppe",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA38_copy0"
+      ]
+    },
+    "FORMULA42_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when contains(&quot;FiberTBBha.Location_Owner__c&quot;, &#39;001&#39;) then &#39;1&#39; else &#39;0&#39;\r\nend",
+            "label": "Have_buildingtype",
+            "name": "Have_buildingtype",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA26_copy0"
+      ]
+    },
+    "JOIN6": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "rightQualifier": "Suppressio"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN5",
+        "LOAD_DATASET13"
+      ]
+    },
+    "DROP_FIELDS27": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
             "CangetFib1.HavenotIA.SEogAgrol.Id",
             "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
             "CangetFib1.HavenotIA.SEogAgrol.TSP_Dealer__c",
-            "CangetFib1.HavenotIA.SEogAgrol.Segment__c",
-            "CangetFib1.HavenotIA.SEogAgrol.Company_Family_Name__c",
-            "CangetFib1.HavenotIA.SEogAgrol.KurtID__c",
-            "CangetFib1.HavenotIA.SEogAgrol.Industry__c",
-            "Capacity_code__c",
-            "Coverage_4G_Plus__c",
-            "CangetFib1.HavenotIA.SEogAgrol.NumberOfEmployees",
-            "Coverage_5G_P__c",
-            "CangetFib1.HavenotIA.SEogAgrol.SubsMobileVoice__c",
-            "CangetFib1.HavenotIA.SEogAgrol.Mobile_Voice_Penetration__c",
-            "Coverage_4GP40__c",
-            "Coverage_4G__c",
             "Fiber_cost__c"
           ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER1"
+      ]
+    },
+    "FILTER2": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Fiber_cost__c",
+            "operands": [
+              "10000",
+              "60000"
+            ],
+            "operator": "IN_RANGE",
+            "type": "NUMBER"
           }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS27"
+      ]
+    },
+    "JOIN7": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "Fiberkost1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN6",
+        "FILTER2"
+      ]
+    },
+    "JOIN8": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Account__c"
+        ],
+        "rightQualifier": "Aggregate0"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA41_copy0",
+        "FILTER3"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 431 - Fiber Newsale Feil nummer Customer",
+          "name": "C360_431_Fiber_Newsale_Feil_nummer_Customer",
+          "type": "analyticsDataset"
         },
-        "sources": []
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS8_copy0_copy0"
+      ]
+    },
+    "FORMULA43": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "row_number()",
+            "label": "rownumber_responsedate pr kunde",
+            "name": "rownumber_responsedate_pr_kunde",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "DESC",
+            "fieldName": "Response_Date__c"
+          }
+        ],
+        "partitionBy": [
+          "Account__c"
+        ]
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "DROP_FIELDS28": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Reason_Sub_code__c",
+            "CreatedDate",
+            "Campaign__c",
+            "Account__c",
+            "CampaignName__c",
+            "KurtID__c",
+            "Response_Code__c",
+            "Response_Date__c",
+            "rownumber_responsedate_pr_kunde"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA43"
+      ]
+    },
+    "FILTER3": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "rownumber_responsedate_pr_kunde",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS28"
+      ]
+    },
+    "FORMULA44": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "datediff(Reservation_Date_IA_Outbound__c, &quot;Aggregate0.Response_Date__c&quot;)",
+            "label": "Diff_reserv_response",
+            "name": "Diff_reserv_response",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN8"
+      ]
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Diff_reserv_response",
+            "operands": [
+              "360"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Suppression_hard_TM",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Suppression_soft_TM",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA44"
+      ]
+    },
+    "DROP_FIELDS29": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "KurtID__c",
+            "Type_kunde",
+            "Fibercost_gruppe"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER4"
+      ]
+    },
+    "FORMULA45": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen Type_kunde=&#39;Er ikke Telenorkunde&#39;\r\nthen &#39;C360_155&#39;\r\nwhen Type_kunde=&#39;Er Telenorkunde&#39;\r\nthen &#39;C360_156&#39;\r\nelse &#39;&#39;\r\nend",
+            "label": "Campaign_CD",
+            "name": "Campaign_CD",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS29"
+      ]
+    },
+    "FORMULA46": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;For TBB: Husk å dobbelsjekke kapasitet.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&lt;/li&gt;&lt;li&gt;Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHUSK å logge riktig telefonnummer i Salesforce, under details og Alternate Phone&#39;",
+            "label": "Sales tip description template_1",
+            "name": "Sales_tip_description_template_1",
+            "precision": 9999,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA45"
+      ]
+    },
+    "LOAD_DATASET8_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber newsalesadresses 1 for a customer",
+          "name": "Fiber_newsalesadresses_1_for_a_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "IA_full_new_sale_text_adresses",
+          "Location_Owner__c",
+          "Capacity_code__c",
+          "Coverage_4G_Plus__c",
+          "Coverage_4GP40__c",
+          "Coverage_5G_P__c",
+          "Coverage_4G__c",
+          "Fiber_cost__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET10_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber newsalesadress more adresses for a customer",
+          "name": "Fiber_newsalesadress_more_adresses_for_a_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Adresse5.Adresse5",
+          "Adresse3.Adresse3",
+          "Adresse8.Adresse8",
+          "Adresse10.Adresse10",
+          "Adresse6.Adresse6",
+          "Adresse1.Adresse1",
+          "Text_adress_1",
+          "Adresse4.Adresse4",
+          "Adresse9.Adresse9",
+          "Adresse2.Adresse2",
+          "Adresse7.Adresse7",
+          "Location_Owner__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET11_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber and TBB Potential addresses to sell to",
+          "name": "Fiber_and_TBB_Potential_addresses_to_sell_to",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Location_Owner__c",
+          "Antall_lokasjoner_mersalg_fiber",
+          "Antall_Lokasjoner_mersalg_TBB"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FORMULA40_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Antall_lokasjoner_mersalg_fiber+Antall_Lokasjoner_mersalg_TBB",
+            "label": "Potensielle_IA_Adresser",
+            "name": "Potensielle_IA_Adresser",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET11_copy0"
+      ]
+    },
+    "TO_DIMENSION0_copy0": {
+      "action": "typeCast",
+      "parameters": {
+        "fields": [
+          {
+            "name": "Potensielle_IA_Adresser",
+            "newProperties": {
+              "label": "Potensielle_IA_Adresser_txt",
+              "name": "Potensielle_IA_Adresser_to_dimension",
+              "typeProperties": {
+                "length": 255,
+                "type": "TEXT"
+              }
+            }
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA40_copy1"
+      ]
+    },
+    "DROP_FIELDS15_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Location_Owner__c",
+            "Potensielle_IA_Adresser_to_dimension"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "TO_DIMENSION0_copy0"
+      ]
+    },
+    "JOIN9": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "Fibernewsa"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA46",
+        "LOAD_DATASET8_copy0"
+      ]
+    },
+    "JOIN10": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "Fibernewsa1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN9",
+        "LOAD_DATASET10_copy0"
+      ]
+    },
+    "JOIN11": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "Transform2"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN10",
+        "DROP_FIELDS15_copy0"
+      ]
+    },
+    "LOAD_DATASET12": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "reporting_tag__c",
+          "Id",
+          "Name",
+          "CampaignID__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN12": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_CD"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "Campaign"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN11",
+        "LOAD_DATASET12"
+      ]
+    },
+    "DROP_FIELDS7_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "KurtID__c",
+            "Type_kunde",
+            "Fibercost_gruppe",
+            "Campaign_CD",
+            "Sales_tip_description_template_1",
+            "Fibernewsa.IA_full_new_sale_text_adresses",
+            "Fibernewsa.Fiber_cost__c",
+            "Fibernewsa1.Adresse5.Adresse5",
+            "Fibernewsa1.Adresse3.Adresse3",
+            "Fibernewsa1.Adresse8.Adresse8",
+            "Fibernewsa1.Adresse10.Adresse10",
+            "Fibernewsa1.Adresse6.Adresse6",
+            "Fibernewsa1.Adresse1.Adresse1",
+            "Fibernewsa1.Text_adress_1",
+            "Fibernewsa1.Adresse4.Adresse4",
+            "Fibernewsa1.Adresse9.Adresse9",
+            "Fibernewsa1.Adresse2.Adresse2",
+            "Fibernewsa1.Adresse7.Adresse7",
+            "Transform2.Potensielle_IA_Adresser_to_dimension",
+            "Campaign.reporting_tag__c",
+            "Campaign.Id",
+            "Campaign.Name",
+            "Campaign.CampaignID__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "FORMULA20_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "concat( &quot;Campaign.reporting_tag__c&quot;, &#39;_&#39;, &quot;KurtID__c&quot;)",
+            "label": "KSBID",
+            "name": "KSBID",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS7_copy0_copy0"
+      ]
+    },
+    "FORMULA21_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Campaign.Id&quot;",
+            "label": "SFB CampainId",
+            "name": "SFB_CampainId",
+            "precision": 100,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA20_copy0_copy0"
+      ]
+    },
+    "FORMULA22_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "SFB AccountId",
+            "name": "SFB_AccountId",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA21_copy0_copy0"
+      ]
+    },
+    "FORMULA23_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "KurtID__c",
+            "label": "Kurt Id",
+            "name": "Kurt_Id",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA22_copy0_copy0"
+      ]
+    },
+    "FORMULA24_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;TM&#39;",
+            "label": "Campaign Channels",
+            "name": "Campaign_Channels",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA23_copy0_copy0"
+      ]
+    },
+    "FORMULA25_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;Neras&#39;",
+            "label": "Telesales agency",
+            "name": "Telesales_agency",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA24_copy0_copy0"
+      ]
+    },
+    "FORMULA26_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Campaign.Name&quot;",
+            "label": "Sales tip title",
+            "name": "Sales_tip_title",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA41_copy1"
+      ]
+    },
+    "FORMULA27_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Sales_tip_description_template_1",
+            "label": "Sales tip description template",
+            "name": "Sales_tip_description_template",
+            "precision": 2000,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA26_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS8_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "KSBID",
+            "SFB_CampainId",
+            "SFB_AccountId",
+            "Kurt_Id",
+            "Campaign_Channels",
+            "Telesales_agency",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "Personalization_4__c",
+            "Personalization_5__c",
+            "Personalization_6__c",
+            "Personalization_7__c",
+            "Personalization_8__c",
+            "Personalization_9__c",
+            "Personalization_10__c",
+            "Personalization_11__c",
+            "Personalization_12__c",
+            "Sales_tip_title",
+            "Sales_tip_description_template",
+            "Personalization_1__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA47"
+      ]
+    },
+    "FORMULA28_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+            "label": "Personalization 2",
+            "name": "Personalization_2__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA25_copy0_copy0"
+      ]
+    },
+    "FORMULA31_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
+            "label": "Personalization_3__c",
+            "name": "Personalization_3__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA28_copy0_copy0"
+      ]
+    },
+    "FORMULA32_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
+            "label": "Personalization_4__c",
+            "name": "Personalization_4__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA31_copy1"
+      ]
+    },
+    "FORMULA33_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
+            "label": "Personalization_5__c",
+            "name": "Personalization_5__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA32_copy1"
+      ]
+    },
+    "FORMULA34_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
+            "label": "Personalization_6__c",
+            "name": "Personalization_6__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA33_copy0"
+      ]
+    },
+    "FORMULA35_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
+            "label": "Personalization_7__c",
+            "name": "Personalization_7__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA34_copy0"
+      ]
+    },
+    "FORMULA36_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
+            "label": "Personalization_8__c",
+            "name": "Personalization_8__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA35_copy0"
+      ]
+    },
+    "FORMULA37_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
+            "label": "Personalization_9__c",
+            "name": "Personalization_9__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA36_copy0"
+      ]
+    },
+    "FORMULA38_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
+            "label": "Personalization_10__c",
+            "name": "Personalization_10__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA37_copy1"
+      ]
+    },
+    "FORMULA39_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
+            "label": "Personalization_11__c",
+            "name": "Personalization_11__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA38_copy1"
+      ]
+    },
+    "FORMULA41_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;Transform2.Potensielle_IA_Adresser_to_dimension&quot;",
+            "label": "Personalization_12__c",
+            "name": "Personalization_12__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA39_copy1"
+      ]
+    },
+    "FORMULA47": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Type_kunde",
+            "label": "Personalization_1__c",
+            "name": "Personalization_1__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA27_copy0_copy0"
+      ]
+    },
+    "LOAD_DATASET13": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression Wrongnumber Fiber newsale TM",
+          "name": "Suppression_Wrongnumber_Fiber_newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "KurtID__c",
+            "operands": [
+              "-1"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN12"
+      ]
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET1": {
+        "label": "CustomerCampaignItem__c",
+        "type": "LOAD_DATASET",
+        "top": 252,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER0": {
+        "label": "Reason 48 30-90 dager siden",
+        "description": "",
+        "type": "FILTER",
+        "top": 252,
+        "left": 252
+      },
+      "LOAD_DATASET3": {
+        "label": "Fiber TBB Newsale qualified customer",
+        "type": "LOAD_DATASET",
+        "top": 391.9,
+        "left": 112.4,
+        "parameters": {
+          "sampleSize": 2000
+        }
       },
       "FILTER1": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
-              "operands": [
-                "Small"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET3"
-        ]
+        "label": "DPSS Segment Small",
+        "description": "",
+        "type": "FILTER",
+        "top": 391.9,
+        "left": 252.39999999999998
       },
       "LOAD_DATASET4": {
-        "action": "load",
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 531.9,
+        "left": 111.4,
         "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "DPSS_Segment__c",
-            "Id",
-            "IsDeleted",
-            "Name",
-            "NumberOfEmployees",
-            "CompanyFamily__c",
-            "CustomerType__c",
-            "KurtID__c",
-            "StatusKURT__c",
-            "SubsMobileVoice__c",
-            "VisitingCounty__c",
-            "External_Credit_Rating__c",
-            "NACE_Subclass_Code__c",
-            "NACE_Subclass_Description__c",
-            "COM_CUSTOMER_TM_RESERVATION__c",
-            "Phonenumber_type__c",
-            "Reservation_Date_IA_Outbound__c",
-            "Has_Subscriptions_Actual__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET5": {
-        "action": "load",
+        "label": "Blacklist customers",
+        "type": "LOAD_DATASET",
+        "top": 671.9,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Blacklist customers",
-            "name": "Blacklist_customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Id"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET6": {
-        "action": "load",
+        "label": "Fiber TBB have buildingtype 142-146",
+        "type": "LOAD_DATASET",
+        "top": 811.9,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Fiber TBB have buildingtype 142-146",
-            "name": "Fiber_TBB_have_buildingtype_142_146",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Location_Owner__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET7": {
-        "action": "load",
+        "label": "Opportunity Fiber flag",
+        "type": "LOAD_DATASET",
+        "top": 1372,
+        "left": 112.19999999999999,
         "parameters": {
-          "dataset": {
-            "label": "Opportunity Fiber flag",
-            "name": "Opportunity_Fiber_flag",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Opp_Fib_Flg"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET8": {
-        "action": "load",
+        "label": "Case nysalg Fiber cancelled",
+        "type": "LOAD_DATASET",
+        "top": 951.9,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Case nysalg Fiber cancelled",
-            "name": "Case_nysalg_Fiber_cancelled",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_suppression_cancelled_Case_fiber_newsale"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET9": {
-        "action": "load",
+        "label": "Case nysalg Fiber TBB open",
+        "type": "LOAD_DATASET",
+        "top": 1091.9,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Case nysalg Fiber TBB open",
-            "name": "Case_nysalg_Fiber_TBB_open",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_suppression_open_Case_fiber_tbb_newsale"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET10": {
-        "action": "load",
+        "label": "Fiber leads last 30 days",
+        "type": "LOAD_DATASET",
+        "top": 1231.9,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "Fiber leads last 30 days",
-            "name": "Fiberleads",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Opp_Fib_leads"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN0": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Blacklist"
-          ],
-          "rightQualifier": "Transform0"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "LOAD_DATASET4",
-          "DROP_FIELDS4_copy0"
-        ]
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 672,
+        "left": 392
       },
       "JOIN1": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Location_Owner__c"
-          ],
-          "rightQualifier": "FiberTBBha"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN0",
-          "LOAD_DATASET6"
-        ]
+        "label": "Join 1",
+        "type": "JOIN",
+        "top": 672,
+        "left": 532
       },
       "JOIN2": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_suppression_cancelled_Case_fiber_newsale"
-          ],
-          "rightQualifier": "Casenysalg"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN1",
-          "LOAD_DATASET8"
-        ]
+        "label": "Join 2",
+        "type": "JOIN",
+        "top": 672,
+        "left": 672
       },
       "JOIN3": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_suppression_open_Case_fiber_tbb_newsale"
-          ],
-          "rightQualifier": "Casenysalg1"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN2",
-          "LOAD_DATASET9"
-        ]
+        "label": "Join 3",
+        "type": "JOIN",
+        "top": 672,
+        "left": 812
       },
       "JOIN4": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Opp_Fib_leads"
-          ],
-          "rightQualifier": "Fiberleads"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN3",
-          "LOAD_DATASET10"
-        ]
+        "label": "Join 4",
+        "type": "JOIN",
+        "top": 672,
+        "left": 952
       },
       "JOIN5": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Opp_Fib_Flg"
-          ],
-          "rightQualifier": "Opportunit"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
+        "label": "Join 5",
+        "type": "JOIN",
+        "top": 672,
+        "left": 1092
+      },
+      "TRANSFORM4_copy0": {
+        "label": "Transform 4",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 252,
+        "graph": {
+          "FORMULA1_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS4_copy0": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "JOIN4",
-          "LOAD_DATASET7"
+        "connectors": [
+          {
+            "source": "FORMULA1_copy0",
+            "target": "DROP_FIELDS4_copy0"
+          }
         ]
       },
-      "FORMULA1_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Id",
-              "label": "Blacklist",
-              "name": "Blacklist",
-              "precision": 18,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET5"
-        ]
-      },
-      "DROP_FIELDS4_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Blacklist"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM22_copy0": {
+        "label": "lage variabler",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 1512,
+        "graph": {
+          "FORMULA6_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Opportunity fiber leads"
+          },
+          "FORMULA7_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Case_IA_Open"
+          },
+          "FORMULA8_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Opportunity fiber flag"
+          },
+          "FORMULA9_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Case_canceled"
+          },
+          "FORMULA10_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Blacklist"
+          },
+          "FORMULA11_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "TM_Suppression"
+          },
+          "FORMULA14_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "TN_butikken"
+          },
+          "FORMULA15_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Borettslag,eierseksjonssamvirke eller FLI"
+          },
+          "FORMULA17_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Ikke_levende kunder"
+          },
+          "FORMULA18_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Svalbard"
+          },
+          "FORMULA19_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "creditrating"
+          },
+          "FORMULA20_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Dødsbo"
+          },
+          "FORMULA21_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "tm reservation"
+          },
+          "FORMULA22_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Phonetype"
+          },
+          "FORMULA23_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Is TN Kunde hasprod"
+          },
+          "FORMULA24_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Holding"
+          },
+          "FORMULA25_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "eiendom"
+          },
+          "FORMULA26_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Eiendom/Holding ikke TN kunde"
+          },
+          "FORMULA29_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "CR Outbound"
+          },
+          "FORMULA30_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Suppression_hard_TM"
+          },
+          "FORMULA31_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Suppression Soft TM"
+          },
+          "FORMULA32_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Have MV"
+          },
+          "DROP_FIELDS26_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA37_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "FORMULA38_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Account"
+          },
+          "FORMULA39_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "ENK ikke TN kunde"
+          },
+          "FORMULA40_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "VPFO ikke TN kunde 0 ansatte"
+          },
+          "FORMULA41_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "FORMULA42_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Bygningstype"
           }
         },
-        "sources": [
-          "FORMULA1_copy0"
-        ]
-      },
-      "FORMULA6_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Fiberleads.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
-              "label": "Opportunity_Fiber_leads",
-              "name": "Opportunity_Fiber_leads",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN7"
-        ]
-      },
-      "FORMULA7_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg1.Key_suppression_open_Case_fiber_tbb_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
-              "label": "Case_IA_Open",
-              "name": "Case_IA_Open",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA6_copy0"
-        ]
-      },
-      "FORMULA8_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Opportunit.Key_Suppressions_Opp_Fib_Flg&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
-              "label": "Opportunity_Fiber_flag",
-              "name": "Opportunity_Fiber_flag",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA7_copy0"
-        ]
-      },
-      "FORMULA9_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg.Key_suppression_cancelled_Case_fiber_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
-              "label": "Case_canceled",
-              "name": "Case_canceled",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA8_copy0"
-        ]
-      },
-      "FORMULA10_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Transform0.Blacklist&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
-              "label": "Blacklist",
-              "name": "Blacklist",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA9_copy0"
-        ]
-      },
-      "FORMULA11_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Suppressio.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
-              "label": "TM_Suppression",
-              "name": "TM_Suppression",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA10_copy0"
-        ]
-      },
-      "FORMULA14_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen &quot;CompanyFamily__c&quot;=&#39;TELENORBUTIKKEN O365&#39;\r\n    then 1\r\n    else 0\r\n    end",
-              "label": "TN_butikken",
-              "name": "TN_butikken",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA11_copy0"
-        ]
-      },
-      "FORMULA15_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when&quot;CustomerType__c&quot; = &#39;BRL&#39;\r\nthen 1\r\nwhen &quot;CustomerType__c&quot; = &#39;ESEK&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; = &#39;68201&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; =&#39;68209&#39; then 1\r\nwhen (&quot;CustomerType__c&quot; =&#39;FLI&#39; and &quot;NumberOfEmployees&quot; = 0)\r\nthen 1\r\nelse 0\r\nend\r\n",
-              "label": "Borettslag_FLI",
-              "name": "Borettslag_FLI",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA14_copy0"
-        ]
-      },
-      "FORMULA17_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\n&quot;StatusKURT__c&quot;= &#39;K - Personen/foretaket er OK, levende&#39;\r\nthen 0 else 1\r\nend",
-              "label": "Ikke_levende kunder",
-              "name": "Ikke_levende_kunder",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA15_copy0"
-        ]
-      },
-      "FORMULA18_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\n&quot;VisitingCounty__c&quot;=&#39;Svalbard&#39; then 1 else 0\r\nend",
-              "label": "Svalbard",
-              "name": "Svalbard",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA17_copy0"
-        ]
-      },
-      "FORMULA19_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nwhen &quot;External_Credit_Rating__c&quot; =&#39;VHR&#39; then 1\r\nelse 0\r\nend",
-              "label": "creditrating",
-              "name": "creditrating",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA18_copy0"
-        ]
-      },
-      "FORMULA20_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Name&quot;, &#39;D\u00d8DSBO&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
-              "label": "D\u00f8dsbo",
-              "name": "Dodsbo",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA19_copy0"
-        ]
-      },
-      "FORMULA21_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\n&quot;COM_CUSTOMER_TM_RESERVATION__c&quot; = &#39;true&#39; then 1\r\nelse 0\r\nend",
-              "label": "tm_reservation",
-              "name": "tm_reservation",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA20_copy0"
-        ]
-      },
-      "FORMULA22_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\n&quot;Phonenumber_type__c&quot; = &#39;mobil&#39; then 0\r\nwhen &quot;Phonenumber_type__c&quot; =&#39;pots&#39; then 0\r\nelse 1\r\nend",
-              "label": "phonetype not dialer",
-              "name": "Phone_type_not_dialer",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA21_copy0"
-        ]
-      },
-      "FORMULA23_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\n&quot;Has_Subscriptions_Actual__c&quot;=&#39;false&#39; then 0\r\nelse 1\r\nend",
-              "label": "Has Subscription",
-              "name": "Has_subscription",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA22_copy0"
-        ]
-      },
-      "FORMULA24_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen \r\n    Has_subscription = 0 and\r\n        (contains(&quot;Name&quot;, &#39;HOLDING&#39;))\r\n    then 1\r\n    when \r\n     Has_subscription = 0 and\r\n    (contains(&quot;Name&quot;, &#39;Holding&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
-              "label": "Holding",
-              "name": "Holding",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA23_copy0"
-        ]
-      },
-      "FORMULA25_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nWhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Andre kombinerte tjenester tilknyttet eiendomsdrift&#39; then 1\r\nWhen Has_subscription =0 and\r\n &quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsforvaltning&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsmegling&#39; then 1\r\nwhen Has_subscription =0 and \r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Finansielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Kj\u00f8p og salg av egen fast eiendom&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Leasing av immateriell eiendom og lignende produkter&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Spesielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utleie av egen eller leid fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utvikling og salg av egen fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;unntatt opphavsrettsbeskyttede verker&#39; then 1\r\nelse 0\r\nend",
-              "label": "Eiendom",
-              "name": "Eiendom",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA24_copy0"
-        ]
-      },
-      "FORMULA26_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand (Holding = 1 or Eiendom = 1) then 1\r\nelse 0\r\nend",
-              "label": "Eiendom_holding_ikke_TN",
-              "name": "Eiendom_holding_ikke_TN",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA25_copy0"
-        ]
-      },
-      "FORMULA29_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when &quot;Reservation_Date_IA_Outbound__c&quot; &gt; NOW() then 1\r\nelse 0\r\nend",
-              "label": "Outbound_Contact_recency",
-              "name": "Outbound_Contact_recency",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA40_copy0"
-        ]
-      },
-      "FORMULA30_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\nTN_butikken = 1 or Ikke_levende_kunder = 1 \r\nor Borettslag_FLI = 1 or Svalbard = 1  or creditrating = 1 or Blacklist = 1 or Dodsbo = 1 or tm_reservation = 1 or Phone_type_not_dialer = 1 or Eiendom_holding_ikke_TN = 1 or ENK_ikke_TN_kunde = 1 or VPFO_ikke_tn_0_ansatte= 1\r\nthen 1\r\nelse 0\r\nend",
-              "label": "Suppression_hard_TM",
-              "name": "Suppression_hard_TM",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA29_copy0"
-        ]
-      },
-      "FORMULA31_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\nOpportunity_Fiber_flag = 1 or Opportunity_Fiber_leads = 1 or Case_IA_Open = 1 or Case_canceled = 1 then 1\r\nelse 0\r\nend",
-              "label": "Suppression_soft_TM",
-              "name": "Suppression_soft_TM",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA30_copy0"
-        ]
-      },
-      "FORMULA32_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when \r\n&quot;SubsMobileVoice__c&quot;&gt;= 1\r\nthen 1 else 0\r\nend",
-              "label": "HaveMV",
-              "name": "HaveMV",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA31_copy0"
-        ]
-      },
-      "DROP_FIELDS26_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id",
-              "KurtID__c",
-              "Reservation_Date_IA_Outbound__c",
-              "Fiberkost1.Fiber_cost__c",
-              "Opportunity_Fiber_leads",
-              "Case_IA_Open",
-              "Opportunity_Fiber_flag",
-              "Case_canceled",
-              "Blacklist",
-              "TM_Suppression",
-              "TN_butikken",
-              "Borettslag_FLI",
-              "Ikke_levende_kunder",
-              "Svalbard",
-              "creditrating",
-              "Dodsbo",
-              "tm_reservation",
-              "Phone_type_not_dialer",
-              "Has_subscription",
-              "Holding",
-              "Eiendom",
-              "Eiendom_holding_ikke_TN",
-              "ENK_ikke_TN_kunde",
-              "VPFO_ikke_tn_0_ansatte",
-              "Outbound_Contact_recency",
-              "Suppression_hard_TM",
-              "Suppression_soft_TM",
-              "HaveMV"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+        "connectors": [
+          {
+            "source": "FORMULA6_copy0",
+            "target": "FORMULA7_copy0"
+          },
+          {
+            "source": "FORMULA7_copy0",
+            "target": "FORMULA8_copy0"
+          },
+          {
+            "source": "FORMULA8_copy0",
+            "target": "FORMULA9_copy0"
+          },
+          {
+            "source": "FORMULA9_copy0",
+            "target": "FORMULA10_copy0"
+          },
+          {
+            "source": "FORMULA10_copy0",
+            "target": "FORMULA11_copy0"
+          },
+          {
+            "source": "FORMULA14_copy0",
+            "target": "FORMULA15_copy0"
+          },
+          {
+            "source": "FORMULA17_copy0",
+            "target": "FORMULA18_copy0"
+          },
+          {
+            "source": "FORMULA18_copy0",
+            "target": "FORMULA19_copy0"
+          },
+          {
+            "source": "FORMULA19_copy0",
+            "target": "FORMULA20_copy0"
+          },
+          {
+            "source": "FORMULA20_copy0",
+            "target": "FORMULA21_copy0"
+          },
+          {
+            "source": "FORMULA21_copy0",
+            "target": "FORMULA22_copy0"
+          },
+          {
+            "source": "FORMULA22_copy0",
+            "target": "FORMULA23_copy0"
+          },
+          {
+            "source": "FORMULA23_copy0",
+            "target": "FORMULA24_copy0"
+          },
+          {
+            "source": "FORMULA24_copy0",
+            "target": "FORMULA25_copy0"
+          },
+          {
+            "source": "FORMULA25_copy0",
+            "target": "FORMULA26_copy0"
+          },
+          {
+            "source": "FORMULA29_copy0",
+            "target": "FORMULA30_copy0"
+          },
+          {
+            "source": "FORMULA30_copy0",
+            "target": "FORMULA31_copy0"
+          },
+          {
+            "source": "FORMULA31_copy0",
+            "target": "FORMULA32_copy0"
+          },
+          {
+            "source": "DROP_FIELDS26_copy0",
+            "target": "FORMULA37_copy0"
+          },
+          {
+            "source": "FORMULA37_copy0",
+            "target": "FORMULA38_copy0"
+          },
+          {
+            "source": "FORMULA39_copy0",
+            "target": "FORMULA40_copy0"
+          },
+          {
+            "source": "FORMULA38_copy0",
+            "target": "FORMULA41_copy0"
+          },
+          {
+            "source": "FORMULA15_copy0",
+            "target": "FORMULA17_copy0"
+          },
+          {
+            "source": "FORMULA32_copy0",
+            "target": "DROP_FIELDS26_copy0"
+          },
+          {
+            "source": "FORMULA42_copy0",
+            "target": "FORMULA39_copy0"
+          },
+          {
+            "source": "FORMULA26_copy0",
+            "target": "FORMULA42_copy0"
+          },
+          {
+            "source": "FORMULA11_copy0",
+            "target": "FORMULA14_copy0"
+          },
+          {
+            "source": "FORMULA40_copy0",
+            "target": "FORMULA29_copy0"
           }
-        },
-        "sources": [
-          "FORMULA32_copy0"
-        ]
-      },
-      "FORMULA37_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when\r\nHas_subscription = 1\r\nthen &#39;Er Telenorkunde&#39;\r\nelse &#39;Er ikke Telenorkunde&#39;\r\nend",
-              "label": "Type_kunde",
-              "name": "Type_kunde",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS26_copy0"
-        ]
-      },
-      "FORMULA38_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\n\twhen (contains(&quot;Id&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
-              "label": "Account",
-              "name": "Account",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA37_copy0"
-        ]
-      },
-      "FORMULA39_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nwhen &quot;Has_subscription&quot; = 0\r\nand &quot;CustomerType__c&quot; = &#39;ENK&#39; and Have_buildingtype =&#39;1&#39; then 1\r\nelse 0\r\nend",
-              "label": "ENK ikke TN kunde buildningtype",
-              "name": "ENK_ikke_TN_kunde",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA42_copy0"
-        ]
-      },
-      "FORMULA40_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand &quot;CustomerType__c&quot; = &#39;VPFO&#39; and &quot;NumberOfEmployees&quot; = 0 then 1\r\nelse 0\r\nend",
-              "label": "VPFO ikke TN 0 ansatte",
-              "name": "VPFO_ikke_tn_0_ansatte",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA39_copy0"
-        ]
-      },
-      "FORMULA41_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when &quot;Fiberkost1.Fiber_cost__c&quot; = 10000 then &#39;10K&#39;\r\nwhen &quot;Fiberkost1.Fiber_cost__c&quot; = 40000 then &#39;40K&#39;\r\nelse &#39;60K&#39;\r\nend",
-              "label": "Fibercost gruppe",
-              "name": "Fibercost_gruppe",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA38_copy0"
-        ]
-      },
-      "FORMULA42_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when contains(&quot;FiberTBBha.Location_Owner__c&quot;, &#39;001&#39;) then &#39;1&#39; else &#39;0&#39;\r\nend",
-              "label": "Have_buildingtype",
-              "name": "Have_buildingtype",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA26_copy0"
         ]
       },
       "JOIN6": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Opp_Fib_leads"
-          ],
-          "rightQualifier": "Suppressio"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN5",
-          "LOAD_DATASET13"
-        ]
+        "label": "Join 6",
+        "type": "JOIN",
+        "top": 671.9,
+        "left": 1232
       },
-      "DROP_FIELDS27": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "CangetFib1.HavenotIA.SEogAgrol.Id",
-              "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
-              "CangetFib1.HavenotIA.SEogAgrol.TSP_Dealer__c",
-              "Fiber_cost__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM23": {
+        "label": "Transform 23",
+        "type": "TRANSFORM",
+        "top": 391.4,
+        "left": 392.4,
+        "graph": {
+          "DROP_FIELDS27": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER1"
-        ]
+        "connectors": []
       },
       "FILTER2": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Fiber_cost__c",
-              "operands": [
-                "10000",
-                "60000"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS27"
-        ]
+        "label": "Fiberkost 10-60K",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 673.6
       },
       "JOIN7": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "CangetFib1.HavenotIA.SEogAgrol.Id"
-          ],
-          "rightQualifier": "Fiberkost1"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN6",
-          "FILTER2"
-        ]
+        "label": "Join 7",
+        "type": "JOIN",
+        "top": 671.9,
+        "left": 1372
       },
       "JOIN8": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Account__c"
-          ],
-          "rightQualifier": "Aggregate0"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FORMULA41_copy0",
-          "FILTER3"
-        ]
+        "label": "Join 8",
+        "type": "JOIN",
+        "top": 672,
+        "left": 1652
       },
       "OUTPUT0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "C360 431 - Fiber Newsale Feil nummer Customer",
-            "name": "C360_431_Fiber_Newsale_Feil_nummer_Customer",
-            "type": "analyticsDataset"
+        "label": "C360 431 - Fiber Newsale Feil nummer Customer",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 672,
+        "left": 3052
+      },
+      "TRANSFORM24": {
+        "label": "Transform 24",
+        "type": "TRANSFORM",
+        "top": 252,
+        "left": 392,
+        "graph": {
+          "FORMULA43": {
+            "label": "Formula"
           },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS8_copy0_copy0"
-        ]
-      },
-      "FORMULA43": {
-        "action": "computeRelative",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "row_number()",
-              "label": "rownumber_responsedate pr kunde",
-              "name": "rownumber_responsedate_pr_kunde",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ],
-          "orderBy": [
-            {
-              "direction": "DESC",
-              "fieldName": "Response_Date__c"
-            }
-          ],
-          "partitionBy": [
-            "Account__c"
-          ]
-        },
-        "sources": [
-          "FILTER0"
-        ]
-      },
-      "DROP_FIELDS28": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Reason_Sub_code__c",
-              "CreatedDate",
-              "Campaign__c",
-              "Account__c",
-              "CampaignName__c",
-              "KurtID__c",
-              "Response_Code__c",
-              "Response_Date__c",
-              "rownumber_responsedate_pr_kunde"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+          "DROP_FIELDS28": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FORMULA43"
+        "connectors": [
+          {
+            "source": "FORMULA43",
+            "target": "DROP_FIELDS28"
+          }
         ]
       },
       "FILTER3": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "rownumber_responsedate_pr_kunde",
-              "operands": [
-                "1"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS28"
-        ]
+        "label": "siste dato",
+        "description": "",
+        "type": "FILTER",
+        "top": 252,
+        "left": 532
       },
-      "FORMULA44": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "datediff(Reservation_Date_IA_Outbound__c, &quot;Aggregate0.Response_Date__c&quot;)",
-              "label": "Diff_reserv_response",
-              "name": "Diff_reserv_response",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN8"
-        ]
-      },
-      "FILTER4": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Diff_reserv_response",
-              "operands": [
-                "360"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
+      "TRANSFORM25": {
+        "label": "Transform 25",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 1792,
+        "graph": {
+          "FORMULA44": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
             },
-            {
-              "field": "Suppression_hard_TM",
-              "operands": [
-                "0"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            },
-            {
-              "field": "Suppression_soft_TM",
-              "operands": [
-                "0"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA44"
-        ]
-      },
-      "DROP_FIELDS29": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id",
-              "KurtID__c",
-              "Type_kunde",
-              "Fibercost_gruppe"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+            "label": "Formula"
           }
         },
-        "sources": [
-          "FILTER4"
-        ]
+        "connectors": []
       },
-      "FORMULA45": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case \r\nwhen Type_kunde=&#39;Er ikke Telenorkunde&#39;\r\nthen &#39;C360_155&#39;\r\nwhen Type_kunde=&#39;Er Telenorkunde&#39;\r\nthen &#39;C360_156&#39;\r\nelse &#39;&#39;\r\nend",
-              "label": "Campaign_CD",
-              "name": "Campaign_CD",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS29"
-        ]
+      "FILTER4": {
+        "label": "Filter 4",
+        "type": "FILTER",
+        "top": 672,
+        "left": 1932
       },
-      "FORMULA46": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&#39;{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredb\u00e5nd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\nFor fiber: Husk kampanjetilbud og mandatpriser p\u00e5 fiber. HUSK forventningsstyr p\u00e5 leveransetider.&lt;/li&gt;&lt;li&gt;For TBB: Husk \u00e5 dobbelsjekke kapasitet.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler p\u00e5 nett.&lt;/li&gt;&lt;li&gt;Husk ogs\u00e5 \u00e5 benytte andre verdibudskap for tjenestene, se mer info p\u00e5 infoweb.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHUSK \u00e5 logge riktig telefonnummer i Salesforce, under details og Alternate Phone&#39;",
-              "label": "Sales tip description template_1",
-              "name": "Sales_tip_description_template_1",
-              "precision": 9999,
-              "type": "TEXT"
-            }
-          ]
+      "TRANSFORM26": {
+        "label": "Transform 26",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 2072,
+        "graph": {
+          "DROP_FIELDS29": {
+            "label": "Drop Columns"
+          },
+          "FORMULA45": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign_CD"
+          },
+          "FORMULA46": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
         },
-        "sources": [
-          "FORMULA45"
+        "connectors": [
+          {
+            "source": "DROP_FIELDS29",
+            "target": "FORMULA45"
+          },
+          {
+            "source": "FORMULA45",
+            "target": "FORMULA46"
+          }
         ]
       },
       "LOAD_DATASET8_copy0": {
-        "action": "load",
+        "label": "Fiber newsalesadresses 1 for a customer",
+        "type": "LOAD_DATASET",
+        "top": 812,
+        "left": 1792,
         "parameters": {
-          "dataset": {
-            "label": "Fiber newsalesadresses 1 for a customer",
-            "name": "Fiber_newsalesadresses_1_for_a_customer",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "IA_full_new_sale_text_adresses",
-            "Location_Owner__c",
-            "Capacity_code__c",
-            "Coverage_4G_Plus__c",
-            "Coverage_4GP40__c",
-            "Coverage_5G_P__c",
-            "Coverage_4G__c",
-            "Fiber_cost__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET10_copy0": {
-        "action": "load",
+        "label": "Fiber newsalesadress more adresses for a customer",
+        "type": "LOAD_DATASET",
+        "top": 952,
+        "left": 1792.1,
         "parameters": {
-          "dataset": {
-            "label": "Fiber newsalesadress more adresses for a customer",
-            "name": "Fiber_newsalesadress_more_adresses_for_a_customer",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Adresse5.Adresse5",
-            "Adresse3.Adresse3",
-            "Adresse8.Adresse8",
-            "Adresse10.Adresse10",
-            "Adresse6.Adresse6",
-            "Adresse1.Adresse1",
-            "Text_adress_1",
-            "Adresse4.Adresse4",
-            "Adresse9.Adresse9",
-            "Adresse2.Adresse2",
-            "Adresse7.Adresse7",
-            "Location_Owner__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET11_copy0": {
-        "action": "load",
+        "label": "Fiber and TBB Potential addresses to sell to",
+        "type": "LOAD_DATASET",
+        "top": 1092,
+        "left": 1792.1,
         "parameters": {
-          "dataset": {
-            "label": "Fiber and TBB Potential addresses to sell to",
-            "name": "Fiber_and_TBB_Potential_addresses_to_sell_to",
-            "type": "analyticsDataset"
+          "sampleSize": 2000
+        }
+      },
+      "TRANSFORM20_copy0": {
+        "label": "Transform 20",
+        "type": "TRANSFORM",
+        "top": 1092,
+        "left": 1932.1,
+        "graph": {
+          "FORMULA40_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Antall potensielle adresser"
           },
-          "fields": [
-            "Location_Owner__c",
-            "Antall_lokasjoner_mersalg_fiber",
-            "Antall_Lokasjoner_mersalg_TBB"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
+          "TO_DIMENSION0_copy0": {
+            "label": "To Text"
+          },
+          "DROP_FIELDS15_copy0": {
+            "label": "Drop Columns"
           }
         },
-        "sources": []
-      },
-      "FORMULA40_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Antall_lokasjoner_mersalg_fiber+Antall_Lokasjoner_mersalg_TBB",
-              "label": "Potensielle_IA_Adresser",
-              "name": "Potensielle_IA_Adresser",
-              "precision": 10,
-              "scale": 0,
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET11_copy0"
-        ]
-      },
-      "TO_DIMENSION0_copy0": {
-        "action": "typeCast",
-        "parameters": {
-          "fields": [
-            {
-              "name": "Potensielle_IA_Adresser",
-              "newProperties": {
-                "label": "Potensielle_IA_Adresser_txt",
-                "name": "Potensielle_IA_Adresser_to_dimension",
-                "typeProperties": {
-                  "length": 255,
-                  "type": "TEXT"
-                }
-              }
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA40_copy1"
-        ]
-      },
-      "DROP_FIELDS15_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Location_Owner__c",
-              "Potensielle_IA_Adresser_to_dimension"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+        "connectors": [
+          {
+            "source": "FORMULA40_copy1",
+            "target": "TO_DIMENSION0_copy0"
+          },
+          {
+            "source": "TO_DIMENSION0_copy0",
+            "target": "DROP_FIELDS15_copy0"
           }
-        },
-        "sources": [
-          "TO_DIMENSION0_copy0"
         ]
       },
       "JOIN9": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Location_Owner__c"
-          ],
-          "rightQualifier": "Fibernewsa"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FORMULA46",
-          "LOAD_DATASET8_copy0"
-        ]
+        "label": "Join 9",
+        "type": "JOIN",
+        "top": 671.9,
+        "left": 2212
       },
       "JOIN10": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Location_Owner__c"
-          ],
-          "rightQualifier": "Fibernewsa1"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN9",
-          "LOAD_DATASET10_copy0"
-        ]
+        "label": "Join 10",
+        "type": "JOIN",
+        "top": 672.3,
+        "left": 2352
       },
       "JOIN11": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Location_Owner__c"
-          ],
-          "rightQualifier": "Transform2"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "JOIN10",
-          "DROP_FIELDS15_copy0"
-        ]
+        "label": "Join 11",
+        "type": "JOIN",
+        "top": 672,
+        "left": 2492
       },
       "LOAD_DATASET12": {
-        "action": "load",
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 1232.1,
+        "left": 1792,
         "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Campaign",
-            "sourceObjectName": "Campaign",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "reporting_tag__c",
-            "Id",
-            "Name",
-            "CampaignID__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN12": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "Campaign_CD"
-          ],
-          "rightKeys": [
-            "CampaignID__c"
-          ],
-          "rightQualifier": "Campaign"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
+        "label": "Join 12",
+        "type": "JOIN",
+        "top": 671.9,
+        "left": 2632
+      },
+      "TRANSFORM15_copy1_copy0": {
+        "label": "Output",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 2912,
+        "graph": {
+          "DROP_FIELDS7_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA20_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "KSBID"
+          },
+          "FORMULA21_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB CampainId"
+          },
+          "FORMULA22_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB AccountId"
+          },
+          "FORMULA23_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Kurt Id"
+          },
+          "FORMULA24_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign Channels"
+          },
+          "FORMULA25_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Telesales agency"
+          },
+          "FORMULA26_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Sales tip title"
+          },
+          "FORMULA27_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Sales tip title"
+          },
+          "DROP_FIELDS8_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA28_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization 2"
+          },
+          "FORMULA31_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_3__c"
+          },
+          "FORMULA32_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_4__c"
+          },
+          "FORMULA33_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_5__c"
+          },
+          "FORMULA34_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_6__c"
+          },
+          "FORMULA35_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_7__c"
+          },
+          "FORMULA36_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_8__c"
+          },
+          "FORMULA37_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_9__c"
+          },
+          "FORMULA38_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_10__c"
+          },
+          "FORMULA39_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_11__c"
+          },
+          "FORMULA41_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization_12__c"
+          },
+          "FORMULA47": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Persnalization_1"
           }
         },
-        "sources": [
-          "JOIN11",
-          "LOAD_DATASET12"
-        ]
-      },
-      "DROP_FIELDS7_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id",
-              "KurtID__c",
-              "Type_kunde",
-              "Fibercost_gruppe",
-              "Campaign_CD",
-              "Sales_tip_description_template_1",
-              "Fibernewsa.IA_full_new_sale_text_adresses",
-              "Fibernewsa.Fiber_cost__c",
-              "Fibernewsa1.Adresse5.Adresse5",
-              "Fibernewsa1.Adresse3.Adresse3",
-              "Fibernewsa1.Adresse8.Adresse8",
-              "Fibernewsa1.Adresse10.Adresse10",
-              "Fibernewsa1.Adresse6.Adresse6",
-              "Fibernewsa1.Adresse1.Adresse1",
-              "Fibernewsa1.Text_adress_1",
-              "Fibernewsa1.Adresse4.Adresse4",
-              "Fibernewsa1.Adresse9.Adresse9",
-              "Fibernewsa1.Adresse2.Adresse2",
-              "Fibernewsa1.Adresse7.Adresse7",
-              "Transform2.Potensielle_IA_Adresser_to_dimension",
-              "Campaign.reporting_tag__c",
-              "Campaign.Id",
-              "Campaign.Name",
-              "Campaign.CampaignID__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+        "connectors": [
+          {
+            "source": "DROP_FIELDS7_copy0_copy0",
+            "target": "FORMULA20_copy0_copy0"
+          },
+          {
+            "source": "FORMULA20_copy0_copy0",
+            "target": "FORMULA21_copy0_copy0"
+          },
+          {
+            "source": "FORMULA21_copy0_copy0",
+            "target": "FORMULA22_copy0_copy0"
+          },
+          {
+            "source": "FORMULA22_copy0_copy0",
+            "target": "FORMULA23_copy0_copy0"
+          },
+          {
+            "source": "FORMULA23_copy0_copy0",
+            "target": "FORMULA24_copy0_copy0"
+          },
+          {
+            "source": "FORMULA24_copy0_copy0",
+            "target": "FORMULA25_copy0_copy0"
+          },
+          {
+            "source": "FORMULA26_copy0_copy0",
+            "target": "FORMULA27_copy0_copy0"
+          },
+          {
+            "source": "FORMULA25_copy0_copy0",
+            "target": "FORMULA28_copy0_copy0"
+          },
+          {
+            "source": "FORMULA28_copy0_copy0",
+            "target": "FORMULA31_copy1"
+          },
+          {
+            "source": "FORMULA31_copy1",
+            "target": "FORMULA32_copy1"
+          },
+          {
+            "source": "FORMULA32_copy1",
+            "target": "FORMULA33_copy0"
+          },
+          {
+            "source": "FORMULA33_copy0",
+            "target": "FORMULA34_copy0"
+          },
+          {
+            "source": "FORMULA34_copy0",
+            "target": "FORMULA35_copy0"
+          },
+          {
+            "source": "FORMULA35_copy0",
+            "target": "FORMULA36_copy0"
+          },
+          {
+            "source": "FORMULA36_copy0",
+            "target": "FORMULA37_copy1"
+          },
+          {
+            "source": "FORMULA37_copy1",
+            "target": "FORMULA38_copy1"
+          },
+          {
+            "source": "FORMULA38_copy1",
+            "target": "FORMULA39_copy1"
+          },
+          {
+            "source": "FORMULA41_copy1",
+            "target": "FORMULA26_copy0_copy0"
+          },
+          {
+            "source": "FORMULA39_copy1",
+            "target": "FORMULA41_copy1"
+          },
+          {
+            "source": "FORMULA47",
+            "target": "DROP_FIELDS8_copy0_copy0"
+          },
+          {
+            "source": "FORMULA27_copy0_copy0",
+            "target": "FORMULA47"
           }
-        },
-        "sources": [
-          "FILTER5"
-        ]
-      },
-      "FORMULA20_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "concat( &quot;Campaign.reporting_tag__c&quot;, &#39;_&#39;, &quot;KurtID__c&quot;)",
-              "label": "KSBID",
-              "name": "KSBID",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS7_copy0_copy0"
-        ]
-      },
-      "FORMULA21_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Campaign.Id&quot;",
-              "label": "SFB CampainId",
-              "name": "SFB_CampainId",
-              "precision": 100,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA20_copy0_copy0"
-        ]
-      },
-      "FORMULA22_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Id",
-              "label": "SFB AccountId",
-              "name": "SFB_AccountId",
-              "precision": 18,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA21_copy0_copy0"
-        ]
-      },
-      "FORMULA23_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "KurtID__c",
-              "label": "Kurt Id",
-              "name": "Kurt_Id",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA22_copy0_copy0"
-        ]
-      },
-      "FORMULA24_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&#39;TM&#39;",
-              "label": "Campaign Channels",
-              "name": "Campaign_Channels",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA23_copy0_copy0"
-        ]
-      },
-      "FORMULA25_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&#39;Neras&#39;",
-              "label": "Telesales agency",
-              "name": "Telesales_agency",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA24_copy0_copy0"
-        ]
-      },
-      "FORMULA26_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Campaign.Name&quot;",
-              "label": "Sales tip title",
-              "name": "Sales_tip_title",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA41_copy1"
-        ]
-      },
-      "FORMULA27_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Sales_tip_description_template_1",
-              "label": "Sales tip description template",
-              "name": "Sales_tip_description_template",
-              "precision": 2000,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA26_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS8_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "KSBID",
-              "SFB_CampainId",
-              "SFB_AccountId",
-              "Kurt_Id",
-              "Campaign_Channels",
-              "Telesales_agency",
-              "Personalization_2__c",
-              "Personalization_3__c",
-              "Personalization_4__c",
-              "Personalization_5__c",
-              "Personalization_6__c",
-              "Personalization_7__c",
-              "Personalization_8__c",
-              "Personalization_9__c",
-              "Personalization_10__c",
-              "Personalization_11__c",
-              "Personalization_12__c",
-              "Sales_tip_title",
-              "Sales_tip_description_template",
-              "Personalization_1__c"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FORMULA47"
-        ]
-      },
-      "FORMULA28_copy0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
-              "label": "Personalization 2",
-              "name": "Personalization_2__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA25_copy0_copy0"
-        ]
-      },
-      "FORMULA31_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
-              "label": "Personalization_3__c",
-              "name": "Personalization_3__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA28_copy0_copy0"
-        ]
-      },
-      "FORMULA32_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
-              "label": "Personalization_4__c",
-              "name": "Personalization_4__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA31_copy1"
-        ]
-      },
-      "FORMULA33_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
-              "label": "Personalization_5__c",
-              "name": "Personalization_5__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA32_copy1"
-        ]
-      },
-      "FORMULA34_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
-              "label": "Personalization_6__c",
-              "name": "Personalization_6__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA33_copy0"
-        ]
-      },
-      "FORMULA35_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
-              "label": "Personalization_7__c",
-              "name": "Personalization_7__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA34_copy0"
-        ]
-      },
-      "FORMULA36_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
-              "label": "Personalization_8__c",
-              "name": "Personalization_8__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA35_copy0"
-        ]
-      },
-      "FORMULA37_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
-              "label": "Personalization_9__c",
-              "name": "Personalization_9__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA36_copy0"
-        ]
-      },
-      "FORMULA38_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
-              "label": "Personalization_10__c",
-              "name": "Personalization_10__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA37_copy1"
-        ]
-      },
-      "FORMULA39_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
-              "label": "Personalization_11__c",
-              "name": "Personalization_11__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA38_copy1"
-        ]
-      },
-      "FORMULA41_copy1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "&quot;Transform2.Potensielle_IA_Adresser_to_dimension&quot;",
-              "label": "Personalization_12__c",
-              "name": "Personalization_12__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA39_copy1"
-        ]
-      },
-      "FORMULA47": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Type_kunde",
-              "label": "Personalization_1__c",
-              "name": "Personalization_1__c",
-              "precision": 255,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA27_copy0_copy0"
         ]
       },
       "LOAD_DATASET13": {
-        "action": "load",
+        "label": "Suppression Wrongnumber Fiber newsale TM",
+        "type": "LOAD_DATASET",
+        "top": 1512,
+        "left": 111.80000000000001,
         "parameters": {
-          "dataset": {
-            "label": "Suppression Wrongnumber Fiber newsale TM",
-            "name": "Suppression_Wrongnumber_Fiber_newsale_TM",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Opp_Fib_leads"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "FILTER5": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "KurtID__c",
-              "operands": [
-                "-1"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN12"
-        ]
+        "label": "UT alle kunder",
+        "description": "",
+        "type": "FILTER",
+        "top": 672,
+        "left": 2772
       }
     },
-    "runMode": "full",
-    "ui": {
-      "nodes": {
-        "LOAD_DATASET1": {
-          "label": "CustomerCampaignItem__c",
-          "type": "LOAD_DATASET",
-          "top": 252,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER0": {
-          "label": "Reason 48 30-90 dager siden",
-          "description": "",
-          "type": "FILTER",
-          "top": 252,
-          "left": 252
-        },
-        "LOAD_DATASET3": {
-          "label": "Fiber TBB Newsale qualified customer",
-          "type": "LOAD_DATASET",
-          "top": 391.9,
-          "left": 112.4,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER1": {
-          "label": "DPSS Segment Small",
-          "description": "",
-          "type": "FILTER",
-          "top": 391.9,
-          "left": 252.39999999999998
-        },
-        "LOAD_DATASET4": {
-          "label": "Account",
-          "type": "LOAD_DATASET",
-          "top": 531.9,
-          "left": 111.4,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET5": {
-          "label": "Blacklist customers",
-          "type": "LOAD_DATASET",
-          "top": 671.9,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET6": {
-          "label": "Fiber TBB have buildingtype 142-146",
-          "type": "LOAD_DATASET",
-          "top": 811.9,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET7": {
-          "label": "Opportunity Fiber flag",
-          "type": "LOAD_DATASET",
-          "top": 1372,
-          "left": 112.19999999999999,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET8": {
-          "label": "Case nysalg Fiber cancelled",
-          "type": "LOAD_DATASET",
-          "top": 951.9,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET9": {
-          "label": "Case nysalg Fiber TBB open",
-          "type": "LOAD_DATASET",
-          "top": 1091.9,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET10": {
-          "label": "Fiber leads last 30 days",
-          "type": "LOAD_DATASET",
-          "top": 1231.9,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN0": {
-          "label": "Join 0",
-          "type": "JOIN",
-          "top": 672,
-          "left": 392
-        },
-        "JOIN1": {
-          "label": "Join 1",
-          "type": "JOIN",
-          "top": 672,
-          "left": 532
-        },
-        "JOIN2": {
-          "label": "Join 2",
-          "type": "JOIN",
-          "top": 672,
-          "left": 672
-        },
-        "JOIN3": {
-          "label": "Join 3",
-          "type": "JOIN",
-          "top": 672,
-          "left": 812
-        },
-        "JOIN4": {
-          "label": "Join 4",
-          "type": "JOIN",
-          "top": 672,
-          "left": 952
-        },
-        "JOIN5": {
-          "label": "Join 5",
-          "type": "JOIN",
-          "top": 672,
-          "left": 1092
-        },
-        "TRANSFORM4_copy0": {
-          "label": "Transform 4",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 252,
-          "graph": {
-            "FORMULA1_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            },
-            "DROP_FIELDS4_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA1_copy0",
-              "target": "DROP_FIELDS4_copy0"
-            }
-          ]
-        },
-        "TRANSFORM22_copy0": {
-          "label": "lage variabler",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 1512,
-          "graph": {
-            "FORMULA6_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Opportunity fiber leads"
-            },
-            "FORMULA7_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Case_IA_Open"
-            },
-            "FORMULA8_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Opportunity fiber flag"
-            },
-            "FORMULA9_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Case_canceled"
-            },
-            "FORMULA10_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Blacklist"
-            },
-            "FORMULA11_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "TM_Suppression"
-            },
-            "FORMULA14_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "TN_butikken"
-            },
-            "FORMULA15_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Borettslag,eierseksjonssamvirke eller FLI"
-            },
-            "FORMULA17_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Ikke_levende kunder"
-            },
-            "FORMULA18_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Svalbard"
-            },
-            "FORMULA19_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "creditrating"
-            },
-            "FORMULA20_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "D\u00f8dsbo"
-            },
-            "FORMULA21_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "tm reservation"
-            },
-            "FORMULA22_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Phonetype"
-            },
-            "FORMULA23_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Is TN Kunde hasprod"
-            },
-            "FORMULA24_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Holding"
-            },
-            "FORMULA25_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "eiendom"
-            },
-            "FORMULA26_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Eiendom/Holding ikke TN kunde"
-            },
-            "FORMULA29_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "CR Outbound"
-            },
-            "FORMULA30_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Suppression_hard_TM"
-            },
-            "FORMULA31_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Suppression Soft TM"
-            },
-            "FORMULA32_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Have MV"
-            },
-            "DROP_FIELDS26_copy0": {
-              "label": "Drop Columns"
-            },
-            "FORMULA37_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            },
-            "FORMULA38_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Account"
-            },
-            "FORMULA39_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "ENK ikke TN kunde"
-            },
-            "FORMULA40_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "VPFO ikke TN kunde 0 ansatte"
-            },
-            "FORMULA41_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            },
-            "FORMULA42_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Bygningstype"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA6_copy0",
-              "target": "FORMULA7_copy0"
-            },
-            {
-              "source": "FORMULA7_copy0",
-              "target": "FORMULA8_copy0"
-            },
-            {
-              "source": "FORMULA8_copy0",
-              "target": "FORMULA9_copy0"
-            },
-            {
-              "source": "FORMULA9_copy0",
-              "target": "FORMULA10_copy0"
-            },
-            {
-              "source": "FORMULA10_copy0",
-              "target": "FORMULA11_copy0"
-            },
-            {
-              "source": "FORMULA14_copy0",
-              "target": "FORMULA15_copy0"
-            },
-            {
-              "source": "FORMULA17_copy0",
-              "target": "FORMULA18_copy0"
-            },
-            {
-              "source": "FORMULA18_copy0",
-              "target": "FORMULA19_copy0"
-            },
-            {
-              "source": "FORMULA19_copy0",
-              "target": "FORMULA20_copy0"
-            },
-            {
-              "source": "FORMULA20_copy0",
-              "target": "FORMULA21_copy0"
-            },
-            {
-              "source": "FORMULA21_copy0",
-              "target": "FORMULA22_copy0"
-            },
-            {
-              "source": "FORMULA22_copy0",
-              "target": "FORMULA23_copy0"
-            },
-            {
-              "source": "FORMULA23_copy0",
-              "target": "FORMULA24_copy0"
-            },
-            {
-              "source": "FORMULA24_copy0",
-              "target": "FORMULA25_copy0"
-            },
-            {
-              "source": "FORMULA25_copy0",
-              "target": "FORMULA26_copy0"
-            },
-            {
-              "source": "FORMULA29_copy0",
-              "target": "FORMULA30_copy0"
-            },
-            {
-              "source": "FORMULA30_copy0",
-              "target": "FORMULA31_copy0"
-            },
-            {
-              "source": "FORMULA31_copy0",
-              "target": "FORMULA32_copy0"
-            },
-            {
-              "source": "DROP_FIELDS26_copy0",
-              "target": "FORMULA37_copy0"
-            },
-            {
-              "source": "FORMULA37_copy0",
-              "target": "FORMULA38_copy0"
-            },
-            {
-              "source": "FORMULA39_copy0",
-              "target": "FORMULA40_copy0"
-            },
-            {
-              "source": "FORMULA38_copy0",
-              "target": "FORMULA41_copy0"
-            },
-            {
-              "source": "FORMULA15_copy0",
-              "target": "FORMULA17_copy0"
-            },
-            {
-              "source": "FORMULA32_copy0",
-              "target": "DROP_FIELDS26_copy0"
-            },
-            {
-              "source": "FORMULA42_copy0",
-              "target": "FORMULA39_copy0"
-            },
-            {
-              "source": "FORMULA26_copy0",
-              "target": "FORMULA42_copy0"
-            },
-            {
-              "source": "FORMULA11_copy0",
-              "target": "FORMULA14_copy0"
-            },
-            {
-              "source": "FORMULA40_copy0",
-              "target": "FORMULA29_copy0"
-            }
-          ]
-        },
-        "JOIN6": {
-          "label": "Join 6",
-          "type": "JOIN",
-          "top": 671.9,
-          "left": 1232
-        },
-        "TRANSFORM23": {
-          "label": "Transform 23",
-          "type": "TRANSFORM",
-          "top": 391.4,
-          "left": 392.4,
-          "graph": {
-            "DROP_FIELDS27": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        },
-        "FILTER2": {
-          "label": "Fiberkost 10-60K",
-          "description": "",
-          "type": "FILTER",
-          "top": 392,
-          "left": 673.6
-        },
-        "JOIN7": {
-          "label": "Join 7",
-          "type": "JOIN",
-          "top": 671.9,
-          "left": 1372
-        },
-        "JOIN8": {
-          "label": "Join 8",
-          "type": "JOIN",
-          "top": 672,
-          "left": 1652
-        },
-        "OUTPUT0": {
-          "label": "C360 431 - Fiber Newsale Feil nummer Customer",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 672,
-          "left": 3052
-        },
-        "TRANSFORM24": {
-          "label": "Transform 24",
-          "type": "TRANSFORM",
-          "top": 252,
-          "left": 392,
-          "graph": {
-            "FORMULA43": {
-              "label": "Formula"
-            },
-            "DROP_FIELDS28": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA43",
-              "target": "DROP_FIELDS28"
-            }
-          ]
-        },
-        "FILTER3": {
-          "label": "siste dato",
-          "description": "",
-          "type": "FILTER",
-          "top": 252,
-          "left": 532
-        },
-        "TRANSFORM25": {
-          "label": "Transform 25",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 1792,
-          "graph": {
-            "FORMULA44": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            }
-          },
-          "connectors": []
-        },
-        "FILTER4": {
-          "label": "Filter 4",
-          "type": "FILTER",
-          "top": 672,
-          "left": 1932
-        },
-        "TRANSFORM26": {
-          "label": "Transform 26",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 2072,
-          "graph": {
-            "DROP_FIELDS29": {
-              "label": "Drop Columns"
-            },
-            "FORMULA45": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Campaign_CD"
-            },
-            "FORMULA46": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Formula"
-            }
-          },
-          "connectors": [
-            {
-              "source": "DROP_FIELDS29",
-              "target": "FORMULA45"
-            },
-            {
-              "source": "FORMULA45",
-              "target": "FORMULA46"
-            }
-          ]
-        },
-        "LOAD_DATASET8_copy0": {
-          "label": "Fiber newsalesadresses 1 for a customer",
-          "type": "LOAD_DATASET",
-          "top": 812,
-          "left": 1792,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET10_copy0": {
-          "label": "Fiber newsalesadress more adresses for a customer",
-          "type": "LOAD_DATASET",
-          "top": 952,
-          "left": 1792.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET11_copy0": {
-          "label": "Fiber and TBB Potential addresses to sell to",
-          "type": "LOAD_DATASET",
-          "top": 1092,
-          "left": 1792.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "TRANSFORM20_copy0": {
-          "label": "Transform 20",
-          "type": "TRANSFORM",
-          "top": 1092,
-          "left": 1932.1,
-          "graph": {
-            "FORMULA40_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Antall potensielle adresser"
-            },
-            "TO_DIMENSION0_copy0": {
-              "label": "To Text"
-            },
-            "DROP_FIELDS15_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA40_copy1",
-              "target": "TO_DIMENSION0_copy0"
-            },
-            {
-              "source": "TO_DIMENSION0_copy0",
-              "target": "DROP_FIELDS15_copy0"
-            }
-          ]
-        },
-        "JOIN9": {
-          "label": "Join 9",
-          "type": "JOIN",
-          "top": 671.9,
-          "left": 2212
-        },
-        "JOIN10": {
-          "label": "Join 10",
-          "type": "JOIN",
-          "top": 672.3,
-          "left": 2352
-        },
-        "JOIN11": {
-          "label": "Join 11",
-          "type": "JOIN",
-          "top": 672,
-          "left": 2492
-        },
-        "LOAD_DATASET12": {
-          "label": "Campaign",
-          "type": "LOAD_DATASET",
-          "top": 1232.1,
-          "left": 1792,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN12": {
-          "label": "Join 12",
-          "type": "JOIN",
-          "top": 671.9,
-          "left": 2632
-        },
-        "TRANSFORM15_copy1_copy0": {
-          "label": "Output",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 2912,
-          "graph": {
-            "DROP_FIELDS7_copy0_copy0": {
-              "label": "Drop Columns"
-            },
-            "FORMULA20_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "KSBID"
-            },
-            "FORMULA21_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "SFB CampainId"
-            },
-            "FORMULA22_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "SFB AccountId"
-            },
-            "FORMULA23_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Kurt Id"
-            },
-            "FORMULA24_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Campaign Channels"
-            },
-            "FORMULA25_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Telesales agency"
-            },
-            "FORMULA26_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Sales tip title"
-            },
-            "FORMULA27_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Sales tip title"
-            },
-            "DROP_FIELDS8_copy0_copy0": {
-              "label": "Drop Columns"
-            },
-            "FORMULA28_copy0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization 2"
-            },
-            "FORMULA31_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_3__c"
-            },
-            "FORMULA32_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_4__c"
-            },
-            "FORMULA33_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_5__c"
-            },
-            "FORMULA34_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_6__c"
-            },
-            "FORMULA35_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_7__c"
-            },
-            "FORMULA36_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_8__c"
-            },
-            "FORMULA37_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_9__c"
-            },
-            "FORMULA38_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_10__c"
-            },
-            "FORMULA39_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_11__c"
-            },
-            "FORMULA41_copy1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Personalization_12__c"
-            },
-            "FORMULA47": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Persnalization_1"
-            }
-          },
-          "connectors": [
-            {
-              "source": "DROP_FIELDS7_copy0_copy0",
-              "target": "FORMULA20_copy0_copy0"
-            },
-            {
-              "source": "FORMULA20_copy0_copy0",
-              "target": "FORMULA21_copy0_copy0"
-            },
-            {
-              "source": "FORMULA21_copy0_copy0",
-              "target": "FORMULA22_copy0_copy0"
-            },
-            {
-              "source": "FORMULA22_copy0_copy0",
-              "target": "FORMULA23_copy0_copy0"
-            },
-            {
-              "source": "FORMULA23_copy0_copy0",
-              "target": "FORMULA24_copy0_copy0"
-            },
-            {
-              "source": "FORMULA24_copy0_copy0",
-              "target": "FORMULA25_copy0_copy0"
-            },
-            {
-              "source": "FORMULA26_copy0_copy0",
-              "target": "FORMULA27_copy0_copy0"
-            },
-            {
-              "source": "FORMULA25_copy0_copy0",
-              "target": "FORMULA28_copy0_copy0"
-            },
-            {
-              "source": "FORMULA28_copy0_copy0",
-              "target": "FORMULA31_copy1"
-            },
-            {
-              "source": "FORMULA31_copy1",
-              "target": "FORMULA32_copy1"
-            },
-            {
-              "source": "FORMULA32_copy1",
-              "target": "FORMULA33_copy0"
-            },
-            {
-              "source": "FORMULA33_copy0",
-              "target": "FORMULA34_copy0"
-            },
-            {
-              "source": "FORMULA34_copy0",
-              "target": "FORMULA35_copy0"
-            },
-            {
-              "source": "FORMULA35_copy0",
-              "target": "FORMULA36_copy0"
-            },
-            {
-              "source": "FORMULA36_copy0",
-              "target": "FORMULA37_copy1"
-            },
-            {
-              "source": "FORMULA37_copy1",
-              "target": "FORMULA38_copy1"
-            },
-            {
-              "source": "FORMULA38_copy1",
-              "target": "FORMULA39_copy1"
-            },
-            {
-              "source": "FORMULA41_copy1",
-              "target": "FORMULA26_copy0_copy0"
-            },
-            {
-              "source": "FORMULA39_copy1",
-              "target": "FORMULA41_copy1"
-            },
-            {
-              "source": "FORMULA47",
-              "target": "DROP_FIELDS8_copy0_copy0"
-            },
-            {
-              "source": "FORMULA27_copy0_copy0",
-              "target": "FORMULA47"
-            }
-          ]
-        },
-        "LOAD_DATASET13": {
-          "label": "Suppression Wrongnumber Fiber newsale TM",
-          "type": "LOAD_DATASET",
-          "top": 1512,
-          "left": 111.80000000000001,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER5": {
-          "label": "UT alle kunder",
-          "description": "",
-          "type": "FILTER",
-          "top": 672,
-          "left": 2772
-        }
+    "connectors": [
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER0"
       },
-      "connectors": [
-        {
-          "source": "LOAD_DATASET1",
-          "target": "FILTER0"
-        },
-        {
-          "source": "LOAD_DATASET3",
-          "target": "FILTER1"
-        },
-        {
-          "source": "LOAD_DATASET4",
-          "target": "JOIN0"
-        },
-        {
-          "source": "JOIN0",
-          "target": "JOIN1"
-        },
-        {
-          "source": "LOAD_DATASET6",
-          "target": "JOIN1"
-        },
-        {
-          "source": "JOIN1",
-          "target": "JOIN2"
-        },
-        {
-          "source": "LOAD_DATASET8",
-          "target": "JOIN2"
-        },
-        {
-          "source": "JOIN2",
-          "target": "JOIN3"
-        },
-        {
-          "source": "LOAD_DATASET9",
-          "target": "JOIN3"
-        },
-        {
-          "source": "JOIN3",
-          "target": "JOIN4"
-        },
-        {
-          "source": "LOAD_DATASET10",
-          "target": "JOIN4"
-        },
-        {
-          "source": "JOIN4",
-          "target": "JOIN5"
-        },
-        {
-          "source": "LOAD_DATASET7",
-          "target": "JOIN5"
-        },
-        {
-          "source": "LOAD_DATASET5",
-          "target": "TRANSFORM4_copy0"
-        },
-        {
-          "source": "TRANSFORM4_copy0",
-          "target": "JOIN0"
-        },
-        {
-          "source": "JOIN7",
-          "target": "TRANSFORM22_copy0"
-        },
-        {
-          "source": "JOIN5",
-          "target": "JOIN6"
-        },
-        {
-          "source": "FILTER1",
-          "target": "TRANSFORM23"
-        },
-        {
-          "source": "TRANSFORM23",
-          "target": "FILTER2"
-        },
-        {
-          "source": "JOIN6",
-          "target": "JOIN7"
-        },
-        {
-          "source": "FILTER2",
-          "target": "JOIN7"
-        },
-        {
-          "source": "TRANSFORM22_copy0",
-          "target": "JOIN8"
-        },
-        {
-          "source": "FILTER0",
-          "target": "TRANSFORM24"
-        },
-        {
-          "source": "TRANSFORM24",
-          "target": "FILTER3"
-        },
-        {
-          "source": "FILTER3",
-          "target": "JOIN8"
-        },
-        {
-          "source": "JOIN8",
-          "target": "TRANSFORM25"
-        },
-        {
-          "source": "TRANSFORM25",
-          "target": "FILTER4"
-        },
-        {
-          "source": "FILTER4",
-          "target": "TRANSFORM26"
-        },
-        {
-          "source": "LOAD_DATASET11_copy0",
-          "target": "TRANSFORM20_copy0"
-        },
-        {
-          "source": "TRANSFORM26",
-          "target": "JOIN9"
-        },
-        {
-          "source": "LOAD_DATASET8_copy0",
-          "target": "JOIN9"
-        },
-        {
-          "source": "JOIN9",
-          "target": "JOIN10"
-        },
-        {
-          "source": "LOAD_DATASET10_copy0",
-          "target": "JOIN10"
-        },
-        {
-          "source": "JOIN10",
-          "target": "JOIN11"
-        },
-        {
-          "source": "TRANSFORM20_copy0",
-          "target": "JOIN11"
-        },
-        {
-          "source": "JOIN11",
-          "target": "JOIN12"
-        },
-        {
-          "source": "LOAD_DATASET12",
-          "target": "JOIN12"
-        },
-        {
-          "source": "FILTER5",
-          "target": "TRANSFORM15_copy1_copy0"
-        },
-        {
-          "source": "TRANSFORM15_copy1_copy0",
-          "target": "OUTPUT0"
-        },
-        {
-          "source": "LOAD_DATASET13",
-          "target": "JOIN6"
-        },
-        {
-          "source": "JOIN12",
-          "target": "FILTER5"
-        }
-      ],
-      "hiddenColumns": []
-    },
-    "version": "62.0"
-  },
-  "scheduleAttributes": {
-    "assetId": "05vJ7000000wkVLIAY",
-    "events": {
-      "events": [
-        {
-          "createdBy": {
-            "id": "005b0000001J0bcAAC",
-            "name": "Berit Ruud",
-            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
-          },
-          "createdDate": "2024-09-13T12:14:50.000Z",
-          "eventType": "JobScheduled"
-        }
-      ]
-    },
-    "frequency": "eventdriven",
-    "triggerRule": "recipe:05v7Q000000srnWQAQ"
-  },
-  "scheduleType": "eventdriven",
-  "status": "Success",
-  "targetDataflowId": "02KJ7000000gT8IMAU",
-  "type": "recipe",
-  "url": "/services/data/v62.0/wave/recipes/05vJ7000000wkVLIAY?format=R3",
-  "validationDetails": []
+      {
+        "source": "LOAD_DATASET3",
+        "target": "FILTER1"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "JOIN1"
+      },
+      {
+        "source": "JOIN1",
+        "target": "JOIN2"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "JOIN2"
+      },
+      {
+        "source": "JOIN2",
+        "target": "JOIN3"
+      },
+      {
+        "source": "LOAD_DATASET9",
+        "target": "JOIN3"
+      },
+      {
+        "source": "JOIN3",
+        "target": "JOIN4"
+      },
+      {
+        "source": "LOAD_DATASET10",
+        "target": "JOIN4"
+      },
+      {
+        "source": "JOIN4",
+        "target": "JOIN5"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "JOIN5"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "TRANSFORM4_copy0"
+      },
+      {
+        "source": "TRANSFORM4_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN7",
+        "target": "TRANSFORM22_copy0"
+      },
+      {
+        "source": "JOIN5",
+        "target": "JOIN6"
+      },
+      {
+        "source": "FILTER1",
+        "target": "TRANSFORM23"
+      },
+      {
+        "source": "TRANSFORM23",
+        "target": "FILTER2"
+      },
+      {
+        "source": "JOIN6",
+        "target": "JOIN7"
+      },
+      {
+        "source": "FILTER2",
+        "target": "JOIN7"
+      },
+      {
+        "source": "TRANSFORM22_copy0",
+        "target": "JOIN8"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM24"
+      },
+      {
+        "source": "TRANSFORM24",
+        "target": "FILTER3"
+      },
+      {
+        "source": "FILTER3",
+        "target": "JOIN8"
+      },
+      {
+        "source": "JOIN8",
+        "target": "TRANSFORM25"
+      },
+      {
+        "source": "TRANSFORM25",
+        "target": "FILTER4"
+      },
+      {
+        "source": "FILTER4",
+        "target": "TRANSFORM26"
+      },
+      {
+        "source": "LOAD_DATASET11_copy0",
+        "target": "TRANSFORM20_copy0"
+      },
+      {
+        "source": "TRANSFORM26",
+        "target": "JOIN9"
+      },
+      {
+        "source": "LOAD_DATASET8_copy0",
+        "target": "JOIN9"
+      },
+      {
+        "source": "JOIN9",
+        "target": "JOIN10"
+      },
+      {
+        "source": "LOAD_DATASET10_copy0",
+        "target": "JOIN10"
+      },
+      {
+        "source": "JOIN10",
+        "target": "JOIN11"
+      },
+      {
+        "source": "TRANSFORM20_copy0",
+        "target": "JOIN11"
+      },
+      {
+        "source": "JOIN11",
+        "target": "JOIN12"
+      },
+      {
+        "source": "LOAD_DATASET12",
+        "target": "JOIN12"
+      },
+      {
+        "source": "FILTER5",
+        "target": "TRANSFORM15_copy1_copy0"
+      },
+      {
+        "source": "TRANSFORM15_copy1_copy0",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "LOAD_DATASET13",
+        "target": "JOIN6"
+      },
+      {
+        "source": "JOIN12",
+        "target": "FILTER5"
+      }
+    ],
+    "hiddenColumns": []
+  }
 }

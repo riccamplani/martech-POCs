@@ -1,607 +1,566 @@
 {
-  "conversionDetails": [],
-  "createdBy": {
-    "id": "0053W000000QT9lQAG",
-    "name": "J\u00e1nos Lakatos",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  "version": "62.0",
+  "nodes": {
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "Subscription_Owner",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET2",
+        "LOAD_DATASET5"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 520 Subscriptions",
+          "name": "C360_520_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "APPEND6"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 440 Rebinding Mobile Subscriptions",
+          "name": "C360_440_Rebinding_Mobile_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "FILTER7.Main_number__c",
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "FILTER7.Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND1": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "MobileVoic.Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "Subscription_Owner",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "MobileVoic.Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND0",
+        "LOAD_DATASET4"
+      ]
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 460 Vekst to Verdi Campaign Subscriptions",
+          "name": "C360_460_Vekst_to_Verdi_Campaign_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "MobileVoic.Name",
+          "MobileVoic.Main_number__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 420 Fiber Rebinding Subscription",
+          "name": "C360_420_Fiber_Rebinding_Subscription",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Main_number__c",
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 470 Rebinding Mobile Red Group Pilot Subscriptions",
+          "name": "C360_470_Rebinding_Mobile_Red_Group_Pilot_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "FILTER7.Main_number__c",
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "FILTER7.Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND2": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "FILTER7.Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "Subscription_Owner",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "FILTER7.Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND1",
+        "LOAD_DATASET6"
+      ]
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 480 Rebinding Forbund Mobile Subscriptions",
+          "name": "C360_480_Rebinding_Forbund_Mobile_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "FILTER7.Main_number__c",
+          "Campaign_sensitive__c",
+          "FILTER7.Sub_Owner__c",
+          "FILTER7.Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND3": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "FILTER7.Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "FILTER7.Sub_Owner__c",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "FILTER7.Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND2",
+        "LOAD_DATASET7"
+      ]
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 491 - Mobile Voice Rebinding Agrol Subscriptions",
+          "name": "C360_491_Mobile_Voice_Rebinding_Agrol_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "FILTER7.Main_number__c",
+          "Campaign_sensitive__c",
+          "FILTER7.Sub_Owner__c",
+          "FILTER7.Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND4": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "FILTER7.Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "FILTER7.Sub_Owner__c",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "FILTER7.Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND3",
+        "LOAD_DATASET8"
+      ]
+    },
+    "LOAD_DATASET9": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 421 Migrasjon TBB til Fiber Subscription",
+          "name": "C360_421_Migrasjon_TBB_til_Fiber_Subscription",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Join2.Main_number__c",
+          "Join2.Sub_Owner__c",
+          "Campaign_sensitive__c",
+          "Join2.Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND5": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Join2.Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "Join2.Sub_Owner__c",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "Join2.Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND4",
+        "LOAD_DATASET9"
+      ]
+    },
+    "LOAD_DATASET10": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Subscriptions",
+          "name": "C360_496_Pilot_SafeZone_og_Oppdatert_bundle_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Main_number__c",
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "Name"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND6": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Main_number__c",
+            "top": "FILTER7.Main_number__c"
+          },
+          {
+            "bottom": "Subscription_Owner",
+            "top": "Subscription_Owner"
+          },
+          {
+            "bottom": "Campaign_sensitive__c",
+            "top": "Campaign_sensitive__c"
+          },
+          {
+            "bottom": "Name",
+            "top": "FILTER7.Name"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND5",
+        "LOAD_DATASET10"
+      ]
+    }
   },
-  "createdDate": "2023-10-16T09:12:57.000Z",
-  "dataflowLastUpdate": "2025-02-14T12:45:22.000Z",
-  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srnqQAA/file",
-  "format": "R3",
-  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srnqQAA/histories",
-  "id": "05v7Q000000srnqQAA",
-  "label": "C360 520 - Append Sales Tips - Subscription",
-  "lastModifiedBy": {
-    "id": "005b0000001J0UIAA0",
-    "name": "Eric Ramirez",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "lastModifiedDate": "2025-02-14T12:45:22.000Z",
-  "licenseAttributes": {
-    "type": "einsteinanalytics"
-  },
-  "name": "C360_520_Append_Sales_Tips_Subscription",
-  "publishingTarget": "Dataset",
-  "recipeDefinition": {
+  "ui": {
     "nodes": {
       "APPEND0": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "Subscription_Owner",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET2",
-          "LOAD_DATASET5"
-        ]
+        "label": "Append 0",
+        "type": "APPEND",
+        "top": 112,
+        "left": 252
       },
       "OUTPUT0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "C360 520 Subscriptions",
-            "name": "C360_520_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "APPEND6"
-        ]
+        "label": "C360 520 Subscriptions",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112.19999999999999,
+        "left": 1230.9
       },
       "LOAD_DATASET2": {
-        "action": "load",
+        "label": "C360 440 Rebinding Mobile Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 392.2,
+        "left": 252.10000000000002,
         "parameters": {
-          "dataset": {
-            "label": "C360 440 Rebinding Mobile Subscriptions",
-            "name": "C360_440_Rebinding_Mobile_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "FILTER7.Main_number__c",
-            "Subscription_Owner",
-            "Campaign_sensitive__c",
-            "FILTER7.Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND1": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "MobileVoic.Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "Subscription_Owner",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "MobileVoic.Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND0",
-          "LOAD_DATASET4"
-        ]
+        "label": "Append 1",
+        "type": "APPEND",
+        "top": 112,
+        "left": 392
       },
       "LOAD_DATASET4": {
-        "action": "load",
+        "label": "C360 460 Vekst to Verdi Campaign Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 392.5,
+        "left": 392.1,
         "parameters": {
-          "dataset": {
-            "label": "C360 460 Vekst to Verdi Campaign Subscriptions",
-            "name": "C360_460_Vekst_to_Verdi_Campaign_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Subscription_Owner",
-            "Campaign_sensitive__c",
-            "MobileVoic.Name",
-            "MobileVoic.Main_number__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET5": {
-        "action": "load",
+        "label": "C360 420 Fiber Rebinding Subscription",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "label": "C360 420 Fiber Rebinding Subscription",
-            "name": "C360_420_Fiber_Rebinding_Subscription",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Main_number__c",
-            "Subscription_Owner",
-            "Campaign_sensitive__c",
-            "Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET6": {
-        "action": "load",
+        "label": "C360 470 Rebinding Mobile Red Group Pilot Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 392.2,
+        "left": 532.1,
         "parameters": {
-          "dataset": {
-            "label": "C360 470 Rebinding Mobile Red Group Pilot Subscriptions",
-            "name": "C360_470_Rebinding_Mobile_Red_Group_Pilot_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "FILTER7.Main_number__c",
-            "Subscription_Owner",
-            "Campaign_sensitive__c",
-            "FILTER7.Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND2": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "FILTER7.Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "Subscription_Owner",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "FILTER7.Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND1",
-          "LOAD_DATASET6"
-        ]
+        "label": "Append 2",
+        "type": "APPEND",
+        "top": 111.9,
+        "left": 532
       },
       "LOAD_DATASET7": {
-        "action": "load",
+        "label": "C360 480 Rebinding Forbund Mobile Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 391.5,
+        "left": 671.4,
         "parameters": {
-          "dataset": {
-            "label": "C360 480 Rebinding Forbund Mobile Subscriptions",
-            "name": "C360_480_Rebinding_Forbund_Mobile_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "FILTER7.Main_number__c",
-            "Campaign_sensitive__c",
-            "FILTER7.Sub_Owner__c",
-            "FILTER7.Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND3": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "FILTER7.Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "FILTER7.Sub_Owner__c",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "FILTER7.Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND2",
-          "LOAD_DATASET7"
-        ]
+        "label": "Append 3",
+        "type": "APPEND",
+        "top": 112.4,
+        "left": 672
       },
       "LOAD_DATASET8": {
-        "action": "load",
+        "label": "C360 491 - Mobile Voice Rebinding Agrol Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 812.4,
         "parameters": {
-          "dataset": {
-            "label": "C360 491 - Mobile Voice Rebinding Agrol Subscriptions",
-            "name": "C360_491_Mobile_Voice_Rebinding_Agrol_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "FILTER7.Main_number__c",
-            "Campaign_sensitive__c",
-            "FILTER7.Sub_Owner__c",
-            "FILTER7.Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND4": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "FILTER7.Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "FILTER7.Sub_Owner__c",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "FILTER7.Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND3",
-          "LOAD_DATASET8"
-        ]
+        "label": "Append 4",
+        "type": "APPEND",
+        "top": 112.80000000000001,
+        "left": 812
       },
       "LOAD_DATASET9": {
-        "action": "load",
+        "label": "C360 421 Migrasjon TBB til Fiber Subscription",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 952.1,
         "parameters": {
-          "dataset": {
-            "label": "C360 421 Migrasjon TBB til Fiber Subscription",
-            "name": "C360_421_Migrasjon_TBB_til_Fiber_Subscription",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Join2.Main_number__c",
-            "Join2.Sub_Owner__c",
-            "Campaign_sensitive__c",
-            "Join2.Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND5": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Join2.Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "Join2.Sub_Owner__c",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "Join2.Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND4",
-          "LOAD_DATASET9"
-        ]
+        "label": "Append 5",
+        "type": "APPEND",
+        "top": 112.5,
+        "left": 952.1
       },
       "LOAD_DATASET10": {
-        "action": "load",
+        "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 1092.1,
         "parameters": {
-          "dataset": {
-            "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Subscriptions",
-            "name": "C360_496_Pilot_SafeZone_og_Oppdatert_bundle_Subscriptions",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Main_number__c",
-            "Subscription_Owner",
-            "Campaign_sensitive__c",
-            "Name"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "APPEND6": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Main_number__c",
-              "top": "FILTER7.Main_number__c"
-            },
-            {
-              "bottom": "Subscription_Owner",
-              "top": "Subscription_Owner"
-            },
-            {
-              "bottom": "Campaign_sensitive__c",
-              "top": "Campaign_sensitive__c"
-            },
-            {
-              "bottom": "Name",
-              "top": "FILTER7.Name"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND5",
-          "LOAD_DATASET10"
-        ]
+        "label": "Append 6",
+        "type": "APPEND",
+        "top": 112.80000000000001,
+        "left": 1092
       }
     },
-    "runMode": "full",
-    "ui": {
-      "nodes": {
-        "APPEND0": {
-          "label": "Append 0",
-          "type": "APPEND",
-          "top": 112,
-          "left": 252
-        },
-        "OUTPUT0": {
-          "label": "C360 520 Subscriptions",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 112.19999999999999,
-          "left": 1230.9
-        },
-        "LOAD_DATASET2": {
-          "label": "C360 440 Rebinding Mobile Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 392.2,
-          "left": 252.10000000000002,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND1": {
-          "label": "Append 1",
-          "type": "APPEND",
-          "top": 112,
-          "left": 392
-        },
-        "LOAD_DATASET4": {
-          "label": "C360 460 Vekst to Verdi Campaign Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 392.5,
-          "left": 392.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET5": {
-          "label": "C360 420 Fiber Rebinding Subscription",
-          "type": "LOAD_DATASET",
-          "top": 112,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET6": {
-          "label": "C360 470 Rebinding Mobile Red Group Pilot Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 392.2,
-          "left": 532.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND2": {
-          "label": "Append 2",
-          "type": "APPEND",
-          "top": 111.9,
-          "left": 532
-        },
-        "LOAD_DATASET7": {
-          "label": "C360 480 Rebinding Forbund Mobile Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 391.5,
-          "left": 671.4,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND3": {
-          "label": "Append 3",
-          "type": "APPEND",
-          "top": 112.4,
-          "left": 672
-        },
-        "LOAD_DATASET8": {
-          "label": "C360 491 - Mobile Voice Rebinding Agrol Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 392.3,
-          "left": 812.4,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND4": {
-          "label": "Append 4",
-          "type": "APPEND",
-          "top": 112.80000000000001,
-          "left": 812
-        },
-        "LOAD_DATASET9": {
-          "label": "C360 421 Migrasjon TBB til Fiber Subscription",
-          "type": "LOAD_DATASET",
-          "top": 392.3,
-          "left": 952.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND5": {
-          "label": "Append 5",
-          "type": "APPEND",
-          "top": 112.5,
-          "left": 952.1
-        },
-        "LOAD_DATASET10": {
-          "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Subscriptions",
-          "type": "LOAD_DATASET",
-          "top": 392.3,
-          "left": 1092.1,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "APPEND6": {
-          "label": "Append 6",
-          "type": "APPEND",
-          "top": 112.80000000000001,
-          "left": 1092
-        }
+    "connectors": [
+      {
+        "source": "LOAD_DATASET2",
+        "target": "APPEND0"
       },
-      "connectors": [
-        {
-          "source": "LOAD_DATASET2",
-          "target": "APPEND0"
-        },
-        {
-          "source": "APPEND6",
-          "target": "OUTPUT0"
-        },
-        {
-          "source": "APPEND0",
-          "target": "APPEND1"
-        },
-        {
-          "source": "LOAD_DATASET4",
-          "target": "APPEND1"
-        },
-        {
-          "source": "LOAD_DATASET5",
-          "target": "APPEND0"
-        },
-        {
-          "source": "APPEND1",
-          "target": "APPEND2"
-        },
-        {
-          "source": "LOAD_DATASET6",
-          "target": "APPEND2"
-        },
-        {
-          "source": "APPEND2",
-          "target": "APPEND3"
-        },
-        {
-          "source": "LOAD_DATASET7",
-          "target": "APPEND3"
-        },
-        {
-          "source": "APPEND3",
-          "target": "APPEND4"
-        },
-        {
-          "source": "LOAD_DATASET8",
-          "target": "APPEND4"
-        },
-        {
-          "source": "APPEND4",
-          "target": "APPEND5"
-        },
-        {
-          "source": "LOAD_DATASET9",
-          "target": "APPEND5"
-        },
-        {
-          "source": "APPEND5",
-          "target": "APPEND6"
-        },
-        {
-          "source": "LOAD_DATASET10",
-          "target": "APPEND6"
-        }
-      ],
-      "hiddenColumns": []
-    },
-    "version": "62.0"
-  },
-  "scheduleAttributes": {
-    "assetId": "05v7Q000000srnqQAA",
-    "events": {
-      "events": []
-    },
-    "frequency": "eventdriven",
-    "triggerRule": "recipe:05v7Q000000srnlQAA"
-  },
-  "scheduleType": "eventdriven",
-  "status": "Success",
-  "targetDataflowId": "02K7Q000002xiVQUAY",
-  "type": "recipe",
-  "url": "/services/data/v62.0/wave/recipes/05v7Q000000srnqQAA?format=R3",
-  "validationDetails": []
+      {
+        "source": "APPEND6",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "APPEND0",
+        "target": "APPEND1"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "APPEND1"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "APPEND0"
+      },
+      {
+        "source": "APPEND1",
+        "target": "APPEND2"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "APPEND2"
+      },
+      {
+        "source": "APPEND2",
+        "target": "APPEND3"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND3"
+      },
+      {
+        "source": "APPEND3",
+        "target": "APPEND4"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND4"
+      },
+      {
+        "source": "APPEND4",
+        "target": "APPEND5"
+      },
+      {
+        "source": "LOAD_DATASET9",
+        "target": "APPEND5"
+      },
+      {
+        "source": "APPEND5",
+        "target": "APPEND6"
+      },
+      {
+        "source": "LOAD_DATASET10",
+        "target": "APPEND6"
+      }
+    ],
+    "hiddenColumns": []
+  }
 }

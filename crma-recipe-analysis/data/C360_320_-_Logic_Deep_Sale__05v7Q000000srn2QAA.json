@@ -1,676 +1,635 @@
 {
-  "conversionDetails": [],
-  "createdBy": {
-    "id": "0053W000000QT9lQAG",
-    "name": "J\u00e1nos Lakatos",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "NumberOfEmployees",
+          "Id",
+          "IsDeleted",
+          "Segment__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "Mobile_Voice_Penetration__c",
+          "mobile_service_segment__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "SubsMobileVoice__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0_copy0_copy0"
+      ]
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "rightQualifier": "LogicSuppr"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER4",
+        "LOAD_DATASET2"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "LogicSuppr.Key_Suppressions_Outbound_Mobile_New_Sales",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN0"
+      ]
+    },
+    "FILTER6": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Mobile_Voice_Penetration__c",
+            "operands": [
+              "20"
+            ],
+            "operator": "LESS_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "FILTER7": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "Mobile_Voice_Penetration__c",
+            "operands": [
+              "20"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Mobile_Voice_Penetration__c",
+            "operands": [
+              "60"
+            ],
+            "operator": "LESS_THAN",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER6"
+      ]
+    },
+    "DROP_FIELDS1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER7"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppressions Outbound Mobile New Sales",
+          "name": "Suppressions_Outbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppressions Inbound Mobile New Sales",
+          "name": "Suppressions_Inbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Inbound_Mobile_New_Sales"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Inbound_Mobile_New_Sales"
+        ],
+        "rightQualifier": "Suppressio"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER4",
+        "LOAD_DATASET3"
+      ]
+    },
+    "FILTER8": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Suppressio.Key_Suppressions_Inbound_Mobile_New_Sales",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN1"
+      ]
+    },
+    "FILTER9": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Mobile_Voice_Penetration__c",
+            "operands": [
+              "50"
+            ],
+            "operator": "LESS_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER8"
+      ]
+    },
+    "DROP_FIELDS2": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER9"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Logic Deep Sale Outbound",
+          "name": "Logic_Deep_Sale_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS0"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Logic Deep Sale Outbound 20 to 60%",
+          "name": "Logic_Deep_Sale_Outbound_20_to_60",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS1"
+      ]
+    },
+    "OUTPUT2": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Logic Deep Sale Inbound",
+          "name": "Logic_Deep_Sale_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "FILTER3_copy0_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR (2 AND 3)",
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Hunter L",
+              "Hunter M",
+              "Hunter S",
+              "MM M Farmer",
+              "MM M Hunter",
+              "MM S Farmer",
+              "MM S Hunter",
+              "Mobile L",
+              "Mobile M",
+              "Mobile S",
+              "Mobile XL",
+              "Mobile XS"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "MM TSP"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "NumberOfEmployees",
+            "operands": [
+              "150"
+            ],
+            "operator": "LESS_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER1_copy0"
+      ]
+    }
   },
-  "createdDate": "2023-10-16T09:03:41.000Z",
-  "dataflowLastUpdate": "2025-05-08T11:18:40.000Z",
-  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srn2QAA/file",
-  "format": "R3",
-  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srn2QAA/histories",
-  "id": "05v7Q000000srn2QAA",
-  "label": "C360 320 - Logic Deep Sale",
-  "lastModifiedBy": {
-    "id": "005b0000001J0UIAA0",
-    "name": "Eric Ramirez",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "lastModifiedDate": "2025-05-08T11:18:40.000Z",
-  "licenseAttributes": {
-    "type": "einsteinanalytics"
-  },
-  "name": "C360_320_Logic_Deep_Sale",
-  "publishingTarget": "Dataset",
-  "recipeDefinition": {
+  "ui": {
     "nodes": {
       "LOAD_DATASET0": {
-        "action": "load",
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
         "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "NumberOfEmployees",
-            "Id",
-            "IsDeleted",
-            "Segment__c",
-            "StatusKURT__c",
-            "SubsMobileVoice__c",
-            "Mobile_Voice_Penetration__c",
-            "mobile_service_segment__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "FILTER1_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2",
-          "filterExpressions": [
-            {
-              "field": "IsDeleted",
-              "operands": [
-                "false"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "StatusKURT__c",
-              "operands": [
-                "K - Personen/foretaket er OK, levende"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "LOAD_DATASET0"
-        ]
+        "label": "Existing Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.4,
+        "left": 252.3
       },
       "FILTER4": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "1"
-              ],
-              "operator": "GREATER_OR_EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER3_copy0_copy0_copy0"
-        ]
+        "label": "Have MV",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.30000000000001,
+        "left": 532.2
       },
       "JOIN0": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Outbound_Mobile_New_Sales"
-          ],
-          "rightQualifier": "LogicSuppr"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER4",
-          "LOAD_DATASET2"
-        ]
+        "label": "Suppressions Outbound Join",
+        "description": "",
+        "type": "JOIN",
+        "top": 112,
+        "left": 952.1
       },
       "FILTER5": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "LogicSuppr.Key_Suppressions_Outbound_Mobile_New_Sales",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN0"
-        ]
+        "label": "OK to contact Outbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 112,
+        "left": 1092.1
       },
       "FILTER6": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "20"
-              ],
-              "operator": "LESS_OR_EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER5"
-        ]
+        "label": "Less than 20% MV Ratio",
+        "description": "",
+        "type": "FILTER",
+        "top": 112,
+        "left": 1232.1
       },
       "FILTER7": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2",
-          "filterExpressions": [
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "20"
-              ],
-              "operator": "GREATER_THAN",
-              "type": "NUMBER"
-            },
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "60"
-              ],
-              "operator": "LESS_THAN",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER5"
-        ]
+        "label": "More than 20% and less than 60% MV Ratio",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.39999999999998,
+        "left": 1092
       },
-      "DROP_FIELDS0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM0": {
+        "label": "Deep Sale Outbound (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112,
+        "left": 1372.1,
+        "graph": {
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER6"
-        ]
+        "connectors": []
       },
-      "DROP_FIELDS1": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM1": {
+        "label": "Deep Sale Outbound 20 to 60% (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252,
+        "left": 1372.1,
+        "graph": {
+          "DROP_FIELDS1": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER7"
-        ]
+        "connectors": []
       },
       "LOAD_DATASET2": {
-        "action": "load",
+        "label": "Suppressions Outbound Mobile New Sales",
+        "type": "LOAD_DATASET",
+        "top": 252.2,
+        "left": 111.80000000000001,
         "parameters": {
-          "dataset": {
-            "label": "Suppressions Outbound Mobile New Sales",
-            "name": "Suppressions_Outbound_Mobile_New_Sales",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Outbound_Mobile_New_Sales"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "LOAD_DATASET3": {
-        "action": "load",
+        "label": "Suppressions Inbound Mobile New Sales",
+        "type": "LOAD_DATASET",
+        "top": 391.9,
+        "left": 111.5,
         "parameters": {
-          "dataset": {
-            "label": "Suppressions Inbound Mobile New Sales",
-            "name": "Suppressions_Inbound_Mobile_New_Sales",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_Inbound_Mobile_New_Sales"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
+          "sampleSize": 2000
+        }
       },
       "JOIN1": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_Inbound_Mobile_New_Sales"
-          ],
-          "rightQualifier": "Suppressio"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER4",
-          "LOAD_DATASET3"
-        ]
+        "label": "Suppressions Inbound Join",
+        "description": "",
+        "type": "JOIN",
+        "top": 392.2,
+        "left": 952
       },
       "FILTER8": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Suppressio.Key_Suppressions_Inbound_Mobile_New_Sales",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN1"
-        ]
+        "label": "OK to contact Inbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 1092
       },
       "FILTER9": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "50"
-              ],
-              "operator": "LESS_OR_EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER8"
-        ]
+        "label": "50% or less MV Ratio",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 1232
       },
-      "DROP_FIELDS2": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
+      "TRANSFORM2": {
+        "label": "Deep Sale Inbound (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 1372,
+        "graph": {
+          "DROP_FIELDS2": {
+            "label": "Drop Columns"
           }
         },
-        "sources": [
-          "FILTER9"
-        ]
+        "connectors": []
       },
       "OUTPUT0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Deep Sale Outbound",
-            "name": "Logic_Deep_Sale_Outbound",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0"
-        ]
+        "label": "Deep Sale Outbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112,
+        "left": 1512
       },
       "OUTPUT1": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Deep Sale Outbound 20 to 60%",
-            "name": "Logic_Deep_Sale_Outbound_20_to_60",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS1"
-        ]
+        "label": "Deep Sale Outbound 20 to 60%",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 252,
+        "left": 1512
       },
       "OUTPUT2": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Deep Sale Inbound",
-            "name": "Logic_Deep_Sale_Inbound",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS2"
-        ]
+        "label": "Deep Sale Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 392,
+        "left": 1512
       },
       "FILTER3_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 OR (2 AND 3)",
-          "filterExpressions": [
-            {
-              "field": "mobile_service_segment__c",
-              "operands": [
-                "Hunter L",
-                "Hunter M",
-                "Hunter S",
-                "MM M Farmer",
-                "MM M Hunter",
-                "MM S Farmer",
-                "MM S Hunter",
-                "Mobile L",
-                "Mobile M",
-                "Mobile S",
-                "Mobile XL",
-                "Mobile XS"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "mobile_service_segment__c",
-              "operands": [
-                "MM TSP"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "150"
-              ],
-              "operator": "LESS_OR_EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER1_copy0"
-        ]
+        "label": "Segment MM",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.1,
+        "left": 392.1
       }
     },
-    "runMode": "full",
-    "ui": {
-      "nodes": {
-        "LOAD_DATASET0": {
-          "label": "Account",
-          "type": "LOAD_DATASET",
-          "top": 112,
-          "left": 112,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "FILTER1_copy0": {
-          "label": "Existing Customers",
-          "description": "",
-          "type": "FILTER",
-          "top": 112.4,
-          "left": 252.3
-        },
-        "FILTER4": {
-          "label": "Have MV",
-          "description": "",
-          "type": "FILTER",
-          "top": 112.30000000000001,
-          "left": 532.2
-        },
-        "JOIN0": {
-          "label": "Suppressions Outbound Join",
-          "description": "",
-          "type": "JOIN",
-          "top": 112,
-          "left": 952.1
-        },
-        "FILTER5": {
-          "label": "OK to contact Outbound",
-          "description": "",
-          "type": "FILTER",
-          "top": 112,
-          "left": 1092.1
-        },
-        "FILTER6": {
-          "label": "Less than 20% MV Ratio",
-          "description": "",
-          "type": "FILTER",
-          "top": 112,
-          "left": 1232.1
-        },
-        "FILTER7": {
-          "label": "More than 20% and less than 60% MV Ratio",
-          "description": "",
-          "type": "FILTER",
-          "top": 252.39999999999998,
-          "left": 1092
-        },
-        "TRANSFORM0": {
-          "label": "Deep Sale Outbound (Drop Columns)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 112,
-          "left": 1372.1,
-          "graph": {
-            "DROP_FIELDS0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        },
-        "TRANSFORM1": {
-          "label": "Deep Sale Outbound 20 to 60% (Drop Columns)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 252,
-          "left": 1372.1,
-          "graph": {
-            "DROP_FIELDS1": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        },
-        "LOAD_DATASET2": {
-          "label": "Suppressions Outbound Mobile New Sales",
-          "type": "LOAD_DATASET",
-          "top": 252.2,
-          "left": 111.80000000000001,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "LOAD_DATASET3": {
-          "label": "Suppressions Inbound Mobile New Sales",
-          "type": "LOAD_DATASET",
-          "top": 391.9,
-          "left": 111.5,
-          "parameters": {
-            "sampleSize": 2000
-          }
-        },
-        "JOIN1": {
-          "label": "Suppressions Inbound Join",
-          "description": "",
-          "type": "JOIN",
-          "top": 392.2,
-          "left": 952
-        },
-        "FILTER8": {
-          "label": "OK to contact Inbound",
-          "description": "",
-          "type": "FILTER",
-          "top": 392,
-          "left": 1092
-        },
-        "FILTER9": {
-          "label": "50% or less MV Ratio",
-          "description": "",
-          "type": "FILTER",
-          "top": 392,
-          "left": 1232
-        },
-        "TRANSFORM2": {
-          "label": "Deep Sale Inbound (Drop Columns)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 392,
-          "left": 1372,
-          "graph": {
-            "DROP_FIELDS2": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
-        },
-        "OUTPUT0": {
-          "label": "Deep Sale Outbound",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 112,
-          "left": 1512
-        },
-        "OUTPUT1": {
-          "label": "Deep Sale Outbound 20 to 60%",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 252,
-          "left": 1512
-        },
-        "OUTPUT2": {
-          "label": "Deep Sale Inbound",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 392,
-          "left": 1512
-        },
-        "FILTER3_copy0_copy0_copy0": {
-          "label": "Segment MM",
-          "description": "",
-          "type": "FILTER",
-          "top": 112.1,
-          "left": 392.1
-        }
+    "connectors": [
+      {
+        "source": "FILTER4",
+        "target": "JOIN0"
       },
-      "connectors": [
-        {
-          "source": "FILTER4",
-          "target": "JOIN0"
-        },
-        {
-          "source": "LOAD_DATASET0",
-          "target": "FILTER1_copy0"
-        },
-        {
-          "source": "JOIN0",
-          "target": "FILTER5"
-        },
-        {
-          "source": "FILTER5",
-          "target": "FILTER6"
-        },
-        {
-          "source": "FILTER5",
-          "target": "FILTER7"
-        },
-        {
-          "source": "FILTER6",
-          "target": "TRANSFORM0"
-        },
-        {
-          "source": "FILTER7",
-          "target": "TRANSFORM1"
-        },
-        {
-          "source": "LOAD_DATASET2",
-          "target": "JOIN0"
-        },
-        {
-          "source": "FILTER4",
-          "target": "JOIN1"
-        },
-        {
-          "source": "LOAD_DATASET3",
-          "target": "JOIN1"
-        },
-        {
-          "source": "JOIN1",
-          "target": "FILTER8"
-        },
-        {
-          "source": "FILTER8",
-          "target": "FILTER9"
-        },
-        {
-          "source": "FILTER9",
-          "target": "TRANSFORM2"
-        },
-        {
-          "source": "TRANSFORM0",
-          "target": "OUTPUT0"
-        },
-        {
-          "source": "TRANSFORM1",
-          "target": "OUTPUT1"
-        },
-        {
-          "source": "TRANSFORM2",
-          "target": "OUTPUT2"
-        },
-        {
-          "source": "FILTER1_copy0",
-          "target": "FILTER3_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER3_copy0_copy0_copy0",
-          "target": "FILTER4"
-        }
-      ],
-      "hiddenColumns": []
-    },
-    "version": "62.0"
-  },
-  "scheduleAttributes": {
-    "assetId": "05v7Q000000srn2QAA",
-    "events": {
-      "events": []
-    },
-    "frequency": "eventdriven",
-    "triggerRule": "recipe:05v7Q000000srmxQAA"
-  },
-  "scheduleType": "eventdriven",
-  "status": "Success",
-  "targetDataflowId": "02K7Q000002xiUcUAI",
-  "type": "recipe",
-  "url": "/services/data/v62.0/wave/recipes/05v7Q000000srn2QAA?format=R3",
-  "validationDetails": []
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1_copy0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "FILTER5"
+      },
+      {
+        "source": "FILTER5",
+        "target": "FILTER6"
+      },
+      {
+        "source": "FILTER5",
+        "target": "FILTER7"
+      },
+      {
+        "source": "FILTER6",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "FILTER7",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "JOIN0"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET3",
+        "target": "JOIN1"
+      },
+      {
+        "source": "JOIN1",
+        "target": "FILTER8"
+      },
+      {
+        "source": "FILTER8",
+        "target": "FILTER9"
+      },
+      {
+        "source": "FILTER9",
+        "target": "TRANSFORM2"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "OUTPUT2"
+      },
+      {
+        "source": "FILTER1_copy0",
+        "target": "FILTER3_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER3_copy0_copy0_copy0",
+        "target": "FILTER4"
+      }
+    ],
+    "hiddenColumns": []
+  }
 }
