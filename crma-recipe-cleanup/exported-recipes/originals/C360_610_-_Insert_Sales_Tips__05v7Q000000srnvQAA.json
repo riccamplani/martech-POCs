@@ -1,0 +1,497 @@
+{
+  "conversionDetails": [],
+  "createdBy": {
+    "id": "0053W000000QT9lQAG",
+    "name": "J\u00e1nos Lakatos",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "createdDate": "2023-10-16T09:14:12.000Z",
+  "dataflowLastUpdate": "2023-11-30T09:28:13.000Z",
+  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srnvQAA/file",
+  "format": "R3",
+  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srnvQAA/histories",
+  "id": "05v7Q000000srnvQAA",
+  "label": "C360 610 - Insert Sales Tips",
+  "lastModifiedBy": {
+    "id": "0053W000000QT9lQAG",
+    "name": "J\u00e1nos Lakatos",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "lastModifiedDate": "2023-11-30T09:28:13.000Z",
+  "licenseAttributes": {
+    "type": "einsteinanalytics"
+  },
+  "name": "C360_610_Insert_Sales_Tips",
+  "publishingTarget": "Dataset",
+  "recipeDefinition": {
+    "nodes": {
+      "JOIN0": {
+        "action": "join",
+        "parameters": {
+          "joinType": "LEFT_OUTER",
+          "leftKeys": [
+            "KSBID_2"
+          ],
+          "rightKeys": [
+            "KSBID__c"
+          ],
+          "rightQualifier": "CCI"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "LOAD_DATASET5",
+          "LOAD_DATASET4"
+        ]
+      },
+      "FILTER0": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "CCI.KSBID__c",
+              "operands": [],
+              "operator": "IS_NULL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN0"
+        ]
+      },
+      "LOAD_DATASET4": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "connectionName": "SFDC_LOCAL_SEGMENTATION",
+            "label": "CustomerCampaignItem__c",
+            "sourceObjectName": "CustomerCampaignItem__c",
+            "type": "connectedDataset"
+          },
+          "fields": [
+            "Status__c",
+            "KSBID__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "DROP_FIELDS0": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "CCI.KSBID__c",
+              "CCI.Status__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "FILTER0"
+        ]
+      },
+      "FORMULA1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&#39;0&#39;",
+              "label": "Response Code",
+              "name": "ResponseCode",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "DROP_FIELDS0"
+        ]
+      },
+      "FORMULA2": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "SFB_CampainId",
+              "label": "CampaignID",
+              "name": "CampaignID__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA1"
+        ]
+      },
+      "FILTER1": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "CampaignID__c",
+              "operands": [
+                "x"
+              ],
+              "operator": "NOT",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA2"
+        ]
+      },
+      "OUTPUT3": {
+        "action": "save",
+        "parameters": {
+          "dataset": {
+            "folderName": "Campaign_Developer_App",
+            "label": "C360 610 InsertSalesTips",
+            "name": "C360_610_InsertSalesTips",
+            "type": "analyticsDataset"
+          },
+          "fields": [],
+          "measuresToCurrencies": []
+        },
+        "sources": [
+          "FORMULA2"
+        ]
+      },
+      "LOAD_DATASET5": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "C360 510 New Sales Tips",
+            "name": "C360_510_New_Sales_Tips",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "CampaignChannels",
+            "Personalization_1__c",
+            "Personalization_3__c",
+            "Personalization_20__c",
+            "SFB_AccountId",
+            "Personalization_15__c",
+            "Personalization_13__c",
+            "Personalization_17__c",
+            "Personalization_7__c",
+            "Personalization_9__c",
+            "Kurt_Id",
+            "Personalization_19__c",
+            "Personalization_5__c",
+            "Personalization_11__c",
+            "Personalization_2__c",
+            "Sales_tip_title",
+            "KSBID_2",
+            "Personalization_12__c",
+            "Personalization_14__c",
+            "TelesalesAgency",
+            "Personalization_16__c",
+            "Personalization_8__c",
+            "Sales_tip_description_template",
+            "Personalization_18__c",
+            "Personalization_6__c",
+            "Personalization_4__c",
+            "Personalization_10__c",
+            "SFB_CampainId"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "OUTPUT4": {
+        "action": "outputExternal",
+        "parameters": {
+          "connectionName": "Salesforce_Output_Connection_for_SfB",
+          "externalIdFieldName": "",
+          "fieldsMapping": [
+            {
+              "sourceField": "CampaignChannels",
+              "targetField": "Campaign_Channels__c"
+            },
+            {
+              "sourceField": "Personalization_1__c",
+              "targetField": "Personalization_1__c"
+            },
+            {
+              "sourceField": "Personalization_3__c",
+              "targetField": "Personalization_3__c"
+            },
+            {
+              "sourceField": "Personalization_20__c",
+              "targetField": "Personalization_20__c"
+            },
+            {
+              "sourceField": "SFB_AccountId",
+              "targetField": "Account__c"
+            },
+            {
+              "sourceField": "Personalization_15__c",
+              "targetField": "Personalization_15__c"
+            },
+            {
+              "sourceField": "Personalization_13__c",
+              "targetField": "Personalization_13__c"
+            },
+            {
+              "sourceField": "Personalization_17__c",
+              "targetField": "Personalization_17__c"
+            },
+            {
+              "sourceField": "Personalization_7__c",
+              "targetField": "Personalization_7__c"
+            },
+            {
+              "sourceField": "Personalization_9__c",
+              "targetField": "Personalization_9__c"
+            },
+            {
+              "sourceField": "Kurt_Id",
+              "targetField": "KurtID__c"
+            },
+            {
+              "sourceField": "Personalization_19__c",
+              "targetField": "Personalization_19__c"
+            },
+            {
+              "sourceField": "Personalization_5__c",
+              "targetField": "Personalization_5__c"
+            },
+            {
+              "sourceField": "Personalization_11__c",
+              "targetField": "Personalization_11__c"
+            },
+            {
+              "sourceField": "Personalization_2__c",
+              "targetField": "Personalization_2__c"
+            },
+            {
+              "sourceField": "Sales_tip_title",
+              "targetField": "Salestip_Description__c"
+            },
+            {
+              "sourceField": "KSBID_2",
+              "targetField": "KSBID__c"
+            },
+            {
+              "sourceField": "Personalization_12__c",
+              "targetField": "Personalization_12__c"
+            },
+            {
+              "sourceField": "Personalization_14__c",
+              "targetField": "Personalization_14__c"
+            },
+            {
+              "sourceField": "TelesalesAgency",
+              "targetField": "tm_agency__c"
+            },
+            {
+              "sourceField": "Personalization_16__c",
+              "targetField": "Personalization_16__c"
+            },
+            {
+              "sourceField": "Personalization_8__c",
+              "targetField": "Personalization_8__c"
+            },
+            {
+              "sourceField": "Sales_tip_description_template",
+              "targetField": "Salestip_Template__c"
+            },
+            {
+              "sourceField": "Personalization_18__c",
+              "targetField": "Personalization_18__c"
+            },
+            {
+              "sourceField": "Personalization_6__c",
+              "targetField": "Personalization_6__c"
+            },
+            {
+              "sourceField": "Personalization_4__c",
+              "targetField": "Personalization_4__c"
+            },
+            {
+              "sourceField": "Personalization_10__c",
+              "targetField": "Personalization_10__c"
+            },
+            {
+              "sourceField": "SFB_CampainId",
+              "targetField": "Campaign__c"
+            },
+            {
+              "sourceField": "ResponseCode",
+              "targetField": "Response_Code__c"
+            },
+            {
+              "sourceField": "CampaignID__c",
+              "targetField": "CampaignID__c"
+            }
+          ],
+          "hyperFileName": "",
+          "object": "CustomerCampaignItem__c",
+          "operation": "insert"
+        },
+        "sources": [
+          "FILTER1"
+        ]
+      }
+    },
+    "runMode": "full",
+    "ui": {
+      "nodes": {
+        "JOIN0": {
+          "label": "New Sales Tips",
+          "description": "",
+          "type": "JOIN",
+          "top": 112,
+          "left": 252
+        },
+        "FILTER0": {
+          "label": "Filter out Existing Sales Tips",
+          "description": "",
+          "type": "FILTER",
+          "top": 112,
+          "left": 392
+        },
+        "LOAD_DATASET4": {
+          "label": "CustomerCampaignItem__c",
+          "type": "LOAD_DATASET",
+          "top": 112,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 10000
+          }
+        },
+        "TRANSFORM6": {
+          "label": "Transform 6",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 532,
+          "graph": {
+            "DROP_FIELDS0": {
+              "label": "Drop Columns"
+            },
+            "FORMULA1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA2": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "CampaignID"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA1",
+              "target": "FORMULA2"
+            },
+            {
+              "source": "DROP_FIELDS0",
+              "target": "FORMULA1"
+            }
+          ]
+        },
+        "FILTER1": {
+          "label": "Filter Campaigns",
+          "description": "",
+          "type": "FILTER",
+          "top": 112,
+          "left": 672
+        },
+        "OUTPUT3": {
+          "label": "C360 610 InsertSalesTips",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 252.39999999999998,
+          "left": 672
+        },
+        "LOAD_DATASET5": {
+          "label": "C360 510 New Sales Tips",
+          "type": "LOAD_DATASET",
+          "top": 252.10000000000002,
+          "left": 111.9,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "OUTPUT4": {
+          "label": "SFB CustomerCampaignItems",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 112,
+          "left": 812
+        }
+      },
+      "connectors": [
+        {
+          "source": "LOAD_DATASET5",
+          "target": "JOIN0"
+        },
+        {
+          "source": "JOIN0",
+          "target": "FILTER0"
+        },
+        {
+          "source": "FILTER0",
+          "target": "TRANSFORM6"
+        },
+        {
+          "source": "LOAD_DATASET4",
+          "target": "JOIN0"
+        },
+        {
+          "source": "TRANSFORM6",
+          "target": "FILTER1"
+        },
+        {
+          "source": "TRANSFORM6",
+          "target": "OUTPUT3"
+        },
+        {
+          "source": "FILTER1",
+          "target": "OUTPUT4"
+        }
+      ],
+      "hiddenColumns": []
+    },
+    "version": "62.0"
+  },
+  "scheduleAttributes": {
+    "assetId": "05v7Q000000srnvQAA",
+    "events": {
+      "events": []
+    },
+    "frequency": "eventdriven",
+    "triggerRule": "recipe:05v7Q000000srnqQAA"
+  },
+  "scheduleType": "eventdriven",
+  "status": "Success",
+  "targetDataflowId": "02K7Q000002xiVkUAI",
+  "type": "recipe",
+  "url": "/services/data/v62.0/wave/recipes/05v7Q000000srnvQAA?format=R3",
+  "validationDetails": []
+}

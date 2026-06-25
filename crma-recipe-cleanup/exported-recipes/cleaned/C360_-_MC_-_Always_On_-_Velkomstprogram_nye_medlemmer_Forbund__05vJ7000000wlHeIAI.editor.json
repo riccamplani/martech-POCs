@@ -1,0 +1,1443 @@
+{
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Forbund_membership__c",
+          "TM_Forbund_Flag__c",
+          "FORBUND_START_DATE__c",
+          "Id",
+          "IsDeleted",
+          "PersonHasOptedOutOfEmail",
+          "KurtID__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "Has_Min_Bedrift__c",
+          "Last_Min_Bedrift_Web_Login__c",
+          "TSP_Dealer__c",
+          "SOURCE_ACCOUNT_ID_MOBIL__c",
+          "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
+          "NBR_SAFEZONE_MOBILE__c",
+          "COM_CUSTOMER_EDM_RESERVATION__c",
+          "MV_FIRST_SALE_DT__c",
+          "mobile_service_segment__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER3_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Mobile S",
+              "Mobile XS",
+              "MM S Farmer"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER84"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "PersonHasOptedOutOfEmail",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND3"
+      ]
+    },
+    "FILTER4_copy1": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "TSP_Dealer__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS4"
+      ]
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "Name",
+          "CampaignID__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER55": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_216"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET5"
+      ]
+    },
+    "FORMULA7_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;C360_216&#39;",
+            "label": "Campaign Key",
+            "name": "Campaign_Key",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN5"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_Key"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "C360_44"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA7_copy0_copy0_copy0",
+        "FILTER55"
+      ]
+    },
+    "FORMULA37_copy0": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "row_number()",
+            "label": "Row Number Contact",
+            "name": "Row_Number_Contact",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "Id"
+          }
+        ],
+        "partitionBy": [
+          "Id"
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET6"
+      ]
+    },
+    "FILTER82_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Row_Number_Contact",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA37_copy0"
+      ]
+    },
+    "JOIN5": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "AccountId"
+        ],
+        "rightQualifier": "UniqueCont"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "APPEND2",
+        "FILTER83"
+      ]
+    },
+    "OUTPUT1_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 - MC - Always On - Velkomstprogram nye medlemmer Forbund",
+          "name": "C360_MC_Always_On_Velkomstprogram_nye_medlemmer_Forbund",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2_copy0_copy0"
+      ]
+    },
+    "FORMULA8_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "formulaExpression": "now()",
+            "label": "Send timestamp",
+            "name": "Send_timestamp",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA40"
+      ]
+    },
+    "FORMULA9_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "string(Send_timestamp)",
+            "label": "Send timestamp string",
+            "name": "Send_timestamp_string",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8_copy0_copy0"
+      ]
+    },
+    "FORMULA10_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;C360_44.CampaignID__c&quot;",
+            "label": "Campaign CD",
+            "name": "Campaign_CD",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN2"
+      ]
+    },
+    "DROP_FIELDS2_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "KurtID__c",
+            "Personalization_1",
+            "UniqueCont.Email",
+            "UniqueCont.Id",
+            "UniqueCont.MobilePhone",
+            "C360_44.Id",
+            "C360_44.Name",
+            "Campaign_CD",
+            "Personalization_2",
+            "Send_timestamp",
+            "Send_timestamp_string"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA9_copy0_copy0"
+      ]
+    },
+    "FORMULA40": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Forbund_membership__c",
+            "label": "Personalization 2",
+            "name": "Personalization_2",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA10_copy0_copy0"
+      ]
+    },
+    "FORMULA38": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "row_number()",
+            "label": "Row Number eMail",
+            "name": "Row_Number_eMail",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "AccountId"
+          }
+        ],
+        "partitionBy": [
+          "Email"
+        ]
+      },
+      "sources": [
+        "FILTER82_copy0"
+      ]
+    },
+    "FILTER83": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Row_Number_eMail",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA38"
+      ]
+    },
+    "FORMULA39_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;A2&#39;",
+            "label": "Personalization 1",
+            "name": "Personalization_1",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "FORMULA39_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;A1&#39;",
+            "label": "Personalization 1",
+            "name": "Personalization_1",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy0_copy0_copy0"
+      ]
+    },
+    "APPEND2": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Forbund_membership__c",
+            "top": "Forbund_membership__c"
+          },
+          {
+            "bottom": "TM_Forbund_Flag__c",
+            "top": "TM_Forbund_Flag__c"
+          },
+          {
+            "bottom": "FORBUND_START_DATE__c",
+            "top": "FORBUND_START_DATE__c"
+          },
+          {
+            "bottom": "Id",
+            "top": "Id"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "PersonHasOptedOutOfEmail",
+            "top": "PersonHasOptedOutOfEmail"
+          },
+          {
+            "bottom": "KurtID__c",
+            "top": "KurtID__c"
+          },
+          {
+            "bottom": "StatusKURT__c",
+            "top": "StatusKURT__c"
+          },
+          {
+            "bottom": "SubsMobileVoice__c",
+            "top": "SubsMobileVoice__c"
+          },
+          {
+            "bottom": "Has_Min_Bedrift__c",
+            "top": "Has_Min_Bedrift__c"
+          },
+          {
+            "bottom": "Last_Min_Bedrift_Web_Login__c",
+            "top": "Last_Min_Bedrift_Web_Login__c"
+          },
+          {
+            "bottom": "TSP_Dealer__c",
+            "top": "TSP_Dealer__c"
+          },
+          {
+            "bottom": "SOURCE_ACCOUNT_ID_MOBIL__c",
+            "top": "SOURCE_ACCOUNT_ID_MOBIL__c"
+          },
+          {
+            "bottom": "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
+            "top": "NBR_SOURCE_ACCOUNT_ID_MOBIL__c"
+          },
+          {
+            "bottom": "NBR_SAFEZONE_MOBILE__c",
+            "top": "NBR_SAFEZONE_MOBILE__c"
+          },
+          {
+            "bottom": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "top": "COM_CUSTOMER_EDM_RESERVATION__c"
+          },
+          {
+            "bottom": "MV_FIRST_SALE_DT__c",
+            "top": "MV_FIRST_SALE_DT__c"
+          },
+          {
+            "bottom": "mobile_service_segment__c",
+            "top": "mobile_service_segment__c"
+          },
+          {
+            "bottom": "Personalization_1",
+            "top": "Personalization_1"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA39_copy0",
+        "FORMULA39_copy0_copy0"
+      ]
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Primary Contact with email",
+          "name": "Primary_Contact_with_email",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "AccountId",
+          "Email",
+          "Id",
+          "MobilePhone"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER4_copy0_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "TM_Forbund_Flag__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Forbund_membership__c",
+            "operands": [
+              "HOVEDORGANISASJONEN VIRKE",
+              "MEF",
+              "NHO Byggen\u00e6ringen",
+              "NHO Elektro",
+              "NORGES LASTEBILEIER FORBUND",
+              "NORSK INDUSTRI"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy1"
+      ]
+    },
+    "FILTER15_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "FORBUND_START_DATE__c",
+            "operands": [
+              {
+                "argument": -2,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Forbund_membership__c",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER1_copy0"
+      ]
+    },
+    "FILTER84": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Forbund_membership__c",
+            "operands": [
+              "AGRIKJ\u00d8P",
+              "AGROL",
+              "LO"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER15_copy0"
+      ]
+    },
+    "FILTER3_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Mobile M",
+              "MM M Farmer"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER84"
+      ]
+    },
+    "FILTER85": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "SubsMobileVoice__c",
+            "operands": [
+              "30"
+            ],
+            "operator": "LESS_THAN",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0_copy0"
+      ]
+    },
+    "APPEND3": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Forbund_membership__c",
+            "top": "Forbund_membership__c"
+          },
+          {
+            "bottom": "TM_Forbund_Flag__c",
+            "top": "TM_Forbund_Flag__c"
+          },
+          {
+            "bottom": "FORBUND_START_DATE__c",
+            "top": "FORBUND_START_DATE__c"
+          },
+          {
+            "bottom": "Id",
+            "top": "Id"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "PersonHasOptedOutOfEmail",
+            "top": "PersonHasOptedOutOfEmail"
+          },
+          {
+            "bottom": "KurtID__c",
+            "top": "KurtID__c"
+          },
+          {
+            "bottom": "StatusKURT__c",
+            "top": "StatusKURT__c"
+          },
+          {
+            "bottom": "SubsMobileVoice__c",
+            "top": "SubsMobileVoice__c"
+          },
+          {
+            "bottom": "Has_Min_Bedrift__c",
+            "top": "Has_Min_Bedrift__c"
+          },
+          {
+            "bottom": "Last_Min_Bedrift_Web_Login__c",
+            "top": "Last_Min_Bedrift_Web_Login__c"
+          },
+          {
+            "bottom": "TSP_Dealer__c",
+            "top": "TSP_Dealer__c"
+          },
+          {
+            "bottom": "SOURCE_ACCOUNT_ID_MOBIL__c",
+            "top": "SOURCE_ACCOUNT_ID_MOBIL__c"
+          },
+          {
+            "bottom": "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
+            "top": "NBR_SOURCE_ACCOUNT_ID_MOBIL__c"
+          },
+          {
+            "bottom": "NBR_SAFEZONE_MOBILE__c",
+            "top": "NBR_SAFEZONE_MOBILE__c"
+          },
+          {
+            "bottom": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "top": "COM_CUSTOMER_EDM_RESERVATION__c"
+          },
+          {
+            "bottom": "MV_FIRST_SALE_DT__c",
+            "top": "MV_FIRST_SALE_DT__c"
+          },
+          {
+            "bottom": "mobile_service_segment__c",
+            "top": "mobile_service_segment__c"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0",
+        "FILTER85"
+      ]
+    },
+    "FILTER4_copy0_copy0_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "TM_Forbund_Flag__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Forbund_membership__c",
+            "operands": [
+              "HOVEDORGANISASJONEN VIRKE",
+              "MEF",
+              "NHO Byggen\u00e6ringen",
+              "NHO Elektro",
+              "NORGES LASTEBILEIER FORBUND",
+              "NORSK INDUSTRI"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy1"
+      ]
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360_eDM_Master",
+          "name": "C360_eDM_Master",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Email",
+          "Send_timestamp_string",
+          "MobilePhone",
+          "AccountID",
+          "CampaignCD",
+          "Send_timestamp"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER86": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignCD",
+            "operands": [
+              "C360_216"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7"
+      ]
+    },
+    "JOIN6": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "AccountID"
+        ],
+        "rightQualifier": "Alreadyonc"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER5",
+        "DROP_FIELDS3"
+      ]
+    },
+    "FILTER87": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Alreadyonc.CampaignCD",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN6"
+      ]
+    },
+    "DROP_FIELDS3": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "AccountID",
+            "CampaignCD"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER86"
+      ]
+    },
+    "DROP_FIELDS4": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Forbund_membership__c",
+            "TM_Forbund_Flag__c",
+            "FORBUND_START_DATE__c",
+            "Id",
+            "IsDeleted",
+            "PersonHasOptedOutOfEmail",
+            "KurtID__c",
+            "StatusKURT__c",
+            "SubsMobileVoice__c",
+            "Has_Min_Bedrift__c",
+            "Last_Min_Bedrift_Web_Login__c",
+            "TSP_Dealer__c",
+            "SOURCE_ACCOUNT_ID_MOBIL__c",
+            "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
+            "NBR_SAFEZONE_MOBILE__c",
+            "COM_CUSTOMER_EDM_RESERVATION__c",
+            "MV_FIRST_SALE_DT__c",
+            "mobile_service_segment__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER87"
+      ]
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 812.3,
+        "left": 112.19999999999999,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "FILTER1_copy0": {
+        "label": "Existing Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.3,
+        "left": 252.2
+      },
+      "FILTER3_copy0": {
+        "label": "MM S Farmer",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.3,
+        "left": 672.2
+      },
+      "FILTER5": {
+        "label": "w/o eDM Reservation",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.3,
+        "left": 952.2
+      },
+      "FILTER4_copy1": {
+        "label": "w/o TSP",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.4,
+        "left": 1511.9
+      },
+      "LOAD_DATASET5": {
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 112.4,
+        "left": 2491.9,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "FILTER55": {
+        "label": "C360_216",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.39999999999998,
+        "left": 2491.9
+      },
+      "TRANSFORM14_copy0_copy0_copy0": {
+        "label": "Campaign ID",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.4,
+        "left": 2351.9,
+        "graph": {
+          "FORMULA7_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "JOIN2": {
+        "label": "Campaign ID (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 812.4,
+        "left": 2491.9
+      },
+      "TRANSFORM30_copy0": {
+        "label": "Row Number Contact",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252.39999999999998,
+        "left": 2211.9,
+        "graph": {
+          "FORMULA37_copy0": {
+            "label": "Row Number Contact"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER82_copy0": {
+        "label": "Unique Contact IDs",
+        "description": "",
+        "type": "FILTER",
+        "top": 392.4,
+        "left": 2211.9
+      },
+      "JOIN5": {
+        "label": "Contact Info All (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 812.4,
+        "left": 2211.9
+      },
+      "OUTPUT1_copy0": {
+        "label": "C360 - MC - Always On - Velkomstprogram nye medlemmer Forbund",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 812.2,
+        "left": 2772.2
+      },
+      "TRANSFORM22_copy0_copy0": {
+        "label": "Dropping fields",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.4,
+        "left": 2631.9,
+        "graph": {
+          "FORMULA8_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Send timestamp"
+          },
+          "FORMULA9_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Send timestamp string"
+          },
+          "FORMULA10_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign CD"
+          },
+          "DROP_FIELDS2_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA40": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization 2"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA8_copy0_copy0",
+            "target": "FORMULA9_copy0_copy0"
+          },
+          {
+            "source": "FORMULA9_copy0_copy0",
+            "target": "DROP_FIELDS2_copy0_copy0"
+          },
+          {
+            "source": "FORMULA40",
+            "target": "FORMULA8_copy0_copy0"
+          },
+          {
+            "source": "FORMULA10_copy0_copy0",
+            "target": "FORMULA40"
+          }
+        ]
+      },
+      "TRANSFORM31": {
+        "label": "Row Number eMail",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.4,
+        "left": 2211.9,
+        "graph": {
+          "FORMULA38": {
+            "label": "Row Number eMail"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER83": {
+        "label": "All eMails",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.4,
+        "left": 2211.9
+      },
+      "TRANSFORM32_copy0_copy0": {
+        "label": "A2",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 952.4,
+        "left": 1931.9,
+        "graph": {
+          "FORMULA39_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization 1"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM32_copy0": {
+        "label": "A1",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.4,
+        "left": 1931.9,
+        "graph": {
+          "FORMULA39_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Personalization 1"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND2": {
+        "label": "A1 A2",
+        "description": "",
+        "type": "APPEND",
+        "top": 812.4,
+        "left": 2071.9
+      },
+      "LOAD_DATASET6": {
+        "label": "Primary Contact with email",
+        "type": "LOAD_DATASET",
+        "top": 112.4,
+        "left": 2211.9,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER4_copy0_copy0_copy0": {
+        "label": "Top 6 forbund",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.4,
+        "left": 1651.9
+      },
+      "FILTER15_copy0": {
+        "label": "New Forbund last 2 days (TM Forbund)",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.3,
+        "left": 392.2
+      },
+      "FILTER84": {
+        "label": "Not Agrikj\u00f8p, Agrol, LO",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.3,
+        "left": 532.2
+      },
+      "FILTER3_copy0_copy0": {
+        "label": "MM M Farmer",
+        "description": "",
+        "type": "FILTER",
+        "top": 952.3,
+        "left": 672.2
+      },
+      "FILTER85": {
+        "label": "Less than 30 subs",
+        "description": "",
+        "type": "FILTER",
+        "top": 952.3,
+        "left": 812.2
+      },
+      "APPEND3": {
+        "label": "Append 3",
+        "type": "APPEND",
+        "top": 812.3,
+        "left": 812.2
+      },
+      "FILTER4_copy0_copy0_copy0_copy0": {
+        "label": "Others",
+        "description": "",
+        "type": "FILTER",
+        "top": 952.4,
+        "left": 1651.9
+      },
+      "LOAD_DATASET7": {
+        "label": "C360_eDM_Master",
+        "type": "LOAD_DATASET",
+        "top": 392.7,
+        "left": 1092.4,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER86": {
+        "label": "Already on campaign C360_216",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.7,
+        "left": 1092.4
+      },
+      "JOIN6": {
+        "label": "Already on campaign (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 812,
+        "left": 1092
+      },
+      "FILTER87": {
+        "label": "OK to contact",
+        "description": "",
+        "type": "FILTER",
+        "top": 812,
+        "left": 1232
+      },
+      "TRANSFORM33": {
+        "label": "Dropping fields",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 1092,
+        "graph": {
+          "DROP_FIELDS3": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM34": {
+        "label": "Dropping fields",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812,
+        "left": 1372,
+        "graph": {
+          "DROP_FIELDS4": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      }
+    },
+    "connectors": [
+      {
+        "source": "TRANSFORM32_copy0",
+        "target": "APPEND2"
+      },
+      {
+        "source": "APPEND2",
+        "target": "JOIN5"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "FILTER55"
+      },
+      {
+        "source": "TRANSFORM14_copy0_copy0_copy0",
+        "target": "JOIN2"
+      },
+      {
+        "source": "FILTER55",
+        "target": "JOIN2"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1_copy0"
+      },
+      {
+        "source": "TRANSFORM30_copy0",
+        "target": "FILTER82_copy0"
+      },
+      {
+        "source": "JOIN5",
+        "target": "TRANSFORM14_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM22_copy0_copy0",
+        "target": "OUTPUT1_copy0"
+      },
+      {
+        "source": "JOIN2",
+        "target": "TRANSFORM22_copy0_copy0"
+      },
+      {
+        "source": "FILTER82_copy0",
+        "target": "TRANSFORM31"
+      },
+      {
+        "source": "TRANSFORM31",
+        "target": "FILTER83"
+      },
+      {
+        "source": "FILTER83",
+        "target": "JOIN5"
+      },
+      {
+        "source": "TRANSFORM32_copy0_copy0",
+        "target": "APPEND2"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "TRANSFORM30_copy0"
+      },
+      {
+        "source": "FILTER4_copy1",
+        "target": "FILTER4_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER4_copy0_copy0_copy0",
+        "target": "TRANSFORM32_copy0"
+      },
+      {
+        "source": "FILTER1_copy0",
+        "target": "FILTER15_copy0"
+      },
+      {
+        "source": "FILTER15_copy0",
+        "target": "FILTER84"
+      },
+      {
+        "source": "FILTER84",
+        "target": "FILTER3_copy0_copy0"
+      },
+      {
+        "source": "FILTER3_copy0_copy0",
+        "target": "FILTER85"
+      },
+      {
+        "source": "FILTER84",
+        "target": "FILTER3_copy0"
+      },
+      {
+        "source": "FILTER3_copy0",
+        "target": "APPEND3"
+      },
+      {
+        "source": "FILTER85",
+        "target": "APPEND3"
+      },
+      {
+        "source": "APPEND3",
+        "target": "FILTER5"
+      },
+      {
+        "source": "FILTER4_copy1",
+        "target": "FILTER4_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER4_copy0_copy0_copy0_copy0",
+        "target": "TRANSFORM32_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "FILTER86"
+      },
+      {
+        "source": "FILTER5",
+        "target": "JOIN6"
+      },
+      {
+        "source": "TRANSFORM33",
+        "target": "JOIN6"
+      },
+      {
+        "source": "JOIN6",
+        "target": "FILTER87"
+      },
+      {
+        "source": "FILTER86",
+        "target": "TRANSFORM33"
+      },
+      {
+        "source": "FILTER87",
+        "target": "TRANSFORM34"
+      },
+      {
+        "source": "TRANSFORM34",
+        "target": "FILTER4_copy1"
+      }
+    ],
+    "hiddenColumns": []
+  }
+}

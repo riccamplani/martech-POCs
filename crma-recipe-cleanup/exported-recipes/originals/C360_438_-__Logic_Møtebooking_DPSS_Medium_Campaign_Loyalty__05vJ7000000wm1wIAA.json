@@ -1,0 +1,1441 @@
+{
+  "conversionDetails": [],
+  "createdBy": {
+    "id": "005b0000001J0bcAAC",
+    "name": "Berit Ruud",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "createdDate": "2025-02-06T12:11:53.000Z",
+  "dataflowLastUpdate": "2025-05-12T09:22:29.000Z",
+  "fileUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wm1wIAA/file",
+  "format": "R3",
+  "historiesUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wm1wIAA/histories",
+  "id": "05vJ7000000wm1wIAA",
+  "label": "C360 438 -  Logic M\u00f8tebooking DPSS Medium Campaign Loyalty",
+  "lastModifiedBy": {
+    "id": "005b0000001J0bcAAC",
+    "name": "Berit Ruud",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "lastModifiedDate": "2025-05-12T09:22:29.000Z",
+  "licenseAttributes": {
+    "type": "einsteinanalytics"
+  },
+  "name": "C360_438_Logic_M_tebooking_DPSS_Medium_Campaign_Loyalty",
+  "publishingTarget": "Dataset",
+  "recipeDefinition": {
+    "nodes": {
+      "LOAD_DATASET11_copy0": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "Fiber and TBB Potential addresses to sell to",
+            "name": "Fiber_and_TBB_Potential_addresses_to_sell_to",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "Location_Owner__c",
+            "Antall_lokasjoner_mersalg_fiber",
+            "Antall_Lokasjoner_mersalg_TBB"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "OUTPUT0": {
+        "action": "save",
+        "parameters": {
+          "dataset": {
+            "folderName": "Campaign_Developer_App",
+            "label": "C360 438 -  M\u00f8tebooking DPSS Medium Loyalty Customers",
+            "name": "C360_438_M_tebooking_DPSS_Medium_Loyalty_Customers",
+            "type": "analyticsDataset"
+          },
+          "fields": [],
+          "measuresToCurrencies": []
+        },
+        "sources": [
+          "FILTER43"
+        ]
+      },
+      "LOAD_DATASET13": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "connectionName": "SFDC_LOCAL_SEGMENTATION",
+            "label": "Campaign",
+            "sourceObjectName": "Campaign",
+            "type": "connectedDataset"
+          },
+          "fields": [
+            "reporting_tag__c",
+            "Id",
+            "CampaignID__c",
+            "Name"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FILTER40": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "CampaignID__c",
+              "operands": [
+                "C360_273",
+                "C360_274"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "LOAD_DATASET13"
+        ]
+      },
+      "LOAD_DATASET14": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "Fiber newsalesadress more adresses for a customer",
+            "name": "Fiber_newsalesadress_more_adresses_for_a_customer",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "Adresse5.Adresse5",
+            "Adresse3.Adresse3",
+            "Adresse8.Adresse8",
+            "Adresse10.Adresse10",
+            "Adresse6.Adresse6",
+            "Adresse1.Adresse1",
+            "Text_adress_1",
+            "Adresse4.Adresse4",
+            "Adresse9.Adresse9",
+            "Adresse2.Adresse2",
+            "Adresse7.Adresse7",
+            "Location_Owner__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FORMULA28_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+              "label": "Personalization 2",
+              "name": "Personalization_2__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN5"
+        ]
+      },
+      "FORMULA31_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse2.Adresse2&quot;",
+              "label": "Personalization_3__c",
+              "name": "Personalization_3__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA28_copy0_copy0"
+        ]
+      },
+      "FORMULA32_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse3.Adresse3&quot;",
+              "label": "Personalization_4__c",
+              "name": "Personalization_4__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA31_copy0"
+        ]
+      },
+      "FORMULA33_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse4.Adresse4&quot;",
+              "label": "Personalization_5__c",
+              "name": "Personalization_5__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA32_copy0"
+        ]
+      },
+      "FORMULA34_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse5.Adresse5&quot;",
+              "label": "Personalization_6__c",
+              "name": "Personalization_6__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA33_copy0"
+        ]
+      },
+      "FORMULA35_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse6.Adresse6&quot;",
+              "label": "Personalization_7__c",
+              "name": "Personalization_7__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA34_copy0"
+        ]
+      },
+      "FORMULA36_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse7.Adresse7&quot;",
+              "label": "Personalization_8__c",
+              "name": "Personalization_8__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA35_copy0"
+        ]
+      },
+      "FORMULA37_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse8.Adresse8&quot;",
+              "label": "Personalization_9__c",
+              "name": "Personalization_9__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA36_copy0"
+        ]
+      },
+      "FORMULA38_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse9.Adresse9&quot;",
+              "label": "Personalization_10__c",
+              "name": "Personalization_10__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA37_copy0"
+        ]
+      },
+      "FORMULA39_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;Adresse10.Adresse10&quot;",
+              "label": "Personalization_11__c",
+              "name": "Personalization_11__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA38_copy0"
+        ]
+      },
+      "DROP_FIELDS17": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Location_Owner__c",
+              "Personalization_2__c",
+              "Personalization_3__c",
+              "Personalization_4__c",
+              "Personalization_5__c",
+              "Personalization_6__c",
+              "Personalization_7__c",
+              "Personalization_8__c",
+              "Personalization_9__c",
+              "Personalization_10__c",
+              "Personalization_11__c",
+              "Personalization_12__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "FORMULA50"
+        ]
+      },
+      "FORMULA50": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "&quot;FiberandTB.Potensielle_IA_Adresser_to_dimension&quot;",
+              "label": "Personalization_12__c",
+              "name": "Personalization_12__c",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA39_copy0"
+        ]
+      },
+      "LOAD_DATASET15": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "Fiber newsalesadresses 1 for a customer",
+            "name": "Fiber_newsalesadresses_1_for_a_customer",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "IA_full_new_sale_text_adresses",
+            "Mulig_Installasjonsadresse",
+            "Location_Owner__c",
+            "Capacity_code__c",
+            "Coverage_4G_Plus__c",
+            "Coverage_4GP40__c",
+            "Coverage_5G_P__c",
+            "Coverage_4G__c",
+            "Fiber_cost__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "JOIN4": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "Location_Owner__c"
+          ],
+          "rightKeys": [
+            "Location_Owner__c"
+          ],
+          "rightQualifier": "Fibernewsa"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "LOAD_DATASET14",
+          "LOAD_DATASET15"
+        ]
+      },
+      "JOIN5": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "Location_Owner__c"
+          ],
+          "rightKeys": [
+            "Location_Owner__c"
+          ],
+          "rightQualifier": "FiberandTB"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "JOIN4",
+          "DROP_FIELDS15_copy0_copy0"
+        ]
+      },
+      "FORMULA40_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "Antall_lokasjoner_mersalg_fiber+Antall_Lokasjoner_mersalg_TBB",
+              "label": "Potensielle_IA_Adresser",
+              "name": "Potensielle_IA_Adresser",
+              "precision": 10,
+              "scale": 0,
+              "type": "NUMBER"
+            }
+          ]
+        },
+        "sources": [
+          "LOAD_DATASET11_copy0"
+        ]
+      },
+      "TO_DIMENSION0_copy0_copy0": {
+        "action": "typeCast",
+        "parameters": {
+          "fields": [
+            {
+              "name": "Potensielle_IA_Adresser",
+              "newProperties": {
+                "label": "Potensielle_IA_Adresser_txt",
+                "name": "Potensielle_IA_Adresser_to_dimension",
+                "typeProperties": {
+                  "length": 255,
+                  "type": "TEXT"
+                }
+              }
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA40_copy0_copy0"
+        ]
+      },
+      "DROP_FIELDS15_copy0_copy0": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Location_Owner__c",
+              "Potensielle_IA_Adresser_to_dimension"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "TO_DIMENSION0_copy0_copy0"
+        ]
+      },
+      "LOAD_DATASET16_copy0_copy0": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "connectionName": "SFDC_LOCAL_SEGMENTATION",
+            "label": "CustomerCampaignItem__c",
+            "sourceObjectName": "CustomerCampaignItem__c",
+            "type": "connectedDataset"
+          },
+          "fields": [
+            "Response_Code__c",
+            "Campaign__c",
+            "Account__c",
+            "CampaignID__c",
+            "CampaignName__c",
+            "KSBID__c",
+            "KurtID__c",
+            "Campaign_Channels__c",
+            "Personalization_1__c",
+            "Reason_Sub_code__c",
+            "Salestip_Template__c",
+            "Status__c",
+            "tm_agency__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FILTER41_copy0_copy0": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "Status__c",
+              "operands": [
+                "Open"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN7"
+        ]
+      },
+      "JOIN7": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "Campaign__c"
+          ],
+          "rightKeys": [
+            "Id"
+          ],
+          "rightQualifier": "C360_273"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "LOAD_DATASET16_copy0_copy0",
+          "FILTER40"
+        ]
+      },
+      "JOIN8": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "SFB_AccountId"
+          ],
+          "rightKeys": [
+            "Location_Owner__c"
+          ],
+          "rightQualifier": "Output"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "DROP_FIELDS26",
+          "DROP_FIELDS17"
+        ]
+      },
+      "DROP_FIELDS20": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Personalization_1__c",
+              "KSBID",
+              "SFB_CampainId",
+              "SFB_AccountId",
+              "Kurt_Id",
+              "Sales_tip_title",
+              "Sales_tip_description_template",
+              "Campaign_Channels",
+              "Telesales_agency",
+              "Output.Personalization_2__c",
+              "Output.Personalization_3__c",
+              "Output.Personalization_4__c",
+              "Output.Personalization_5__c",
+              "Output.Personalization_6__c",
+              "Output.Personalization_7__c",
+              "Output.Personalization_8__c",
+              "Output.Personalization_9__c",
+              "Output.Personalization_10__c",
+              "Output.Personalization_11__c",
+              "Output.Personalization_12__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "JOIN8"
+        ]
+      },
+      "FORMULA44_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "KSBID__c",
+              "label": "KSBID",
+              "name": "KSBID",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FILTER42"
+        ]
+      },
+      "FORMULA45_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "Campaign__c",
+              "label": "SFB CampainId",
+              "name": "SFB_CampainId",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA44_copy0_copy0"
+        ]
+      },
+      "FORMULA46_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "Account__c",
+              "label": "SFB AccountId",
+              "name": "SFB_AccountId",
+              "precision": 18,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA45_copy0_copy0"
+        ]
+      },
+      "FORMULA47_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "KurtID__c",
+              "label": "Kurt Id",
+              "name": "Kurt_Id",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA46_copy0_copy0"
+        ]
+      },
+      "FORMULA48_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "CampaignName__c",
+              "label": "Sales tip title",
+              "name": "Sales_tip_title",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA47_copy0_copy0"
+        ]
+      },
+      "FORMULA49_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "Salestip_Template__c",
+              "label": "Sales tip description template",
+              "name": "Sales_tip_description_template",
+              "precision": 9999,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA48_copy0_copy0"
+        ]
+      },
+      "DROP_FIELDS18_copy0_copy0": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Campaign_Channels__c",
+              "Personalization_1__c",
+              "tm_agency__c",
+              "KSBID",
+              "SFB_CampainId",
+              "SFB_AccountId",
+              "Kurt_Id",
+              "Sales_tip_title",
+              "Sales_tip_description_template"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "FORMULA49_copy0_copy0"
+        ]
+      },
+      "FORMULA55": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "Campaign_Channels__c",
+              "label": "Campaign Channels",
+              "name": "Campaign_Channels",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "DROP_FIELDS18_copy0_copy0"
+        ]
+      },
+      "FORMULA56": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case when\r\ntm_agency__c=&#39;Medium DPS&#39; then &#39;Medium DPSS&#39;\r\nelse tm_agency__c\r\nend",
+              "label": "Telesales agency",
+              "name": "Telesales_agency",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA55"
+        ]
+      },
+      "DROP_FIELDS26": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Personalization_1__c",
+              "KSBID",
+              "SFB_CampainId",
+              "SFB_AccountId",
+              "Kurt_Id",
+              "Sales_tip_title",
+              "Sales_tip_description_template",
+              "Campaign_Channels",
+              "Telesales_agency"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "FORMULA56"
+        ]
+      },
+      "JOIN14": {
+        "action": "join",
+        "parameters": {
+          "joinType": "LEFT_OUTER",
+          "leftKeys": [
+            "Account__c"
+          ],
+          "rightKeys": [
+            "Key_suppression_open_Case_fiber_tbb_newsale"
+          ],
+          "rightQualifier": "Casenysalg"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "FILTER41_copy0_copy0",
+          "LOAD_DATASET17_copy0"
+        ]
+      },
+      "FILTER42": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "Casenysalg.Key_suppression_open_Case_fiber_tbb_newsale",
+              "operands": [],
+              "operator": "IS_NULL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN14"
+        ]
+      },
+      "LOAD_DATASET17_copy0": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "Case nysalg Fiber TBB open",
+            "name": "Case_nysalg_Fiber_TBB_open",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "Key_suppression_open_Case_fiber_tbb_newsale"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FILTER43": {
+        "action": "filter",
+        "parameters": {
+          "filterExpressions": [
+            {
+              "field": "Kurt_Id",
+              "operands": [
+                "-1"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "DROP_FIELDS20"
+        ]
+      }
+    },
+    "runMode": "full",
+    "ui": {
+      "nodes": {
+        "LOAD_DATASET11_copy0": {
+          "label": "Fiber and TBB Potential addresses to sell to",
+          "type": "LOAD_DATASET",
+          "top": 670.9,
+          "left": 1373.4,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "OUTPUT0": {
+          "label": "C360 438 -  M\u00f8tebooking DPSS Medium Loyalty Customers",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 532,
+          "left": 2352
+        },
+        "LOAD_DATASET13": {
+          "label": "Campaign",
+          "type": "LOAD_DATASET",
+          "top": 532.1,
+          "left": 252,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "FILTER40": {
+          "label": "C360_273_274",
+          "description": "",
+          "type": "FILTER",
+          "top": 252.2,
+          "left": 252.3
+        },
+        "LOAD_DATASET14": {
+          "label": "Fiber newsalesadress more adresses for a customer",
+          "type": "LOAD_DATASET",
+          "top": 530.9,
+          "left": 1373.4,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "TRANSFORM15_copy1_copy0": {
+          "label": "Output",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 530.9,
+          "left": 1793.4,
+          "graph": {
+            "FORMULA28_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization 2"
+            },
+            "FORMULA31_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_3__c"
+            },
+            "FORMULA32_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_4__c"
+            },
+            "FORMULA33_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_5__c"
+            },
+            "FORMULA34_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_6__c"
+            },
+            "FORMULA35_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_7__c"
+            },
+            "FORMULA36_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_8__c"
+            },
+            "FORMULA37_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_9__c"
+            },
+            "FORMULA38_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_10__c"
+            },
+            "FORMULA39_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization_11__c"
+            },
+            "DROP_FIELDS17": {
+              "label": "Drop Columns"
+            },
+            "FORMULA50": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Personalization 12"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA28_copy0_copy0",
+              "target": "FORMULA31_copy0"
+            },
+            {
+              "source": "FORMULA31_copy0",
+              "target": "FORMULA32_copy0"
+            },
+            {
+              "source": "FORMULA32_copy0",
+              "target": "FORMULA33_copy0"
+            },
+            {
+              "source": "FORMULA33_copy0",
+              "target": "FORMULA34_copy0"
+            },
+            {
+              "source": "FORMULA34_copy0",
+              "target": "FORMULA35_copy0"
+            },
+            {
+              "source": "FORMULA35_copy0",
+              "target": "FORMULA36_copy0"
+            },
+            {
+              "source": "FORMULA36_copy0",
+              "target": "FORMULA37_copy0"
+            },
+            {
+              "source": "FORMULA37_copy0",
+              "target": "FORMULA38_copy0"
+            },
+            {
+              "source": "FORMULA38_copy0",
+              "target": "FORMULA39_copy0"
+            },
+            {
+              "source": "FORMULA50",
+              "target": "DROP_FIELDS17"
+            },
+            {
+              "source": "FORMULA39_copy0",
+              "target": "FORMULA50"
+            }
+          ]
+        },
+        "LOAD_DATASET15": {
+          "label": "Fiber newsalesadresses 1 for a customer",
+          "type": "LOAD_DATASET",
+          "top": 390.9,
+          "left": 1373.4,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "JOIN4": {
+          "label": "Join 4",
+          "type": "JOIN",
+          "top": 530.9,
+          "left": 1513.4
+        },
+        "JOIN5": {
+          "label": "Join 5",
+          "type": "JOIN",
+          "top": 530.9,
+          "left": 1653.4
+        },
+        "TRANSFORM20_copy0_copy0": {
+          "label": "TrPotensial IA Adress to sell to Copy",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 670.9,
+          "left": 1653.4,
+          "graph": {
+            "FORMULA40_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Antall potensielle adresser"
+            },
+            "TO_DIMENSION0_copy0_copy0": {
+              "label": "To Text"
+            },
+            "DROP_FIELDS15_copy0_copy0": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA40_copy0_copy0",
+              "target": "TO_DIMENSION0_copy0_copy0"
+            },
+            {
+              "source": "TO_DIMENSION0_copy0_copy0",
+              "target": "DROP_FIELDS15_copy0_copy0"
+            }
+          ]
+        },
+        "LOAD_DATASET16_copy0_copy0": {
+          "label": "CustomerCampaignItem__c",
+          "type": "LOAD_DATASET",
+          "top": 112.1,
+          "left": 111.80000000000001,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "FILTER41_copy0_copy0": {
+          "label": "m\u00f8tebooking open",
+          "description": "",
+          "type": "FILTER",
+          "top": 112.19999999999999,
+          "left": 530.4
+        },
+        "JOIN7": {
+          "label": "m\u00f8tebooking alle",
+          "description": "",
+          "type": "JOIN",
+          "top": 112.9,
+          "left": 253.39999999999998
+        },
+        "JOIN8": {
+          "label": "Join 8",
+          "type": "JOIN",
+          "top": 530.9,
+          "left": 1933.4
+        },
+        "TRANSFORM25": {
+          "label": "Transform 25",
+          "type": "TRANSFORM",
+          "top": 532.1,
+          "left": 2072.1,
+          "graph": {
+            "DROP_FIELDS20": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": []
+        },
+        "TRANSFORM23_copy0_copy0": {
+          "label": "Variabler2 Copy",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112.19999999999999,
+          "left": 950.1,
+          "graph": {
+            "FORMULA44_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "KSBID"
+            },
+            "FORMULA45_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "SFB CampainId"
+            },
+            "FORMULA46_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "SFB AccountId"
+            },
+            "FORMULA47_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Kurtid"
+            },
+            "FORMULA48_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Sales tip title"
+            },
+            "FORMULA49_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Sales tip description template"
+            },
+            "DROP_FIELDS18_copy0_copy0": {
+              "label": "Drop Columns"
+            },
+            "FORMULA55": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA56": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "DROP_FIELDS26": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA44_copy0_copy0",
+              "target": "FORMULA45_copy0_copy0"
+            },
+            {
+              "source": "FORMULA45_copy0_copy0",
+              "target": "FORMULA46_copy0_copy0"
+            },
+            {
+              "source": "FORMULA46_copy0_copy0",
+              "target": "FORMULA47_copy0_copy0"
+            },
+            {
+              "source": "FORMULA47_copy0_copy0",
+              "target": "FORMULA48_copy0_copy0"
+            },
+            {
+              "source": "FORMULA48_copy0_copy0",
+              "target": "FORMULA49_copy0_copy0"
+            },
+            {
+              "source": "FORMULA49_copy0_copy0",
+              "target": "DROP_FIELDS18_copy0_copy0"
+            },
+            {
+              "source": "DROP_FIELDS18_copy0_copy0",
+              "target": "FORMULA55"
+            },
+            {
+              "source": "FORMULA55",
+              "target": "FORMULA56"
+            },
+            {
+              "source": "FORMULA56",
+              "target": "DROP_FIELDS26"
+            }
+          ]
+        },
+        "JOIN14": {
+          "label": "Join 14",
+          "type": "JOIN",
+          "top": 112.1,
+          "left": 672.2
+        },
+        "FILTER42": {
+          "label": "UT Case",
+          "description": "",
+          "type": "FILTER",
+          "top": 112,
+          "left": 812
+        },
+        "LOAD_DATASET17_copy0": {
+          "label": "Case nysalg Fiber TBB open Copy",
+          "type": "LOAD_DATASET",
+          "top": 252.10000000000002,
+          "left": 672,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "FILTER43": {
+          "label": "Alle kunder ut",
+          "description": "",
+          "type": "FILTER",
+          "top": 532,
+          "left": 2212
+        }
+      },
+      "connectors": [
+        {
+          "source": "TRANSFORM23_copy0_copy0",
+          "target": "JOIN8"
+        },
+        {
+          "source": "JOIN5",
+          "target": "TRANSFORM15_copy1_copy0"
+        },
+        {
+          "source": "LOAD_DATASET14",
+          "target": "JOIN4"
+        },
+        {
+          "source": "LOAD_DATASET15",
+          "target": "JOIN4"
+        },
+        {
+          "source": "JOIN4",
+          "target": "JOIN5"
+        },
+        {
+          "source": "LOAD_DATASET11_copy0",
+          "target": "TRANSFORM20_copy0_copy0"
+        },
+        {
+          "source": "TRANSFORM20_copy0_copy0",
+          "target": "JOIN5"
+        },
+        {
+          "source": "JOIN7",
+          "target": "FILTER41_copy0_copy0"
+        },
+        {
+          "source": "LOAD_DATASET16_copy0_copy0",
+          "target": "JOIN7"
+        },
+        {
+          "source": "FILTER40",
+          "target": "JOIN7"
+        },
+        {
+          "source": "TRANSFORM15_copy1_copy0",
+          "target": "JOIN8"
+        },
+        {
+          "source": "LOAD_DATASET13",
+          "target": "FILTER40"
+        },
+        {
+          "source": "FILTER42",
+          "target": "TRANSFORM23_copy0_copy0"
+        },
+        {
+          "source": "FILTER41_copy0_copy0",
+          "target": "JOIN14"
+        },
+        {
+          "source": "JOIN14",
+          "target": "FILTER42"
+        },
+        {
+          "source": "FILTER43",
+          "target": "OUTPUT0"
+        },
+        {
+          "source": "LOAD_DATASET17_copy0",
+          "target": "JOIN14"
+        },
+        {
+          "source": "JOIN8",
+          "target": "TRANSFORM25"
+        },
+        {
+          "source": "TRANSFORM25",
+          "target": "FILTER43"
+        }
+      ],
+      "hiddenColumns": []
+    },
+    "version": "62.0"
+  },
+  "scheduleAttributes": {
+    "assetId": "05vJ7000000wm1wIAA",
+    "events": {
+      "events": [
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2025-11-28T13:01:31.000Z",
+          "eventType": "JobScheduleModified"
+        },
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2025-04-01T19:10:16.000Z",
+          "eventType": "JobScheduled"
+        },
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2025-03-31T13:20:54.000Z",
+          "eventType": "JobUnscheduled"
+        },
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2025-02-10T14:42:51.000Z",
+          "eventType": "JobScheduled"
+        }
+      ]
+    },
+    "frequency": "eventdriven",
+    "triggerRule": "recipe:05vdV00000BijpVQAR"
+  },
+  "scheduleType": "eventdriven",
+  "status": "Success",
+  "targetDataflowId": "02KJ7000000i2scMAA",
+  "type": "recipe",
+  "url": "/services/data/v62.0/wave/recipes/05vJ7000000wm1wIAA?format=R3",
+  "validationDetails": []
+}

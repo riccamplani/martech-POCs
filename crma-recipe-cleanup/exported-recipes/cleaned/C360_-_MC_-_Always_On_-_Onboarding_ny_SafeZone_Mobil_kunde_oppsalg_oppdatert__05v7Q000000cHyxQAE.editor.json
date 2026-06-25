@@ -1,0 +1,2323 @@
+{
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Last_Min_Bedrift_Web_Login__c",
+          "Id",
+          "IsDeleted",
+          "Name",
+          "NumberOfEmployees",
+          "KurtID__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "TSP_Dealer__c",
+          "Company_Family_Name__c",
+          "SOURCE_ACCOUNT_ID_MOBIL__c",
+          "NBR_SAFEZONE_MOBILE__c",
+          "COM_CUSTOMER_EDM_RESERVATION__c",
+          "SAFEZONE_MOB_START_DT__c",
+          "mobile_service_segment__c",
+          "NBR_OPPDATERT__c",
+          "Mobile_Segment__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "DROP_FIELDS16_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_MBAdmin_mail"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET17"
+      ]
+    },
+    "FORMULA54": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_MBAdmin_mail",
+            "label": "Key_have_MB_Admin",
+            "name": "Key_have_MB_Admin",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS16_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS25": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_have_MB_Admin"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA54"
+      ]
+    },
+    "LOAD_DATASET11": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Customers have Primary Contact with eMail",
+          "name": "Customers_have_Primary_Contact_with_eMail",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_PC_mail"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET12": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Customers have MB Admin with eMail",
+          "name": "Customers_have_MB_Admin_with_eMail",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_MBAdmin_mail"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET13": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "MB Admin with eMail",
+          "name": "MB_Admin_with_eMail",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "AccountId",
+          "Email",
+          "Id",
+          "MobilePhone"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET14": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Primary Contact with email",
+          "name": "Primary_Contact_with_email",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "AccountId",
+          "Email",
+          "Id",
+          "MobilePhone"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER17": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "TSP_Dealer__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER21"
+      ]
+    },
+    "FILTER19": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Public Unassigned"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN10"
+      ]
+    },
+    "FILTER21": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy0"
+      ]
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_have_MB_Admin"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "Account"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS25",
+        "JOIN10"
+      ]
+    },
+    "DROP_FIELDS17_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account.Last_Min_Bedrift_Web_Login__c",
+            "Account.IsDeleted",
+            "Account.Name",
+            "Account.KurtID__c",
+            "Account.StatusKURT__c",
+            "Account.TSP_Dealer__c",
+            "Account.SOURCE_ACCOUNT_ID_MOBIL__c",
+            "Account.NBR_SAFEZONE_MOBILE__c",
+            "Account.COM_CUSTOMER_EDM_RESERVATION__c",
+            "Account.SAFEZONE_MOB_START_DT__c",
+            "Account.NBR_OPPDATERT__c",
+            "Account.Gruppering.Key_gruppe_mobilservicesegment"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA57"
+      ]
+    },
+    "FORMULA44_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\n&quot;Account.SubsMobileVoice__c&quot; &gt;50\r\nthen &#39;Over 50&#39;\r\nelse &#39;Under 50&#39;\r\nend",
+            "label": "Limit_50_abo",
+            "name": "Limit_50_abo",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS18_copy0_copy0"
+      ]
+    },
+    "FORMULA45_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen Agrol_def_1 =&#39;AGROL&#39; and Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nwhen \r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and Have_MB_Admin_active =&#39;1&#39;\r\nthen &#39;MB&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and\r\nHave_MB_Admin_active =&#39;0&#39; and Calc_segment =&#39;Large&#39; \r\nthen &#39;MB&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and\r\nHave_MB_Admin_active =&#39;0&#39; and Calc_segment =&#39;Small&#39; \r\nand Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har Ikke MB Admin&#39;\r\nand Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nelse &#39;0&#39;\r\nend",
+            "label": "Personalization_5__c",
+            "name": "Personalization_5__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA58"
+      ]
+    },
+    "FORMULA46_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when\r\ncontains(Key_have_MB_Admin, &#39;001&#39;) then\r\n&#39;Har MB Admin&#39; \r\nelse &#39;Har Ikke MB Admin&#39;\r\nend",
+            "label": "Har_MB_Admin",
+            "name": "Har_MB_Admin",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS17_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS18_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_have_MB_Admin",
+            "Account.Id",
+            "Account.NumberOfEmployees",
+            "Account.SubsMobileVoice__c",
+            "Account.Company_Family_Name__c",
+            "Account.mobile_service_segment__c",
+            "Account.Mobile_Segment__c",
+            "Account.Gruppering.Gruppe_mobil_service_segment",
+            "HaveMBadmi.Have_MB_Admin_active",
+            "Have_MB_Admin_active",
+            "Calc_segment",
+            "Har_MB_Admin"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA46_copy0_copy0"
+      ]
+    },
+    "FORMULA58": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when &quot;Account.Company_Family_Name__c&quot;= &#39;AGROL&#39; then &#39;AGROL&#39; else &#39;NOT AGROL&#39;\r\nend",
+            "label": "Agrol_def_1",
+            "name": "Agrol_def_1",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA44_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS19_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account.Id",
+            "Have_MB_Admin_active",
+            "Calc_segment",
+            "Har_MB_Admin",
+            "Limit_50_abo",
+            "Agrol_def_1",
+            "Personalization_5__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA45_copy0_copy0"
+      ]
+    },
+    "FILTER22": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "NBR_OPPDATERT__c",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER17"
+      ]
+    },
+    "TO_DIMENSION0": {
+      "action": "typeCast",
+      "parameters": {
+        "fields": [
+          {
+            "name": "SOURCE_ACCOUNT_ID_MOBIL__c",
+            "newProperties": {
+              "label": "Personalization_1__c",
+              "name": "Personalization_1__c",
+              "typeProperties": {
+                "length": 255,
+                "type": "TEXT"
+              }
+            }
+          }
+        ]
+      },
+      "sources": [
+        "FILTER74"
+      ]
+    },
+    "FORMULA47": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;1400&#39;",
+            "label": "Personalization_2__c",
+            "name": "Personalization_2__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "TO_DIMENSION0"
+      ]
+    },
+    "FORMULA48": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;1500&#39;",
+            "label": "Personalization_3__c",
+            "name": "Personalization_3__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA47"
+      ]
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Account.Id"
+        ],
+        "rightQualifier": "Personaliz"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA48",
+        "DROP_FIELDS19_copy0_copy0"
+      ]
+    },
+    "FORMULA53": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; \r\nthen &#39;A5&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;MB&#39; and &quot;Personaliz.Calc_segment&quot;=&#39;Small&#39;\r\nthen &#39;A1&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;MB&#39; and &quot;Personaliz.Calc_segment&quot;=&#39;Large&#39;\r\nthen &#39;A2&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; and &quot;Personaliz.Calc_segment&quot; =&#39;Small&#39;\r\nthen &#39;A3&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; and &quot;Personaliz.Calc_segment&quot; = &#39;Large&#39;\r\nthen &#39;A4&#39;\r\nelse &#39;A6&#39;\r\nend",
+            "label": "Personalization_4__c",
+            "name": "Personalization_4__c",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN1"
+      ]
+    },
+    "FILTER23": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Personalization_4__c",
+            "operands": [
+              "A1",
+              "A2"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA53"
+      ]
+    },
+    "FILTER24": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Personalization_4__c",
+            "operands": [
+              "A3",
+              "A4",
+              "A5",
+              "A6"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA53"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_MBAdmin_mail"
+        ],
+        "rightQualifier": "Customersh"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER23",
+        "LOAD_DATASET12"
+      ]
+    },
+    "JOIN3": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_PC_mail"
+        ],
+        "rightQualifier": "Customersh"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER24",
+        "LOAD_DATASET11"
+      ]
+    },
+    "LOAD_DATASET15": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "Name",
+          "CampaignID__c",
+          "reporting_tag__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER25": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_151"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET15"
+      ]
+    },
+    "JOIN5": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "AccountId"
+        ],
+        "rightQualifier": "MBAdminwit"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN2",
+        "LOAD_DATASET13"
+      ]
+    },
+    "JOIN6": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "AccountId"
+        ],
+        "rightQualifier": "PrimaryCon"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN3",
+        "LOAD_DATASET14"
+      ]
+    },
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          },
+          {
+            "bottom": "SOURCE_ACCOUNT_ID_MOBIL__c",
+            "top": "SOURCE_ACCOUNT_ID_MOBIL__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "NumberOfEmployees",
+            "top": "NumberOfEmployees"
+          },
+          {
+            "bottom": "KurtID__c",
+            "top": "KurtID__c"
+          },
+          {
+            "bottom": "StatusKURT__c",
+            "top": "StatusKURT__c"
+          },
+          {
+            "bottom": "SubsMobileVoice__c",
+            "top": "SubsMobileVoice__c"
+          },
+          {
+            "bottom": "TSP_Dealer__c",
+            "top": "TSP_Dealer__c"
+          },
+          {
+            "bottom": "Company_Family_Name__c",
+            "top": "Company_Family_Name__c"
+          },
+          {
+            "bottom": "NBR_SAFEZONE_MOBILE__c",
+            "top": "NBR_SAFEZONE_MOBILE__c"
+          },
+          {
+            "bottom": "COM_CUSTOMER_EDM_RESERVATION__c",
+            "top": "COM_CUSTOMER_EDM_RESERVATION__c"
+          },
+          {
+            "bottom": "SAFEZONE_MOB_START_DT__c",
+            "top": "SAFEZONE_MOB_START_DT__c"
+          },
+          {
+            "bottom": "mobile_service_segment__c",
+            "top": "mobile_service_segment__c"
+          },
+          {
+            "bottom": "NBR_OPPDATERT__c",
+            "top": "NBR_OPPDATERT__c"
+          },
+          {
+            "bottom": "Mobile_Segment__c",
+            "top": "Mobile_Segment__c"
+          },
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "Personaliz.Account.Id",
+            "top": "Personaliz.Account.Id"
+          },
+          {
+            "bottom": "Personaliz.Personalization_5__c",
+            "top": "Personaliz.Personalization_5__c"
+          },
+          {
+            "bottom": "Haronbszet.Key_har_onb_sz",
+            "top": "Haronbszet.Key_har_onb_sz"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Customersh.Key_MBAdmin_mail",
+            "top": "Customersh.Key_PC_mail"
+          },
+          {
+            "bottom": "MBAdminwit.AccountId",
+            "top": "PrimaryCon.AccountId"
+          },
+          {
+            "bottom": "MBAdminwit.Email",
+            "top": "PrimaryCon.Email"
+          },
+          {
+            "bottom": "MBAdminwit.Id",
+            "top": "PrimaryCon.Id"
+          },
+          {
+            "bottom": "MBAdminwit.MobilePhone",
+            "top": "PrimaryCon.MobilePhone"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN6",
+        "JOIN5"
+      ]
+    },
+    "DROP_FIELDS22": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "NumberOfEmployees",
+            "KurtID__c",
+            "StatusKURT__c",
+            "TSP_Dealer__c",
+            "Company_Family_Name__c",
+            "NBR_SAFEZONE_MOBILE__c",
+            "COM_CUSTOMER_EDM_RESERVATION__c",
+            "NBR_OPPDATERT__c",
+            "Mobile_Segment__c",
+            "Personalization_1__c",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "Personaliz.Personalization_5__c",
+            "Personalization_4__c",
+            "PrimaryCon.Email",
+            "PrimaryCon.Id",
+            "PrimaryCon.MobilePhone"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "APPEND0"
+      ]
+    },
+    "FORMULA51": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;C360_151&#39;",
+            "label": "Campaign_CD",
+            "name": "Campaign_CD",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS22"
+      ]
+    },
+    "DROP_FIELDS23": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "NumberOfEmployees",
+            "StatusKURT__c",
+            "TSP_Dealer__c",
+            "Company_Family_Name__c",
+            "NBR_SAFEZONE_MOBILE__c",
+            "COM_CUSTOMER_EDM_RESERVATION__c",
+            "NBR_OPPDATERT__c",
+            "Mobile_Segment__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA51"
+      ]
+    },
+    "JOIN7": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_CD"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "C360_143"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS23",
+        "FILTER25"
+      ]
+    },
+    "FORMULA30_copy0_copy0_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "format": "yyyy-MM-dd HH:mm:ss",
+            "formulaExpression": "now()",
+            "label": "Send_timestamp",
+            "name": "Send_timestamp",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN7"
+      ]
+    },
+    "FORMULA31_copy0_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "string(Send_timestamp)",
+            "label": "Send_timestamp_string",
+            "name": "Send_timestamp_string",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA30_copy0_copy0_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS14_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "NumberOfEmployees",
+            "KurtID__c",
+            "StatusKURT__c",
+            "TSP_Dealer__c",
+            "Company_Family_Name__c",
+            "NBR_SAFEZONE_MOBILE__c",
+            "COM_CUSTOMER_EDM_RESERVATION__c",
+            "NBR_OPPDATERT__c",
+            "Mobile_Segment__c",
+            "Personalization_1__c",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "Personaliz.Personalization_5__c",
+            "Personalization_4__c",
+            "PrimaryCon.Email",
+            "PrimaryCon.Id",
+            "PrimaryCon.MobilePhone",
+            "Campaign_CD",
+            "C360_143.Id",
+            "C360_143.Name",
+            "C360_143.CampaignID__c",
+            "C360_143.reporting_tag__c",
+            "Send_timestamp",
+            "Send_timestamp_string"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA31_copy0_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS24": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "KurtID__c",
+            "Personalization_1__c",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "Personaliz.Personalization_5__c",
+            "Personalization_4__c",
+            "PrimaryCon.Email",
+            "PrimaryCon.Id",
+            "PrimaryCon.MobilePhone",
+            "Campaign_CD",
+            "C360_143.Id",
+            "C360_143.Name",
+            "Send_timestamp",
+            "Send_timestamp_string"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS14_copy0"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 - MC - Always On - Onboarding new SZMobil kunde oppsalg oppdatert",
+          "name": "C360_MC_Always_On_Onboarding_new_SZMobil_kunde_oppsalg_oppdatert",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "FILTER76"
+      ]
+    },
+    "FILTER73_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Last_Min_Bedrift_Web_Login__c",
+            "operands": [
+              {
+                "argument": -90,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN10"
+      ]
+    },
+    "FORMULA55": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Have_MB_Admin_active_l_90 days",
+            "name": "Have_MB_Admin_active",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER73_copy0"
+      ]
+    },
+    "DROP_FIELDS26": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Have_MB_Admin_active"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA55"
+      ]
+    },
+    "JOIN8": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Account.Id"
+        ],
+        "rightKeys": [
+          "Have_MB_Admin_active"
+        ],
+        "rightQualifier": "HaveMBadmi"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "JOIN0",
+        "DROP_FIELDS26"
+      ]
+    },
+    "FORMULA56": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \r\nwhen contains(&quot;HaveMBadmi.Have_MB_Admin_active&quot;, &#39;001&#39;)\r\nthen &#39;1&#39;\r\nelse &#39;0&#39;\r\nend",
+            "label": "Have_MB_Admin_active",
+            "name": "Have_MB_Admin_active",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN8"
+      ]
+    },
+    "FORMULA57": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when \r\n(&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;L&#39; or \r\n&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;XL&#39;\r\nor &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; =&#39;Public&#39;\r\nor &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;IOT&#39;)\r\nthen &#39;Large&#39;\r\nwhen \r\n(&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;M&#39; or &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; =&#39;S&#39;)\r\nthen &#39;Small&#39;\r\nelse &#39;0&#39;\r\nend",
+            "label": "Calc segment",
+            "name": "Calc_segment",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA56"
+      ]
+    },
+    "LOAD_DATASET17": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Customers have MB Admin with eMail",
+          "name": "Customers_have_MB_Admin_with_eMail",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_MBAdmin_mail"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET7_copy0_copy0_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 eDM Master",
+          "name": "C360_eDM_Master",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Email",
+          "Personalization_1__c",
+          "Send_timestamp_string",
+          "Personalization_3__c",
+          "MobilePhone",
+          "Personalization_5__c",
+          "AccountID",
+          "Personalization_2__c",
+          "CampaignCD",
+          "Personalization_4__c",
+          "Send_timestamp"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER14_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Send_timestamp",
+            "operands": [
+              {
+                "argument": -40,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "CampaignCD",
+            "operands": [
+              "C360_37"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS12_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "AccountID"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER14_copy0_copy0"
+      ]
+    },
+    "FILTER14_copy0_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Send_timestamp",
+            "operands": [
+              {
+                "argument": -3,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "CampaignCD",
+            "operands": [
+              "C360_151"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS12_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "AccountID"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER14_copy0_copy0_copy0"
+      ]
+    },
+    "APPEND1_copy0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "AccountID",
+            "top": "AccountID"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS12_copy0_copy0_copy0",
+        "DROP_FIELDS12_copy0_copy0"
+      ]
+    },
+    "FORMULA0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "AccountID",
+            "label": "Key_suppression",
+            "name": "Key_suppression",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND1_copy0"
+      ]
+    },
+    "DROP_FIELDS2_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_suppression"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0_copy0_copy0"
+      ]
+    },
+    "JOIN9": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_suppression"
+        ],
+        "rightQualifier": "Suppressio"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER22",
+        "DROP_FIELDS2_copy0_copy0"
+      ]
+    },
+    "FILTER74": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Suppressio.Key_suppression",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN9"
+      ]
+    },
+    "FILTER75": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "NBR_SAFEZONE_MOBILE__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER19"
+      ]
+    },
+    "FILTER0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "SAFEZONE_MOB_START_DT__c",
+            "operands": [
+              {
+                "argument": -5,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": -4,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER75"
+      ]
+    },
+    "LOAD_DATASET18": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Gruppering Mobil Service Segment",
+          "name": "Gruppering_Mobil_Service_Segment",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_gruppe_mobilservicesegment",
+          "Gruppe_mobil_service_segment"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN10": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_gruppe_mobilservicesegment"
+        ],
+        "rightQualifier": "Gruppering"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET0",
+        "LOAD_DATASET18"
+      ]
+    },
+    "FILTER76": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "KurtID__c",
+            "operands": [
+              "-1"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS24"
+      ]
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 532.8,
+        "left": 112.19999999999999,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "TRANSFORM18_copy0_copy0": {
+        "label": "Kunde har MB Admin",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 113.19999999999999,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS16_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA54": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS25": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "DROP_FIELDS16_copy0_copy0",
+            "target": "FORMULA54"
+          },
+          {
+            "source": "FORMULA54",
+            "target": "DROP_FIELDS25"
+          }
+        ]
+      },
+      "LOAD_DATASET11": {
+        "label": "Customers have Primary Contact with eMail",
+        "type": "LOAD_DATASET",
+        "top": 812,
+        "left": 2072,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET12": {
+        "label": "Customers have MB Admin with eMail",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 2073.6,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET13": {
+        "label": "MB Admin with eMail",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 2213.6,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET14": {
+        "label": "Primary Contact with email",
+        "type": "LOAD_DATASET",
+        "top": 812,
+        "left": 2212,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER17": {
+        "label": "TSP UT",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 952
+      },
+      "FILTER19": {
+        "label": "Alle segment - Public Unassigned",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 392
+      },
+      "FILTER21": {
+        "label": "Ikke reservert eDM",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 812
+      },
+      "JOIN0": {
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 113.19999999999999,
+        "left": 672
+      },
+      "TRANSFORM19_copy0_copy0": {
+        "label": "Transform 19",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 1231.7,
+        "graph": {
+          "DROP_FIELDS17_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA44_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "FORMULA45_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "FORMULA46_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS18_copy0_copy0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA58": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": [
+          {
+            "source": "DROP_FIELDS17_copy0_copy0",
+            "target": "FORMULA46_copy0_copy0"
+          },
+          {
+            "source": "FORMULA46_copy0_copy0",
+            "target": "DROP_FIELDS18_copy0_copy0"
+          },
+          {
+            "source": "DROP_FIELDS18_copy0_copy0",
+            "target": "FORMULA44_copy0_copy0"
+          },
+          {
+            "source": "FORMULA58",
+            "target": "FORMULA45_copy0_copy0"
+          },
+          {
+            "source": "FORMULA44_copy0_copy0",
+            "target": "FORMULA58"
+          }
+        ]
+      },
+      "TRANSFORM20_copy0_copy0": {
+        "label": "Personalization 5",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 1371.7,
+        "graph": {
+          "DROP_FIELDS19_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER22": {
+        "label": "Oppdatert = 0",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 1092
+      },
+      "TRANSFORM21": {
+        "label": "Personalization 1-3",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 1512,
+        "graph": {
+          "TO_DIMENSION0": {
+            "label": "To Text"
+          },
+          "FORMULA47": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "FORMULA48": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": [
+          {
+            "source": "TO_DIMENSION0",
+            "target": "FORMULA47"
+          },
+          {
+            "source": "FORMULA47",
+            "target": "FORMULA48"
+          }
+        ]
+      },
+      "JOIN1": {
+        "label": "Join 1",
+        "type": "JOIN",
+        "top": 532,
+        "left": 1652
+      },
+      "TRANSFORM22": {
+        "label": "Personalization 4",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 1792,
+        "graph": {
+          "FORMULA53": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER23": {
+        "label": "MB",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 1932
+      },
+      "FILTER24": {
+        "label": "EC eller kontakt meg",
+        "description": "",
+        "type": "FILTER",
+        "top": 672,
+        "left": 1932.2
+      },
+      "JOIN2": {
+        "label": "Join 2",
+        "type": "JOIN",
+        "top": 532,
+        "left": 2072
+      },
+      "JOIN3": {
+        "label": "Join 3",
+        "type": "JOIN",
+        "top": 672,
+        "left": 2072.2
+      },
+      "LOAD_DATASET15": {
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 952,
+        "left": 1932.2,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER25": {
+        "label": "C360_151",
+        "description": "",
+        "type": "FILTER",
+        "top": 952,
+        "left": 2072.2
+      },
+      "JOIN5": {
+        "label": "Join 5",
+        "type": "JOIN",
+        "top": 532,
+        "left": 2212
+      },
+      "JOIN6": {
+        "label": "Join 6",
+        "type": "JOIN",
+        "top": 672,
+        "left": 2212.2
+      },
+      "APPEND0": {
+        "label": "Append 0",
+        "type": "APPEND",
+        "top": 532,
+        "left": 2352
+      },
+      "TRANSFORM24": {
+        "label": "Transform 24",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 2492,
+        "graph": {
+          "DROP_FIELDS22": {
+            "label": "Drop Columns"
+          },
+          "FORMULA51": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS23": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "DROP_FIELDS22",
+            "target": "FORMULA51"
+          },
+          {
+            "source": "FORMULA51",
+            "target": "DROP_FIELDS23"
+          }
+        ]
+      },
+      "JOIN7": {
+        "label": "Join 7",
+        "type": "JOIN",
+        "top": 532,
+        "left": 2632
+      },
+      "TRANSFORM14_copy0_copy0_copy0_copy0_copy0_copy0": {
+        "label": "timestamp",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 2772,
+        "graph": {
+          "FORMULA30_copy0_copy0_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Send_timestamp"
+          },
+          "FORMULA31_copy0_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS14_copy0": {
+            "label": "Drop Columns"
+          },
+          "DROP_FIELDS24": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA30_copy0_copy0_copy0_copy0_copy0_copy0",
+            "target": "FORMULA31_copy0_copy0_copy0_copy0_copy0"
+          },
+          {
+            "source": "FORMULA31_copy0_copy0_copy0_copy0_copy0",
+            "target": "DROP_FIELDS14_copy0"
+          },
+          {
+            "source": "DROP_FIELDS14_copy0",
+            "target": "DROP_FIELDS24"
+          }
+        ]
+      },
+      "OUTPUT0": {
+        "label": "C360 - MC - Always On - Onboarding new SZMobil kunde oppsalg oppdatert",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 812,
+        "left": 2772
+      },
+      "FILTER73_copy0": {
+        "label": "Min Bedrift Active l 90 days",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 672
+      },
+      "TRANSFORM25": {
+        "label": "Have MB admin active last 90 days",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 812,
+        "graph": {
+          "FORMULA55": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS26": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA55",
+            "target": "DROP_FIELDS26"
+          }
+        ]
+      },
+      "JOIN8": {
+        "label": "Join 8",
+        "type": "JOIN",
+        "top": 112.1,
+        "left": 811.7
+      },
+      "TRANSFORM26": {
+        "label": "MB admin calc",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 951.7,
+        "graph": {
+          "FORMULA56": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM27": {
+        "label": "Transform segment",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 1091.7,
+        "graph": {
+          "FORMULA57": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "LOAD_DATASET17": {
+        "label": "Customers have MB Admin with eMail",
+        "type": "LOAD_DATASET",
+        "top": 113.19999999999999,
+        "left": 111.9,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET7_copy0_copy0_copy0": {
+        "label": "C360 eDM Master",
+        "type": "LOAD_DATASET",
+        "top": 672,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER14_copy0_copy0": {
+        "label": "Onboarding New MV customer last 40 days",
+        "description": "",
+        "type": "FILTER",
+        "top": 672,
+        "left": 252
+      },
+      "TRANSFORM15_copy0_copy0": {
+        "label": "Transform 15",
+        "type": "TRANSFORM",
+        "top": 672,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS12_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER14_copy0_copy0_copy0": {
+        "label": "This campaign last 3 days",
+        "description": "",
+        "type": "FILTER",
+        "top": 812,
+        "left": 252
+      },
+      "TRANSFORM15_copy0_copy0_copy0": {
+        "label": "Transform 15 Copy",
+        "type": "TRANSFORM",
+        "top": 813.8,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS12_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND1_copy0": {
+        "label": "Append 1 Copy",
+        "type": "APPEND",
+        "top": 812,
+        "left": 532
+      },
+      "TRANSFORM2_copy0_copy0": {
+        "label": "Suppression Copy",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812,
+        "left": 672,
+        "graph": {
+          "FORMULA0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0_copy0_copy0",
+            "target": "DROP_FIELDS2_copy0_copy0"
+          }
+        ]
+      },
+      "JOIN9": {
+        "label": "Join 9",
+        "type": "JOIN",
+        "top": 532,
+        "left": 1232
+      },
+      "FILTER74": {
+        "label": "After suppression",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 1372
+      },
+      "FILTER75": {
+        "label": "Have SZ",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 532
+      },
+      "FILTER0_copy0": {
+        "label": "SZMobil last 4-5 dager",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 672
+      },
+      "LOAD_DATASET18": {
+        "label": "Gruppering Mobil Service Segment",
+        "type": "LOAD_DATASET",
+        "top": 253.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN10": {
+        "label": "Join 10",
+        "type": "JOIN",
+        "top": 532,
+        "left": 252
+      },
+      "FILTER76": {
+        "label": "Alle kunder ut",
+        "description": "",
+        "type": "FILTER",
+        "top": 672,
+        "left": 2772
+      }
+    },
+    "connectors": [
+      {
+        "source": "JOIN3",
+        "target": "JOIN6"
+      },
+      {
+        "source": "JOIN10",
+        "target": "FILTER19"
+      },
+      {
+        "source": "TRANSFORM18_copy0_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN10",
+        "target": "JOIN0"
+      },
+      {
+        "source": "TRANSFORM19_copy0_copy0",
+        "target": "TRANSFORM20_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM21",
+        "target": "JOIN1"
+      },
+      {
+        "source": "TRANSFORM20_copy0_copy0",
+        "target": "JOIN1"
+      },
+      {
+        "source": "TRANSFORM22",
+        "target": "FILTER23"
+      },
+      {
+        "source": "TRANSFORM22",
+        "target": "FILTER24"
+      },
+      {
+        "source": "FILTER23",
+        "target": "JOIN2"
+      },
+      {
+        "source": "LOAD_DATASET12",
+        "target": "JOIN2"
+      },
+      {
+        "source": "FILTER24",
+        "target": "JOIN3"
+      },
+      {
+        "source": "LOAD_DATASET11",
+        "target": "JOIN3"
+      },
+      {
+        "source": "LOAD_DATASET15",
+        "target": "FILTER25"
+      },
+      {
+        "source": "JOIN2",
+        "target": "JOIN5"
+      },
+      {
+        "source": "LOAD_DATASET13",
+        "target": "JOIN5"
+      },
+      {
+        "source": "LOAD_DATASET14",
+        "target": "JOIN6"
+      },
+      {
+        "source": "JOIN6",
+        "target": "APPEND0"
+      },
+      {
+        "source": "JOIN5",
+        "target": "APPEND0"
+      },
+      {
+        "source": "APPEND0",
+        "target": "TRANSFORM24"
+      },
+      {
+        "source": "TRANSFORM24",
+        "target": "JOIN7"
+      },
+      {
+        "source": "FILTER25",
+        "target": "JOIN7"
+      },
+      {
+        "source": "JOIN7",
+        "target": "TRANSFORM14_copy0_copy0_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER76",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "JOIN10",
+        "target": "FILTER73_copy0"
+      },
+      {
+        "source": "FILTER73_copy0",
+        "target": "TRANSFORM25"
+      },
+      {
+        "source": "JOIN0",
+        "target": "JOIN8"
+      },
+      {
+        "source": "TRANSFORM25",
+        "target": "JOIN8"
+      },
+      {
+        "source": "JOIN8",
+        "target": "TRANSFORM26"
+      },
+      {
+        "source": "TRANSFORM26",
+        "target": "TRANSFORM27"
+      },
+      {
+        "source": "TRANSFORM27",
+        "target": "TRANSFORM19_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET17",
+        "target": "TRANSFORM18_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET7_copy0_copy0_copy0",
+        "target": "FILTER14_copy0_copy0"
+      },
+      {
+        "source": "FILTER14_copy0_copy0",
+        "target": "TRANSFORM15_copy0_copy0"
+      },
+      {
+        "source": "FILTER14_copy0_copy0_copy0",
+        "target": "TRANSFORM15_copy0_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET7_copy0_copy0_copy0",
+        "target": "FILTER14_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM15_copy0_copy0_copy0",
+        "target": "APPEND1_copy0"
+      },
+      {
+        "source": "TRANSFORM15_copy0_copy0",
+        "target": "APPEND1_copy0"
+      },
+      {
+        "source": "APPEND1_copy0",
+        "target": "TRANSFORM2_copy0_copy0"
+      },
+      {
+        "source": "JOIN1",
+        "target": "TRANSFORM22"
+      },
+      {
+        "source": "FILTER21",
+        "target": "FILTER17"
+      },
+      {
+        "source": "FILTER17",
+        "target": "FILTER22"
+      },
+      {
+        "source": "FILTER22",
+        "target": "JOIN9"
+      },
+      {
+        "source": "JOIN9",
+        "target": "FILTER74"
+      },
+      {
+        "source": "FILTER74",
+        "target": "TRANSFORM21"
+      },
+      {
+        "source": "FILTER19",
+        "target": "FILTER75"
+      },
+      {
+        "source": "FILTER75",
+        "target": "FILTER0_copy0"
+      },
+      {
+        "source": "FILTER0_copy0",
+        "target": "FILTER21"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "JOIN10"
+      },
+      {
+        "source": "LOAD_DATASET18",
+        "target": "JOIN10"
+      },
+      {
+        "source": "TRANSFORM2_copy0_copy0",
+        "target": "JOIN9"
+      },
+      {
+        "source": "TRANSFORM14_copy0_copy0_copy0_copy0_copy0_copy0",
+        "target": "FILTER76"
+      }
+    ],
+    "hiddenColumns": []
+  }
+}

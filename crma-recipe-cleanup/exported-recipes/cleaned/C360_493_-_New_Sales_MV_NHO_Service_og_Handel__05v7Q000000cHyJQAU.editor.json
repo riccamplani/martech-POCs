@@ -1,0 +1,1395 @@
+{
+  "version": "62.0",
+  "nodes": {
+    "LOAD_DATASET0_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Reservation_Date_MV_Inbound__c",
+          "Reservation_Date_MV_Outbound__c",
+          "Id",
+          "IsDeleted",
+          "Name",
+          "CustomerType__c",
+          "Portfolio__c",
+          "Segment__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "NACE_Subclass_Description__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c",
+          "Mobile_Voice_Penetration__c",
+          "NBR_VOICE_PAYER__c",
+          "COM_CUSTOMER_PHONENBR_STATUS__c",
+          "TAG_TALKMORE_BEDRIFT__c",
+          "TAG_TALKMORE_PRIVATE__c",
+          "Phonenumber_type__c",
+          "mobile_service_segment__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0_copy0"
+      ]
+    },
+    "FILTER3_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Hunter M",
+              "Hunter S",
+              "MM S Hunter",
+              "MM M Hunter"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER1_copy0"
+      ]
+    },
+    "FILTER2_copy1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Forbund_membership__c",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0"
+      ]
+    },
+    "FILTER4_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Forbund_membership__c",
+            "operands": [
+              "NHO Service og Handel"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER9_copy0"
+      ]
+    },
+    "FILTER4_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "SubsMobileVoice__c",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "NBR_VOICE_PAYER__c",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy0_copy0"
+      ]
+    },
+    "FILTER4_copy0_copy1": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "NOT (1 AND 2)",
+        "filterExpressions": [
+          {
+            "field": "SubsMobileVoice__c",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "NBR_VOICE_PAYER__c",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy0_copy0"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Mobile_Voice_Penetration__c",
+            "operands": [
+              "20"
+            ],
+            "operator": "LESS_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER4_copy0_copy1"
+      ]
+    },
+    "FILTER3_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Hunter S",
+              "MM S Hunter"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND0"
+      ]
+    },
+    "FILTER3_copy0_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Hunter M",
+              "MM M Hunter"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND0"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "SharedApp",
+          "label": "C360 493 - New Sales MV NHO Service og Handel",
+          "name": "C360_493_New_Sales_MV_NHO_Service_og_Handel",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS13_copy0"
+      ]
+    },
+    "FILTER6_copy2_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "(NOT 1) OR 2",
+        "filterExpressions": [
+          {
+            "field": "Reservation_Date_MV_Inbound__c",
+            "operands": [
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 365,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Reservation_Date_MV_Inbound__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER10"
+      ]
+    },
+    "FILTER9_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "(NOT 1) OR 2",
+        "filterExpressions": [
+          {
+            "field": "Reservation_Date_MV_Outbound__c",
+            "operands": [
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 365,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Reservation_Date_MV_Outbound__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER6_copy2_copy0_copy0"
+      ]
+    },
+    "LOAD_DATASET3_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppressions Outbound Mobile New Sales",
+          "name": "Suppressions_Outbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "rightQualifier": "Suppressio"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER2_copy1_copy0",
+        "LOAD_DATASET3_copy0"
+      ]
+    },
+    "FILTER10": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Suppressio.Key_Suppressions_Outbound_Mobile_New_Sales",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN0"
+      ]
+    },
+    "LOAD_DATASET13_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "CampaignID__c",
+          "Name",
+          "reporting_tag__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER36_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1",
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_154"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET13_copy0"
+      ]
+    },
+    "LOAD_DATASET14_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "KurtID__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FORMULA7_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;C360_154&#39;",
+            "label": "Campaign Key",
+            "name": "Campaign_Key",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA19_copy0"
+      ]
+    },
+    "JOIN15_copy0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_Key"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "NysalgMobi"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA7_copy0",
+        "FILTER36_copy0"
+      ]
+    },
+    "FORMULA8_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "label": "KSBID",
+            "name": "KSBID",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN15_copy0"
+      ]
+    },
+    "FORMULA9_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "label": "SFB CampainId",
+            "name": "SFB_CampainId",
+            "precision": 100,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8_copy0"
+      ]
+    },
+    "FORMULA10_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "SFB AccountId",
+            "name": "SFB_AccountId",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA9_copy0"
+      ]
+    },
+    "FORMULA11_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "KurtID__c",
+            "label": "Kurt Id",
+            "name": "Kurt_Id",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA10_copy0"
+      ]
+    },
+    "FORMULA14_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "label": "Sales tip title",
+            "name": "Sales_tip_title",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA11_copy0"
+      ]
+    },
+    "DROP_FIELDS11_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Sales_tip_description_template",
+            "KSBID",
+            "SFB_CampainId",
+            "SFB_AccountId",
+            "Kurt_Id",
+            "Sales_tip_title"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA14_copy0"
+      ]
+    },
+    "FORMULA19_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;Bedriften er medlem i NHO Service og Handel.\u200b NHO Service og Handel har tegnet ny forbundsavtale med Telenor. Spill p\u00e5 fordelene ved \u00e5 v\u00e6re medlem.&#39;",
+            "label": "Sales tip description template",
+            "name": "Sales_tip_description_template",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET14_copy0"
+      ]
+    },
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Reservation_Date_MV_Inbound__c",
+            "top": "Reservation_Date_MV_Inbound__c"
+          },
+          {
+            "bottom": "Reservation_Date_MV_Outbound__c",
+            "top": "Reservation_Date_MV_Outbound__c"
+          },
+          {
+            "bottom": "Id",
+            "top": "Id"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "CustomerType__c",
+            "top": "CustomerType__c"
+          },
+          {
+            "bottom": "Portfolio__c",
+            "top": "Portfolio__c"
+          },
+          {
+            "bottom": "Segment__c",
+            "top": "Segment__c"
+          },
+          {
+            "bottom": "StatusKURT__c",
+            "top": "StatusKURT__c"
+          },
+          {
+            "bottom": "SubsMobileVoice__c",
+            "top": "SubsMobileVoice__c"
+          },
+          {
+            "bottom": "NACE_Subclass_Description__c",
+            "top": "NACE_Subclass_Description__c"
+          },
+          {
+            "bottom": "Has_Subscriptions__c",
+            "top": "Has_Subscriptions__c"
+          },
+          {
+            "bottom": "Forbund_membership__c",
+            "top": "Forbund_membership__c"
+          },
+          {
+            "bottom": "Mobile_Voice_Penetration__c",
+            "top": "Mobile_Voice_Penetration__c"
+          },
+          {
+            "bottom": "NBR_VOICE_PAYER__c",
+            "top": "NBR_VOICE_PAYER__c"
+          },
+          {
+            "bottom": "COM_CUSTOMER_PHONENBR_STATUS__c",
+            "top": "COM_CUSTOMER_PHONENBR_STATUS__c"
+          },
+          {
+            "bottom": "TAG_TALKMORE_BEDRIFT__c",
+            "top": "TAG_TALKMORE_BEDRIFT__c"
+          },
+          {
+            "bottom": "TAG_TALKMORE_PRIVATE__c",
+            "top": "TAG_TALKMORE_PRIVATE__c"
+          },
+          {
+            "bottom": "Phonenumber_type__c",
+            "top": "Phonenumber_type__c"
+          },
+          {
+            "bottom": "mobile_service_segment__c",
+            "top": "mobile_service_segment__c"
+          },
+          {
+            "bottom": "Suppressio.Key_Suppressions_Outbound_Mobile_New_Sales",
+            "top": "Suppressio.Key_Suppressions_Outbound_Mobile_New_Sales"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER5",
+        "FILTER4_copy0"
+      ]
+    },
+    "FORMULA17_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;TM&#39;",
+            "label": "Campaign Channels",
+            "name": "Campaign_Channels",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0_copy0"
+      ]
+    },
+    "FORMULA18_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;Gjovik&#39;",
+            "label": "Telesales agency",
+            "name": "Telesales_agency",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA17_copy0"
+      ]
+    },
+    "DROP_FIELDS12_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "Campaign_Channels",
+            "Telesales_agency"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA18_copy0"
+      ]
+    },
+    "FORMULA17_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;SPOC&#39;",
+            "label": "Campaign Channels",
+            "name": "Campaign_Channels",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0_copy0_copy0"
+      ]
+    },
+    "FORMULA18_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;HunterME&#39;",
+            "label": "Telesales agency",
+            "name": "Telesales_agency",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA17_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS12_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "Campaign_Channels",
+            "Telesales_agency"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA18_copy0_copy0_copy0"
+      ]
+    },
+    "APPEND1": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS12_copy0_copy0_copy0",
+        "DROP_FIELDS12_copy0"
+      ]
+    },
+    "JOIN16": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "SFB_AccountId"
+        ],
+        "rightQualifier": "TRANSFORM1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "APPEND1",
+        "DROP_FIELDS11_copy0"
+      ]
+    },
+    "DROP_FIELDS13_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Campaign_Channels",
+            "Telesales_agency",
+            "TRANSFORM1.Sales_tip_description_template",
+            "TRANSFORM1.KSBID",
+            "TRANSFORM1.SFB_CampainId",
+            "TRANSFORM1.SFB_AccountId",
+            "TRANSFORM1.Kurt_Id",
+            "TRANSFORM1.Sales_tip_title"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER37"
+      ]
+    },
+    "FILTER37": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN16"
+      ]
+    }
+  },
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0_copy0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 530.3,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "FILTER1_copy0": {
+        "label": "Existing Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 252
+      },
+      "FILTER3_copy0": {
+        "label": "Hunter S, M",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 392
+      },
+      "FILTER2_copy1_copy0": {
+        "label": "Forbund Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.3,
+        "left": 532
+      },
+      "FILTER4_copy0_copy0": {
+        "label": "NHO Service og Handel",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.4,
+        "left": 1232.2
+      },
+      "FILTER4_copy0": {
+        "label": "No MV",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.4,
+        "left": 1372.2
+      },
+      "FILTER4_copy0_copy1": {
+        "label": "With MV",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.4,
+        "left": 1372.2
+      },
+      "FILTER5": {
+        "label": "At most 20% penetration",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.4,
+        "left": 1512.2
+      },
+      "FILTER3_copy0_copy0": {
+        "label": "Hunter S",
+        "description": "",
+        "type": "FILTER",
+        "top": 392.1,
+        "left": 1792.4
+      },
+      "FILTER3_copy0_copy0_copy0": {
+        "label": "Hunter M",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.1,
+        "left": 1792.4
+      },
+      "OUTPUT0": {
+        "label": "C360 493 - New Sales MV NHO Service og Handel",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 952.6,
+        "left": 2352.1
+      },
+      "FILTER6_copy2_copy0_copy0": {
+        "label": "Recency Inbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.4,
+        "left": 952.2
+      },
+      "FILTER9_copy0": {
+        "label": "Recency Outbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.4,
+        "left": 1092.2
+      },
+      "LOAD_DATASET3_copy0": {
+        "label": "Suppressions Outbound Mobile New Sales",
+        "type": "LOAD_DATASET",
+        "top": 391.7,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN0": {
+        "label": "Suppressions Outbound Join",
+        "description": "",
+        "type": "JOIN",
+        "top": 532,
+        "left": 672
+      },
+      "FILTER10": {
+        "label": "OK to contact",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 812
+      },
+      "LOAD_DATASET13_copy0": {
+        "label": "Campaign",
+        "description": "",
+        "type": "LOAD_DATASET",
+        "top": 672.5,
+        "left": 3192.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER36_copy0": {
+        "label": "Nysalg Mobil Abonnement NHO",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.5,
+        "left": 3052.1
+      },
+      "LOAD_DATASET14_copy0": {
+        "label": "Account",
+        "description": "",
+        "type": "LOAD_DATASET",
+        "top": 532.5,
+        "left": 3192.1,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "TRANSFORM14_copy0": {
+        "label": "Campaign ID",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.5,
+        "left": 2912.1,
+        "graph": {
+          "FORMULA7_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "JOIN15_copy0": {
+        "label": "Campaign Fangst (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 532.5,
+        "left": 2772.1
+      },
+      "TRANSFORM15_copy0": {
+        "label": "Export Definition (Fangst)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.5,
+        "left": 2632.1,
+        "graph": {
+          "FORMULA8_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "KSBID"
+          },
+          "FORMULA9_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB CampainId"
+          },
+          "FORMULA10_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB AccountId"
+          },
+          "FORMULA11_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Kurt Id"
+          },
+          "FORMULA14_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Sales tip title"
+          },
+          "DROP_FIELDS11_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA8_copy0",
+            "target": "FORMULA9_copy0"
+          },
+          {
+            "source": "FORMULA9_copy0",
+            "target": "FORMULA10_copy0"
+          },
+          {
+            "source": "FORMULA10_copy0",
+            "target": "FORMULA11_copy0"
+          },
+          {
+            "source": "FORMULA11_copy0",
+            "target": "FORMULA14_copy0"
+          },
+          {
+            "source": "FORMULA14_copy0",
+            "target": "DROP_FIELDS11_copy0"
+          }
+        ]
+      },
+      "TRANSFORM19_copy0": {
+        "label": "Campaign Text",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.5,
+        "left": 3052.1,
+        "graph": {
+          "FORMULA19_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND0": {
+        "label": "MV 0 to 20% Penetration",
+        "description": "",
+        "type": "APPEND",
+        "top": 532.6,
+        "left": 1652.1
+      },
+      "TRANSFORM17_copy0": {
+        "label": "TM",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392.1,
+        "left": 1932.4,
+        "graph": {
+          "FORMULA17_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign Channels"
+          },
+          "FORMULA18_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Telesales agency"
+          },
+          "DROP_FIELDS12_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA17_copy0",
+            "target": "FORMULA18_copy0"
+          },
+          {
+            "source": "FORMULA18_copy0",
+            "target": "DROP_FIELDS12_copy0"
+          }
+        ]
+      },
+      "TRANSFORM17_copy0_copy0_copy0": {
+        "label": "SPOC",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.1,
+        "left": 1932.4,
+        "graph": {
+          "FORMULA17_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign Channels"
+          },
+          "FORMULA18_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Telesales agency"
+          },
+          "DROP_FIELDS12_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA17_copy0_copy0_copy0",
+            "target": "FORMULA18_copy0_copy0_copy0"
+          },
+          {
+            "source": "FORMULA18_copy0_copy0_copy0",
+            "target": "DROP_FIELDS12_copy0_copy0_copy0"
+          }
+        ]
+      },
+      "APPEND1": {
+        "label": "Append 1",
+        "type": "APPEND",
+        "top": 532.1,
+        "left": 2072.4
+      },
+      "JOIN16": {
+        "label": "Export Definition (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 532.6,
+        "left": 2352.1
+      },
+      "TRANSFORM20_copy0": {
+        "label": "Export Definition Final",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.6,
+        "left": 2352.1,
+        "graph": {
+          "DROP_FIELDS13_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER37": {
+        "label": "ZERO",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.1,
+        "left": 2352.7
+      }
+    },
+    "connectors": [
+      {
+        "source": "APPEND1",
+        "target": "JOIN16"
+      },
+      {
+        "source": "LOAD_DATASET0_copy0",
+        "target": "FILTER1_copy0"
+      },
+      {
+        "source": "FILTER3_copy0",
+        "target": "FILTER2_copy1_copy0"
+      },
+      {
+        "source": "FILTER1_copy0",
+        "target": "FILTER3_copy0"
+      },
+      {
+        "source": "FILTER4_copy0_copy0",
+        "target": "FILTER4_copy0"
+      },
+      {
+        "source": "FILTER4_copy0_copy0",
+        "target": "FILTER4_copy0_copy1"
+      },
+      {
+        "source": "FILTER4_copy0_copy1",
+        "target": "FILTER5"
+      },
+      {
+        "source": "FILTER6_copy2_copy0_copy0",
+        "target": "FILTER9_copy0"
+      },
+      {
+        "source": "FILTER9_copy0",
+        "target": "FILTER4_copy0_copy0"
+      },
+      {
+        "source": "FILTER2_copy1_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "LOAD_DATASET3_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "FILTER10"
+      },
+      {
+        "source": "FILTER10",
+        "target": "FILTER6_copy2_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET13_copy0",
+        "target": "FILTER36_copy0"
+      },
+      {
+        "source": "TRANSFORM14_copy0",
+        "target": "JOIN15_copy0"
+      },
+      {
+        "source": "FILTER36_copy0",
+        "target": "JOIN15_copy0"
+      },
+      {
+        "source": "JOIN15_copy0",
+        "target": "TRANSFORM15_copy0"
+      },
+      {
+        "source": "LOAD_DATASET14_copy0",
+        "target": "TRANSFORM19_copy0"
+      },
+      {
+        "source": "TRANSFORM19_copy0",
+        "target": "TRANSFORM14_copy0"
+      },
+      {
+        "source": "FILTER5",
+        "target": "APPEND0"
+      },
+      {
+        "source": "FILTER4_copy0",
+        "target": "APPEND0"
+      },
+      {
+        "source": "APPEND0",
+        "target": "FILTER3_copy0_copy0"
+      },
+      {
+        "source": "APPEND0",
+        "target": "FILTER3_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER3_copy0_copy0",
+        "target": "TRANSFORM17_copy0"
+      },
+      {
+        "source": "FILTER3_copy0_copy0_copy0",
+        "target": "TRANSFORM17_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM17_copy0_copy0_copy0",
+        "target": "APPEND1"
+      },
+      {
+        "source": "TRANSFORM17_copy0",
+        "target": "APPEND1"
+      },
+      {
+        "source": "TRANSFORM15_copy0",
+        "target": "JOIN16"
+      },
+      {
+        "source": "FILTER37",
+        "target": "TRANSFORM20_copy0"
+      },
+      {
+        "source": "TRANSFORM20_copy0",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "JOIN16",
+        "target": "FILTER37"
+      }
+    ],
+    "hiddenColumns": []
+  }
+}
