@@ -1,0 +1,321 @@
+{
+  "nodes": {
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Subscription__c",
+          "sourceObjectName": "Subscription__c",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "Main_number__c",
+          "Campaign_sensitive__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LOOKUP",
+        "leftKeys": [
+          "Main_number__c"
+        ],
+        "rightKeys": [
+          "FILTER7.Main_number__c"
+        ],
+        "rightQualifier": "NewSubSensitive"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET1",
+        "LOAD_DATASET2"
+      ]
+    },
+    "FORMULA1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \n    when &quot;NewSubSensitive.Campaign_sensitive__c&quot; is null\n    then &#39;&#39;\n    else\n    &quot;NewSubSensitive.Campaign_sensitive__c&quot;\nend",
+            "label": "CRMA Campaign Sensitive",
+            "name": "CRMACampaignSensitive",
+            "precision": 5000,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN0"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \n    when Campaign_sensitive__c is null\n    then &#39;&#39;\n    else\n    Campaign_sensitive__c\nend",
+            "label": "Salesforce Campaign Sensitive",
+            "name": "SalesforceCampaignSensitive",
+            "precision": 5000,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1"
+      ]
+    },
+    "FORMULA3": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case \n\twhen CRMACampaignSensitive != SalesforceCampaignSensitive\n\tthen\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = &#39;&#39;\n\t\t\tthen &#39;#N/A&#39;\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\n\telse\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = &#39;&#39;\n\t\t\tthen &#39;#N/A&#39;\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\nend",
+            "label": "Updated Campaign Sensitive",
+            "name": "UpdatedCampaignSensitive",
+            "precision": 5000,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 640 UpdateSubscriptions",
+          "name": "C360_640_UpdateSubscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "FORMULA3"
+      ]
+    },
+    "FILTER0": {
+      "action": "sqlFilter",
+      "parameters": {
+        "sqlFilterExpression": "CRMACampaignSensitive != SalesforceCampaignSensitive"
+      },
+      "sources": [
+        "FORMULA3"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "UpdatedCampaignSensitive"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "outputExternal",
+      "parameters": {
+        "connectionName": "Salesforce_Output_Connection_for_SfB",
+        "externalIdFieldName": "",
+        "fieldsMapping": [
+          {
+            "sourceField": "Id",
+            "targetField": "Id"
+          },
+          {
+            "sourceField": "UpdatedCampaignSensitive",
+            "targetField": "Campaign_sensitive__c"
+          }
+        ],
+        "hyperFileName": "",
+        "object": "Subscription__c",
+        "operation": "update"
+      },
+      "sources": [
+        "DROP_FIELDS0"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 520 Subscriptions",
+          "name": "C360_520_Subscriptions",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "FILTER7.Main_number__c",
+          "Campaign_sensitive__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET1": {
+        "label": "Subscription__c",
+        "type": "LOAD_DATASET",
+        "top": 111.9,
+        "left": 112.30000000000001,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "JOIN0": {
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 112,
+        "left": 390.2
+      },
+      "TRANSFORM0": {
+        "label": "Transform 0",
+        "type": "TRANSFORM",
+        "top": 112,
+        "left": 670.3,
+        "graph": {
+          "FORMULA1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "CRMA Campaign Sensitive"
+          },
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Salesforce Campaign Sensitive"
+          },
+          "FORMULA3": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Updated Campaign Sensitive"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA1",
+            "target": "FORMULA2"
+          },
+          {
+            "source": "FORMULA2",
+            "target": "FORMULA3"
+          }
+        ]
+      },
+      "OUTPUT0": {
+        "label": "C360 640 UpdateSubscriptions DP",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 252,
+        "left": 810.3
+      },
+      "FILTER0": {
+        "label": "Filter 0",
+        "type": "FILTER",
+        "top": 112,
+        "left": 810.3
+      },
+      "TRANSFORM1": {
+        "label": "Drop columns",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112,
+        "left": 950.3,
+        "graph": {
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT1": {
+        "label": "SFB Subscription",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112,
+        "left": 1090.3
+      },
+      "LOAD_DATASET2": {
+        "label": "C360 520 Subscriptions",
+        "type": "LOAD_DATASET",
+        "top": 251.89999999999998,
+        "left": 252.2,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET1",
+        "target": "JOIN0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "JOIN0",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "JOIN0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "OUTPUT0"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

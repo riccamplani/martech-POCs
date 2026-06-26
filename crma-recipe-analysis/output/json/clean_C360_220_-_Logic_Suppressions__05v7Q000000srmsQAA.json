@@ -1,0 +1,7803 @@
+{
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "DPSS_DMU__c",
+          "Is_DMU__c",
+          "Id",
+          "IsDeleted",
+          "Name",
+          "NumberOfEmployees",
+          "CompanyFamily__c",
+          "CustomerType__c",
+          "Portfolio__c",
+          "StatusKURT__c",
+          "VisitingCounty__c",
+          "External_Credit_Rating__c",
+          "NACE_Subclass_Code__c",
+          "NACE_Subclass_Description__c",
+          "Economic_Attractivity__c",
+          "COM_CUSTOMER_QUALITYMARK_PHONE__c",
+          "COM_CUSTOMER_TM_RESERVATION__c",
+          "Phonenumber_type__c",
+          "Reservation_Date_IA_Inbound__c",
+          "Reservation_Date_IA_Outbound__c",
+          "Has_Subscriptions_Actual__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "CustomerCampaignItem__c",
+          "sourceObjectName": "CustomerCampaignItem__c",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Channel_Name__c",
+          "Campaign_Channels__c",
+          "Account__c",
+          "CampaignID__c",
+          "Response_Code__c",
+          "Response_Date__c",
+          "Campaign_Type__c",
+          "Product_Type_Id__c",
+          "Reason_Sub_code__c",
+          "Status__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "External_Credit_Rating__c",
+            "operands": [
+              "HR",
+              "VHR"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "COM_CUSTOMER_TM_RESERVATION__c",
+            "operands": [
+              "true"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1",
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "true"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER1_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1",
+        "filterExpressions": [
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER2": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Name",
+            "operands": [
+              "DØDSBO"
+            ],
+            "operator": "CONTAINS",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER3": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Phonenumber_type__c",
+            "operands": [
+              "mobil",
+              "pots"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3 AND 4",
+        "filterExpressions": [
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "1",
+              "6",
+              "7"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "91",
+              "92"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -77,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Channel_Name__c",
+            "operands": [
+              "SPOC",
+              "Dealer I",
+              "Dealer O",
+              "TM"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "DROP_FIELDS1_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "COUNT_Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "AGGREGATE1"
+      ]
+    },
+    "EXTRACT0": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER4"
+      ]
+    },
+    "AGGREGATE1": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account",
+            "name": "COUNT_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT0"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET9"
+      ]
+    },
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS4",
+        "DROP_FIELDS5"
+      ]
+    },
+    "APPEND1": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS7",
+        "APPEND20"
+      ]
+    },
+    "APPEND2": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS8",
+        "APPEND1"
+      ]
+    },
+    "APPEND3": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS9",
+        "APPEND2"
+      ]
+    },
+    "APPEND4": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS10",
+        "APPEND3"
+      ]
+    },
+    "APPEND5": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS11",
+        "APPEND4"
+      ]
+    },
+    "APPEND7": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS1_copy0_copy0",
+        "APPEND5"
+      ]
+    },
+    "FILTER6": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -90,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "6"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "88"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Channel_Name__c",
+            "operands": [
+              "SPOC",
+              "Dealer I",
+              "Dealer O",
+              "KS-I",
+              "KS-O",
+              "TM"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "DROP_FIELDS1_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "COUNT_Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "AGGREGATE1_copy0"
+      ]
+    },
+    "EXTRACT0_copy0": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER6"
+      ]
+    },
+    "AGGREGATE1_copy0": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account",
+            "name": "COUNT_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT0_copy0"
+      ]
+    },
+    "FILTER7": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Portfolio__c",
+            "operands": [
+              "Ikke Oppfølging"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "APPEND8": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS6",
+        "APPEND0"
+      ]
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Account__c",
+            "label": "Key Suppressions Outbound Mobile New Sales",
+            "name": "Key_Suppressions_Outbound_Mobile_New_Sales",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND68"
+      ]
+    },
+    "DROP_FIELDS2": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_Mobile_New_Sales"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppressions Outbound Mobile New Sales",
+          "name": "Suppressions_Outbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "APPEND10": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS1_copy0_copy0_copy0",
+        "APPEND19"
+      ]
+    },
+    "FORMULA0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Account__c",
+            "label": "Key Suppressions Inbound Mobile Rebinding",
+            "name": "Key_Suppressions_Inbound_Mobile_Rebinding",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND10"
+      ]
+    },
+    "DROP_FIELDS2_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Inbound_Mobile_Rebinding"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0_copy0"
+      ]
+    },
+    "OUTPUT0_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppressions Inbound Mobile Rebinding",
+          "name": "Suppressions_Inbound_Mobile_Rebinding",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2_copy0"
+      ]
+    },
+    "FORMULA0_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Key Suppressions Inbound Mobile New Sales",
+            "name": "Key_Suppressions_Inbound_Mobile_New_Sales",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER12"
+      ]
+    },
+    "DROP_FIELDS2_copy1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Inbound_Mobile_New_Sales"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0_copy1"
+      ]
+    },
+    "OUTPUT0_copy1": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppressions Inbound Mobile New Sales",
+          "name": "Suppressions_Inbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2_copy1"
+      ]
+    },
+    "FILTER8": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Campaign_Type__c",
+            "operands": [
+              "Retention",
+              "Oppfølging av kundeforhold"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Product_Type_Id__c",
+            "operands": [
+              "3"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -90,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "1",
+              "6",
+              "7"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "91",
+              "92"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "Channel_Name__c",
+            "operands": [
+              "Dealer I",
+              "Dealer O",
+              "KS-I",
+              "TM",
+              "SPOC"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "FILTER9": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -56,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "1",
+              "6"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "91",
+              "92"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "Channel_Name__c",
+            "operands": [
+              "Dealer I",
+              "Dealer O",
+              "SPOC",
+              "TM"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "EXTRACT1": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER8"
+      ]
+    },
+    "AGGREGATE4": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account",
+            "name": "COUNT_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT1"
+      ]
+    },
+    "DROP_FIELDS3": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "COUNT_Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "AGGREGATE4"
+      ]
+    },
+    "EXTRACT2": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER9"
+      ]
+    },
+    "AGGREGATE6": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account",
+            "name": "COUNT_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT2"
+      ]
+    },
+    "DROP_FIELDS3_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "COUNT_Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "AGGREGATE6"
+      ]
+    },
+    "DROP_FIELDS4": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER1_copy0"
+      ]
+    },
+    "DROP_FIELDS5": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER1_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS6": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER7"
+      ]
+    },
+    "DROP_FIELDS7": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "DROP_FIELDS8": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "DROP_FIELDS9": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER2"
+      ]
+    },
+    "DROP_FIELDS10": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER1"
+      ]
+    },
+    "DROP_FIELDS11": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER3"
+      ]
+    },
+    "FORMULA1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Sub_Owner__c",
+            "label": "Customer Key",
+            "name": "Customer_key",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER14"
+      ]
+    },
+    "DROP_FIELDS14": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Customer_key"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA1"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Case Rebinding Fiber",
+          "name": "Case_Rebinding_Fiber",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_suppression_Case_fiber_rebinding"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber leads last 90 days",
+          "name": "Fiberleads",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Opportunity Fiber flag",
+          "name": "Opportunity_Fiber_flag",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_Flg"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Opportunity Mobil Tale flag",
+          "name": "Opportunity_Mobil_Tale_flag",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Mobil_Tale_Flg"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER10": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CompanyFamily__c",
+            "operands": [
+              "TELENORBUTIKKEN O365"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS13": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER10"
+      ]
+    },
+    "APPEND11": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_Suppressions_Opp_Fib_Flg",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS13",
+        "LOAD_DATASET4"
+      ]
+    },
+    "APPEND12": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND11",
+        "APPEND0"
+      ]
+    },
+    "APPEND13": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS3",
+        "APPEND12"
+      ]
+    },
+    "APPEND14": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_Case_fiber_rebinding",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND13",
+        "LOAD_DATASET2"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber Rebinding Inbound",
+          "name": "Suppression_Fiber_Rebinding_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS17"
+      ]
+    },
+    "APPEND15": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND14",
+        "DROP_FIELDS10"
+      ]
+    },
+    "OUTPUT2": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression TBB Newsale Outbound",
+          "name": "Suppression_TBB_Newsale_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS24"
+      ]
+    },
+    "APPEND16": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND15",
+        "FILTER29"
+      ]
+    },
+    "APPEND17": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND16",
+        "DROP_FIELDS8"
+      ]
+    },
+    "APPEND18": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND17",
+        "DROP_FIELDS11"
+      ]
+    },
+    "OUTPUT4": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber Rebinding TM",
+          "name": "Suppression_Fiber_Rebinding_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS18"
+      ]
+    },
+    "FILTER11": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Opp_Mobil_Tale_Flg",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET5"
+      ]
+    },
+    "APPEND19": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Customer_key",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND8",
+        "DROP_FIELDS14"
+      ]
+    },
+    "APPEND20": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_Suppressions_Opp_Mobil_Tale_Flg",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND19",
+        "FILTER11"
+      ]
+    },
+    "FILTER12": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND20"
+      ]
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Porting out Customers",
+          "name": "PortingOutCustomers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Sub_Owner__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER13": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND20"
+      ]
+    },
+    "FORMULA0_copy1_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Key Suppressions Outbound Mobile Rebinding",
+            "name": "Key_Suppressions_Outbound_Mobile_Rebinding",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND23"
+      ]
+    },
+    "DROP_FIELDS2_copy1_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_Mobile_Rebinding"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0_copy1_copy0"
+      ]
+    },
+    "APPEND21": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER13",
+        "DROP_FIELDS8"
+      ]
+    },
+    "APPEND22": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND21",
+        "DROP_FIELDS10"
+      ]
+    },
+    "APPEND23": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND22",
+        "DROP_FIELDS11"
+      ]
+    },
+    "FORMULA0_copy1_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Key Suppressions Outbound Mobile Rebinding SPOC",
+            "name": "Key_Suppressions_Outbound_Mobile_Rebinding_SPOC",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER13"
+      ]
+    },
+    "DROP_FIELDS2_copy1_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_Mobile_Rebinding_SPOC"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0_copy1_copy0_copy0"
+      ]
+    },
+    "OUTPUT6": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppressions Outbound Mobile Rebinding SPOC",
+          "name": "Suppressions_Outbound_Mobile_Rebinding_SPOC",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2_copy1_copy0_copy0"
+      ]
+    },
+    "OUTPUT7": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppressions Outbound Mobile Rebinding",
+          "name": "Suppressions_Outbound_Mobile_Rebinding",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2_copy1_copy0"
+      ]
+    },
+    "FILTER14": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Sub_Owner__c",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET6"
+      ]
+    },
+    "FILTER15": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Reservation_Date_IA_Inbound__c",
+            "operands": [
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 99999,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER16": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Reservation_Date_IA_Outbound__c",
+            "operands": [
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 99999,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS15": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER15"
+      ]
+    },
+    "DROP_FIELDS16": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER16"
+      ]
+    },
+    "APPEND24": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS15",
+        "APPEND14"
+      ]
+    },
+    "APPEND25": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS16",
+        "APPEND18"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "Key_Suppressions_Inbound_Fiber_rebinding",
+            "formulaExpression": "Id",
+            "label": "Key_Suppressions_Inbound_Fiber_rebinding",
+            "name": "Key_Suppressions_Inbound_Fiber_rebinding",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE10"
+      ]
+    },
+    "DROP_FIELDS17": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Inbound_Fiber_rebinding"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "FORMULA3": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "18",
+            "formulaExpression": "Id",
+            "label": "Key_Suppressions_Outbound_Fiber_rebinding",
+            "name": "Key_Suppressions_Outbound_Fiber_rebinding",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE16"
+      ]
+    },
+    "DROP_FIELDS18": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_Fiber_rebinding"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA3"
+      ]
+    },
+    "FILTER18": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR 2 OR (3 AND 4)",
+        "filterExpressions": [
+          {
+            "field": "CustomerType__c",
+            "operands": [
+              "BRL",
+              "ESEK"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "NACE_Subclass_Code__c",
+            "operands": [
+              "68201",
+              "68209"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "CustomerType__c",
+            "operands": [
+              "FLI"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "NumberOfEmployees",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS20": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER18"
+      ]
+    },
+    "FILTER8_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Campaign_Type__c",
+            "operands": [
+              "Acquisition",
+              "Cross sell"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Product_Type_Id__c",
+            "operands": [
+              "3"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -45,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "1",
+              "6"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "91",
+              "92"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "Channel_Name__c",
+            "operands": [
+              "Dealer O",
+              "TM",
+              "SPOC"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "EXTRACT1_copy0": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER28"
+      ]
+    },
+    "AGGREGATE4_copy0": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account",
+            "name": "COUNT_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT1_copy0"
+      ]
+    },
+    "DROP_FIELDS3_copy1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE4_copy0"
+      ]
+    },
+    "FILTER20": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "(1 OR 2 OR 3) AND 4",
+        "filterExpressions": [
+          {
+            "field": "NACE_Subclass_Description__c",
+            "operands": [
+              "Andre kombinerte tjenester tilknyttet eiendomsdrift",
+              "Eiendomsforvaltning",
+              "Eiendomsmegling",
+              "Finansielle holdingselskaper",
+              "Kjøp og salg av egen fast eiendom",
+              "Leasing av immateriell eiendom og lignende produkter",
+              "Spesielle holdingselskaper",
+              "Utleie av egen eller leid fast eiendom ellers",
+              "Utvikling og salg av egen fast eiendom ellers",
+              "unntatt opphavsrettsbeskyttede verker"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Name",
+            "operands": [
+              "HOLDING"
+            ],
+            "operator": "CONTAINS",
+            "type": "TEXT"
+          },
+          {
+            "field": "Name",
+            "operands": [
+              "Holding"
+            ],
+            "operator": "CONTAINS",
+            "type": "TEXT"
+          },
+          {
+            "field": "Has_Subscriptions_Actual__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER22": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "VisitingCounty__c",
+            "operands": [
+              "Svalbard"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Case nysalg Fiber cancelled",
+          "name": "Case_nysalg_Fiber_cancelled",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_suppression_cancelled_Case_fiber_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Case nysalg Fiber TBB open",
+          "name": "Case_nysalg_Fiber_TBB_open",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_suppression_open_Case_fiber_tbb_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "OUTPUT8": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression TBB Newsale Inbound",
+          "name": "Suppression_TBB_Newsale_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS18_copy1"
+      ]
+    },
+    "DROP_FIELDS21": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER20"
+      ]
+    },
+    "DROP_FIELDS22": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER22"
+      ]
+    },
+    "APPEND26": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET8",
+        "APPEND12"
+      ]
+    },
+    "APPEND27": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND26",
+        "DROP_FIELDS20"
+      ]
+    },
+    "APPEND28": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND27",
+        "DROP_FIELDS3_copy1"
+      ]
+    },
+    "APPEND29": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND28",
+        "DROP_FIELDS22"
+      ]
+    },
+    "APPEND30": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND53",
+        "DROP_FIELDS15"
+      ]
+    },
+    "OUTPUT8_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber Newsale Inbound",
+          "name": "Suppression_Fiber_Newsale_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS18_copy0"
+      ]
+    },
+    "APPEND32": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET3",
+        "APPEND53"
+      ]
+    },
+    "APPEND34": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND32",
+        "DROP_FIELDS16"
+      ]
+    },
+    "APPEND35": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND34",
+        "DROP_FIELDS29"
+      ]
+    },
+    "OUTPUT15": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber Newsale Outbound",
+          "name": "Suppression_Fiber_Newsale_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS25"
+      ]
+    },
+    "FORMULA3_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "label": "Key_Suppressions_Innbound_Fiber_newsale",
+            "name": "Key_Suppressions_Innbound_Fiber_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE18"
+      ]
+    },
+    "DROP_FIELDS18_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Innbound_Fiber_newsale"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA3_copy0"
+      ]
+    },
+    "FORMULA3_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "label": "Key_Suppressions_Inbound_TBB_newsale",
+            "name": "Key_Suppressions_Inbound_TBB_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE20"
+      ]
+    },
+    "DROP_FIELDS18_copy1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Inbound_TBB_newsale"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA3_copy1"
+      ]
+    },
+    "FORMULA4": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_Suppressions_Opp_Fib_leads",
+            "label": "Key_Suppressions_Outbound_TBB_newsale",
+            "name": "Key_Suppressions_Outbound_TBB_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE14"
+      ]
+    },
+    "DROP_FIELDS24": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_TBB_newsale"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA4"
+      ]
+    },
+    "FORMULA5": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_suppression_cancelled_Case_fiber_newsale",
+            "label": "Key_Suppressions_Outbound_Fiber_newsale",
+            "name": "Key_Suppressions_Outbound_Fiber_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE12"
+      ]
+    },
+    "DROP_FIELDS25": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Outbound_Fiber_newsale"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA5"
+      ]
+    },
+    "APPEND37": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND35",
+        "DROP_FIELDS8"
+      ]
+    },
+    "APPEND38": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_Suppressions_Opp_Fib_leads",
+            "top": "Key_suppression_cancelled_Case_fiber_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7",
+        "APPEND35"
+      ]
+    },
+    "APPEND39": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_cancelled_Case_fiber_newsale",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND30",
+        "LOAD_DATASET7"
+      ]
+    },
+    "APPEND40": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND37",
+        "DROP_FIELDS9"
+      ]
+    },
+    "APPEND41": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND40",
+        "DROP_FIELDS10"
+      ]
+    },
+    "APPEND42": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND54",
+        "DROP_FIELDS11"
+      ]
+    },
+    "APPEND43": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND41",
+        "DROP_FIELDS21"
+      ]
+    },
+    "FILTER23": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "COM_CUSTOMER_QUALITYMARK_PHONE__c",
+            "operands": [
+              "666"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Has_Subscriptions_Actual__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS26": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER23"
+      ]
+    },
+    "APPEND44": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND48",
+        "DROP_FIELDS26"
+      ]
+    },
+    "APPEND45": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_cancelled_Case_fiber_newsale",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND42",
+        "LOAD_DATASET7"
+      ]
+    },
+    "OUTPUT16": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression TBB Newsale TM",
+          "name": "Suppression_TBB_Newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS27"
+      ]
+    },
+    "FORMULA6": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_Suppressions_Opp_Fib_leads",
+            "label": "Key_Suppressions_TM_TBB_newsale",
+            "name": "Key_Suppressions_TM_TBB_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE22"
+      ]
+    },
+    "DROP_FIELDS27": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_TM_TBB_newsale"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA6"
+      ]
+    },
+    "OUTPUT17": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber Newsale TM",
+          "name": "Suppression_Fiber_Newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS28_copy0"
+      ]
+    },
+    "LOAD_DATASET9": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Blacklist customers",
+          "name": "Blacklist_customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Id"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "EXTRACT4": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND24"
+      ]
+    },
+    "AGGREGATE10": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account ID",
+            "name": "COUNT_Id",
+            "source": "Id"
+          }
+        ],
+        "groupings": [
+          "Id"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT4"
+      ]
+    },
+    "EXTRACT5": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND38"
+      ]
+    },
+    "AGGREGATE12": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppression cancelled Case Fiber newsale",
+            "name": "COUNT_Key_suppression_cancelled_Case_fiber_newsale",
+            "source": "Key_suppression_cancelled_Case_fiber_newsale"
+          }
+        ],
+        "groupings": [
+          "Key_suppression_cancelled_Case_fiber_newsale"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT5"
+      ]
+    },
+    "EXTRACT6": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND35"
+      ]
+    },
+    "AGGREGATE14": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppressions Opp Fiber leads",
+            "name": "COUNT_Key_Suppressions_Opp_Fib_leads",
+            "source": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ],
+        "groupings": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT6"
+      ]
+    },
+    "EXTRACT7": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND25"
+      ]
+    },
+    "AGGREGATE16": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Account ID",
+            "name": "COUNT_Id",
+            "source": "Id"
+          }
+        ],
+        "groupings": [
+          "Id"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT7"
+      ]
+    },
+    "EXTRACT8": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND39"
+      ]
+    },
+    "AGGREGATE18": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppression open Case Fiber TBB newsale",
+            "name": "COUNT_Key_suppression_open_Case_fiber_tbb_newsale",
+            "source": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ],
+        "groupings": [
+          "Key_suppression_open_Case_fiber_tbb_newsale"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT8"
+      ]
+    },
+    "EXTRACT9": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND30"
+      ]
+    },
+    "AGGREGATE20": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppression open Case Fiber TBB newsale",
+            "name": "COUNT_Key_suppression_open_Case_fiber_tbb_newsale",
+            "source": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ],
+        "groupings": [
+          "Key_suppression_open_Case_fiber_tbb_newsale"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT9"
+      ]
+    },
+    "EXTRACT10": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND42"
+      ]
+    },
+    "AGGREGATE22": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppressions Opp Fiber leads",
+            "name": "COUNT_Key_Suppressions_Opp_Fib_leads",
+            "source": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ],
+        "groupings": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT10"
+      ]
+    },
+    "FILTER24": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Economic_Attractivity__c",
+            "operands": [
+              "For gammelt regnskap",
+              "Revisoranmerkning"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS29": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER24"
+      ]
+    },
+    "FILTER20_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "CustomerType__c",
+            "operands": [
+              "ENK"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Has_Subscriptions_Actual__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS21_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER40"
+      ]
+    },
+    "APPEND47": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND44",
+        "JOIN0"
+      ]
+    },
+    "FILTER25": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "NumberOfEmployees",
+            "operands": [
+              "0"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "CustomerType__c",
+            "operands": [
+              "VPFO"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Has_Subscriptions_Actual__c",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "DROP_FIELDS30": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER25"
+      ]
+    },
+    "APPEND48": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND43",
+        "DROP_FIELDS30"
+      ]
+    },
+    "EXTRACT13": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND45"
+      ]
+    },
+    "AGGREGATE28": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "COUNT",
+            "label": "Count of Key Suppressions Opp Fiber leads",
+            "name": "COUNT_Key_Suppressions_Opp_Fib_leads",
+            "source": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ],
+        "groupings": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT13"
+      ]
+    },
+    "FORMULA7_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Key_Suppressions_Opp_Fib_leads",
+            "label": "Key_Suppressions_TM_Fiber_newsale",
+            "name": "Key_Suppressions_TM_Fiber_newsale",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE28"
+      ]
+    },
+    "DROP_FIELDS28_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Opp_Fib_leads"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA7_copy0"
+      ]
+    },
+    "LOAD_DATASET11": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber TBB have buildingtype 142-146",
+          "name": "Fiber_TBB_have_buildingtype_142_146",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Location_Owner__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Location_Owner__c"
+        ],
+        "rightQualifier": "FiberTBBha"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS21_copy0",
+        "LOAD_DATASET11"
+      ]
+    },
+    "FILTER27": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "7017Q000000Q0uvQAC",
+              "7017Q000000Q0v5QAC",
+              "7017Q000000Q0v0QAC"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Status__c",
+            "operands": [
+              "Open"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Campaign_Channels__c",
+            "operands": [
+              "TM"
+            ],
+            "operator": "CONTAINS",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "EXTRACT14": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER27"
+      ]
+    },
+    "AGGREGATE30": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Account",
+            "name": "UNIQUE_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT14"
+      ]
+    },
+    "DROP_FIELDS32": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE30"
+      ]
+    },
+    "OUTPUT18": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Open fiber rebinding TM",
+          "name": "Open_fiber_rebinding_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS32"
+      ]
+    },
+    "APPEND50": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND25",
+        "DROP_FIELDS32"
+      ]
+    },
+    "EXTRACT15": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND51"
+      ]
+    },
+    "AGGREGATE32": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Account ID",
+            "name": "UNIQUE_Id",
+            "source": "Id"
+          }
+        ],
+        "groupings": [
+          "Id"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT15"
+      ]
+    },
+    "DROP_FIELDS33": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE32"
+      ]
+    },
+    "OUTPUT19": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression migrasjon TBB til Fiber TM",
+          "name": "Suppression_migrasjon_TBB_til_Fiber_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS33"
+      ]
+    },
+    "APPEND51": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND50",
+        "LOAD_DATASET8"
+      ]
+    },
+    "APPEND52": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND24",
+        "LOAD_DATASET8"
+      ]
+    },
+    "EXTRACT16": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND52"
+      ]
+    },
+    "AGGREGATE34": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Account ID",
+            "name": "UNIQUE_Id",
+            "source": "Id"
+          }
+        ],
+        "groupings": [
+          "Id"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT16"
+      ]
+    },
+    "DROP_FIELDS34": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE34"
+      ]
+    },
+    "OUTPUT20": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression migrasjon TBB til Fiber Inbound",
+          "name": "Suppression_migrasjon_TBB_til_Fiber_Inbound1",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS34"
+      ]
+    },
+    "FILTER28": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Account__c",
+            "operands": [
+              "-1"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER8_copy0"
+      ]
+    },
+    "FILTER29": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Account__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS3_copy0"
+      ]
+    },
+    "LOAD_DATASET12": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Opportunity Fiber flag Medium",
+          "name": "Opportunity_Fiber_flag_Medium",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_opportunity_Fiber_Medium"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND53": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_opportunity_Fiber_Medium",
+            "top": "Key_suppression_open_Case_fiber_tbb_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND29",
+        "LOAD_DATASET12"
+      ]
+    },
+    "FILTER8_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3 AND 4 AND 5",
+        "filterExpressions": [
+          {
+            "field": "Campaign_Type__c",
+            "operands": [
+              "Acquisition",
+              "Cross sell"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Product_Type_Id__c",
+            "operands": [
+              "3"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Response_Date__c",
+            "operands": [
+              {
+                "argument": -90,
+                "type": "N_DAYS"
+              },
+              {
+                "argument": 0,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Response_Code__c",
+            "operands": [
+              "6"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Reason_Sub_code__c",
+            "operands": [
+              "48"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET1"
+      ]
+    },
+    "EXTRACT17": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FILTER8_copy0_copy0"
+      ]
+    },
+    "AGGREGATE36": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Account",
+            "name": "UNIQUE_Account__c",
+            "source": "Account__c"
+          }
+        ],
+        "groupings": [
+          "Account__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT17"
+      ]
+    },
+    "DROP_FIELDS35": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE36"
+      ]
+    },
+    "APPEND54": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND56",
+        "DROP_FIELDS35"
+      ]
+    },
+    "EXTRACT18": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND45"
+      ]
+    },
+    "AGGREGATE38": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Key Suppressions Opp Fiber leads",
+            "name": "UNIQUE_Key_Suppressions_Opp_Fib_leads",
+            "source": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ],
+        "groupings": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT18"
+      ]
+    },
+    "DROP_FIELDS36": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Opp_Fib_leads"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE38"
+      ]
+    },
+    "OUTPUT21": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Wrongnumber Fiber newsale TM",
+          "name": "Suppression_Wrongnumber_Fiber_newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS36"
+      ]
+    },
+    "LOAD_DATASET13": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Dubletter telefonnummer 5 eller mer",
+          "name": "Dubletter_telefonnummer_5_eller_mer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Account_5_or_more_phonenumber"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND56": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account_5_or_more_phonenumber",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND47",
+        "LOAD_DATASET13"
+      ]
+    },
+    "LOAD_DATASET13_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Dubletter telefonnummer 5 eller mer",
+          "name": "Dubletter_telefonnummer_5_eller_mer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Account_5_or_more_phonenumber"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND57": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account_5_or_more_phonenumber",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND7",
+        "LOAD_DATASET13_copy0"
+      ]
+    },
+    "APPEND58": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS5",
+        "DROP_FIELDS4"
+      ]
+    },
+    "APPEND59": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND58",
+        "DROP_FIELDS22"
+      ]
+    },
+    "APPEND60": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Account__c",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND59",
+        "DROP_FIELDS3_copy1"
+      ]
+    },
+    "APPEND61": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND62",
+        "DROP_FIELDS8"
+      ]
+    },
+    "APPEND62": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND60",
+        "DROP_FIELDS16"
+      ]
+    },
+    "APPEND63": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_open_Case_fiber_tbb_newsale",
+            "top": "Key_suppression_cancelled_Case_fiber_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET7",
+        "LOAD_DATASET8"
+      ]
+    },
+    "APPEND64": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_opportunity_Fiber_Medium",
+            "top": "Key_suppression_cancelled_Case_fiber_newsale"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND63",
+        "LOAD_DATASET12"
+      ]
+    },
+    "DROP_FIELDS37": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "DPSS_DMU__c",
+            "Is_DMU__c",
+            "Id"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FORMULA8": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Is_DMU__c = &#39;true&#39; then Id\r\nelse DPSS_DMU__c\r\nend",
+            "label": "DPSS Decision Making Unit Calc",
+            "name": "DPSS_DMU__c_calc",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS37"
+      ]
+    },
+    "FILTER30": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Is_DMU__c",
+            "operands": [
+              "true"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8"
+      ]
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "FiberConta"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER30",
+        "APPEND62"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "ErDMU"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "APPEND67",
+        "FILTER30"
+      ]
+    },
+    "JOIN3": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_suppression_cancelled_Case_fiber_newsale"
+        ],
+        "rightQualifier": "APPEND64"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA8",
+        "APPEND64"
+      ]
+    },
+    "EXTRACT19": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "JOIN3"
+      ]
+    },
+    "AGGREGATE40": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique DPSS Decision Making Unit Calc",
+            "name": "UNIQUE_DPSS_DMU__c_calc",
+            "source": "DPSS_DMU__c_calc"
+          }
+        ],
+        "groupings": [
+          "DPSS_DMU__c_calc"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT19"
+      ]
+    },
+    "FILTER31": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "DPSS_DMU__c_calc",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE40"
+      ]
+    },
+    "DROP_FIELDS38": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "DPSS_DMU__c_calc"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER31"
+      ]
+    },
+    "DROP_FIELDS39": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "DPSS_DMU__c_calc"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN1"
+      ]
+    },
+    "DROP_FIELDS40": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "ErDMU.DPSS_DMU__c_calc"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN2"
+      ]
+    },
+    "APPEND65": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "DPSS_DMU__c_calc",
+            "top": "ErDMU.DPSS_DMU__c_calc"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS40",
+        "DROP_FIELDS38"
+      ]
+    },
+    "APPEND66": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "DPSS_DMU__c_calc",
+            "top": "DPSS_DMU__c_calc"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS39",
+        "DROP_FIELDS38"
+      ]
+    },
+    "OUTPUT22": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression TM Medium DMU fiber nysalg",
+          "name": "Suppression_TM_Medium_DMU_fiber_nysalg",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS41"
+      ]
+    },
+    "OUTPUT23": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression SPOC Medium DMU fiber nysalg",
+          "name": "Suppression_SPOC_Medium_DMU_fiber_nysalg",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS42"
+      ]
+    },
+    "EXTRACT20": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND65"
+      ]
+    },
+    "AGGREGATE42": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique DPSS Decision Making Unit Calc",
+            "name": "UNIQUE_ErDMU.DPSS_DMU__c_calc",
+            "source": "ErDMU.DPSS_DMU__c_calc"
+          }
+        ],
+        "groupings": [
+          "ErDMU.DPSS_DMU__c_calc"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT20"
+      ]
+    },
+    "EXTRACT21": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND66"
+      ]
+    },
+    "AGGREGATE44": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique DPSS Decision Making Unit Calc",
+            "name": "UNIQUE_DPSS_DMU__c_calc",
+            "source": "DPSS_DMU__c_calc"
+          }
+        ],
+        "groupings": [
+          "DPSS_DMU__c_calc"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT21"
+      ]
+    },
+    "DROP_FIELDS41": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "ErDMU.DPSS_DMU__c_calc"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE42"
+      ]
+    },
+    "DROP_FIELDS42": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "DPSS_DMU__c_calc"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE44"
+      ]
+    },
+    "APPEND67": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Id",
+            "top": "Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND61",
+        "DROP_FIELDS10"
+      ]
+    },
+    "LOAD_DATASET16_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Contact",
+          "sourceObjectName": "Contact",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "Birthdate",
+          "Primary__c",
+          "AccountId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER37_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Primary__c",
+            "operands": [
+              "true"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET16_copy0"
+      ]
+    },
+    "FILTER38_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Birthdate",
+            "operands": [
+              {
+                "argument": -1000,
+                "type": "N_YEARS"
+              },
+              {
+                "argument": -70,
+                "type": "N_YEARS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER37_copy0"
+      ]
+    },
+    "FORMULA21_copy0": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "row_number()",
+            "label": "Row Number Customer",
+            "name": "Row_Number_Customer",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "Id"
+          }
+        ],
+        "partitionBy": [
+          "AccountId"
+        ]
+      },
+      "sources": [
+        "FILTER38_copy0"
+      ]
+    },
+    "FILTER39_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Row_Number_Customer",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA21_copy0"
+      ]
+    },
+    "FORMULA22_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "AccountId",
+            "label": "Customer Key",
+            "name": "Customer_Key",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER39_copy0"
+      ]
+    },
+    "DROP_FIELDS15_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Customer_Key"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA22_copy0"
+      ]
+    },
+    "APPEND68": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Customer_Key",
+            "top": "Account__c"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND57",
+        "DROP_FIELDS15_copy0"
+      ]
+    },
+    "APPEND69": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Key_suppression_cancelled_Case_fiber_newsale",
+            "top": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND54",
+        "LOAD_DATASET7"
+      ]
+    },
+    "EXTRACT22": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "APPEND69"
+      ]
+    },
+    "AGGREGATE46": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "UNIQUE",
+            "label": "Unique Key Suppressions Opp Fiber leads",
+            "name": "UNIQUE_Key_Suppressions_Opp_Fib_leads",
+            "source": "Key_Suppressions_Opp_Fib_leads"
+          }
+        ],
+        "groupings": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT22"
+      ]
+    },
+    "DROP_FIELDS43": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Suppressions_Opp_Fib_leads"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "AGGREGATE46"
+      ]
+    },
+    "OUTPUT24": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Suppression Fiber newsale TM WO phonenumber",
+          "name": "Suppression_Fiber_newsale_TM_WO_phonenumber",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS43"
+      ]
+    },
+    "LOAD_DATASET17": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "NaceKoderENK_fibernysalg",
+          "name": "NaceKoderENK_fibernysalg",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Nacebeskrivelse",
+          "NACEKODE_ENK"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN4": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "NACE_Subclass_Code__c"
+        ],
+        "rightKeys": [
+          "NACEKODE_ENK"
+        ],
+        "rightQualifier": "NaceKoderE"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER20_copy0",
+        "LOAD_DATASET17"
+      ]
+    },
+    "FILTER40": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "NaceKoderE.NACEKODE_ENK",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN4"
+      ]
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 1930.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "LOAD_DATASET1": {
+        "label": "CustomerCampaignItem__c",
+        "type": "LOAD_DATASET",
+        "top": 950.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER0": {
+        "label": "Bad Credit Rating",
+        "description": "",
+        "type": "FILTER",
+        "top": 2630.2,
+        "left": 252
+      },
+      "FILTER1": {
+        "label": "TM Reservation",
+        "description": "",
+        "type": "FILTER",
+        "top": 3330.2,
+        "left": 252
+      },
+      "FILTER1_copy0": {
+        "label": "Deleted Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 1790.2,
+        "left": 252
+      },
+      "FILTER1_copy0_copy0": {
+        "label": "Status not OK",
+        "description": "",
+        "type": "FILTER",
+        "top": 1930.2,
+        "left": 252
+      },
+      "FILTER2": {
+        "label": "Dødsbo",
+        "description": "",
+        "type": "FILTER",
+        "top": 3190.2,
+        "left": 252
+      },
+      "FILTER3": {
+        "label": "No Contact Phone",
+        "description": "",
+        "type": "FILTER",
+        "top": 3470.2,
+        "left": 252
+      },
+      "FILTER4": {
+        "label": "Responded last 11 weeks",
+        "description": "",
+        "type": "FILTER",
+        "top": 670.2,
+        "left": 252
+      },
+      "TRANSFORM0": {
+        "label": "Responded last 11 weeks (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 670.2,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS1_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "AGGREGATE2": {
+        "label": "Responded last 11 weeks (Unique Accounts)",
+        "description": "",
+        "type": "AGGREGATE",
+        "top": 670.2,
+        "left": 392,
+        "graph": {
+          "EXTRACT0": null,
+          "AGGREGATE1": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT0",
+            "target": "AGGREGATE1"
+          }
+        ]
+      },
+      "FILTER5": {
+        "label": "Black List (TO DO)",
+        "description": "ON_BLACKLIST = &#39;YES&#39; &lt;- CDC\nBLACKLIST_CASA = &#39;X&#39; &lt;- CASA",
+        "type": "FILTER",
+        "top": 3050.2,
+        "left": 252
+      },
+      "APPEND0": {
+        "label": "Status (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 532
+      },
+      "APPEND1": {
+        "label": "Credit Rating (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1092
+      },
+      "APPEND2": {
+        "label": "Black List (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1232
+      },
+      "APPEND3": {
+        "label": "Dødsbo (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1372
+      },
+      "APPEND4": {
+        "label": "TM Reservation (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1512
+      },
+      "APPEND5": {
+        "label": "No Phone (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1652
+      },
+      "APPEND7": {
+        "label": "Responded 11 weeks (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 1792
+      },
+      "FILTER6": {
+        "label": "Do not want binding but want Telenor (90 days)",
+        "description": "",
+        "type": "FILTER",
+        "top": 530.2,
+        "left": 252
+      },
+      "TRANSFORM0_copy0": {
+        "label": "Do not want binding but want Telenor (90 days) (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 530.2,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS1_copy0_copy0_copy0": null
+        },
+        "connectors": []
+      },
+      "AGGREGATE2_copy0": {
+        "label": "Do not want binding but want Telenor (90 days) (Unique Accounts)",
+        "description": "",
+        "type": "AGGREGATE",
+        "top": 532,
+        "left": 392,
+        "graph": {
+          "EXTRACT0_copy0": null,
+          "AGGREGATE1_copy0": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT0_copy0",
+            "target": "AGGREGATE1_copy0"
+          }
+        ]
+      },
+      "FILTER7": {
+        "label": "Portfolio",
+        "description": "",
+        "type": "FILTER",
+        "top": 2070.2,
+        "left": 252
+      },
+      "APPEND8": {
+        "label": "Portfolio (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 672
+      },
+      "TRANSFORM1": {
+        "label": "Outbound Mobile New Sales (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1932,
+        "left": 2212,
+        "graph": {
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0",
+            "target": "DROP_FIELDS2"
+          }
+        ]
+      },
+      "OUTPUT0": {
+        "label": "Suppressions Outbound Mobile New Sales",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1932,
+        "left": 2352
+      },
+      "APPEND10": {
+        "label": "Inbound Mobile Rebinding",
+        "description": "",
+        "type": "APPEND",
+        "top": 1370.2,
+        "left": 952
+      },
+      "TRANSFORM1_copy0": {
+        "label": "Inbound Mobile Rebinding (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1372,
+        "left": 2212,
+        "graph": {
+          "FORMULA0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0_copy0",
+            "target": "DROP_FIELDS2_copy0"
+          }
+        ]
+      },
+      "OUTPUT0_copy0": {
+        "label": "Suppressions Inbound Mobile Rebinding",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1372,
+        "left": 2352
+      },
+      "TRANSFORM1_copy1": {
+        "label": "Inbound Mobile New Sales (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1792,
+        "left": 2212,
+        "graph": {
+          "FORMULA0_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2_copy1": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0_copy1",
+            "target": "DROP_FIELDS2_copy1"
+          }
+        ]
+      },
+      "OUTPUT0_copy1": {
+        "label": "Suppressions Inbound Mobile New Sales",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1792,
+        "left": 2352
+      },
+      "FILTER8": {
+        "label": "Responded last 90 days Fiber rebinding",
+        "description": "",
+        "type": "FILTER",
+        "top": 810.2,
+        "left": 252
+      },
+      "FILTER9": {
+        "label": "Responded last 8 weeks not KSI",
+        "description": "",
+        "type": "FILTER",
+        "top": 950.2,
+        "left": 252
+      },
+      "AGGREGATE3": {
+        "label": "Aggregate 3",
+        "type": "AGGREGATE",
+        "top": 810.2,
+        "left": 392,
+        "graph": {
+          "EXTRACT1": null,
+          "AGGREGATE4": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT1",
+            "target": "AGGREGATE4"
+          }
+        ]
+      },
+      "TRANSFORM2": {
+        "label": "Responded last 90 days, Fiber rebinding (drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 810.2,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS3": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "AGGREGATE5": {
+        "label": "Aggregate 5",
+        "type": "AGGREGATE",
+        "top": 950.2,
+        "left": 392,
+        "graph": {
+          "EXTRACT2": null,
+          "AGGREGATE6": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT2",
+            "target": "AGGREGATE6"
+          }
+        ]
+      },
+      "TRANSFORM2_copy0": {
+        "label": "Responded last  8 weeks (drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 950.2,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS3_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM3": {
+        "label": "Deleted",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1790.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS4": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM4": {
+        "label": "Status KURT",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1930.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS5": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM5": {
+        "label": "Portfolio",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2071.6,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS6": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM6": {
+        "label": "External Credit Rating",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2630.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS7": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM7": {
+        "label": "Blacklist",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3050.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS8": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM8": {
+        "label": "Account Name",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3190.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS9": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM9": {
+        "label": "TM Reservation",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3330.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS10": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM10": {
+        "label": "Phone Number Type",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3470.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS11": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM11": {
+        "label": "Port outs",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2492,
+        "left": 392,
+        "graph": {
+          "FORMULA1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS14": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA1",
+            "target": "DROP_FIELDS14"
+          }
+        ]
+      },
+      "LOAD_DATASET2": {
+        "label": "Case Rebinding Fiber",
+        "type": "LOAD_DATASET",
+        "top": 4730.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET3": {
+        "label": "Fiber leads last 30 days",
+        "description": "",
+        "type": "LOAD_DATASET",
+        "top": 5290.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET4": {
+        "label": "Opportunity Fiber flag",
+        "type": "LOAD_DATASET",
+        "top": 4870.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET5": {
+        "label": "Opportunity Mobil Tale flag",
+        "type": "LOAD_DATASET",
+        "top": 2494.6,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER10": {
+        "label": "Company fam TELENORBUTIKKEN O365",
+        "description": "",
+        "type": "FILTER",
+        "top": 3890.2,
+        "left": 252
+      },
+      "TRANSFORM12": {
+        "label": "Comfam TELENORBUTIKKEN O365",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3890.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS13": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND11": {
+        "label": "Opp flag fiber og Comp fam Telenorbutikken",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 532
+      },
+      "APPEND12": {
+        "label": "Append levende kunde",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 672
+      },
+      "APPEND13": {
+        "label": "Append Respond last 90 days fib reb",
+        "description": "",
+        "type": "APPEND",
+        "top": 4730.2,
+        "left": 952
+      },
+      "APPEND14": {
+        "label": "Append case reb fiber",
+        "description": "",
+        "type": "APPEND",
+        "top": 4730.2,
+        "left": 1092
+      },
+      "OUTPUT1": {
+        "label": "Suppression Fiber Rebinding Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 4451.3,
+        "left": 3332.1
+      },
+      "APPEND15": {
+        "label": "Append tm reservation",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 1092
+      },
+      "OUTPUT2": {
+        "label": "Suppression TBB Newsale Outbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5292,
+        "left": 3332
+      },
+      "APPEND16": {
+        "label": "Append response last 8 weeks",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 1232
+      },
+      "APPEND17": {
+        "label": "Append blacklist",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 1372
+      },
+      "APPEND18": {
+        "label": "Append phonetype",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 1512
+      },
+      "OUTPUT4": {
+        "label": "Suppression Fiber Rebinding TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 4730.6,
+        "left": 3332
+      },
+      "FILTER11": {
+        "label": "Opportunity Mobile Voice Tag",
+        "description": "",
+        "type": "FILTER",
+        "top": 2490.2,
+        "left": 252
+      },
+      "APPEND19": {
+        "label": "Port-outs (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 812
+      },
+      "APPEND20": {
+        "label": "Opportunities (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1930.2,
+        "left": 952
+      },
+      "FILTER12": {
+        "label": "Inbound Mobile New Sales",
+        "description": "",
+        "type": "FILTER",
+        "top": 1790.2,
+        "left": 952
+      },
+      "LOAD_DATASET6": {
+        "label": "Porting out Customers",
+        "type": "LOAD_DATASET",
+        "top": 2354.6,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER13": {
+        "label": "Outbound Mobile Rebinding",
+        "description": "",
+        "type": "FILTER",
+        "top": 1650.2,
+        "left": 952
+      },
+      "TRANSFORM1_copy1_copy0": {
+        "label": "Outbound Mobile Rebinding (Drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1652,
+        "left": 2212,
+        "graph": {
+          "FORMULA0_copy1_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2_copy1_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0_copy1_copy0",
+            "target": "DROP_FIELDS2_copy1_copy0"
+          }
+        ]
+      },
+      "APPEND21": {
+        "label": "Black List (Outbound Mobile Rebinding)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1650.2,
+        "left": 1092
+      },
+      "APPEND22": {
+        "label": "TM Reservation (Outbound Mobile Rebinding)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1650.2,
+        "left": 1232
+      },
+      "APPEND23": {
+        "label": "No Phone (Outbound Mobile Rebinding)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1650.2,
+        "left": 1372
+      },
+      "TRANSFORM1_copy1_copy0_copy0": {
+        "label": "Outbound Mobile Rebinding SPOC (Drop Columns) Copy",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1512,
+        "left": 2212,
+        "graph": {
+          "FORMULA0_copy1_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS2_copy1_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0_copy1_copy0_copy0",
+            "target": "DROP_FIELDS2_copy1_copy0_copy0"
+          }
+        ]
+      },
+      "OUTPUT6": {
+        "label": "Suppressions Outbound Mobile Rebinding SPOC",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1512,
+        "left": 2352
+      },
+      "OUTPUT7": {
+        "label": "Suppressions Outbound Mobile Rebinding",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1652,
+        "left": 2352
+      },
+      "FILTER14": {
+        "label": "Port outs",
+        "description": "",
+        "type": "FILTER",
+        "top": 2350.2,
+        "left": 252
+      },
+      "FILTER15": {
+        "label": "Contact Recency Fiber Inbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 3610.2,
+        "left": 252
+      },
+      "FILTER16": {
+        "label": "Contact Recency Fiber Outbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 3750.2,
+        "left": 252
+      },
+      "TRANSFORM13": {
+        "label": "Fiber Inbound ContactRecency",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3610.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS15": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM14": {
+        "label": "Fiber Outbound ContactRecency",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 3750.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS16": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND24": {
+        "label": "Append fiber inbound contact reacency",
+        "description": "",
+        "type": "APPEND",
+        "top": 4730.2,
+        "left": 1232
+      },
+      "APPEND25": {
+        "label": "Append fiber outbound contact reacency",
+        "description": "",
+        "type": "APPEND",
+        "top": 4870.2,
+        "left": 1652
+      },
+      "TRANSFORM15": {
+        "label": "Transform 15",
+        "type": "TRANSFORM",
+        "top": 4311.3,
+        "left": 3192,
+        "graph": {
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS17": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2",
+            "target": "DROP_FIELDS17"
+          }
+        ]
+      },
+      "TRANSFORM16": {
+        "label": "Transform 16",
+        "type": "TRANSFORM",
+        "top": 4451.3,
+        "left": 3192.1,
+        "graph": {
+          "FORMULA3": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS18": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA3",
+            "target": "DROP_FIELDS18"
+          }
+        ]
+      },
+      "FILTER18": {
+        "label": "Borettslag,eierseksjonssamvirke eller FLI",
+        "description": "",
+        "type": "FILTER",
+        "top": 4030.2,
+        "left": 252
+      },
+      "TRANSFORM18": {
+        "label": "Borettslag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 4030.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS20": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER8_copy0": {
+        "label": "Responded av Outbound last 45 days Fiber TBB newsale",
+        "description": "",
+        "type": "FILTER",
+        "top": 1092,
+        "left": 252
+      },
+      "AGGREGATE3_copy0": {
+        "label": "Responded last 90 days fiber TBB newsale",
+        "description": "",
+        "type": "AGGREGATE",
+        "top": 1092,
+        "left": 532,
+        "graph": {
+          "EXTRACT1_copy0": null,
+          "AGGREGATE4_copy0": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT1_copy0",
+            "target": "AGGREGATE4_copy0"
+          }
+        ]
+      },
+      "TRANSFORM2_copy1": {
+        "label": "Responded last 45 days fiber TBB newsale (drop Columns)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1090.2,
+        "left": 672,
+        "graph": {
+          "DROP_FIELDS3_copy1": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER20": {
+        "label": "Eiendom og holding ikke TN kunde",
+        "description": "",
+        "type": "FILTER",
+        "top": 4170.2,
+        "left": 252
+      },
+      "FILTER22": {
+        "label": "Svalbard",
+        "description": "",
+        "type": "FILTER",
+        "top": 4310.2,
+        "left": 252
+      },
+      "LOAD_DATASET7": {
+        "label": "Case nysalg Fiber cancelled",
+        "type": "LOAD_DATASET",
+        "top": 5430.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET8": {
+        "label": "Case nysalg Fiber TBB open",
+        "type": "LOAD_DATASET",
+        "top": 5150.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "OUTPUT8": {
+        "label": "Suppression TBB Newsale Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5150.2,
+        "left": 3332
+      },
+      "TRANSFORM19": {
+        "label": "Eiendom holding",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 4170.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS21": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM20": {
+        "label": "Svalbard",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 4310.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS22": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND26": {
+        "label": "Append case nysalg open",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 672
+      },
+      "APPEND27": {
+        "label": "Append Borettslag",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 952
+      },
+      "APPEND28": {
+        "label": "Append respons last 60 days IA newsale",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 1092
+      },
+      "APPEND29": {
+        "label": "Append Svalbard",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 1232
+      },
+      "APPEND30": {
+        "label": "Append Fiber inbound contact reacency",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 1652
+      },
+      "OUTPUT8_copy0": {
+        "label": "Suppression Fiber Newsale Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 4870.6,
+        "left": 3332
+      },
+      "APPEND32": {
+        "label": "Append fiber leads last 90 and Svalbard",
+        "description": "",
+        "type": "APPEND",
+        "top": 5290.2,
+        "left": 1372
+      },
+      "APPEND34": {
+        "label": "Append Fiber Outbound contact reacency",
+        "description": "",
+        "type": "APPEND",
+        "top": 5290.2,
+        "left": 1512
+      },
+      "APPEND35": {
+        "label": "Append creditrating",
+        "description": "",
+        "type": "APPEND",
+        "top": 5290.2,
+        "left": 1652
+      },
+      "OUTPUT15": {
+        "label": "Suppression Fiber Newsale Outbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5432,
+        "left": 3332
+      },
+      "TRANSFORM16_copy0": {
+        "label": "Transform 17",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 4872,
+        "left": 3192,
+        "graph": {
+          "FORMULA3_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS18_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA3_copy0",
+            "target": "DROP_FIELDS18_copy0"
+          }
+        ]
+      },
+      "TRANSFORM16_copy1": {
+        "label": "Transform 18",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 5012,
+        "left": 3192,
+        "graph": {
+          "FORMULA3_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS18_copy1": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA3_copy1",
+            "target": "DROP_FIELDS18_copy1"
+          }
+        ]
+      },
+      "TRANSFORM22": {
+        "label": "Transform 22",
+        "type": "TRANSFORM",
+        "top": 5292,
+        "left": 3192,
+        "graph": {
+          "FORMULA4": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS24": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA4",
+            "target": "DROP_FIELDS24"
+          }
+        ]
+      },
+      "TRANSFORM23": {
+        "label": "Transform 23",
+        "type": "TRANSFORM",
+        "top": 5432,
+        "left": 3192,
+        "graph": {
+          "FORMULA5": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS25": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA5",
+            "target": "DROP_FIELDS25"
+          }
+        ]
+      },
+      "APPEND37": {
+        "label": "Append Blacklist  creditrating",
+        "description": "",
+        "type": "APPEND",
+        "top": 5570.2,
+        "left": 1792
+      },
+      "APPEND38": {
+        "label": "Append case fiber canc og creditrating",
+        "description": "",
+        "type": "APPEND",
+        "top": 5430.2,
+        "left": 1652
+      },
+      "APPEND39": {
+        "label": "Append Case fiber cancelled",
+        "description": "",
+        "type": "APPEND",
+        "top": 5010.2,
+        "left": 1652
+      },
+      "APPEND40": {
+        "label": "Append Dødsbo",
+        "description": "",
+        "type": "APPEND",
+        "top": 5570.2,
+        "left": 1932
+      },
+      "APPEND41": {
+        "label": "Append tm reservation",
+        "description": "",
+        "type": "APPEND",
+        "top": 5570.2,
+        "left": 2072
+      },
+      "APPEND42": {
+        "label": "Append phonetype",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572,
+        "left": 3052
+      },
+      "APPEND43": {
+        "label": "Append Eiendom holdning",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572,
+        "left": 2211.9
+      },
+      "FILTER23": {
+        "label": "Quality phone not TN",
+        "description": "",
+        "type": "FILTER",
+        "top": 2210.2,
+        "left": 252
+      },
+      "TRANSFORM24": {
+        "label": "quality phone not TN",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2211.6,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS26": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND44": {
+        "label": "Append quality phone",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572.1,
+        "left": 2492
+      },
+      "APPEND45": {
+        "label": "Append case fiber nysalg canc",
+        "description": "",
+        "type": "APPEND",
+        "top": 5712,
+        "left": 3052
+      },
+      "OUTPUT16": {
+        "label": "Suppression TBB Newsale TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5572,
+        "left": 3472
+      },
+      "TRANSFORM25": {
+        "label": "Transform 25",
+        "type": "TRANSFORM",
+        "top": 5572.1,
+        "left": 3332,
+        "graph": {
+          "FORMULA6": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS27": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA6",
+            "target": "DROP_FIELDS27"
+          }
+        ]
+      },
+      "OUTPUT17": {
+        "label": "Suppression Fiber Newsale TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5712,
+        "left": 3472
+      },
+      "LOAD_DATASET9": {
+        "label": "Blacklist customers",
+        "type": "LOAD_DATASET",
+        "top": 3053.3,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "AGGREGATE9": {
+        "label": "Aggregate 9",
+        "type": "AGGREGATE",
+        "top": 4591.8,
+        "left": 3052,
+        "graph": {
+          "EXTRACT4": null,
+          "AGGREGATE10": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT4",
+            "target": "AGGREGATE10"
+          }
+        ]
+      },
+      "AGGREGATE11": {
+        "label": "Aggregate 11",
+        "type": "AGGREGATE",
+        "top": 5430.6,
+        "left": 3052,
+        "graph": {
+          "EXTRACT5": null,
+          "AGGREGATE12": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT5",
+            "target": "AGGREGATE12"
+          }
+        ]
+      },
+      "AGGREGATE13": {
+        "label": "Aggregate 13",
+        "type": "AGGREGATE",
+        "top": 5292.6,
+        "left": 3052,
+        "graph": {
+          "EXTRACT6": null,
+          "AGGREGATE14": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT6",
+            "target": "AGGREGATE14"
+          }
+        ]
+      },
+      "AGGREGATE15": {
+        "label": "Aggregate 15",
+        "type": "AGGREGATE",
+        "top": 4731.9,
+        "left": 3052,
+        "graph": {
+          "EXTRACT7": null,
+          "AGGREGATE16": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT7",
+            "target": "AGGREGATE16"
+          }
+        ]
+      },
+      "AGGREGATE17": {
+        "label": "Aggregate 17",
+        "type": "AGGREGATE",
+        "top": 5012,
+        "left": 3052,
+        "graph": {
+          "EXTRACT8": null,
+          "AGGREGATE18": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT8",
+            "target": "AGGREGATE18"
+          }
+        ]
+      },
+      "AGGREGATE19": {
+        "label": "Aggregate 19",
+        "type": "AGGREGATE",
+        "top": 5150.2,
+        "left": 3052,
+        "graph": {
+          "EXTRACT9": null,
+          "AGGREGATE20": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT9",
+            "target": "AGGREGATE20"
+          }
+        ]
+      },
+      "AGGREGATE21": {
+        "label": "Aggregate 21",
+        "type": "AGGREGATE",
+        "top": 5572.1,
+        "left": 3192,
+        "graph": {
+          "EXTRACT10": null,
+          "AGGREGATE22": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT10",
+            "target": "AGGREGATE22"
+          }
+        ]
+      },
+      "FILTER24": {
+        "label": "economic attractivity; for gammelt regnskap og revisor anmerkning",
+        "description": "",
+        "type": "FILTER",
+        "top": 2770.2,
+        "left": 252
+      },
+      "TRANSFORM27": {
+        "label": "Eksternal Creditrating VHR gam regnskap, revisoranmerk",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2772,
+        "left": 674.3,
+        "graph": {
+          "DROP_FIELDS29": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER20_copy0": {
+        "label": "ENK ikke TN kunde",
+        "description": "",
+        "type": "FILTER",
+        "top": 2910.2,
+        "left": 252
+      },
+      "TRANSFORM19_copy0": {
+        "label": "ENK - ikke TN kunde",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 2912,
+        "left": 672,
+        "graph": {
+          "DROP_FIELDS21_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND47": {
+        "label": "Append ENK ikke TN kunde",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572,
+        "left": 2632
+      },
+      "FILTER25": {
+        "label": "VPFO, ikke TN, 0 ansatte",
+        "description": "",
+        "type": "FILTER",
+        "top": 4450.2,
+        "left": 252
+      },
+      "TRANSFORM28": {
+        "label": "VPFO",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 4450.2,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS30": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND48": {
+        "label": "Append type VPFO",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572.2,
+        "left": 2351.9
+      },
+      "AGGREGATE27": {
+        "label": "Aggregate 27",
+        "type": "AGGREGATE",
+        "top": 5712,
+        "left": 3192,
+        "graph": {
+          "EXTRACT13": null,
+          "AGGREGATE28": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT13",
+            "target": "AGGREGATE28"
+          }
+        ]
+      },
+      "TRANSFORM26_copy0": {
+        "label": "Transform 26 Copy",
+        "type": "TRANSFORM",
+        "top": 5712,
+        "left": 3332,
+        "graph": {
+          "FORMULA7_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS28_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA7_copy0",
+            "target": "DROP_FIELDS28_copy0"
+          }
+        ]
+      },
+      "LOAD_DATASET11": {
+        "label": "Fiber TBB have buildingtype 142-146",
+        "type": "LOAD_DATASET",
+        "top": 2772,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN0": {
+        "label": "ENK ikke TN kunde have buildingtype 142-146",
+        "description": "",
+        "type": "JOIN",
+        "top": 2912,
+        "left": 812
+      },
+      "FILTER27": {
+        "label": "Fiber rebinding open TM",
+        "description": "",
+        "type": "FILTER",
+        "top": 390.2,
+        "left": 252
+      },
+      "AGGREGATE29": {
+        "label": "Open fiber rebinding TM",
+        "description": "",
+        "type": "AGGREGATE",
+        "top": 392,
+        "left": 392,
+        "graph": {
+          "EXTRACT14": null,
+          "AGGREGATE30": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT14",
+            "target": "AGGREGATE30"
+          }
+        ]
+      },
+      "TRANSFORM30": {
+        "label": "Open fiber rebinding TM",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 390.2,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS32": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT18": {
+        "label": "Open fiber rebinding TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 390.2,
+        "left": 2352
+      },
+      "APPEND50": {
+        "label": "Append open fiber rebinding TM",
+        "description": "",
+        "type": "APPEND",
+        "top": 4590.2,
+        "left": 1792
+      },
+      "AGGREGATE31": {
+        "label": "Aggregate 31",
+        "type": "AGGREGATE",
+        "top": 4171.3,
+        "left": 3052,
+        "graph": {
+          "EXTRACT15": null,
+          "AGGREGATE32": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT15",
+            "target": "AGGREGATE32"
+          }
+        ]
+      },
+      "TRANSFORM31": {
+        "label": "Transform 31",
+        "type": "TRANSFORM",
+        "top": 4171.3,
+        "left": 3192,
+        "graph": {
+          "DROP_FIELDS33": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT19": {
+        "label": "Suppression migrasjon TBB til Fiber TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 4591.3,
+        "left": 3332.1
+      },
+      "APPEND51": {
+        "label": "Append Case nysalg fiber/tbb open",
+        "description": "",
+        "type": "APPEND",
+        "top": 4590.2,
+        "left": 1932
+      },
+      "APPEND52": {
+        "label": "Append Case Nysalg fiber/tbb open",
+        "description": "",
+        "type": "APPEND",
+        "top": 4450.2,
+        "left": 1792
+      },
+      "AGGREGATE33": {
+        "label": "Aggregate 33",
+        "type": "AGGREGATE",
+        "top": 4031.3,
+        "left": 3052,
+        "graph": {
+          "EXTRACT16": null,
+          "AGGREGATE34": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT16",
+            "target": "AGGREGATE34"
+          }
+        ]
+      },
+      "TRANSFORM32": {
+        "label": "Transform 32",
+        "type": "TRANSFORM",
+        "top": 4031.3,
+        "left": 3192,
+        "graph": {
+          "DROP_FIELDS34": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT20": {
+        "label": "Suppression migrasjon TBB til Fiber Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 4312.1,
+        "left": 3332
+      },
+      "FILTER28": {
+        "label": "Alle account UT på fredning",
+        "description": "",
+        "type": "FILTER",
+        "top": 1090.2,
+        "left": 392
+      },
+      "FILTER29": {
+        "label": "result last8week 0 customer to preservation",
+        "description": "",
+        "type": "FILTER",
+        "top": 950.2,
+        "left": 672
+      },
+      "LOAD_DATASET12": {
+        "label": "Opportunity Fiber flag Medium",
+        "type": "LOAD_DATASET",
+        "top": 5710.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND53": {
+        "label": "Append Svalbard opportunity Medium",
+        "description": "",
+        "type": "APPEND",
+        "top": 5150.2,
+        "left": 1372
+      },
+      "FILTER8_copy0_copy0": {
+        "label": "Responded last 90 days Fiber TBB newsale wrgnr",
+        "description": "",
+        "type": "FILTER",
+        "top": 1232,
+        "left": 252
+      },
+      "AGGREGATE35": {
+        "label": "Aggregate 35",
+        "type": "AGGREGATE",
+        "top": 1232,
+        "left": 392,
+        "graph": {
+          "EXTRACT17": null,
+          "AGGREGATE36": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT17",
+            "target": "AGGREGATE36"
+          }
+        ]
+      },
+      "TRANSFORM33": {
+        "label": "Logged wrgnbr 48 fibernewsale last 90 days",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1232,
+        "left": 532,
+        "graph": {
+          "DROP_FIELDS35": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND54": {
+        "label": "Append wrongnumber",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572,
+        "left": 2912
+      },
+      "AGGREGATE37": {
+        "label": "Aggregate 37",
+        "type": "AGGREGATE",
+        "top": 5852,
+        "left": 3192,
+        "graph": {
+          "EXTRACT18": null,
+          "AGGREGATE38": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT18",
+            "target": "AGGREGATE38"
+          }
+        ]
+      },
+      "TRANSFORM34": {
+        "label": "Transform 34",
+        "type": "TRANSFORM",
+        "top": 5852,
+        "left": 3332,
+        "graph": {
+          "DROP_FIELDS36": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT21": {
+        "label": "Suppression Wrongnumber Fiber newsale TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 5992.8,
+        "left": 3472
+      },
+      "LOAD_DATASET13": {
+        "label": "Dubletter telefonnummer 5 eller mer",
+        "type": "LOAD_DATASET",
+        "top": 5994,
+        "left": 112.19999999999999,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND56": {
+        "label": "Append dubletter telefonnummer",
+        "description": "",
+        "type": "APPEND",
+        "top": 5572,
+        "left": 2772
+      },
+      "LOAD_DATASET13_copy0": {
+        "label": "Dubletter telefonnummer 5 eller mer",
+        "description": "",
+        "type": "LOAD_DATASET",
+        "top": 252.2,
+        "left": 1932.9,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND57": {
+        "label": "Duplicate Phone Numbers (Outbound Mobile New Sales)",
+        "description": "",
+        "type": "APPEND",
+        "top": 1932.1,
+        "left": 1932
+      },
+      "APPEND58": {
+        "label": "Levende kunder DMU",
+        "description": "",
+        "type": "APPEND",
+        "top": 6272.2,
+        "left": 530.3
+      },
+      "APPEND59": {
+        "label": "Svalbard DMU",
+        "description": "",
+        "type": "APPEND",
+        "top": 6272.2,
+        "left": 670.3
+      },
+      "APPEND60": {
+        "label": "Responded last 45 days Fiber TBB newsale",
+        "description": "",
+        "type": "APPEND",
+        "top": 6272.2,
+        "left": 810.3
+      },
+      "APPEND61": {
+        "label": "Blacklist DMU TM",
+        "description": "",
+        "type": "APPEND",
+        "top": 6271.8,
+        "left": 1231.7
+      },
+      "APPEND62": {
+        "label": "Fiber Contackreaceny outbound",
+        "description": "",
+        "type": "APPEND",
+        "top": 6272,
+        "left": 952.1
+      },
+      "APPEND63": {
+        "label": "Fiber cancel og case nysalg open DMu detail",
+        "description": "",
+        "type": "APPEND",
+        "top": 6692.6,
+        "left": 670.6
+      },
+      "APPEND64": {
+        "label": "Opportunity flag medium DMU detail&#39;",
+        "description": "",
+        "type": "APPEND",
+        "top": 6692.6,
+        "left": 810.6
+      },
+      "TRANSFORM35": {
+        "label": "Account DMU struktur",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 6550.9,
+        "left": 532.1,
+        "graph": {
+          "DROP_FIELDS37": {
+            "label": "Drop Columns"
+          },
+          "FORMULA8": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": [
+          {
+            "source": "DROP_FIELDS37",
+            "target": "FORMULA8"
+          }
+        ]
+      },
+      "FILTER30": {
+        "label": "Er DMU",
+        "description": "",
+        "type": "FILTER",
+        "top": 6551.6,
+        "left": 1232
+      },
+      "JOIN1": {
+        "label": "DMU suppression SPOC",
+        "description": "",
+        "type": "JOIN",
+        "top": 6412.1,
+        "left": 1230.5
+      },
+      "JOIN2": {
+        "label": "DMU Suppression TM",
+        "description": "",
+        "type": "JOIN",
+        "top": 6272.6,
+        "left": 1512
+      },
+      "JOIN3": {
+        "label": "Join 3",
+        "type": "JOIN",
+        "top": 6692.6,
+        "left": 950.6
+      },
+      "AGGREGATE39": {
+        "label": "Aggregate 39",
+        "type": "AGGREGATE",
+        "top": 6692.2,
+        "left": 1090.6,
+        "graph": {
+          "EXTRACT19": null,
+          "AGGREGATE40": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT19",
+            "target": "AGGREGATE40"
+          }
+        ]
+      },
+      "FILTER31": {
+        "label": "Har DMU eller er DMU",
+        "description": "",
+        "type": "FILTER",
+        "top": 6692.2,
+        "left": 1230.6
+      },
+      "TRANSFORM36": {
+        "label": "Suppression DMU aggregert fra underliggende",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 6692.1,
+        "left": 1512,
+        "graph": {
+          "DROP_FIELDS38": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM37": {
+        "label": "Suppression DMU SPOC",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 6412.6,
+        "left": 1652,
+        "graph": {
+          "DROP_FIELDS39": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM38": {
+        "label": "Suppression DMU TM",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 6272.6,
+        "left": 1652,
+        "graph": {
+          "DROP_FIELDS40": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND65": {
+        "label": "Suppression TM Medium DMU",
+        "description": "",
+        "type": "APPEND",
+        "top": 6271.4,
+        "left": 1792
+      },
+      "APPEND66": {
+        "label": "Suppression SPOC Medium DMU",
+        "description": "",
+        "type": "APPEND",
+        "top": 6411.4,
+        "left": 1792
+      },
+      "OUTPUT22": {
+        "label": "Suppression TM Medium DMU fiber nysalg",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 6272,
+        "left": 2212
+      },
+      "OUTPUT23": {
+        "label": "Suppression SPOC Medium DMU fiber nysalg",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 6412,
+        "left": 2212
+      },
+      "AGGREGATE41": {
+        "label": "Aggregate 41",
+        "type": "AGGREGATE",
+        "top": 6271.7,
+        "left": 1932,
+        "graph": {
+          "EXTRACT20": null,
+          "AGGREGATE42": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT20",
+            "target": "AGGREGATE42"
+          }
+        ]
+      },
+      "AGGREGATE43": {
+        "label": "Aggregate 43",
+        "type": "AGGREGATE",
+        "top": 6411.7,
+        "left": 1932,
+        "graph": {
+          "EXTRACT21": null,
+          "AGGREGATE44": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT21",
+            "target": "AGGREGATE44"
+          }
+        ]
+      },
+      "TRANSFORM39": {
+        "label": "Transform 39",
+        "type": "TRANSFORM",
+        "top": 6272,
+        "left": 2072,
+        "graph": {
+          "DROP_FIELDS41": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM40": {
+        "label": "Transform 40",
+        "type": "TRANSFORM",
+        "top": 6412,
+        "left": 2072,
+        "graph": {
+          "DROP_FIELDS42": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND67": {
+        "label": "Reservert TM",
+        "description": "",
+        "type": "APPEND",
+        "top": 6272,
+        "left": 1372
+      },
+      "LOAD_DATASET16_copy0": {
+        "label": "Contact",
+        "type": "LOAD_DATASET",
+        "top": 112.5,
+        "left": 112.1,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "FILTER37_copy0": {
+        "label": "Primary Contact Only",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.5,
+        "left": 252.10000000000002
+      },
+      "FILTER38_copy0": {
+        "label": "70 years old or older",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.5,
+        "left": 392.1
+      },
+      "TRANSFORM22_copy0": {
+        "label": "Unique Customers (Preparing)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.5,
+        "left": 532.1,
+        "graph": {
+          "FORMULA21_copy0": {
+            "label": "Row Number Customer"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER39_copy0": {
+        "label": "Unique Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.5,
+        "left": 672.1
+      },
+      "TRANSFORM23_copy0": {
+        "label": "Customer Key",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 113,
+        "left": 2072.3,
+        "graph": {
+          "FORMULA22_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Customer Key"
+          },
+          "DROP_FIELDS15_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA22_copy0",
+            "target": "DROP_FIELDS15_copy0"
+          }
+        ]
+      },
+      "APPEND68": {
+        "label": "Primary Contact 70 years old or older",
+        "description": "",
+        "type": "APPEND",
+        "top": 1931.9,
+        "left": 2072
+      },
+      "APPEND69": {
+        "label": "Append wrongnumber, nysalgcase cancelled",
+        "description": "",
+        "type": "APPEND",
+        "top": 6132.2,
+        "left": 3052
+      },
+      "AGGREGATE45": {
+        "label": "Aggregate 45",
+        "type": "AGGREGATE",
+        "top": 5992,
+        "left": 3192,
+        "graph": {
+          "EXTRACT22": null,
+          "AGGREGATE46": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT22",
+            "target": "AGGREGATE46"
+          }
+        ]
+      },
+      "TRANSFORM41": {
+        "label": "Transform 41",
+        "type": "TRANSFORM",
+        "top": 6132.8,
+        "left": 3332,
+        "graph": {
+          "DROP_FIELDS43": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "OUTPUT24": {
+        "label": "Suppression Fiber newsale TM WO phonenumber",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 6272.8,
+        "left": 3472
+      },
+      "LOAD_DATASET17": {
+        "label": "NaceKoderENK_fibernysalg",
+        "type": "LOAD_DATASET",
+        "top": 2912,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN4": {
+        "label": "Join 4",
+        "type": "JOIN",
+        "top": 2912,
+        "left": 392
+      },
+      "FILTER40": {
+        "label": "Nace ENK UT",
+        "description": "",
+        "type": "FILTER",
+        "top": 2912,
+        "left": 532
+      }
+    },
+    "connectors": [
+      {
+        "source": "APPEND54",
+        "target": "APPEND42"
+      },
+      {
+        "source": "APPEND42",
+        "target": "APPEND45"
+      },
+      {
+        "source": "APPEND56",
+        "target": "APPEND54"
+      },
+      {
+        "source": "APPEND41",
+        "target": "APPEND43"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND38"
+      },
+      {
+        "source": "APPEND32",
+        "target": "APPEND34"
+      },
+      {
+        "source": "APPEND44",
+        "target": "APPEND47"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND26"
+      },
+      {
+        "source": "APPEND35",
+        "target": "APPEND37"
+      },
+      {
+        "source": "APPEND26",
+        "target": "APPEND27"
+      },
+      {
+        "source": "TRANSFORM10",
+        "target": "APPEND5"
+      },
+      {
+        "source": "TRANSFORM9",
+        "target": "APPEND4"
+      },
+      {
+        "source": "TRANSFORM8",
+        "target": "APPEND3"
+      },
+      {
+        "source": "TRANSFORM7",
+        "target": "APPEND2"
+      },
+      {
+        "source": "TRANSFORM6",
+        "target": "APPEND1"
+      },
+      {
+        "source": "TRANSFORM5",
+        "target": "APPEND8"
+      },
+      {
+        "source": "TRANSFORM3",
+        "target": "APPEND0"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER4"
+      },
+      {
+        "source": "AGGREGATE2",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "FILTER4",
+        "target": "AGGREGATE2"
+      },
+      {
+        "source": "APPEND1",
+        "target": "APPEND2"
+      },
+      {
+        "source": "APPEND2",
+        "target": "APPEND3"
+      },
+      {
+        "source": "APPEND3",
+        "target": "APPEND4"
+      },
+      {
+        "source": "APPEND4",
+        "target": "APPEND5"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "APPEND7"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER6"
+      },
+      {
+        "source": "AGGREGATE2_copy0",
+        "target": "TRANSFORM0_copy0"
+      },
+      {
+        "source": "FILTER6",
+        "target": "AGGREGATE2_copy0"
+      },
+      {
+        "source": "APPEND0",
+        "target": "APPEND8"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "TRANSFORM0_copy0",
+        "target": "APPEND10"
+      },
+      {
+        "source": "TRANSFORM1_copy0",
+        "target": "OUTPUT0_copy0"
+      },
+      {
+        "source": "APPEND10",
+        "target": "TRANSFORM1_copy0"
+      },
+      {
+        "source": "TRANSFORM1_copy1",
+        "target": "OUTPUT0_copy1"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER8"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER9"
+      },
+      {
+        "source": "FILTER8",
+        "target": "AGGREGATE3"
+      },
+      {
+        "source": "AGGREGATE3",
+        "target": "TRANSFORM2"
+      },
+      {
+        "source": "FILTER9",
+        "target": "AGGREGATE5"
+      },
+      {
+        "source": "AGGREGATE5",
+        "target": "TRANSFORM2_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1_copy0_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER7"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER2"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER3"
+      },
+      {
+        "source": "FILTER1_copy0",
+        "target": "TRANSFORM3"
+      },
+      {
+        "source": "FILTER1_copy0_copy0",
+        "target": "TRANSFORM4"
+      },
+      {
+        "source": "FILTER7",
+        "target": "TRANSFORM5"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM6"
+      },
+      {
+        "source": "FILTER5",
+        "target": "TRANSFORM7"
+      },
+      {
+        "source": "FILTER2",
+        "target": "TRANSFORM8"
+      },
+      {
+        "source": "FILTER1",
+        "target": "TRANSFORM9"
+      },
+      {
+        "source": "FILTER3",
+        "target": "TRANSFORM10"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER10"
+      },
+      {
+        "source": "FILTER10",
+        "target": "TRANSFORM12"
+      },
+      {
+        "source": "TRANSFORM12",
+        "target": "APPEND11"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "APPEND11"
+      },
+      {
+        "source": "APPEND11",
+        "target": "APPEND12"
+      },
+      {
+        "source": "APPEND0",
+        "target": "APPEND12"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "APPEND13"
+      },
+      {
+        "source": "APPEND12",
+        "target": "APPEND13"
+      },
+      {
+        "source": "APPEND13",
+        "target": "APPEND14"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "APPEND14"
+      },
+      {
+        "source": "APPEND14",
+        "target": "APPEND15"
+      },
+      {
+        "source": "TRANSFORM9",
+        "target": "APPEND15"
+      },
+      {
+        "source": "APPEND15",
+        "target": "APPEND16"
+      },
+      {
+        "source": "FILTER29",
+        "target": "APPEND16"
+      },
+      {
+        "source": "APPEND16",
+        "target": "APPEND17"
+      },
+      {
+        "source": "TRANSFORM7",
+        "target": "APPEND17"
+      },
+      {
+        "source": "APPEND17",
+        "target": "APPEND18"
+      },
+      {
+        "source": "TRANSFORM10",
+        "target": "APPEND18"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "FILTER11"
+      },
+      {
+        "source": "APPEND5",
+        "target": "APPEND7"
+      },
+      {
+        "source": "APPEND8",
+        "target": "APPEND19"
+      },
+      {
+        "source": "TRANSFORM11",
+        "target": "APPEND19"
+      },
+      {
+        "source": "APPEND19",
+        "target": "APPEND20"
+      },
+      {
+        "source": "FILTER11",
+        "target": "APPEND20"
+      },
+      {
+        "source": "APPEND19",
+        "target": "APPEND10"
+      },
+      {
+        "source": "APPEND20",
+        "target": "APPEND1"
+      },
+      {
+        "source": "APPEND20",
+        "target": "FILTER12"
+      },
+      {
+        "source": "FILTER12",
+        "target": "TRANSFORM1_copy1"
+      },
+      {
+        "source": "APPEND20",
+        "target": "FILTER13"
+      },
+      {
+        "source": "FILTER13",
+        "target": "APPEND21"
+      },
+      {
+        "source": "TRANSFORM7",
+        "target": "APPEND21"
+      },
+      {
+        "source": "APPEND21",
+        "target": "APPEND22"
+      },
+      {
+        "source": "TRANSFORM9",
+        "target": "APPEND22"
+      },
+      {
+        "source": "APPEND22",
+        "target": "APPEND23"
+      },
+      {
+        "source": "TRANSFORM10",
+        "target": "APPEND23"
+      },
+      {
+        "source": "APPEND23",
+        "target": "TRANSFORM1_copy1_copy0"
+      },
+      {
+        "source": "FILTER13",
+        "target": "TRANSFORM1_copy1_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM1_copy1_copy0_copy0",
+        "target": "OUTPUT6"
+      },
+      {
+        "source": "TRANSFORM1_copy1_copy0",
+        "target": "OUTPUT7"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "FILTER14"
+      },
+      {
+        "source": "FILTER14",
+        "target": "TRANSFORM11"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER15"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER16"
+      },
+      {
+        "source": "FILTER15",
+        "target": "TRANSFORM13"
+      },
+      {
+        "source": "FILTER16",
+        "target": "TRANSFORM14"
+      },
+      {
+        "source": "TRANSFORM13",
+        "target": "APPEND24"
+      },
+      {
+        "source": "APPEND14",
+        "target": "APPEND24"
+      },
+      {
+        "source": "TRANSFORM15",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "TRANSFORM14",
+        "target": "APPEND25"
+      },
+      {
+        "source": "APPEND18",
+        "target": "APPEND25"
+      },
+      {
+        "source": "TRANSFORM16",
+        "target": "OUTPUT4"
+      },
+      {
+        "source": "AGGREGATE9",
+        "target": "TRANSFORM15"
+      },
+      {
+        "source": "AGGREGATE15",
+        "target": "TRANSFORM16"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER18"
+      },
+      {
+        "source": "FILTER18",
+        "target": "TRANSFORM18"
+      },
+      {
+        "source": "FILTER28",
+        "target": "AGGREGATE3_copy0"
+      },
+      {
+        "source": "AGGREGATE3_copy0",
+        "target": "TRANSFORM2_copy1"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER8_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER20"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER22"
+      },
+      {
+        "source": "FILTER20",
+        "target": "TRANSFORM19"
+      },
+      {
+        "source": "FILTER22",
+        "target": "TRANSFORM20"
+      },
+      {
+        "source": "APPEND12",
+        "target": "APPEND26"
+      },
+      {
+        "source": "APPEND27",
+        "target": "APPEND28"
+      },
+      {
+        "source": "TRANSFORM2_copy1",
+        "target": "APPEND28"
+      },
+      {
+        "source": "APPEND28",
+        "target": "APPEND29"
+      },
+      {
+        "source": "TRANSFORM20",
+        "target": "APPEND29"
+      },
+      {
+        "source": "APPEND53",
+        "target": "APPEND30"
+      },
+      {
+        "source": "TRANSFORM13",
+        "target": "APPEND30"
+      },
+      {
+        "source": "LOAD_DATASET3",
+        "target": "APPEND32"
+      },
+      {
+        "source": "TRANSFORM14",
+        "target": "APPEND34"
+      },
+      {
+        "source": "APPEND34",
+        "target": "APPEND35"
+      },
+      {
+        "source": "TRANSFORM22",
+        "target": "OUTPUT2"
+      },
+      {
+        "source": "TRANSFORM23",
+        "target": "OUTPUT15"
+      },
+      {
+        "source": "TRANSFORM16_copy0",
+        "target": "OUTPUT8_copy0"
+      },
+      {
+        "source": "TRANSFORM16_copy1",
+        "target": "OUTPUT8"
+      },
+      {
+        "source": "TRANSFORM7",
+        "target": "APPEND37"
+      },
+      {
+        "source": "AGGREGATE13",
+        "target": "TRANSFORM22"
+      },
+      {
+        "source": "APPEND35",
+        "target": "APPEND38"
+      },
+      {
+        "source": "APPEND30",
+        "target": "APPEND39"
+      },
+      {
+        "source": "AGGREGATE19",
+        "target": "TRANSFORM16_copy1"
+      },
+      {
+        "source": "AGGREGATE17",
+        "target": "TRANSFORM16_copy0"
+      },
+      {
+        "source": "AGGREGATE11",
+        "target": "TRANSFORM23"
+      },
+      {
+        "source": "APPEND37",
+        "target": "APPEND40"
+      },
+      {
+        "source": "TRANSFORM8",
+        "target": "APPEND40"
+      },
+      {
+        "source": "APPEND40",
+        "target": "APPEND41"
+      },
+      {
+        "source": "TRANSFORM9",
+        "target": "APPEND41"
+      },
+      {
+        "source": "TRANSFORM10",
+        "target": "APPEND42"
+      },
+      {
+        "source": "TRANSFORM19",
+        "target": "APPEND43"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER23"
+      },
+      {
+        "source": "FILTER23",
+        "target": "TRANSFORM24"
+      },
+      {
+        "source": "APPEND48",
+        "target": "APPEND44"
+      },
+      {
+        "source": "TRANSFORM24",
+        "target": "APPEND44"
+      },
+      {
+        "source": "TRANSFORM25",
+        "target": "OUTPUT16"
+      },
+      {
+        "source": "AGGREGATE21",
+        "target": "TRANSFORM25"
+      },
+      {
+        "source": "TRANSFORM18",
+        "target": "APPEND27"
+      },
+      {
+        "source": "LOAD_DATASET9",
+        "target": "FILTER5"
+      },
+      {
+        "source": "APPEND53",
+        "target": "APPEND32"
+      },
+      {
+        "source": "APPEND38",
+        "target": "AGGREGATE11"
+      },
+      {
+        "source": "APPEND35",
+        "target": "AGGREGATE13"
+      },
+      {
+        "source": "APPEND39",
+        "target": "AGGREGATE17"
+      },
+      {
+        "source": "APPEND30",
+        "target": "AGGREGATE19"
+      },
+      {
+        "source": "TRANSFORM27",
+        "target": "APPEND35"
+      },
+      {
+        "source": "FILTER40",
+        "target": "TRANSFORM19_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER20_copy0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "APPEND47"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER25"
+      },
+      {
+        "source": "FILTER25",
+        "target": "TRANSFORM28"
+      },
+      {
+        "source": "APPEND43",
+        "target": "APPEND48"
+      },
+      {
+        "source": "TRANSFORM28",
+        "target": "APPEND48"
+      },
+      {
+        "source": "AGGREGATE27",
+        "target": "TRANSFORM26_copy0"
+      },
+      {
+        "source": "TRANSFORM19_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "LOAD_DATASET11",
+        "target": "JOIN0"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER27"
+      },
+      {
+        "source": "FILTER27",
+        "target": "AGGREGATE29"
+      },
+      {
+        "source": "AGGREGATE29",
+        "target": "TRANSFORM30"
+      },
+      {
+        "source": "TRANSFORM30",
+        "target": "OUTPUT18"
+      },
+      {
+        "source": "APPEND25",
+        "target": "APPEND50"
+      },
+      {
+        "source": "TRANSFORM30",
+        "target": "APPEND50"
+      },
+      {
+        "source": "APPEND25",
+        "target": "AGGREGATE15"
+      },
+      {
+        "source": "APPEND51",
+        "target": "AGGREGATE31"
+      },
+      {
+        "source": "AGGREGATE31",
+        "target": "TRANSFORM31"
+      },
+      {
+        "source": "TRANSFORM31",
+        "target": "OUTPUT19"
+      },
+      {
+        "source": "APPEND50",
+        "target": "APPEND51"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND51"
+      },
+      {
+        "source": "APPEND24",
+        "target": "APPEND52"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND52"
+      },
+      {
+        "source": "APPEND24",
+        "target": "AGGREGATE9"
+      },
+      {
+        "source": "APPEND52",
+        "target": "AGGREGATE33"
+      },
+      {
+        "source": "AGGREGATE33",
+        "target": "TRANSFORM32"
+      },
+      {
+        "source": "TRANSFORM32",
+        "target": "OUTPUT20"
+      },
+      {
+        "source": "FILTER8_copy0",
+        "target": "FILTER28"
+      },
+      {
+        "source": "TRANSFORM2_copy0",
+        "target": "FILTER29"
+      },
+      {
+        "source": "APPEND29",
+        "target": "APPEND53"
+      },
+      {
+        "source": "LOAD_DATASET12",
+        "target": "APPEND53"
+      },
+      {
+        "source": "TRANSFORM26_copy0",
+        "target": "OUTPUT17"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "FILTER8_copy0_copy0"
+      },
+      {
+        "source": "FILTER8_copy0_copy0",
+        "target": "AGGREGATE35"
+      },
+      {
+        "source": "AGGREGATE35",
+        "target": "TRANSFORM33"
+      },
+      {
+        "source": "TRANSFORM33",
+        "target": "APPEND54"
+      },
+      {
+        "source": "APPEND45",
+        "target": "AGGREGATE37"
+      },
+      {
+        "source": "AGGREGATE37",
+        "target": "TRANSFORM34"
+      },
+      {
+        "source": "TRANSFORM34",
+        "target": "OUTPUT21"
+      },
+      {
+        "source": "APPEND47",
+        "target": "APPEND56"
+      },
+      {
+        "source": "LOAD_DATASET13",
+        "target": "APPEND56"
+      },
+      {
+        "source": "FILTER24",
+        "target": "TRANSFORM27"
+      },
+      {
+        "source": "APPEND7",
+        "target": "APPEND57"
+      },
+      {
+        "source": "LOAD_DATASET13_copy0",
+        "target": "APPEND57"
+      },
+      {
+        "source": "TRANSFORM4",
+        "target": "APPEND58"
+      },
+      {
+        "source": "TRANSFORM3",
+        "target": "APPEND58"
+      },
+      {
+        "source": "TRANSFORM4",
+        "target": "APPEND0"
+      },
+      {
+        "source": "APPEND58",
+        "target": "APPEND59"
+      },
+      {
+        "source": "TRANSFORM20",
+        "target": "APPEND59"
+      },
+      {
+        "source": "APPEND59",
+        "target": "APPEND60"
+      },
+      {
+        "source": "TRANSFORM2_copy1",
+        "target": "APPEND60"
+      },
+      {
+        "source": "APPEND62",
+        "target": "APPEND61"
+      },
+      {
+        "source": "TRANSFORM7",
+        "target": "APPEND61"
+      },
+      {
+        "source": "APPEND60",
+        "target": "APPEND62"
+      },
+      {
+        "source": "TRANSFORM14",
+        "target": "APPEND62"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND63"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND63"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND45"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND39"
+      },
+      {
+        "source": "APPEND63",
+        "target": "APPEND64"
+      },
+      {
+        "source": "LOAD_DATASET12",
+        "target": "APPEND64"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "TRANSFORM35"
+      },
+      {
+        "source": "FILTER30",
+        "target": "JOIN1"
+      },
+      {
+        "source": "APPEND62",
+        "target": "JOIN1"
+      },
+      {
+        "source": "APPEND67",
+        "target": "JOIN2"
+      },
+      {
+        "source": "FILTER30",
+        "target": "JOIN2"
+      },
+      {
+        "source": "TRANSFORM35",
+        "target": "JOIN3"
+      },
+      {
+        "source": "APPEND64",
+        "target": "JOIN3"
+      },
+      {
+        "source": "TRANSFORM35",
+        "target": "FILTER30"
+      },
+      {
+        "source": "JOIN3",
+        "target": "AGGREGATE39"
+      },
+      {
+        "source": "AGGREGATE39",
+        "target": "FILTER31"
+      },
+      {
+        "source": "FILTER31",
+        "target": "TRANSFORM36"
+      },
+      {
+        "source": "JOIN1",
+        "target": "TRANSFORM37"
+      },
+      {
+        "source": "JOIN2",
+        "target": "TRANSFORM38"
+      },
+      {
+        "source": "TRANSFORM38",
+        "target": "APPEND65"
+      },
+      {
+        "source": "TRANSFORM36",
+        "target": "APPEND65"
+      },
+      {
+        "source": "TRANSFORM37",
+        "target": "APPEND66"
+      },
+      {
+        "source": "TRANSFORM36",
+        "target": "APPEND66"
+      },
+      {
+        "source": "APPEND65",
+        "target": "AGGREGATE41"
+      },
+      {
+        "source": "APPEND66",
+        "target": "AGGREGATE43"
+      },
+      {
+        "source": "AGGREGATE41",
+        "target": "TRANSFORM39"
+      },
+      {
+        "source": "TRANSFORM39",
+        "target": "OUTPUT22"
+      },
+      {
+        "source": "AGGREGATE43",
+        "target": "TRANSFORM40"
+      },
+      {
+        "source": "TRANSFORM40",
+        "target": "OUTPUT23"
+      },
+      {
+        "source": "APPEND61",
+        "target": "APPEND67"
+      },
+      {
+        "source": "TRANSFORM9",
+        "target": "APPEND67"
+      },
+      {
+        "source": "LOAD_DATASET16_copy0",
+        "target": "FILTER37_copy0"
+      },
+      {
+        "source": "FILTER37_copy0",
+        "target": "FILTER38_copy0"
+      },
+      {
+        "source": "FILTER38_copy0",
+        "target": "TRANSFORM22_copy0"
+      },
+      {
+        "source": "TRANSFORM22_copy0",
+        "target": "FILTER39_copy0"
+      },
+      {
+        "source": "FILTER39_copy0",
+        "target": "TRANSFORM23_copy0"
+      },
+      {
+        "source": "APPEND57",
+        "target": "APPEND68"
+      },
+      {
+        "source": "TRANSFORM23_copy0",
+        "target": "APPEND68"
+      },
+      {
+        "source": "APPEND68",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER24"
+      },
+      {
+        "source": "APPEND42",
+        "target": "AGGREGATE21"
+      },
+      {
+        "source": "APPEND45",
+        "target": "AGGREGATE27"
+      },
+      {
+        "source": "APPEND54",
+        "target": "APPEND69"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND69"
+      },
+      {
+        "source": "APPEND69",
+        "target": "AGGREGATE45"
+      },
+      {
+        "source": "AGGREGATE45",
+        "target": "TRANSFORM41"
+      },
+      {
+        "source": "TRANSFORM41",
+        "target": "OUTPUT24"
+      },
+      {
+        "source": "FILTER20_copy0",
+        "target": "JOIN4"
+      },
+      {
+        "source": "LOAD_DATASET17",
+        "target": "JOIN4"
+      },
+      {
+        "source": "JOIN4",
+        "target": "FILTER40"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

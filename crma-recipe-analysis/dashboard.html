@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRMA Recipe Field Usage Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --card: #fff;
+    --border: #e1e4e8;
+    --text: #24292e;
+    --text-secondary: #586069;
+    --accent: #0366d6;
+    --green: #28a745;
+    --red: #cb2431;
+    --orange: #e36209;
+    --blue-light: #dbedff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+  header { background: #24292e; color: #fff; padding: 16px 24px; display: flex; align-items: center; gap: 16px; }
+  header h1 { font-size: 18px; font-weight: 600; }
+  header .subtitle { color: #959da5; font-size: 13px; }
+
+  .tabs { display: flex; background: #fff; border-bottom: 1px solid var(--border); padding: 0 24px; }
+  .tab { padding: 12px 20px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--text-secondary); font-weight: 500; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+  .view { display: none; }
+  .view.active { display: block; }
+
+  .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .stat-card .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .stat-card .value { font-size: 28px; font-weight: 700; }
+  .stat-card .value.green { color: var(--green); }
+  .stat-card .value.red { color: var(--red); }
+  .stat-card .value.accent { color: var(--accent); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 24px; overflow: hidden; }
+  .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+  .card-body { padding: 0; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 10px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); background: #fafbfc; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; white-space: nowrap; }
+  th:hover { background: #f0f1f3; }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover { background: var(--blue-light); }
+
+  .bar-inline { display: flex; height: 8px; border-radius: 4px; overflow: hidden; min-width: 100px; }
+  .bar-used { background: var(--green); }
+  .bar-unused { background: var(--red); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-green { background: #dcffe4; color: #22863a; }
+  .badge-red { background: #ffeef0; color: #cb2431; }
+  .badge-orange { background: #fff5e6; color: #e36209; }
+  .badge-gray { background: #f1f1f1; color: #586069; }
+
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); cursor: pointer; font-weight: 500; margin-bottom: 16px; padding: 6px 0; }
+  .back-btn:hover { text-decoration: underline; }
+
+  .detail-header { margin-bottom: 24px; }
+  .detail-header h2 { font-size: 20px; margin-bottom: 8px; word-break: break-all; }
+  .detail-header .meta { color: var(--text-secondary); font-size: 13px; }
+
+  .expandable { cursor: pointer; }
+  .expandable .arrow { display: inline-block; transition: transform 0.2s; margin-right: 6px; }
+  .expandable.open .arrow { transform: rotate(90deg); }
+  .expand-content { display: none; padding: 12px 16px; background: #fafbfc; }
+  .expand-content.open { display: block; }
+
+  .field-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .field-tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-family: 'SFMono-Regular', monospace; }
+  .field-tag.keep { background: #dcffe4; color: #22863a; }
+  .field-tag.eliminate { background: #ffeef0; color: #cb2431; }
+
+  .field-detail-table { width: 100%; margin-top: 8px; }
+  .field-detail-table td { padding: 4px 8px; font-size: 12px; border-bottom: 1px solid #eee; }
+  .field-detail-table td:first-child { font-family: 'SFMono-Regular', monospace; font-weight: 600; white-space: nowrap; }
+  .field-detail-table td:last-child { color: var(--text-secondary); }
+
+  .chart-container { position: relative; height: 400px; padding: 20px; }
+
+  .search-box { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; width: 300px; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(3,102,214,0.15); }
+
+  .obj-recipes { margin-top: 8px; }
+  .obj-recipes .recipe-tag { display: inline-block; padding: 2px 6px; margin: 2px; border-radius: 3px; font-size: 11px; background: #f1f1f1; color: var(--text-secondary); }
+
+  .sort-arrow { font-size: 10px; margin-left: 4px; }
+
+  .cleanup-obj-section { margin-bottom: 32px; }
+  .cleanup-obj-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+  .cleanup-obj-header h3 { font-size: 16px; }
+  .cleanup-obj-header .obj-meta { font-size: 13px; color: var(--text-secondary); }
+
+  .cleanup-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cleanup-table th { text-align: left; padding: 8px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); background: #fafbfc; border-bottom: 1px solid var(--border); cursor: default; }
+  .cleanup-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .cleanup-table tr:last-child td { border-bottom: none; }
+  .cleanup-table .field-name { font-family: 'SFMono-Regular', Consolas, monospace; font-weight: 600; font-size: 13px; }
+  .cleanup-table .recipe-list { font-size: 11px; color: var(--text-secondary); max-width: 500px; }
+
+  .verdict-safe { background: #dcffe4; color: #22863a; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .verdict-partial { background: #fff5e6; color: #e36209; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+  .export-btn { padding: 8px 16px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .export-btn:hover { background: #0256b9; }
+
+  .filter-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .filter-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CRMA Recipe Field Usage</h1>
+  <span class="subtitle" id="generatedAt"></span>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-view="overview">Overview</div>
+  <div class="tab" data-view="cleanup">Fields to Remove</div>
+  <div class="tab" data-view="objects">Object Summary</div>
+</div>
+
+<div class="container">
+  <!-- OVERVIEW VIEW -->
+  <div id="view-overview" class="view active">
+    <div class="stats-bar" id="stats-bar"></div>
+    <div class="card">
+      <div class="card-header">
+        <span>Field Usage by Recipe</span>
+      </div>
+      <div class="card-body">
+        <div class="chart-container"><canvas id="recipeChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span>All Recipes</span>
+        <input type="text" class="search-box" id="recipe-search" placeholder="Search recipes...">
+      </div>
+      <div class="card-body">
+        <table id="recipe-table">
+          <thead><tr>
+            <th data-sort="name">Recipe <span class="sort-arrow"></span></th>
+            <th data-sort="totalNodes">Nodes <span class="sort-arrow"></span></th>
+            <th data-sort="totalFields">Total Fields <span class="sort-arrow"></span></th>
+            <th data-sort="usedFields">Used <span class="sort-arrow"></span></th>
+            <th data-sort="unusedFields">Unused <span class="sort-arrow"></span></th>
+            <th data-sort="reduction">Reduction <span class="sort-arrow"></span></th>
+            <th>Usage</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE DETAIL VIEW -->
+  <div id="view-detail" class="view">
+    <div class="back-btn" id="back-to-overview">&larr; Back to Overview</div>
+    <div class="detail-header" id="detail-header"></div>
+    <div class="stats-bar" id="detail-stats"></div>
+    <div class="card">
+      <div class="card-header">Load Nodes</div>
+      <div class="card-body">
+        <table id="load-node-table">
+          <thead><tr>
+            <th>Node</th>
+            <th>Source Object</th>
+            <th>Connection</th>
+            <th>Total</th>
+            <th>Used</th>
+            <th>Unused</th>
+            <th>Reduction</th>
+            <th>Usage</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="field-details"></div>
+  </div>
+
+  <!-- FIELDS TO REMOVE VIEW -->
+  <div id="view-cleanup" class="view">
+    <div class="stats-bar" id="cleanup-stats-bar"></div>
+    <div class="card">
+      <div class="card-header">
+        <span>Excluded Fields by Object</span>
+        <div class="filter-bar">
+          <select class="filter-select" id="cleanup-object-filter">
+            <option value="all">All objects</option>
+          </select>
+          <input type="text" class="search-box" id="cleanup-search" placeholder="Search field names..." style="width:220px">
+          <button class="export-btn" onclick="exportCleanupCSV()">Export CSV</button>
+        </div>
+      </div>
+      <div class="card-body" id="cleanup-content"></div>
+    </div>
+  </div>
+
+  <!-- OBJECT SUMMARY VIEW -->
+  <div id="view-objects" class="view">
+    <div class="stats-bar" id="obj-stats-bar"></div>
+    <div class="card">
+      <div class="card-header">
+        <span>Cross-Recipe Field Usage by Object</span>
+        <input type="text" class="search-box" id="obj-search" placeholder="Search objects...">
+      </div>
+      <div class="card-body">
+        <table id="obj-table">
+          <thead><tr>
+            <th data-sort="object">Object <span class="sort-arrow"></span></th>
+            <th data-sort="recipeCount">Recipes <span class="sort-arrow"></span></th>
+            <th data-sort="totalFieldsLoaded">Fields Loaded <span class="sort-arrow"></span></th>
+            <th data-sort="alwaysUsed">Always Used <span class="sort-arrow"></span></th>
+            <th data-sort="sometimesUsed">Sometimes Used <span class="sort-arrow"></span></th>
+            <th data-sort="neverUsed">Never Used <span class="sort-arrow"></span></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="obj-details"></div>
+  </div>
+</div>
+
+<script>
+let DATA = null;
+let currentSort = { table: null, field: null, asc: true };
+
+async function loadData() {
+  const resp = await fetch('output/json/dashboard_data.json');
+  DATA = await resp.json();
+  document.getElementById('generatedAt').textContent = 'Generated: ' + new Date(DATA.generatedAt).toLocaleString();
+  renderOverview();
+  renderCleanupView();
+  renderObjectSummary();
+}
+
+function renderOverview() {
+  const recipes = DATA.recipes;
+  const totalRecipes = recipes.length;
+  const totalFields = recipes.reduce((s, r) => s + r.totalFields, 0);
+  const totalUsed = recipes.reduce((s, r) => s + r.usedFields, 0);
+  const totalUnused = totalFields - totalUsed;
+  const pct = totalFields > 0 ? Math.round(totalUnused / totalFields * 100) : 0;
+
+  document.getElementById('stats-bar').innerHTML = [
+    statCard('Recipes Analyzed', totalRecipes, 'accent'),
+    statCard('Total Fields', totalFields, ''),
+    statCard('Fields Used', totalUsed, 'green'),
+    statCard('Fields to Remove', totalUnused, 'red'),
+    statCard('Overall Reduction', pct + '%', pct > 30 ? 'red' : 'orange'),
+  ].join('');
+
+  renderRecipeTable(recipes);
+  renderChart(recipes);
+}
+
+function statCard(label, value, cls) {
+  return `<div class="stat-card"><div class="label">${label}</div><div class="value ${cls}">${value}</div></div>`;
+}
+
+function renderRecipeTable(recipes, sortField, sortAsc) {
+  const tbody = document.querySelector('#recipe-table tbody');
+  let sorted = [...recipes];
+  if (sortField) {
+    sorted.sort((a, b) => {
+      let va = sortField === 'name' ? a.name : (sortField === 'reduction' ? (a.totalFields > 0 ? a.unusedFields / a.totalFields : 0) : a[sortField]);
+      let vb = sortField === 'name' ? b.name : (sortField === 'reduction' ? (b.totalFields > 0 ? b.unusedFields / b.totalFields : 0) : b[sortField]);
+      if (typeof va === 'string') return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      return sortAsc ? va - vb : vb - va;
+    });
+  }
+  tbody.innerHTML = sorted.map((r, i) => {
+    const pct = r.totalFields > 0 ? Math.round(r.unusedFields / r.totalFields * 100) : 0;
+    const usedPct = r.totalFields > 0 ? Math.round(r.usedFields / r.totalFields * 100) : 100;
+    const badgeCls = pct === 0 ? 'badge-gray' : pct < 30 ? 'badge-orange' : 'badge-red';
+    const shortName = r.name.replace(/__\w+$/, '').replace(/_/g, ' ');
+    return `<tr class="clickable" data-idx="${recipes.indexOf(r)}">
+      <td title="${r.name}">${shortName}</td>
+      <td>${r.totalNodes}</td>
+      <td>${r.totalFields}</td>
+      <td>${r.usedFields}</td>
+      <td>${r.unusedFields}</td>
+      <td><span class="badge ${badgeCls}">${pct}%</span></td>
+      <td><div class="bar-inline"><div class="bar-used" style="width:${usedPct}%"></div><div class="bar-unused" style="width:${100 - usedPct}%"></div></div></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderChart(recipes) {
+  const sorted = [...recipes].sort((a, b) => {
+    const pa = a.totalFields > 0 ? a.unusedFields / a.totalFields : 0;
+    const pb = b.totalFields > 0 ? b.unusedFields / b.totalFields : 0;
+    return pb - pa;
+  });
+  const labels = sorted.map(r => r.name.replace(/__\w+$/, '').replace(/^C360_/, '').replace(/_/g, ' ').substring(0, 40));
+  const ctx = document.getElementById('recipeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Used Fields', data: sorted.map(r => r.usedFields), backgroundColor: '#28a745' },
+        { label: 'Unused Fields', data: sorted.map(r => r.unusedFields), backgroundColor: '#cb2431' },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        x: { stacked: true, ticks: { maxRotation: 90, font: { size: 10 } } },
+        y: { stacked: true, title: { display: true, text: 'Fields' } }
+      }
+    }
+  });
+}
+
+function showRecipeDetail(idx) {
+  const r = DATA.recipes[idx];
+  switchView('detail');
+
+  const shortName = r.name.replace(/__\w+$/, '').replace(/_/g, ' ');
+  document.getElementById('detail-header').innerHTML = `<h2>${shortName}</h2><div class="meta">${r.filename} &mdash; ${r.totalNodes} nodes</div>`;
+
+  const pct = r.totalFields > 0 ? Math.round(r.unusedFields / r.totalFields * 100) : 0;
+  document.getElementById('detail-stats').innerHTML = [
+    statCard('Load Nodes', r.loadNodes.length, 'accent'),
+    statCard('Total Fields', r.totalFields, ''),
+    statCard('Used', r.usedFields, 'green'),
+    statCard('Unused', r.unusedFields, 'red'),
+    statCard('Reduction', pct + '%', pct > 30 ? 'red' : 'orange'),
+  ].join('');
+
+  const tbody = document.querySelector('#load-node-table tbody');
+  tbody.innerHTML = r.loadNodes.map((ln, i) => {
+    const p = ln.totalFields > 0 ? Math.round(ln.unusedFields.length / ln.totalFields * 100) : 0;
+    const up = ln.totalFields > 0 ? Math.round(ln.usedFields.length / ln.totalFields * 100) : 100;
+    const bc = p === 0 ? 'badge-gray' : p < 30 ? 'badge-orange' : 'badge-red';
+    return `<tr>
+      <td><code>${ln.nodeName}</code></td>
+      <td>${ln.sourceObject}</td>
+      <td>${ln.connection || '<em>in-org</em>'}</td>
+      <td>${ln.totalFields}</td>
+      <td>${ln.usedFields.length}</td>
+      <td>${ln.unusedFields.length}</td>
+      <td><span class="badge ${bc}">${p}%</span></td>
+      <td><div class="bar-inline"><div class="bar-used" style="width:${up}%"></div><div class="bar-unused" style="width:${100 - up}%"></div></div></td>
+    </tr>`;
+  }).join('');
+
+  const details = document.getElementById('field-details');
+  details.innerHTML = r.loadNodes.map((ln, i) => {
+    const keepRows = ln.usedFields.map(f => {
+      const locs = ln.fieldUsage[f] || [];
+      const locStr = locs.slice(0, 3).map(l => `${l[0]} (${l[1]})`).join(', ') + (locs.length > 3 ? ` +${locs.length - 3} more` : '');
+      return `<tr><td><span class="field-tag keep">${f}</span></td><td>${locStr}</td></tr>`;
+    }).join('');
+    const elimTags = ln.unusedFields.map(f => `<span class="field-tag eliminate">${f}</span>`).join(' ');
+    return `<div class="card">
+      <div class="card-header expandable" onclick="toggleExpand(this)">
+        <span><span class="arrow">&#9654;</span> ${ln.sourceObject} &mdash; <code>${ln.nodeName}</code></span>
+        <span><span class="badge badge-green">${ln.usedFields.length} keep</span> <span class="badge badge-red">${ln.unusedFields.length} eliminate</span></span>
+      </div>
+      <div class="expand-content">
+        ${ln.usedFields.length > 0 ? `<h4 style="margin-bottom:8px;color:var(--green)">Fields to KEEP</h4>
+        <table class="field-detail-table"><tbody>${keepRows}</tbody></table>` : ''}
+        ${ln.unusedFields.length > 0 ? `<h4 style="margin:16px 0 8px;color:var(--red)">Fields to ELIMINATE</h4>
+        <div class="field-list">${elimTags}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderObjectSummary() {
+  const objMap = {};
+  DATA.recipes.forEach(r => {
+    r.loadNodes.forEach(ln => {
+      const obj = ln.sourceObject;
+      if (!objMap[obj]) objMap[obj] = { recipes: {}, allFieldsLoaded: {}, fieldUsedIn: {} };
+      objMap[obj].recipes[r.name] = true;
+      ln.usedFields.forEach(f => {
+        objMap[obj].allFieldsLoaded[f] = true;
+        if (!objMap[obj].fieldUsedIn[f]) objMap[obj].fieldUsedIn[f] = {};
+        objMap[obj].fieldUsedIn[f][r.name] = true;
+      });
+      ln.unusedFields.forEach(f => {
+        objMap[obj].allFieldsLoaded[f] = true;
+        if (!objMap[obj].fieldUsedIn[f]) objMap[obj].fieldUsedIn[f] = {};
+      });
+    });
+  });
+
+  const objects = Object.entries(objMap).map(([obj, data]) => {
+    const recipeCount = Object.keys(data.recipes).length;
+    const allFields = Object.keys(data.allFieldsLoaded);
+    const alwaysUsed = allFields.filter(f => Object.keys(data.fieldUsedIn[f] || {}).length === recipeCount);
+    const neverUsed = allFields.filter(f => Object.keys(data.fieldUsedIn[f] || {}).length === 0);
+    const sometimesUsed = allFields.filter(f => {
+      const c = Object.keys(data.fieldUsedIn[f] || {}).length;
+      return c > 0 && c < recipeCount;
+    });
+    return { object: obj, recipeCount, totalFieldsLoaded: allFields.length, alwaysUsed: alwaysUsed.length, sometimesUsed: sometimesUsed.length, neverUsed: neverUsed.length, _alwaysUsedFields: alwaysUsed, _sometimesUsedFields: sometimesUsed, _neverUsedFields: neverUsed, _fieldUsedIn: data.fieldUsedIn, _recipes: data.recipes };
+  }).sort((a, b) => b.neverUsed - a.neverUsed);
+
+  const totalObjects = objects.length;
+  const totalNever = objects.reduce((s, o) => s + o.neverUsed, 0);
+  const totalAlways = objects.reduce((s, o) => s + o.alwaysUsed, 0);
+  document.getElementById('obj-stats-bar').innerHTML = [
+    statCard('Source Objects', totalObjects, 'accent'),
+    statCard('Always Used Fields', totalAlways, 'green'),
+    statCard('Never Used Fields', totalNever, 'red'),
+  ].join('');
+
+  window._objectData = objects;
+  renderObjTable(objects);
+
+  const details = document.getElementById('obj-details');
+  details.innerHTML = objects.map((o, i) => {
+    const alwaysTags = o._alwaysUsedFields.sort().map(f => `<span class="field-tag keep">${f}</span>`).join(' ');
+    const sometimesRows = o._sometimesUsedFields.sort().map(f => {
+      const usedIn = Object.keys(o._fieldUsedIn[f] || {});
+      const recipeTags = usedIn.map(rn => `<span class="recipe-tag">${rn.replace(/__\w+$/, '').replace(/_/g, ' ').substring(0, 30)}</span>`).join('');
+      return `<tr><td><span class="field-tag keep">${f}</span></td><td>${usedIn.length}/${o.recipeCount}</td><td class="obj-recipes">${recipeTags}</td></tr>`;
+    }).join('');
+    const neverTags = o._neverUsedFields.sort().map(f => `<span class="field-tag eliminate">${f}</span>`).join(' ');
+    return `<div class="card" id="obj-card-${i}">
+      <div class="card-header expandable" onclick="toggleExpand(this)">
+        <span><span class="arrow">&#9654;</span> ${o.object}</span>
+        <span><span class="badge badge-gray">${o.recipeCount} recipes</span> <span class="badge badge-green">${o.alwaysUsed} always</span> <span class="badge badge-orange">${o.sometimesUsed} sometimes</span> <span class="badge badge-red">${o.neverUsed} never</span></span>
+      </div>
+      <div class="expand-content">
+        ${o._alwaysUsedFields.length > 0 ? `<h4 style="margin-bottom:8px;color:var(--green)">Always Used (in all ${o.recipeCount} recipes)</h4><div class="field-list">${alwaysTags}</div>` : ''}
+        ${o._sometimesUsedFields.length > 0 ? `<h4 style="margin:16px 0 8px;color:var(--orange)">Sometimes Used</h4><table class="field-detail-table"><thead><tr><th>Field</th><th>Used In</th><th>Recipes</th></tr></thead><tbody>${sometimesRows}</tbody></table>` : ''}
+        ${o._neverUsedFields.length > 0 ? `<h4 style="margin:16px 0 8px;color:var(--red)">Never Used (safe to remove from all recipes)</h4><div class="field-list">${neverTags}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderObjTable(objects, sortField, sortAsc) {
+  const tbody = document.querySelector('#obj-table tbody');
+  let sorted = [...objects];
+  if (sortField) {
+    sorted.sort((a, b) => {
+      let va = a[sortField], vb = b[sortField];
+      if (typeof va === 'string') return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      return sortAsc ? va - vb : vb - va;
+    });
+  }
+  tbody.innerHTML = sorted.map((o, i) => {
+    const origIdx = window._objectData.indexOf(o);
+    return `<tr class="clickable" onclick="document.getElementById('obj-card-${origIdx}').scrollIntoView({behavior:'smooth'});toggleExpand(document.querySelector('#obj-card-${origIdx} .expandable'))">
+      <td><strong>${o.object}</strong></td>
+      <td>${o.recipeCount}</td>
+      <td>${o.totalFieldsLoaded}</td>
+      <td><span class="badge badge-green">${o.alwaysUsed}</span></td>
+      <td><span class="badge badge-orange">${o.sometimesUsed}</span></td>
+      <td><span class="badge badge-red">${o.neverUsed}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function buildCleanupData() {
+  const objFields = {};
+  DATA.recipes.forEach(r => {
+    const shortName = r.name.replace(/__\w+$/, '').replace(/_/g, ' ');
+    r.loadNodes.forEach(ln => {
+      const obj = ln.sourceObject;
+      if (!objFields[obj]) objFields[obj] = {};
+      ln.unusedFields.forEach(f => {
+        if (!objFields[obj][f]) objFields[obj][f] = { loadedIn: [], usedIn: [] };
+        objFields[obj][f].loadedIn.push(shortName);
+      });
+      ln.usedFields.forEach(f => {
+        if (!objFields[obj][f]) objFields[obj][f] = { loadedIn: [], usedIn: [] };
+        objFields[obj][f].loadedIn.push(shortName);
+        objFields[obj][f].usedIn.push(shortName);
+      });
+    });
+  });
+
+  // Only include fields that are NOT used in ANY recipe (safe to remove from SF)
+  const rows = [];
+  Object.keys(objFields).sort().forEach(obj => {
+    Object.keys(objFields[obj]).sort().forEach(field => {
+      const d = objFields[obj][field];
+      if (d.usedIn.length > 0) return;
+      rows.push({
+        object: obj,
+        field,
+        recipesLoading: d.loadedIn.length,
+        loadedInRecipes: d.loadedIn,
+      });
+    });
+  });
+  return rows;
+}
+
+function renderCleanupView() {
+  const rows = buildCleanupData();
+  window._cleanupRows = rows;
+
+  const objectsWithRemovals = new Set(rows.map(r => r.object)).size;
+
+  document.getElementById('cleanup-stats-bar').innerHTML = [
+    statCard('Objects Affected', objectsWithRemovals, 'accent'),
+    statCard('Fields Safe to Remove', rows.length, 'red'),
+  ].join('');
+
+  // Populate object filter
+  const objFilter = document.getElementById('cleanup-object-filter');
+  const objects = [...new Set(rows.map(r => r.object))].sort();
+  objects.forEach(obj => {
+    const opt = document.createElement('option');
+    opt.value = obj;
+    opt.textContent = obj;
+    objFilter.appendChild(opt);
+  });
+
+  renderCleanupTable(rows);
+}
+
+function renderCleanupTable(rows) {
+  const grouped = {};
+  rows.forEach(r => {
+    if (!grouped[r.object]) grouped[r.object] = [];
+    grouped[r.object].push(r);
+  });
+
+  const content = document.getElementById('cleanup-content');
+  const sortedObjects = Object.keys(grouped).sort();
+
+  if (rows.length === 0) {
+    content.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary)">No fields match the current filters.</div>';
+    return;
+  }
+
+  content.innerHTML = sortedObjects.map(obj => {
+    const fields = grouped[obj];
+    const tableRows = fields.map(f => {
+      return `<tr>
+        <td class="field-name">${f.field}</td>
+        <td style="text-align:center">${f.recipesLoading}</td>
+        <td class="recipe-list">${f.loadedInRecipes.join(', ')}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="cleanup-obj-section" data-object="${obj}">
+      <div class="cleanup-obj-header">
+        <h3>${obj}</h3>
+        <span class="obj-meta">${fields.length} fields to remove</span>
+      </div>
+      <table class="cleanup-table">
+        <thead><tr>
+          <th>Field API Name</th>
+          <th style="text-align:center">Loaded in # Recipes</th>
+          <th>Recipes</th>
+        </tr></thead>
+        <tbody>${tableRows}</tbody>
+      </table>
+    </div>`;
+  }).join('');
+}
+
+function applyCleanupFilters() {
+  const obj = document.getElementById('cleanup-object-filter').value;
+  const search = document.getElementById('cleanup-search').value.toLowerCase();
+
+  let filtered = window._cleanupRows;
+  if (obj !== 'all') filtered = filtered.filter(r => r.object === obj);
+  if (search) filtered = filtered.filter(r => r.field.toLowerCase().includes(search));
+
+  renderCleanupTable(filtered);
+}
+
+function exportCleanupCSV() {
+  const obj = document.getElementById('cleanup-object-filter').value;
+  const search = document.getElementById('cleanup-search').value.toLowerCase();
+
+  let filtered = window._cleanupRows;
+  if (obj !== 'all') filtered = filtered.filter(r => r.object === obj);
+  if (search) filtered = filtered.filter(r => r.field.toLowerCase().includes(search));
+
+  const header = 'Object,Field API Name,Loaded in # Recipes,Recipes';
+  const csvRows = filtered.map(r =>
+    `"${r.object}","${r.field}",${r.recipesLoading},"${r.loadedInRecipes.join('; ')}"`
+  );
+  const csv = [header, ...csvRows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'crma_fields_to_remove.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function toggleExpand(el) {
+  el.classList.toggle('open');
+  const content = el.nextElementSibling;
+  content.classList.toggle('open');
+}
+
+function switchView(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (view === 'detail') {
+    document.getElementById('view-detail').classList.add('active');
+  } else {
+    document.getElementById('view-' + view).classList.add('active');
+    const tab = document.querySelector(`.tab[data-view="${view}"]`);
+    if (tab) tab.classList.add('active');
+  }
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => switchView(tab.dataset.view));
+  });
+
+  document.getElementById('back-to-overview').addEventListener('click', () => switchView('overview'));
+
+  document.querySelector('#recipe-table').addEventListener('click', e => {
+    const tr = e.target.closest('tr.clickable');
+    if (tr) showRecipeDetail(parseInt(tr.dataset.idx));
+  });
+
+  // Sorting for recipe table
+  document.querySelectorAll('#recipe-table th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const field = th.dataset.sort;
+      const asc = currentSort.table === 'recipe' && currentSort.field === field ? !currentSort.asc : (field === 'name');
+      currentSort = { table: 'recipe', field, asc };
+      renderRecipeTable(DATA.recipes, field, asc);
+    });
+  });
+
+  // Sorting for object table
+  document.querySelectorAll('#obj-table th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const field = th.dataset.sort;
+      const asc = currentSort.table === 'obj' && currentSort.field === field ? !currentSort.asc : (field === 'object');
+      currentSort = { table: 'obj', field, asc };
+      renderObjTable(window._objectData, field, asc);
+    });
+  });
+
+  // Search for recipe table
+  document.getElementById('recipe-search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#recipe-table tbody tr').forEach(tr => {
+      tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  // Search for object table
+  document.getElementById('obj-search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#obj-table tbody tr').forEach(tr => {
+      tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  // Cleanup view filters
+  document.getElementById('cleanup-object-filter').addEventListener('change', applyCleanupFilters);
+  document.getElementById('cleanup-search').addEventListener('input', applyCleanupFilters);
+});
+</script>
+</body>
+</html>

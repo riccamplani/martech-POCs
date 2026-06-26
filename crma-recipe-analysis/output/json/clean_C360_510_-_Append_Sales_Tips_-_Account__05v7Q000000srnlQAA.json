@@ -1,0 +1,3150 @@
+{
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "SalesTips_structure",
+          "name": "SalesTips_structure",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "Personalization_20__c",
+          "KSBID",
+          "Personalization_12__c",
+          "Personalization_15__c",
+          "Personalization_13__c",
+          "Personalization_14__c",
+          "Personalization_16__c",
+          "Personalization_17__c",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Personalization_19__c",
+          "Personalization_18__c",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Personalization_11__c",
+          "Personalization_10__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0",
+        "LOAD_DATASET6"
+      ]
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "SFB_AccountId",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND23"
+      ]
+    },
+    "FORMULA1": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "row_number()",
+            "label": "Rank Accounts",
+            "name": "Rank_Accounts",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "AccountCampaignID"
+          }
+        ],
+        "partitionBy": [
+          "AccountCampaignID"
+        ]
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "concat(SFB_AccountId,SFB_CampainId)",
+            "label": "AccountCampaignID",
+            "name": "AccountCampaignID",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "FORMULA3": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "formulaExpression": "collect_set(Campaign_Channels)",
+            "label": "Channels",
+            "name": "Channels",
+            "type": "MULTIVALUE"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "AccountCampaignID"
+          }
+        ],
+        "partitionBy": [
+          "AccountCampaignID"
+        ]
+      },
+      "sources": [
+        "FORMULA1"
+      ]
+    },
+    "FORMULA4": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "array_join(Channels, &#39;,&#39;)",
+            "label": "Campaign Channels",
+            "name": "CampaignChannels",
+            "precision": 500,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA3"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Channels",
+            "Campaign_Channels"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA4"
+      ]
+    },
+    "FORMULA5": {
+      "action": "computeRelative",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "formulaExpression": "collect_set(Telesales_agency)",
+            "label": "Telesales Agency Collection",
+            "name": "TelesalesAgencyCollection",
+            "type": "MULTIVALUE"
+          }
+        ],
+        "orderBy": [
+          {
+            "direction": "ASC",
+            "fieldName": "AccountCampaignID"
+          }
+        ],
+        "partitionBy": [
+          "AccountCampaignID"
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS0"
+      ]
+    },
+    "FORMULA6": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "array_join(TelesalesAgencyCollection,&#39;&#39;)\n\n",
+            "label": "Telesales Agency",
+            "name": "TelesalesAgency",
+            "precision": 5000,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA5"
+      ]
+    },
+    "DROP_FIELDS1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Telesales_agency",
+            "TelesalesAgencyCollection"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA6"
+      ]
+    },
+    "FORMULA7": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "string(char_length(KSBID))",
+            "label": "KSBID Length",
+            "name": "KSBID_Length",
+            "precision": 3,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS1"
+      ]
+    },
+    "FORMULA8": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "KSBID",
+            "label": "KSBID 2",
+            "name": "KSBID_2",
+            "precision": 100,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA7"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 510 New Sales Tips",
+          "name": "C360_510_New_Sales_Tips",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "FILTER1"
+      ]
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Rank_Accounts",
+            "operands": [
+              "1"
+            ],
+            "operator": "EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8"
+      ]
+    },
+    "APPEND1": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND0",
+        "LOAD_DATASET7"
+      ]
+    },
+    "APPEND2": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Join14.Append19.Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND1",
+        "LOAD_DATASET8"
+      ]
+    },
+    "APPEND3": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND2",
+        "LOAD_DATASET9"
+      ]
+    },
+    "APPEND4": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND3",
+        "LOAD_DATASET10"
+      ]
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 420 Fiber Rebinding Customer",
+          "name": "C360_420_Fiber_Rebinding_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "SFB_CampainId",
+          "Personalization_10__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 410 New Sales Mobile",
+          "name": "C360_410_New_Sales_Mobile",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 430 Fiber and TBB Newsale Customer",
+          "name": "C360_430_Fiber_and_TBB_Newsale_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "Join14.Append19.Personalization_1__c",
+          "Personalization_10__c",
+          "SFB_CampainId",
+          "Personalization_12__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET9": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 440 Rebinding Mobile Customers",
+          "name": "C360_440_Rebinding_Mobile_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET10": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 450 New Sales Mobile Agrol",
+          "name": "C360_450_New_Sales_Mobile_Agrol",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND5": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND4",
+        "LOAD_DATASET12"
+      ]
+    },
+    "LOAD_DATASET12": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 460 Vekst to Verdi Campaign Customers",
+          "name": "C360_460_Vekst_to_Verdi_Campaign_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET13": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 470 Rebinding Mobile Red Group Pilot Customers",
+          "name": "C360_470_Rebinding_Mobile_Red_Group_Pilot_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND6": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND5",
+        "LOAD_DATASET13"
+      ]
+    },
+    "APPEND7": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND6",
+        "LOAD_DATASET16"
+      ]
+    },
+    "LOAD_DATASET15": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 490 Førstegangssamtale Small Customers",
+          "name": "C360_490_F_rstegangssamtale_Small_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "KSBID",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "SFB_AccountId",
+          "Telesales_agency",
+          "SFB_CampainId",
+          "Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND8": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND7",
+        "LOAD_DATASET15"
+      ]
+    },
+    "LOAD_DATASET16": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 480 Rebinding Forbund Mobile Customers",
+          "name": "C360_480_Rebinding_Forbund_Mobile_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET17": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 491 - Mobile Voice Rebinding Agrol Customers",
+          "name": "C360_491_Mobile_Voice_Rebinding_Agrol_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND9": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND8",
+        "LOAD_DATASET17"
+      ]
+    },
+    "LOAD_DATASET18": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 492 - New Sales MV Daughter Outside Mother Agreement",
+          "name": "C360_492_New_Sales_MV_Daughter_Outside_Mother_Agreement",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND10": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND9",
+        "LOAD_DATASET18"
+      ]
+    },
+    "LOAD_DATASET19": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 421 Migrasjon TBB til Fiber Customer",
+          "name": "C360_421_Migrasjon_TBB_til_Fiber_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "Personalization_10__c",
+          "SFB_CampainId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND11": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND10",
+        "LOAD_DATASET19"
+      ]
+    },
+    "LOAD_DATASET20": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 461 New Sales Safezone and Oppdatert Customer",
+          "name": "C360_461_New_Sales_Safezone_and_Oppdatert_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "KSBID",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "SFB_AccountId",
+          "SFB_CampainId",
+          "Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND12": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND11",
+        "LOAD_DATASET20"
+      ]
+    },
+    "LOAD_DATASET21": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 493 - New Sales MV NHO Service og Handel",
+          "name": "C360_493_New_Sales_MV_NHO_Service_og_Handel",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND13": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND12",
+        "LOAD_DATASET21"
+      ]
+    },
+    "LOAD_DATASET22": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 431 - Fiber Newsale Feil nummer Customer",
+          "name": "C360_431_Fiber_Newsale_Feil_nummer_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_12__c",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "Personalization_10__c",
+          "SFB_CampainId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND14": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND13",
+        "LOAD_DATASET22"
+      ]
+    },
+    "APPEND15": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "kvalifiser.Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "kvalifiser.Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "kvalifiser.Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "kvalifiser.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "kvalifiser.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "kvalifiser.Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "kvalifiser.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "kvalifiser.Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "kvalifiser.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "kvalifiser.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "kvalifiser.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND14",
+        "LOAD_DATASET30"
+      ]
+    },
+    "LOAD_DATASET24": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 432 - Oppfølging opportunities fra KS - Fiber og TBB Customer",
+          "name": "C360_432_Oppf_lging_opportunities_fra_KS_Fiber_og_TBB_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_12__c",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Sales_tips_description_template",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "Personalization_10__c",
+          "SFB_CampainId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND16": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tips_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND15",
+        "LOAD_DATASET24"
+      ]
+    },
+    "LOAD_DATASET25": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 433 - Fiber deepsale Medium Customer",
+          "name": "C360_433_Fiber_deepsale_Medium_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Personalization_1__c",
+          "Personalization_2__c",
+          "Personalization_3__c",
+          "SFB_AccountId",
+          "Sales_tip_title",
+          "KSBID",
+          "Personalization_12__c",
+          "Personalization_7__c",
+          "Personalization_8__c",
+          "Personalization_9__c",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Personalization_5__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Telesales_agency",
+          "Personalization_11__c",
+          "Personalization_10__c",
+          "SFB_CampainId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND17": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND16",
+        "LOAD_DATASET25"
+      ]
+    },
+    "LOAD_DATASET26": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 494 New Sales Mobile Dealer",
+          "name": "C360_494_New_Sales_Mobile_Dealer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND18": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND17",
+        "LOAD_DATASET26"
+      ]
+    },
+    "LOAD_DATASET27": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 495 - Holdback NHO Byggenæringen",
+          "name": "C360_495_Holdback_NHO_Byggen_ringen",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "TRANSFORM1.Kurt_Id",
+          "TRANSFORM1.SFB_AccountId",
+          "TRANSFORM1.Sales_tip_description_template",
+          "TRANSFORM1.KSBID",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "TRANSFORM1.SFB_CampainId",
+          "TRANSFORM1.Sales_tip_title"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND19": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "TRANSFORM1.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "TRANSFORM1.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "TRANSFORM1.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "TRANSFORM1.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND18",
+        "LOAD_DATASET27"
+      ]
+    },
+    "LOAD_DATASET28": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 438 -  Møtebooking DPSS Medium Loyalty Customers",
+          "name": "C360_438_M_tebooking_DPSS_Medium_Loyalty_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Output.Personalization_10__c",
+          "Output.Personalization_9__c",
+          "Output.Personalization_8__c",
+          "SFB_AccountId",
+          "Output.Personalization_6__c",
+          "Output.Personalization_7__c",
+          "Output.Personalization_11__c",
+          "Output.Personalization_2__c",
+          "Output.Personalization_5__c",
+          "Sales_tip_title",
+          "Output.Personalization_12__c",
+          "Output.Personalization_3__c",
+          "Output.Personalization_4__c",
+          "KSBID",
+          "Sales_tip_description_template",
+          "Campaign_Channels",
+          "Kurt_Id",
+          "Telesales_agency",
+          "SFB_CampainId",
+          "Personalization_1__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND20": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Output.Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Output.Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Output.Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Output.Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Output.Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Output.Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Output.Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Output.Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Output.Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Output.Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Output.Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND19",
+        "LOAD_DATASET28"
+      ]
+    },
+    "LOAD_DATASET29": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Customers",
+          "name": "C360_496_Pilot_SafeZone_og_Oppdatert_bundle_Customers",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "ExportDefi.SFB_AccountId",
+          "ExportDefi.Sales_tip_title",
+          "ExportDefi.KSBID",
+          "ExportDefi.SFB_CampainId",
+          "ExportDefi.Personalization_1",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "ExportDefi.Kurt_Id",
+          "ExportDefi.Sales_tip_description_template"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND21": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "ExportDefi.Personalization_1",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "ExportDefi.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "ExportDefi.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "ExportDefi.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "ExportDefi.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "ExportDefi.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "ExportDefi.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND20",
+        "LOAD_DATASET29"
+      ]
+    },
+    "LOAD_DATASET30": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360_439_Møtebooking-pilot Hunter M_Customer",
+          "name": "C360_439_M_tebooking_pilot_Hunter_M_Customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "kvalifiser.Sales_tip_description_template",
+          "kvalifiser.Personalization_3__c",
+          "kvalifiser.Telesales_agency",
+          "kvalifiser.SFB_CampainId",
+          "kvalifiser.KSBID",
+          "kvalifiser.Sales_tip_title",
+          "kvalifiser.SFB_AccountId",
+          "kvalifiser.Campaign_Channels",
+          "kvalifiser.Kurt_Id",
+          "kvalifiser.Personalization_1__c",
+          "kvalifiser.Personalization_2__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND22": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Transform5.Personalization_1__c",
+            "top": "Personalization_1__c"
+          },
+          {
+            "bottom": "Output.Personalization_2__c",
+            "top": "Personalization_2__c"
+          },
+          {
+            "bottom": "Output.Personalization_3__c",
+            "top": "Personalization_3__c"
+          },
+          {
+            "bottom": "Output.Personalization_20__c",
+            "top": "Personalization_20__c"
+          },
+          {
+            "bottom": "KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "Output.Personalization_12__c",
+            "top": "Personalization_12__c"
+          },
+          {
+            "bottom": "Output.Personalization_15__c",
+            "top": "Personalization_15__c"
+          },
+          {
+            "bottom": "Output.Personalization_13__c",
+            "top": "Personalization_13__c"
+          },
+          {
+            "bottom": "Output.Personalization_14__c",
+            "top": "Personalization_14__c"
+          },
+          {
+            "bottom": "Output.Personalization_16__c",
+            "top": "Personalization_16__c"
+          },
+          {
+            "bottom": "Output.Personalization_17__c",
+            "top": "Personalization_17__c"
+          },
+          {
+            "bottom": "Output.Personalization_7__c",
+            "top": "Personalization_7__c"
+          },
+          {
+            "bottom": "Output.Personalization_8__c",
+            "top": "Personalization_8__c"
+          },
+          {
+            "bottom": "Output.Personalization_9__c",
+            "top": "Personalization_9__c"
+          },
+          {
+            "bottom": "Output.Personalization_19__c",
+            "top": "Personalization_19__c"
+          },
+          {
+            "bottom": "Personalization_18__c",
+            "top": "Personalization_18__c"
+          },
+          {
+            "bottom": "Output.Personalization_5__c",
+            "top": "Personalization_5__c"
+          },
+          {
+            "bottom": "Output.Personalization_6__c",
+            "top": "Personalization_6__c"
+          },
+          {
+            "bottom": "Output.Personalization_4__c",
+            "top": "Personalization_4__c"
+          },
+          {
+            "bottom": "Output.Personalization_11__c",
+            "top": "Personalization_11__c"
+          },
+          {
+            "bottom": "Output.Personalization_10__c",
+            "top": "Personalization_10__c"
+          },
+          {
+            "bottom": "Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Output.Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "Output.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Output.Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "Campaign.Id",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "Output.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND21",
+        "LOAD_DATASET32"
+      ]
+    },
+    "LOAD_DATASET32": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 434 - Fiber Newsale and deepsale Medium DMU",
+          "name": "C360_434_Fiber_Newsale_and_deepsale_Medium_DMU",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Output.Personalization_15__c",
+          "Output.Kurt_Id",
+          "Output.Personalization_9__c",
+          "Output.Personalization_19__c",
+          "Output.Personalization_17__c",
+          "Output.Personalization_7__c",
+          "Output.Personalization_11__c",
+          "Output.Personalization_5__c",
+          "Output.Personalization_13__c",
+          "Output.Personalization_3__c",
+          "Output.Personalization_20__c",
+          "Output.Campaign_Channels",
+          "Output.Personalization_16__c",
+          "Campaign.Id",
+          "Output.Personalization_10__c",
+          "Transform5.Personalization_1__c",
+          "Output.Personalization_8__c",
+          "Output.Personalization_6__c",
+          "Output.Personalization_14__c",
+          "Output.Personalization_2__c",
+          "Output.Telesales_agency",
+          "Sales_tip_title",
+          "Output.Personalization_12__c",
+          "Output.Personalization_4__c",
+          "KSBID",
+          "Output.SFB_AccountId",
+          "Sales_tip_description_template",
+          "Personalization_18__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET33": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 497 - New Sales MV Campaign - Medium",
+          "name": "C360_497_New_Sales_MV_Campaign_Medium",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "ExportDefi.SFB_AccountId",
+          "ExportDefi.Sales_tip_title",
+          "ExportDefi.KSBID",
+          "ExportDefi.SFB_CampainId",
+          "Campaign_Channels",
+          "Telesales_agency",
+          "ExportDefi.Kurt_Id",
+          "ExportDefi.Sales_tip_description_template"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "APPEND23": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "ExportDefi.KSBID",
+            "top": "KSBID"
+          },
+          {
+            "bottom": "ExportDefi.Sales_tip_description_template",
+            "top": "Sales_tip_description_template"
+          },
+          {
+            "bottom": "Campaign_Channels",
+            "top": "Campaign_Channels"
+          },
+          {
+            "bottom": "ExportDefi.SFB_AccountId",
+            "top": "SFB_AccountId"
+          },
+          {
+            "bottom": "Telesales_agency",
+            "top": "Telesales_agency"
+          },
+          {
+            "bottom": "ExportDefi.SFB_CampainId",
+            "top": "SFB_CampainId"
+          },
+          {
+            "bottom": "ExportDefi.Sales_tip_title",
+            "top": "Sales_tip_title"
+          },
+          {
+            "bottom": "ExportDefi.Kurt_Id",
+            "top": "Kurt_Id"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND22",
+        "LOAD_DATASET33"
+      ]
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "SalesTips_structure",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND0": {
+        "label": "Append 0",
+        "type": "APPEND",
+        "top": 112,
+        "left": 252
+      },
+      "FILTER0": {
+        "label": "Filter Structure row",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.4,
+        "left": 3612.4
+      },
+      "TRANSFORM0": {
+        "label": "Transform 0",
+        "type": "TRANSFORM",
+        "top": 112.4,
+        "left": 3752.4,
+        "graph": {
+          "FORMULA1": {
+            "label": "Formula"
+          },
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Account+Campaign"
+          },
+          "FORMULA3": {
+            "label": "Formula"
+          },
+          "FORMULA4": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
+          },
+          "FORMULA5": {
+            "label": "Telesales Agency Collection"
+          },
+          "FORMULA6": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS1": {
+            "label": "Drop Columns"
+          },
+          "FORMULA7": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "KSBID Length"
+          },
+          "FORMULA8": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "KSBID 2"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2",
+            "target": "FORMULA1"
+          },
+          {
+            "source": "FORMULA1",
+            "target": "FORMULA3"
+          },
+          {
+            "source": "FORMULA3",
+            "target": "FORMULA4"
+          },
+          {
+            "source": "FORMULA4",
+            "target": "DROP_FIELDS0"
+          },
+          {
+            "source": "DROP_FIELDS0",
+            "target": "FORMULA5"
+          },
+          {
+            "source": "FORMULA5",
+            "target": "FORMULA6"
+          },
+          {
+            "source": "FORMULA6",
+            "target": "DROP_FIELDS1"
+          },
+          {
+            "source": "DROP_FIELDS1",
+            "target": "FORMULA7"
+          },
+          {
+            "source": "FORMULA7",
+            "target": "FORMULA8"
+          }
+        ]
+      },
+      "OUTPUT0": {
+        "label": "C360 510 New Sales Tips",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112.4,
+        "left": 4032.4
+      },
+      "FILTER1": {
+        "label": "Remove Duplicate rows",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.4,
+        "left": 3892.4
+      },
+      "APPEND1": {
+        "label": "Append 1",
+        "type": "APPEND",
+        "top": 112,
+        "left": 392
+      },
+      "APPEND2": {
+        "label": "Append 2",
+        "type": "APPEND",
+        "top": 112,
+        "left": 532
+      },
+      "APPEND3": {
+        "label": "Append 3",
+        "type": "APPEND",
+        "top": 112,
+        "left": 672
+      },
+      "APPEND4": {
+        "label": "Append 4",
+        "type": "APPEND",
+        "top": 112,
+        "left": 812
+      },
+      "LOAD_DATASET6": {
+        "label": "C360 420 Fiber Rebinding Customer",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 252,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET7": {
+        "label": "C360 410 New Sales Mobile",
+        "type": "LOAD_DATASET",
+        "top": 392.2,
+        "left": 392,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET8": {
+        "label": "C360 430 Fiber and TBB Newsale Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 532,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET9": {
+        "label": "C360 440 Rebinding Mobile Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.4,
+        "left": 672,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET10": {
+        "label": "C360 450 New Sales Mobile Agrol",
+        "type": "LOAD_DATASET",
+        "top": 392.5,
+        "left": 812.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND5": {
+        "label": "Append 5",
+        "type": "APPEND",
+        "top": 112,
+        "left": 952.1
+      },
+      "LOAD_DATASET12": {
+        "label": "C360 460 Vekst to Verdi Campaign Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 952.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET13": {
+        "label": "C360 470 Rebinding Mobile Red Group Pilot Customers",
+        "type": "LOAD_DATASET",
+        "top": 391.8,
+        "left": 1092,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND6": {
+        "label": "Append 6",
+        "type": "APPEND",
+        "top": 111.9,
+        "left": 1092
+      },
+      "APPEND7": {
+        "label": "Append 7",
+        "type": "APPEND",
+        "top": 112.1,
+        "left": 1232
+      },
+      "LOAD_DATASET15": {
+        "label": "C360 490 Førstegangssamtale Small Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.9,
+        "left": 1371.6,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND8": {
+        "label": "Append 8",
+        "type": "APPEND",
+        "top": 112.5,
+        "left": 1372
+      },
+      "LOAD_DATASET16": {
+        "label": "C360 480 Rebinding Forbund Mobile Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.4,
+        "left": 1231.8,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET17": {
+        "label": "C360 491 - Mobile Voice Rebinding Agrol Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.1,
+        "left": 1512.3,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND9": {
+        "label": "Append 9",
+        "type": "APPEND",
+        "top": 112.19999999999999,
+        "left": 1512.1
+      },
+      "LOAD_DATASET18": {
+        "label": "C360 492 - New Sales MV Daughter Outside Mother Agreement",
+        "type": "LOAD_DATASET",
+        "top": 392.1,
+        "left": 1652.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND10": {
+        "label": "Append 10",
+        "type": "APPEND",
+        "top": 112.1,
+        "left": 1652
+      },
+      "LOAD_DATASET19": {
+        "label": "C360 421 Migrasjon TBB til Fiber Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.2,
+        "left": 1792.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND11": {
+        "label": "Append 11",
+        "type": "APPEND",
+        "top": 112.30000000000001,
+        "left": 1792
+      },
+      "LOAD_DATASET20": {
+        "label": "C360 461 New Sales Safezone and Oppdatert Customer",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 1932,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND12": {
+        "label": "Append 12",
+        "type": "APPEND",
+        "top": 112.6,
+        "left": 1932
+      },
+      "LOAD_DATASET21": {
+        "label": "C360 493 - New Sales MV NHO Service og Handel",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 2072,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND13": {
+        "label": "Append 13",
+        "type": "APPEND",
+        "top": 112.4,
+        "left": 2072
+      },
+      "LOAD_DATASET22": {
+        "label": "C360 431 - Fiber Newsale Feil nummer Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 2212,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND14": {
+        "label": "Append 14",
+        "type": "APPEND",
+        "top": 112.1,
+        "left": 2212
+      },
+      "APPEND15": {
+        "label": "Append 15",
+        "type": "APPEND",
+        "top": 112.4,
+        "left": 2352.1
+      },
+      "LOAD_DATASET24": {
+        "label": "C360 432 - Oppfølging opportunities fra KS - Fiber og TBB Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.2,
+        "left": 2492,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND16": {
+        "label": "Append 16",
+        "type": "APPEND",
+        "top": 112.4,
+        "left": 2492
+      },
+      "LOAD_DATASET25": {
+        "label": "C360 433 - Fiber deepsale Medium Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.4,
+        "left": 2632,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND17": {
+        "label": "Append 17",
+        "type": "APPEND",
+        "top": 112.4,
+        "left": 2632
+      },
+      "LOAD_DATASET26": {
+        "label": "C360 494 New Sales Mobile Dealer",
+        "type": "LOAD_DATASET",
+        "top": 392.3,
+        "left": 2772,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND18": {
+        "label": "Append 18",
+        "type": "APPEND",
+        "top": 112.1,
+        "left": 2772
+      },
+      "LOAD_DATASET27": {
+        "label": "C360 495 - Holdback NHO Byggenæringen",
+        "type": "LOAD_DATASET",
+        "top": 392.5,
+        "left": 2912,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND19": {
+        "label": "Append 19",
+        "type": "APPEND",
+        "top": 112.80000000000001,
+        "left": 2912
+      },
+      "LOAD_DATASET28": {
+        "label": "C360 438 -  Møtebooking DPSS Medium Loyalty Customers",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 3052,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND20": {
+        "label": "Append 20",
+        "type": "APPEND",
+        "top": 112.19999999999999,
+        "left": 3052
+      },
+      "LOAD_DATASET29": {
+        "label": "C360 496 - Pilot SafeZone og Oppdatert bundle - Customers",
+        "type": "LOAD_DATASET",
+        "top": 392.5,
+        "left": 3192,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND21": {
+        "label": "Append 21",
+        "type": "APPEND",
+        "top": 112.6,
+        "left": 3192
+      },
+      "LOAD_DATASET30": {
+        "label": "C360_439_Møtebooking-pilot Hunter M_Customer",
+        "type": "LOAD_DATASET",
+        "top": 392.1,
+        "left": 2352,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND22": {
+        "label": "Append 22",
+        "type": "APPEND",
+        "top": 112.19999999999999,
+        "left": 3332
+      },
+      "LOAD_DATASET32": {
+        "label": "C360 434 - Fiber Newsale and deepsale Medium DMU",
+        "type": "LOAD_DATASET",
+        "top": 392.4,
+        "left": 3332,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET33": {
+        "label": "C360 497 - New Sales MV Campaign - Medium",
+        "type": "LOAD_DATASET",
+        "top": 393,
+        "left": 3472,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "APPEND23": {
+        "label": "Append 23",
+        "type": "APPEND",
+        "top": 112,
+        "left": 3472
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET0",
+        "target": "APPEND0"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "FILTER1",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER1"
+      },
+      {
+        "source": "APPEND0",
+        "target": "APPEND1"
+      },
+      {
+        "source": "APPEND1",
+        "target": "APPEND2"
+      },
+      {
+        "source": "APPEND2",
+        "target": "APPEND3"
+      },
+      {
+        "source": "APPEND3",
+        "target": "APPEND4"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "APPEND0"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "APPEND1"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "APPEND2"
+      },
+      {
+        "source": "LOAD_DATASET9",
+        "target": "APPEND3"
+      },
+      {
+        "source": "LOAD_DATASET10",
+        "target": "APPEND4"
+      },
+      {
+        "source": "APPEND4",
+        "target": "APPEND5"
+      },
+      {
+        "source": "LOAD_DATASET12",
+        "target": "APPEND5"
+      },
+      {
+        "source": "APPEND5",
+        "target": "APPEND6"
+      },
+      {
+        "source": "LOAD_DATASET13",
+        "target": "APPEND6"
+      },
+      {
+        "source": "APPEND6",
+        "target": "APPEND7"
+      },
+      {
+        "source": "APPEND7",
+        "target": "APPEND8"
+      },
+      {
+        "source": "LOAD_DATASET15",
+        "target": "APPEND8"
+      },
+      {
+        "source": "LOAD_DATASET16",
+        "target": "APPEND7"
+      },
+      {
+        "source": "APPEND8",
+        "target": "APPEND9"
+      },
+      {
+        "source": "LOAD_DATASET17",
+        "target": "APPEND9"
+      },
+      {
+        "source": "APPEND9",
+        "target": "APPEND10"
+      },
+      {
+        "source": "LOAD_DATASET18",
+        "target": "APPEND10"
+      },
+      {
+        "source": "APPEND10",
+        "target": "APPEND11"
+      },
+      {
+        "source": "LOAD_DATASET19",
+        "target": "APPEND11"
+      },
+      {
+        "source": "APPEND11",
+        "target": "APPEND12"
+      },
+      {
+        "source": "LOAD_DATASET20",
+        "target": "APPEND12"
+      },
+      {
+        "source": "APPEND12",
+        "target": "APPEND13"
+      },
+      {
+        "source": "LOAD_DATASET21",
+        "target": "APPEND13"
+      },
+      {
+        "source": "APPEND13",
+        "target": "APPEND14"
+      },
+      {
+        "source": "LOAD_DATASET22",
+        "target": "APPEND14"
+      },
+      {
+        "source": "APPEND14",
+        "target": "APPEND15"
+      },
+      {
+        "source": "APPEND15",
+        "target": "APPEND16"
+      },
+      {
+        "source": "LOAD_DATASET24",
+        "target": "APPEND16"
+      },
+      {
+        "source": "APPEND16",
+        "target": "APPEND17"
+      },
+      {
+        "source": "LOAD_DATASET25",
+        "target": "APPEND17"
+      },
+      {
+        "source": "APPEND17",
+        "target": "APPEND18"
+      },
+      {
+        "source": "LOAD_DATASET26",
+        "target": "APPEND18"
+      },
+      {
+        "source": "APPEND18",
+        "target": "APPEND19"
+      },
+      {
+        "source": "LOAD_DATASET27",
+        "target": "APPEND19"
+      },
+      {
+        "source": "APPEND19",
+        "target": "APPEND20"
+      },
+      {
+        "source": "LOAD_DATASET28",
+        "target": "APPEND20"
+      },
+      {
+        "source": "APPEND20",
+        "target": "APPEND21"
+      },
+      {
+        "source": "LOAD_DATASET29",
+        "target": "APPEND21"
+      },
+      {
+        "source": "LOAD_DATASET30",
+        "target": "APPEND15"
+      },
+      {
+        "source": "APPEND21",
+        "target": "APPEND22"
+      },
+      {
+        "source": "LOAD_DATASET32",
+        "target": "APPEND22"
+      },
+      {
+        "source": "APPEND22",
+        "target": "APPEND23"
+      },
+      {
+        "source": "LOAD_DATASET33",
+        "target": "APPEND23"
+      },
+      {
+        "source": "APPEND23",
+        "target": "FILTER0"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

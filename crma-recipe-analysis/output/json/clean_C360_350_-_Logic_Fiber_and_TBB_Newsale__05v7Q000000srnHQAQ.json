@@ -1,0 +1,1987 @@
+{
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "DPSS_Segment__c",
+          "Id",
+          "NBR_FIXED_BBB_FIBER__c",
+          "NBR_FIBER_USER__c",
+          "NBR_TBB_MOBIL__c",
+          "NBR_TBB_MOBIL_USER__c",
+          "Phonenumber_type__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "New Sales Potential Customer Fiber or TBB",
+          "name": "New_Sales_Potential_Customer_Fiber_or_TBB",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Location_Owner__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR 2 OR 3 OR 4",
+        "filterExpressions": [
+          {
+            "field": "NBR_FIXED_BBB_FIBER__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "NBR_FIBER_USER__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "NBR_TBB_MOBIL__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          },
+          {
+            "field": "NBR_TBB_MOBIL_USER__c",
+            "operands": [
+              "1"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR 2",
+        "filterExpressions": [
+          {
+            "field": "DPSS_Segment__c",
+            "operands": [
+              "Medium",
+              "Small",
+              "Unsegmented"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DPSS_Segment__c",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "Account Have IA",
+            "name": "Account_have_IA",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Account_have_IA"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Account_have_IA"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "SEogAgrol"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "DROP_FIELDS0",
+        "FILTER1"
+      ]
+    },
+    "FILTER3": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Account_have_IA",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN0"
+      ]
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Location_Owner__c"
+        ],
+        "rightKeys": [
+          "SEogAgrol.Id"
+        ],
+        "rightQualifier": "HavenotIA"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET1",
+        "DROP_FIELDS1"
+      ]
+    },
+    "LOAD_DATASET2": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Fiber newsalesadresses 1 for a customer",
+          "name": "Fiber_newsalesadresses_1_for_a_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "IA_full_new_sale_text_adresses",
+          "Location_Owner__c",
+          "Capacity_code__c",
+          "Coverage_4G_Plus__c",
+          "Coverage_4GP40__c",
+          "Coverage_5G_P__c",
+          "Coverage_4G__c",
+          "Fiber_cost__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Location_Owner__c"
+        ],
+        "rightKeys": [
+          "HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "CangetFib1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET2",
+        "JOIN1"
+      ]
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Fiber_cost__c",
+            "operands": [
+              "10000",
+              "60000"
+            ],
+            "operator": "IN_RANGE",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "FILTER4_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 or 2",
+        "filterExpressions": [
+          {
+            "field": "Fiber_cost__c",
+            "operands": [
+              "60000"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Fiber_cost__c",
+            "operands": [
+              "10000"
+            ],
+            "operator": "LESS_THAN",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "LOAD_DATASET3": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression Fiber Newsale Inbound",
+          "name": "Suppression_Fiber_Newsale_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Innbound_Fiber_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression Fiber Newsale Outbound",
+          "name": "Suppression_Fiber_Newsale_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Outbound_Fiber_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression Fiber Newsale TM",
+          "name": "Suppression_Fiber_Newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_TM_Fiber_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET6": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression TBB Newsale Inbound",
+          "name": "Suppression_TBB_Newsale_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Inbound_TBB_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET7": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression TBB Newsale Outbound",
+          "name": "Suppression_TBB_Newsale_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Outbound_TBB_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "LOAD_DATASET8": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression TBB Newsale TM",
+          "name": "Suppression_TBB_Newsale_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_TM_TBB_newsale"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN3": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_Innbound_Fiber_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cangetfibe"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET3",
+        "FILTER4"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Innbound_Fiber_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN3"
+      ]
+    },
+    "JOIN4": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_Outbound_Fiber_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cangetfibe"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET4",
+        "FILTER4"
+      ]
+    },
+    "DROP_FIELDS1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "SEogAgrol.DPSS_Segment__c",
+            "SEogAgrol.DPSS_Portfolio__c",
+            "SEogAgrol.Id",
+            "SEogAgrol.NumberOfEmployees",
+            "SEogAgrol.Industry__c",
+            "SEogAgrol.KurtID__c",
+            "SEogAgrol.Segment__c",
+            "SEogAgrol.SubsMobileVoice__c",
+            "SEogAgrol.NACE_Subclass_Code__c",
+            "SEogAgrol.TSP_Dealer__c",
+            "SEogAgrol.Company_Family_Name__c",
+            "SEogAgrol.Has_Subscriptions__c",
+            "SEogAgrol.Mobile_Voice_Penetration__c",
+            "SEogAgrol.Has_Subscriptions_Actual__c",
+            "SEogAgrol.Phonenumber_type__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER3"
+      ]
+    },
+    "DROP_FIELDS2": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Capacity_code__c",
+            "Coverage_4G_Plus__c",
+            "Coverage_4GP40__c",
+            "Coverage_5G_P__c",
+            "Coverage_4G__c",
+            "Fiber_cost__c",
+            "CangetFib1.HavenotIA.SEogAgrol.DPSS_Segment__c",
+            "CangetFib1.HavenotIA.SEogAgrol.DPSS_Portfolio__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Id",
+            "CangetFib1.HavenotIA.SEogAgrol.NumberOfEmployees",
+            "CangetFib1.HavenotIA.SEogAgrol.Industry__c",
+            "CangetFib1.HavenotIA.SEogAgrol.KurtID__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Segment__c",
+            "CangetFib1.HavenotIA.SEogAgrol.SubsMobileVoice__c",
+            "CangetFib1.HavenotIA.SEogAgrol.NACE_Subclass_Code__c",
+            "CangetFib1.HavenotIA.SEogAgrol.TSP_Dealer__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Company_Family_Name__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Mobile_Voice_Penetration__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Has_Subscriptions_Actual__c",
+            "CangetFib1.HavenotIA.SEogAgrol.Phonenumber_type__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN2"
+      ]
+    },
+    "FILTER6": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Outbound_Fiber_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN4"
+      ]
+    },
+    "JOIN5": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_TM_Fiber_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cangetfibe"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET5",
+        "FILTER4"
+      ]
+    },
+    "FILTER7": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_TM_Fiber_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN5"
+      ]
+    },
+    "FORMULA1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_Fiber_Inbound",
+            "name": "Key_Qualified_Fiber_Inbound",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "DROP_FIELDS9": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_Fiber_Inbound"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA1"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_Fiber_Outbound",
+            "name": "Key_Qualified_Fiber_Outbound",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER6"
+      ]
+    },
+    "DROP_FIELDS10": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_Fiber_Outbound"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "JOIN6": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_Inbound_TBB_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cannotgetf"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET6",
+        "FILTER4_copy0"
+      ]
+    },
+    "FILTER8": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Inbound_TBB_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN6"
+      ]
+    },
+    "JOIN7": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_Outbound_TBB_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cannotgetf"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET7",
+        "FILTER4_copy0"
+      ]
+    },
+    "FILTER9": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Outbound_TBB_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN7"
+      ]
+    },
+    "JOIN8": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_TM_TBB_newsale"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cannotgetf"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET8",
+        "FILTER4_copy0"
+      ]
+    },
+    "FILTER10": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_TM_TBB_newsale",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN8"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Fiber_newsale_qualified_Inbound",
+          "name": "Fiber_newsale_qualified_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS9"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Fiber_newsale_qualified_Outbound",
+          "name": "Fiber_newsale_qualified_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10"
+      ]
+    },
+    "OUTPUT2": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Fiber TBB Newsale qualified customer",
+          "name": "Fiber_TBB_Newsale_qualified_customer",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "FORMULA2_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_Fiber_TM",
+            "name": "Key_Qualified_Fiber_TM",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER7"
+      ]
+    },
+    "DROP_FIELDS10_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_Fiber_TM"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2_copy0_copy0"
+      ]
+    },
+    "OUTPUT1_copy0_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Fiber_newsale_qualified_TM",
+          "name": "Fiber_newsale_qualified_TM1",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10_copy0_copy0"
+      ]
+    },
+    "FORMULA2_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_TBB_Inbound",
+            "name": "Key_Qualified_TBB_Inbound",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER8"
+      ]
+    },
+    "DROP_FIELDS10_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_TBB_Inbound"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2_copy0_copy0_copy0"
+      ]
+    },
+    "OUTPUT1_copy0_copy0_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "TBB_newsale_qualified_Inbound",
+          "name": "TBB_newsale_qualified_Inbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10_copy0_copy0_copy0"
+      ]
+    },
+    "FORMULA2_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_TBB_Outbound",
+            "name": "Key_Qualified_TBB_Outbound",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER9"
+      ]
+    },
+    "DROP_FIELDS10_copy0_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_TBB_Outbound"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "OUTPUT1_copy0_copy0_copy0_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "TBB_newsale_qualified_Outbound",
+          "name": "TBB_newsale_qualified_Outbound",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "FORMULA2_copy0_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_TBB_TM",
+            "name": "Key_Qualified_TBB_TM",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER10"
+      ]
+    },
+    "DROP_FIELDS10_copy0_copy0_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_TBB_TM"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2_copy0_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "OUTPUT1_copy0_copy0_copy0_copy0_copy0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "TBB_newsale_qualified_TM",
+          "name": "TBB_newsale_qualified_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10_copy0_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "LOAD_DATASET9": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppression Fiber newsale TM WO phonenumber",
+          "name": "Suppression_Fiber_newsale_TM_WO_phonenumber",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN9": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Key_Suppressions_Opp_Fib_leads"
+        ],
+        "rightKeys": [
+          "CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightQualifier": "cangetfibe"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET9",
+        "FILTER4"
+      ]
+    },
+    "FILTER11": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Key_Suppressions_Opp_Fib_leads",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN9"
+      ]
+    },
+    "FORMULA2_copy0_copy0_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "label": "Key_Qualified_Fiber_TM_wo_phone",
+            "name": "Key_Qualified_Fiber_TM_wo_phone",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN10"
+      ]
+    },
+    "DROP_FIELDS10_copy0_copy0_copy1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Key_Qualified_Fiber_TM_wo_phone"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA2_copy0_copy0_copy1"
+      ]
+    },
+    "OUTPUT3": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "Fiber_newsale_wo_phone_qualified_TM",
+          "name": "Fiber_newsale_wo_phone_qualified_TM",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS10_copy0_copy0_copy1"
+      ]
+    },
+    "DROP_FIELDS11": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Id",
+            "Phonenumber_type__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    },
+    "FILTER12": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Phonenumber_type__c",
+            "operands": [
+              "mobil",
+              "pots"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS11"
+      ]
+    },
+    "JOIN10": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "Phonenumbe"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER11",
+        "FILTER12"
+      ]
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 251.7,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET1": {
+        "label": "New Sales Potential Customer Fiber or TBB",
+        "type": "LOAD_DATASET",
+        "top": 672.5,
+        "left": 112.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER0": {
+        "label": "Have fiber tbb owner user",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 252
+      },
+      "FILTER1": {
+        "label": "DPSS Segment Small,Medium,usegmentert og NULL",
+        "description": "",
+        "type": "FILTER",
+        "top": 251.89999999999998,
+        "left": 252
+      },
+      "TRANSFORM0": {
+        "label": "Have IA Owner user",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 392,
+        "graph": {
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA0",
+            "target": "DROP_FIELDS0"
+          }
+        ]
+      },
+      "JOIN0": {
+        "label": "Join 0",
+        "type": "JOIN",
+        "top": 392,
+        "left": 532.1
+      },
+      "FILTER3": {
+        "label": "Have not IA",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 672
+      },
+      "JOIN1": {
+        "label": "Can get Fib10-60K or TBB",
+        "description": "",
+        "type": "JOIN",
+        "top": 392,
+        "left": 952
+      },
+      "LOAD_DATASET2": {
+        "label": "Fiber newsalesadresses 1 for a customer",
+        "type": "LOAD_DATASET",
+        "top": 812.2,
+        "left": 112.30000000000001,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN2": {
+        "label": "fiberkost, dekning data",
+        "description": "",
+        "type": "JOIN",
+        "top": 392,
+        "left": 1092
+      },
+      "FILTER4": {
+        "label": "can get fiber",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.39999999999998,
+        "left": 1372
+      },
+      "FILTER4_copy0": {
+        "label": "can not get fiber - but TBB",
+        "description": "",
+        "type": "FILTER",
+        "top": 812,
+        "left": 1372.2
+      },
+      "LOAD_DATASET3": {
+        "label": "Suppression Fiber Newsale Inbound",
+        "type": "LOAD_DATASET",
+        "top": 952.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET4": {
+        "label": "Suppression Fiber Newsale Outbound",
+        "type": "LOAD_DATASET",
+        "top": 1092.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET5": {
+        "label": "Suppression Fiber Newsale TM",
+        "type": "LOAD_DATASET",
+        "top": 1232.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET6": {
+        "label": "Suppression TBB Newsale Inbound",
+        "type": "LOAD_DATASET",
+        "top": 1372.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET7": {
+        "label": "Suppression TBB Newsale Outbound",
+        "type": "LOAD_DATASET",
+        "top": 1512.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "LOAD_DATASET8": {
+        "label": "Suppression TBB Newsale TM",
+        "type": "LOAD_DATASET",
+        "top": 1652.2,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN3": {
+        "label": "Join Suppression Fiber Newsale Inbound",
+        "description": "",
+        "type": "JOIN",
+        "top": 111.80000000000001,
+        "left": 1512
+      },
+      "FILTER5": {
+        "label": "Fiber Inbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 392,
+        "left": 1652
+      },
+      "JOIN4": {
+        "label": "Join Suppression Fiber Newsale Outbound",
+        "description": "",
+        "type": "JOIN",
+        "top": 392.5,
+        "left": 1512
+      },
+      "TRANSFORM1": {
+        "label": "Drop columns",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 812,
+        "graph": {
+          "DROP_FIELDS1": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "TRANSFORM2": {
+        "label": "Drop columns",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 1232,
+        "graph": {
+          "DROP_FIELDS2": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER6": {
+        "label": "Fiber Outbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 1652
+      },
+      "JOIN5": {
+        "label": "Join Suppression Fiber Newsale TM",
+        "description": "",
+        "type": "JOIN",
+        "top": 532.5,
+        "left": 1512
+      },
+      "FILTER7": {
+        "label": "Fiber TM",
+        "description": "",
+        "type": "FILTER",
+        "top": 672,
+        "left": 1652
+      },
+      "TRANSFORM3": {
+        "label": "Transform 3",
+        "type": "TRANSFORM",
+        "top": 392,
+        "left": 1792,
+        "graph": {
+          "FORMULA1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS9": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA1",
+            "target": "DROP_FIELDS9"
+          }
+        ]
+      },
+      "TRANSFORM4": {
+        "label": "Transform 4",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 1792,
+        "graph": {
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2",
+            "target": "DROP_FIELDS10"
+          }
+        ]
+      },
+      "JOIN6": {
+        "label": "Join Suppression TBB Newsale Inbound",
+        "description": "",
+        "type": "JOIN",
+        "top": 812.1,
+        "left": 1512.1
+      },
+      "FILTER8": {
+        "label": "TBB Inbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.1,
+        "left": 1652.1
+      },
+      "JOIN7": {
+        "label": "Join Suppression TBB Newsale Outbound",
+        "description": "",
+        "type": "JOIN",
+        "top": 952,
+        "left": 1512
+      },
+      "FILTER9": {
+        "label": "TBB Outbound",
+        "description": "",
+        "type": "FILTER",
+        "top": 1092,
+        "left": 1652
+      },
+      "JOIN8": {
+        "label": "Join Suppression TBB Newsale TM",
+        "description": "",
+        "type": "JOIN",
+        "top": 1092,
+        "left": 1511.9
+      },
+      "FILTER10": {
+        "label": "TBB TM",
+        "description": "",
+        "type": "FILTER",
+        "top": 1372.6,
+        "left": 1652
+      },
+      "OUTPUT0": {
+        "label": "Fiber_newsale_qualified_Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 392,
+        "left": 1932
+      },
+      "OUTPUT1": {
+        "label": "Fiber_newsale_qualified_Outbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 532,
+        "left": 1932
+      },
+      "OUTPUT2": {
+        "label": "Fiber TBB Newsale qualified customer",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 251.8,
+        "left": 1932
+      },
+      "TRANSFORM4_copy0_copy0": {
+        "label": "Transform 4 Copy Copy",
+        "type": "TRANSFORM",
+        "top": 671.9,
+        "left": 1792,
+        "graph": {
+          "FORMULA2_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2_copy0_copy0",
+            "target": "DROP_FIELDS10_copy0_copy0"
+          }
+        ]
+      },
+      "OUTPUT1_copy0_copy0": {
+        "label": "Fiber_newsale_qualified_TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 671.9,
+        "left": 1932
+      },
+      "TRANSFORM4_copy0_copy0_copy0": {
+        "label": "Transform 4 Copy Copy Copy",
+        "type": "TRANSFORM",
+        "top": 951.9,
+        "left": 1792,
+        "graph": {
+          "FORMULA2_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2_copy0_copy0_copy0",
+            "target": "DROP_FIELDS10_copy0_copy0_copy0"
+          }
+        ]
+      },
+      "OUTPUT1_copy0_copy0_copy0": {
+        "label": "TBB_newsale_qualified_Inbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 811.9,
+        "left": 1932
+      },
+      "TRANSFORM4_copy0_copy0_copy0_copy0": {
+        "label": "Key_Qualified_TBB_Outbound",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 1091.9,
+        "left": 1792,
+        "graph": {
+          "FORMULA2_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10_copy0_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2_copy0_copy0_copy0_copy0",
+            "target": "DROP_FIELDS10_copy0_copy0_copy0_copy0"
+          }
+        ]
+      },
+      "OUTPUT1_copy0_copy0_copy0_copy0": {
+        "label": "TBB_newsale_qualified_Outbound",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 951.9,
+        "left": 1932
+      },
+      "TRANSFORM4_copy0_copy0_copy0_copy0_copy0": {
+        "label": "Transform 4 Copy Copy Copy Copy Copy",
+        "type": "TRANSFORM",
+        "top": 1231.9,
+        "left": 1792,
+        "graph": {
+          "FORMULA2_copy0_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10_copy0_copy0_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2_copy0_copy0_copy0_copy0_copy0",
+            "target": "DROP_FIELDS10_copy0_copy0_copy0_copy0_copy0"
+          }
+        ]
+      },
+      "OUTPUT1_copy0_copy0_copy0_copy0_copy0": {
+        "label": "TBB_newsale_qualified_TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1092.1,
+        "left": 1932.1
+      },
+      "LOAD_DATASET9": {
+        "label": "Suppression Fiber newsale TM WO phonenumber",
+        "type": "LOAD_DATASET",
+        "top": 1792,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN9": {
+        "label": "Join 9",
+        "type": "JOIN",
+        "top": 1792.1,
+        "left": 1511.8
+      },
+      "FILTER11": {
+        "label": "TM fiber uten telefonnummer",
+        "description": "",
+        "type": "FILTER",
+        "top": 1792,
+        "left": 1652
+      },
+      "TRANSFORM4_copy0_copy0_copy1": {
+        "label": "Transform 4 Copy Copy Copy1",
+        "type": "TRANSFORM",
+        "top": 1792,
+        "left": 1932,
+        "graph": {
+          "FORMULA2_copy0_copy0_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          },
+          "DROP_FIELDS10_copy0_copy0_copy1": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2_copy0_copy0_copy1",
+            "target": "DROP_FIELDS10_copy0_copy0_copy1"
+          }
+        ]
+      },
+      "OUTPUT3": {
+        "label": "Fiber_newsale_wo_phone_qualified_TM",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1792,
+        "left": 2072
+      },
+      "TRANSFORM5": {
+        "label": "Transform 5",
+        "type": "TRANSFORM",
+        "top": 532.1,
+        "left": 252,
+        "graph": {
+          "DROP_FIELDS11": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER12": {
+        "label": "Phone number not dialer",
+        "description": "",
+        "type": "FILTER",
+        "top": 532,
+        "left": 392
+      },
+      "JOIN10": {
+        "label": "Join 10",
+        "type": "JOIN",
+        "top": 1791.9,
+        "left": 1792
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER1"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER0"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "FILTER3"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "JOIN1"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET2",
+        "target": "JOIN2"
+      },
+      {
+        "source": "JOIN1",
+        "target": "JOIN2"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "FILTER4"
+      },
+      {
+        "source": "LOAD_DATASET3",
+        "target": "JOIN3"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN3"
+      },
+      {
+        "source": "JOIN3",
+        "target": "FILTER5"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "JOIN4"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN4"
+      },
+      {
+        "source": "FILTER3",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "JOIN2",
+        "target": "TRANSFORM2"
+      },
+      {
+        "source": "JOIN4",
+        "target": "FILTER6"
+      },
+      {
+        "source": "LOAD_DATASET5",
+        "target": "JOIN5"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN5"
+      },
+      {
+        "source": "JOIN5",
+        "target": "FILTER7"
+      },
+      {
+        "source": "FILTER5",
+        "target": "TRANSFORM3"
+      },
+      {
+        "source": "FILTER6",
+        "target": "TRANSFORM4"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "FILTER4_copy0"
+      },
+      {
+        "source": "LOAD_DATASET6",
+        "target": "JOIN6"
+      },
+      {
+        "source": "FILTER4_copy0",
+        "target": "JOIN6"
+      },
+      {
+        "source": "JOIN6",
+        "target": "FILTER8"
+      },
+      {
+        "source": "LOAD_DATASET7",
+        "target": "JOIN7"
+      },
+      {
+        "source": "FILTER4_copy0",
+        "target": "JOIN7"
+      },
+      {
+        "source": "JOIN7",
+        "target": "FILTER9"
+      },
+      {
+        "source": "LOAD_DATASET8",
+        "target": "JOIN8"
+      },
+      {
+        "source": "FILTER4_copy0",
+        "target": "JOIN8"
+      },
+      {
+        "source": "JOIN8",
+        "target": "FILTER10"
+      },
+      {
+        "source": "TRANSFORM3",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "TRANSFORM4",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "OUTPUT2"
+      },
+      {
+        "source": "TRANSFORM4_copy0_copy0",
+        "target": "OUTPUT1_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM4_copy0_copy0_copy0",
+        "target": "OUTPUT1_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM4_copy0_copy0_copy0_copy0",
+        "target": "OUTPUT1_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM4_copy0_copy0_copy0_copy0_copy0",
+        "target": "OUTPUT1_copy0_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER7",
+        "target": "TRANSFORM4_copy0_copy0"
+      },
+      {
+        "source": "FILTER8",
+        "target": "TRANSFORM4_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER9",
+        "target": "TRANSFORM4_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER10",
+        "target": "TRANSFORM4_copy0_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "FILTER1",
+        "target": "JOIN0"
+      },
+      {
+        "source": "LOAD_DATASET9",
+        "target": "JOIN9"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN9"
+      },
+      {
+        "source": "JOIN9",
+        "target": "FILTER11"
+      },
+      {
+        "source": "TRANSFORM4_copy0_copy0_copy1",
+        "target": "OUTPUT3"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "TRANSFORM5"
+      },
+      {
+        "source": "TRANSFORM5",
+        "target": "FILTER12"
+      },
+      {
+        "source": "FILTER11",
+        "target": "JOIN10"
+      },
+      {
+        "source": "FILTER12",
+        "target": "JOIN10"
+      },
+      {
+        "source": "JOIN10",
+        "target": "TRANSFORM4_copy0_copy0_copy1"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

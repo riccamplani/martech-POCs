@@ -1,0 +1,576 @@
+{
+  "nodes": {
+    "LOAD_DATASET1": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "CustomerCampaignItem__c",
+          "sourceObjectName": "CustomerCampaignItem__c",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "CreatedDate",
+          "Campaign__c",
+          "KSBID__c",
+          "Status__c",
+          "Callinglist_status__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "KSBID_2"
+        ],
+        "rightKeys": [
+          "KSBID__c"
+        ],
+        "rightQualifier": "EST"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET5",
+        "FILTER2"
+      ]
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "(1 AND 2) OR (3 AND 4)",
+        "filterExpressions": [
+          {
+            "field": "KSBID_2",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          },
+          {
+            "field": "EST.Response_Code__c",
+            "operands": [
+              "10",
+              "7"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "EST.Response_Code__c",
+            "operands": [
+              "7",
+              "10"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "EST.Callback_Valid_To_Date__c",
+            "operands": [
+              {
+                "argument": -1,
+                "type": "N_YEARS"
+              },
+              {
+                "argument": -2,
+                "type": "N_DAYS"
+              }
+            ],
+            "operator": "IN_RANGE",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN1"
+      ]
+    },
+    "DROP_FIELDS1": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "CampaignChannels",
+            "SFB_AccountId",
+            "Kurt_Id",
+            "Sales_tip_title",
+            "SFB_CampainId",
+            "TelesalesAgency",
+            "EST.Callinglist__c",
+            "EST.Callinglist_status__c",
+            "EST.Id",
+            "EST.Campaign__c",
+            "EST.CampaignID__c",
+            "EST.KSBID__c",
+            "EST.Response_Code__c",
+            "EST.Dialer_Account_Id__c",
+            "EST.Status__c",
+            "EST.tm_agency__c",
+            "EST.Callback_Valid_To_Date__c",
+            "KSBID_2"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER1"
+      ]
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;4&#39;",
+            "label": "UpdatedResponseCode",
+            "name": "UpdatedResponseCode",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS1"
+      ]
+    },
+    "FORMULA23": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;70&#39;",
+            "label": "UpdatedReasonSubCode",
+            "name": "UpdatedReasonSubCode",
+            "precision": 2,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA24": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "format": "yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS&#39;Z&#39;",
+            "formulaExpression": "Now()",
+            "label": "UpdatedResponseDate",
+            "name": "UpdatedResponseDate",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA23"
+      ]
+    },
+    "FILTER2": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "CreatedDate",
+            "operands": [
+              "1693526400000"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "DATETIME"
+          },
+          {
+            "field": "Status__c",
+            "operands": [
+              "Closed"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          },
+          {
+            "field": "Callinglist_status__c",
+            "operands": [
+              "DELETING",
+              "READY_TO_UPLOAD",
+              "CREATING",
+              "UPLOADING"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN2"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "C360 620 Update Sales Tips - ResponseCode",
+          "name": "C360_620_Update_Sales_Tips_ResponseCode",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "FORMULA24"
+      ]
+    },
+    "DROP_FIELDS2": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "EST.Id",
+            "UpdatedResponseCode",
+            "UpdatedReasonSubCode",
+            "UpdatedResponseDate"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA24"
+      ]
+    },
+    "LOAD_DATASET4": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Channels__c",
+          "Id",
+          "Status"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER4": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Status",
+            "operands": [
+              "In Progress"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "Channels__c",
+            "operands": [
+              "MC"
+            ],
+            "operator": "NOT",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET4"
+      ]
+    },
+    "JOIN2": {
+      "action": "join",
+      "parameters": {
+        "joinType": "RIGHT_OUTER",
+        "leftKeys": [
+          "Campaign__c"
+        ],
+        "rightKeys": [
+          "Id"
+        ],
+        "rightQualifier": "CampaignsI"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "LOAD_DATASET1",
+        "FILTER4"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "outputExternal",
+      "parameters": {
+        "connectionName": "Salesforce_Output_Connection_for_SfB",
+        "externalIdFieldName": "",
+        "fieldsMapping": [
+          {
+            "sourceField": "EST.Id",
+            "targetField": "Id"
+          },
+          {
+            "sourceField": "UpdatedResponseCode",
+            "targetField": "Response_Code__c"
+          },
+          {
+            "sourceField": "UpdatedReasonSubCode",
+            "targetField": "Reason_Sub_code__c"
+          },
+          {
+            "sourceField": "UpdatedResponseDate",
+            "targetField": "Response_Date__c"
+          }
+        ],
+        "hyperFileName": "",
+        "object": "CustomerCampaignItem__c",
+        "operation": "update"
+      },
+      "sources": [
+        "DROP_FIELDS2"
+      ]
+    },
+    "LOAD_DATASET5": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "C360 510 New Sales Tips",
+          "name": "C360_510_New_Sales_Tips",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "CampaignChannels",
+          "SFB_AccountId",
+          "Kurt_Id",
+          "Sales_tip_title",
+          "KSBID_2",
+          "TelesalesAgency",
+          "SFB_CampainId"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET1": {
+        "label": "CustomerCampaignItem__c",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "JOIN1": {
+        "label": "Join 1",
+        "type": "JOIN",
+        "top": 112,
+        "left": 532
+      },
+      "FILTER1": {
+        "label": "Filter Out New Sales Tips",
+        "description": "",
+        "type": "FILTER",
+        "top": 112,
+        "left": 672
+      },
+      "TRANSFORM1": {
+        "label": "Update records",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112,
+        "left": 812,
+        "graph": {
+          "DROP_FIELDS1": {
+            "label": "Drop Columns"
+          },
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Response Code"
+          },
+          "FORMULA23": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Reason SubCode"
+          },
+          "FORMULA24": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Response Date"
+          }
+        },
+        "connectors": [
+          {
+            "source": "DROP_FIELDS1",
+            "target": "FORMULA0"
+          },
+          {
+            "source": "FORMULA0",
+            "target": "FORMULA23"
+          },
+          {
+            "source": "FORMULA23",
+            "target": "FORMULA24"
+          }
+        ]
+      },
+      "FILTER2": {
+        "label": "Filter 2",
+        "type": "FILTER",
+        "top": 112,
+        "left": 392
+      },
+      "OUTPUT0": {
+        "label": "C360 620 Update Sales Tips - ResponseCode",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 251.8,
+        "left": 812.2
+      },
+      "TRANSFORM2": {
+        "label": "Drop colums",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112,
+        "left": 952,
+        "graph": {
+          "DROP_FIELDS2": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "LOAD_DATASET4": {
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 252.10000000000002,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER4": {
+        "label": "Campaigns In Progress",
+        "description": "",
+        "type": "FILTER",
+        "top": 252,
+        "left": 252
+      },
+      "JOIN2": {
+        "label": "Join 2",
+        "type": "JOIN",
+        "top": 112.5,
+        "left": 252
+      },
+      "OUTPUT1": {
+        "label": "SFB CustomerCampaignItem",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 112,
+        "left": 1092
+      },
+      "LOAD_DATASET5": {
+        "label": "C360 510 New Sales Tips",
+        "type": "LOAD_DATASET",
+        "top": 392,
+        "left": 112.1,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET5",
+        "target": "JOIN1"
+      },
+      {
+        "source": "FILTER2",
+        "target": "JOIN1"
+      },
+      {
+        "source": "JOIN1",
+        "target": "FILTER1"
+      },
+      {
+        "source": "FILTER1",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "OUTPUT0"
+      },
+      {
+        "source": "LOAD_DATASET4",
+        "target": "FILTER4"
+      },
+      {
+        "source": "LOAD_DATASET1",
+        "target": "JOIN2"
+      },
+      {
+        "source": "FILTER4",
+        "target": "JOIN2"
+      },
+      {
+        "source": "JOIN2",
+        "target": "FILTER2"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "TRANSFORM2"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

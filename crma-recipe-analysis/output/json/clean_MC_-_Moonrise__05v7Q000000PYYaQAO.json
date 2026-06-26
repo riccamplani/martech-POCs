@@ -1,0 +1,1573 @@
+{
+  "nodes": {
+    "LOAD_DATASET0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Subscription__c",
+          "sourceObjectName": "Subscription__c",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Name",
+          "Main_number__c",
+          "Product_Name__c",
+          "Sub_Owner__c",
+          "DRM_MARKET_PRODUCT_GROUP__c",
+          "HANDSET_GENERATION__c",
+          "SIM_GEN_TYPE__c",
+          "IsDeleted"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when HANDSET_GENERATION__c is null then\r\n    &#39;-&#39;\r\nelse\r\n    HANDSET_GENERATION__c\r\nend",
+            "label": "Handset Generation",
+            "name": "Handset_Generation",
+            "precision": 3,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER2"
+      ]
+    },
+    "FILTER0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "2G",
+              "3G"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "GSM",
+              "UMTS"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon",
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;1&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0"
+      ]
+    },
+    "FILTER0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "2G",
+              "3G"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "IoT",
+              "LTE"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon",
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;2&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy0"
+      ]
+    },
+    "FILTER0_copy1": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "-"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "GSM",
+              "UMTS"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon",
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy1": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;3&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy1"
+      ]
+    },
+    "FILTER0_copy1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "-"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "IoT",
+              "LTE"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon",
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy1_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;4&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy1_copy0"
+      ]
+    },
+    "FILTER0_copy2": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "5G",
+              "4G",
+              "4G+"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "GSM",
+              "UMTS"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon",
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;5&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy2"
+      ]
+    },
+    "FILTER0_copy2_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "5G",
+              "4G",
+              "4G+"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "IoT",
+              "LTE"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "M2M Kommunikasjon"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy2_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;6&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy2_copy0"
+      ]
+    },
+    "FILTER0_copy2_copy0_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2 AND 3",
+        "filterExpressions": [
+          {
+            "field": "Handset_Generation",
+            "operands": [
+              "5G",
+              "4G",
+              "4G+"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "SIM_GEN_TYPE__c",
+            "operands": [
+              "IoT",
+              "LTE"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "DRM_MARKET_PRODUCT_GROUP__c",
+            "operands": [
+              "IoT"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA0"
+      ]
+    },
+    "FORMULA1_copy2_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;7&#39;",
+            "label": "Scenario",
+            "name": "Scenario",
+            "precision": 1,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER0_copy2_copy0_copy0"
+      ]
+    },
+    "APPEND0": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy0",
+        "FORMULA1"
+      ]
+    },
+    "APPEND1": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy1",
+        "APPEND0"
+      ]
+    },
+    "APPEND2": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy1_copy0",
+        "APPEND1"
+      ]
+    },
+    "APPEND3": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy2",
+        "APPEND2"
+      ]
+    },
+    "APPEND4": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy2_copy0",
+        "APPEND3"
+      ]
+    },
+    "APPEND5": {
+      "action": "appendV2",
+      "parameters": {
+        "fieldMappings": [
+          {
+            "bottom": "Name",
+            "top": "Name"
+          },
+          {
+            "bottom": "Main_number__c",
+            "top": "Main_number__c"
+          },
+          {
+            "bottom": "Product_Name__c",
+            "top": "Product_Name__c"
+          },
+          {
+            "bottom": "Sub_Owner__c",
+            "top": "Sub_Owner__c"
+          },
+          {
+            "bottom": "DRM_MARKET_PRODUCT_GROUP__c",
+            "top": "DRM_MARKET_PRODUCT_GROUP__c"
+          },
+          {
+            "bottom": "HANDSET_GENERATION__c",
+            "top": "HANDSET_GENERATION__c"
+          },
+          {
+            "bottom": "SIM_GEN_TYPE__c",
+            "top": "SIM_GEN_TYPE__c"
+          },
+          {
+            "bottom": "IsDeleted",
+            "top": "IsDeleted"
+          },
+          {
+            "bottom": "Handset_Generation",
+            "top": "Handset_Generation"
+          },
+          {
+            "bottom": "Scenario",
+            "top": "Scenario"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA1_copy2_copy0_copy0",
+        "APPEND4"
+      ]
+    },
+    "FORMULA2": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;1&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 1",
+            "name": "Scenario_1",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "APPEND5"
+      ]
+    },
+    "FORMULA3": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;2&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 2",
+            "name": "Scenario_2",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA2"
+      ]
+    },
+    "FORMULA4": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;3&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 3",
+            "name": "Scenario_3",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA3"
+      ]
+    },
+    "FORMULA5": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;4&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 4",
+            "name": "Scenario_4",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA4"
+      ]
+    },
+    "FORMULA6": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;5&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 5",
+            "name": "Scenario_5",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA5"
+      ]
+    },
+    "FORMULA7": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;6&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 6",
+            "name": "Scenario_6",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA6"
+      ]
+    },
+    "FORMULA8": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Scenario = &#39;7&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "label": "Scenario 7",
+            "name": "Scenario_7",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA7"
+      ]
+    },
+    "EXTRACT0": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "FORMULA8"
+      ]
+    },
+    "AGGREGATE1": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 1",
+            "name": "Subs_Scenario_1",
+            "source": "Scenario_1"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 2",
+            "name": "Subs_Scenario_2",
+            "source": "Scenario_2"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 3",
+            "name": "Subs_Scenario_3",
+            "source": "Scenario_3"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 4",
+            "name": "Subs_Scenario_4",
+            "source": "Scenario_4"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 5",
+            "name": "Subs_Scenario_5",
+            "source": "Scenario_5"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 6",
+            "name": "Subs_Scenario_6",
+            "source": "Scenario_6"
+          },
+          {
+            "action": "SUM",
+            "label": "Subs Scenario 7",
+            "name": "Subs_Scenario_7",
+            "source": "Scenario_7"
+          }
+        ],
+        "groupings": [
+          "Sub_Owner__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT0"
+      ]
+    },
+    "OUTPUT1": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "Campaign_Developer_App",
+          "label": "MC - Moonrise",
+          "name": "MC_Moonrise",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "FORMULA9"
+      ]
+    },
+    "FILTER1": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7",
+        "filterExpressions": [
+          {
+            "field": "Subs_Scenario_1",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_2",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_3",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_4",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_5",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_6",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          },
+          {
+            "field": "Subs_Scenario_7",
+            "operands": [
+              "0"
+            ],
+            "operator": "GREATER_THAN",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE1"
+      ]
+    },
+    "FORMULA9": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "format": "dd.MM.yyyy",
+            "formulaExpression": "now()",
+            "label": "Date updated",
+            "name": "Date_updated",
+            "type": "DATETIME"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER1"
+      ]
+    },
+    "FILTER2": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0"
+      ]
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "label": "Subscription__c",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "TRANSFORM0": {
+        "label": "Handset Generation",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 392.1,
+        "graph": {
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Handset Generation"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0": {
+        "label": "Scenario 1",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.1,
+        "left": 532.1
+      },
+      "TRANSFORM1": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 112.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy0": {
+        "label": "Scenario 2",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.10000000000002,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy0": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252.10000000000002,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy1": {
+        "label": "Scenario 3",
+        "description": "",
+        "type": "FILTER",
+        "top": 392.1,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy1": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 392.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy1": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy1_copy0": {
+        "label": "Scenario 4",
+        "description": "",
+        "type": "FILTER",
+        "top": 532.1,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy1_copy0": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy1_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy2": {
+        "label": "Scenario 5",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.1,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy2": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 672.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy2_copy0": {
+        "label": "Scenario 6",
+        "description": "",
+        "type": "FILTER",
+        "top": 812.1,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy2_copy0": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy2_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER0_copy2_copy0_copy0": {
+        "label": "Scenario 7",
+        "description": "",
+        "type": "FILTER",
+        "top": 952.1,
+        "left": 532.1
+      },
+      "TRANSFORM1_copy2_copy0_copy0": {
+        "label": "Scenario Flag",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 952.1,
+        "left": 672.1,
+        "graph": {
+          "FORMULA1_copy2_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario"
+          }
+        },
+        "connectors": []
+      },
+      "APPEND0": {
+        "label": "Append 0",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 812.1
+      },
+      "APPEND1": {
+        "label": "Append 1",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 952.1
+      },
+      "APPEND2": {
+        "label": "Append 2",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 1092.1
+      },
+      "APPEND3": {
+        "label": "Append 3",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 1232.1
+      },
+      "APPEND4": {
+        "label": "Append 4",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 1372.1
+      },
+      "APPEND5": {
+        "label": "Append 5",
+        "type": "APPEND",
+        "top": 252.10000000000002,
+        "left": 1512.1
+      },
+      "TRANSFORM2": {
+        "label": "Scenarios",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252.10000000000002,
+        "left": 1652.1,
+        "graph": {
+          "FORMULA2": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 1"
+          },
+          "FORMULA3": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 2"
+          },
+          "FORMULA4": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 3"
+          },
+          "FORMULA5": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 4"
+          },
+          "FORMULA6": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 5"
+          },
+          "FORMULA7": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 6"
+          },
+          "FORMULA8": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Scenario 7"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA2",
+            "target": "FORMULA3"
+          },
+          {
+            "source": "FORMULA3",
+            "target": "FORMULA4"
+          },
+          {
+            "source": "FORMULA4",
+            "target": "FORMULA5"
+          },
+          {
+            "source": "FORMULA5",
+            "target": "FORMULA6"
+          },
+          {
+            "source": "FORMULA6",
+            "target": "FORMULA7"
+          },
+          {
+            "source": "FORMULA7",
+            "target": "FORMULA8"
+          }
+        ]
+      },
+      "AGGREGATE0": {
+        "label": "Aggregated Scenarios",
+        "description": "",
+        "type": "AGGREGATE",
+        "top": 252.10000000000002,
+        "left": 1792.1,
+        "graph": {
+          "EXTRACT0": null,
+          "AGGREGATE1": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT0",
+            "target": "AGGREGATE1"
+          }
+        ]
+      },
+      "OUTPUT1": {
+        "label": "MC - Moonrise",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 252.10000000000002,
+        "left": 2212.1
+      },
+      "FILTER1": {
+        "label": "At least one valid scenario",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.10000000000002,
+        "left": 1932.1
+      },
+      "TRANSFORM3": {
+        "label": "Date updated",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252.10000000000002,
+        "left": 2072.1,
+        "graph": {
+          "FORMULA9": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Date updated"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER2": {
+        "label": "Is Deleted",
+        "description": "",
+        "type": "FILTER",
+        "top": 112,
+        "left": 252
+      }
+    },
+    "connectors": [
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0"
+      },
+      {
+        "source": "FILTER0",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "FILTER0_copy0",
+        "target": "TRANSFORM1_copy0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy0"
+      },
+      {
+        "source": "FILTER0_copy1",
+        "target": "TRANSFORM1_copy1"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy1"
+      },
+      {
+        "source": "FILTER0_copy1_copy0",
+        "target": "TRANSFORM1_copy1_copy0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy1_copy0"
+      },
+      {
+        "source": "FILTER0_copy2",
+        "target": "TRANSFORM1_copy2"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy2"
+      },
+      {
+        "source": "FILTER0_copy2_copy0",
+        "target": "TRANSFORM1_copy2_copy0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy2_copy0"
+      },
+      {
+        "source": "FILTER0_copy2_copy0_copy0",
+        "target": "TRANSFORM1_copy2_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "FILTER0_copy2_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM1_copy0",
+        "target": "APPEND0"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "APPEND0"
+      },
+      {
+        "source": "TRANSFORM1_copy1",
+        "target": "APPEND1"
+      },
+      {
+        "source": "APPEND0",
+        "target": "APPEND1"
+      },
+      {
+        "source": "TRANSFORM1_copy1_copy0",
+        "target": "APPEND2"
+      },
+      {
+        "source": "APPEND1",
+        "target": "APPEND2"
+      },
+      {
+        "source": "TRANSFORM1_copy2",
+        "target": "APPEND3"
+      },
+      {
+        "source": "APPEND2",
+        "target": "APPEND3"
+      },
+      {
+        "source": "TRANSFORM1_copy2_copy0",
+        "target": "APPEND4"
+      },
+      {
+        "source": "APPEND3",
+        "target": "APPEND4"
+      },
+      {
+        "source": "TRANSFORM1_copy2_copy0_copy0",
+        "target": "APPEND5"
+      },
+      {
+        "source": "APPEND4",
+        "target": "APPEND5"
+      },
+      {
+        "source": "APPEND5",
+        "target": "TRANSFORM2"
+      },
+      {
+        "source": "TRANSFORM2",
+        "target": "AGGREGATE0"
+      },
+      {
+        "source": "AGGREGATE0",
+        "target": "FILTER1"
+      },
+      {
+        "source": "FILTER1",
+        "target": "TRANSFORM3"
+      },
+      {
+        "source": "TRANSFORM3",
+        "target": "OUTPUT1"
+      },
+      {
+        "source": "LOAD_DATASET0",
+        "target": "FILTER2"
+      },
+      {
+        "source": "FILTER2",
+        "target": "TRANSFORM0"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}

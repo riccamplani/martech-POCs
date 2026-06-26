@@ -1,0 +1,1139 @@
+{
+  "nodes": {
+    "LOAD_DATASET0_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "mobile_service_segment__c",
+          "Id",
+          "IsDeleted",
+          "NumberOfEmployees",
+          "CompanyFamily__c",
+          "Concern__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER1_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 AND 2",
+        "filterExpressions": [
+          {
+            "field": "IsDeleted",
+            "operands": [
+              "false"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "StatusKURT__c",
+            "operands": [
+              "K - Personen/foretaket er OK, levende"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0_copy0"
+      ]
+    },
+    "FILTER3_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1 OR (2 AND 3)",
+        "filterExpressions": [
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "Hunter M",
+              "MM M Farmer",
+              "MM M Hunter",
+              "Mobile M",
+              "Mobile S"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "mobile_service_segment__c",
+            "operands": [
+              "MM S Farmer"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          },
+          {
+            "field": "NumberOfEmployees",
+            "operands": [
+              "10"
+            ],
+            "operator": "GREATER_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER1_copy0"
+      ]
+    },
+    "FILTER4_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER3_copy0"
+      ]
+    },
+    "FILTER5": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "CompanyFamily__c",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET0_copy0"
+      ]
+    },
+    "DROP_FIELDS0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "NumberOfEmployees",
+            "CompanyFamily__c",
+            "SubsMobileVoice__c"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FILTER5"
+      ]
+    },
+    "EXTRACT0": {
+      "action": "extractGrains",
+      "parameters": {
+        "grainExtractions": []
+      },
+      "sources": [
+        "DROP_FIELDS0"
+      ]
+    },
+    "AGGREGATE1": {
+      "action": "aggregate",
+      "parameters": {
+        "aggregations": [
+          {
+            "action": "SUM",
+            "label": "Nbr Subscriptions Company Family",
+            "name": "Nbr_Subscriptions_Company_Family",
+            "source": "SubsMobileVoice__c"
+          },
+          {
+            "action": "SUM",
+            "label": "Nbr Employees Company Family",
+            "name": "Nbr_Employees_Company_Family",
+            "source": "NumberOfEmployees"
+          }
+        ],
+        "groupings": [
+          "CompanyFamily__c"
+        ],
+        "nodeType": "STANDARD",
+        "pivots": []
+      },
+      "sources": [
+        "EXTRACT0"
+      ]
+    },
+    "FORMULA0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "case when Nbr_Employees_Company_Family &gt; 0 then\r\n(Nbr_Subscriptions_Company_Family/Nbr_Employees_Company_Family) * 100\r\nelse\r\n100\r\nend",
+            "label": "MV Penetration Company Family",
+            "name": "MV_Penetration_Company_Family",
+            "precision": 10,
+            "scale": 0,
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "AGGREGATE1"
+      ]
+    },
+    "JOIN0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "CompanyFamily__c"
+        ],
+        "rightKeys": [
+          "CompanyFamily__c"
+        ],
+        "rightQualifier": "MVPenetrat"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER4_copy0",
+        "FORMULA0"
+      ]
+    },
+    "FILTER6": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Concern__c",
+            "operands": [
+              "D",
+              "M/D",
+              "M"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN0"
+      ]
+    },
+    "OUTPUT0": {
+      "action": "save",
+      "parameters": {
+        "dataset": {
+          "folderName": "SharedApp",
+          "label": "C360 492 - New Sales MV Daughter Outside Mother Agreement",
+          "name": "C360_492_New_Sales_MV_Daughter_Outside_Mother_Agreement",
+          "type": "analyticsDataset"
+        },
+        "fields": [],
+        "measuresToCurrencies": []
+      },
+      "sources": [
+        "DROP_FIELDS13_copy0"
+      ]
+    },
+    "FILTER8": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "MVPenetrat.MV_Penetration_Company_Family",
+            "operands": [
+              "40"
+            ],
+            "operator": "LESS_OR_EQUAL",
+            "type": "NUMBER"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER6"
+      ]
+    },
+    "LOAD_DATASET3_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "label": "Suppressions Outbound Mobile New Sales",
+          "name": "Suppressions_Outbound_Mobile_New_Sales",
+          "type": "analyticsDataset"
+        },
+        "fields": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "JOIN1": {
+      "action": "join",
+      "parameters": {
+        "joinType": "LEFT_OUTER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "Key_Suppressions_Outbound_Mobile_New_Sales"
+        ],
+        "rightQualifier": "Suppressio"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER8",
+        "LOAD_DATASET3_copy0"
+      ]
+    },
+    "FILTER9": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Suppressio.Key_Suppressions_Outbound_Mobile_New_Sales",
+            "operands": [],
+            "operator": "IS_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN1"
+      ]
+    },
+    "LOAD_DATASET13_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Campaign",
+          "sourceObjectName": "Campaign",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "Id",
+          "CampaignID__c",
+          "Name",
+          "Campaign_Type_Description__c",
+          "Product_Type_Description__c",
+          "reporting_tag__c"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FILTER36_copy0": {
+      "action": "filter",
+      "parameters": {
+        "filterBooleanLogic": "1",
+        "filterExpressions": [
+          {
+            "field": "CampaignID__c",
+            "operands": [
+              "C360_129"
+            ],
+            "operator": "EQUAL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET13_copy0"
+      ]
+    },
+    "LOAD_DATASET14_copy0": {
+      "action": "load",
+      "parameters": {
+        "dataset": {
+          "connectionName": "SFDC_LOCAL_SEGMENTATION",
+          "label": "Account",
+          "sourceObjectName": "Account",
+          "type": "connectedDataset"
+        },
+        "fields": [
+          "KurtID__c",
+          "Id"
+        ],
+        "sampleDetails": {
+          "sortBy": [],
+          "type": "TopN"
+        }
+      },
+      "sources": []
+    },
+    "FORMULA7_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;C360_129&#39;",
+            "label": "Campaign Key",
+            "name": "Campaign_Key",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA19_copy0"
+      ]
+    },
+    "JOIN15_copy0": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Campaign_Key"
+        ],
+        "rightKeys": [
+          "CampaignID__c"
+        ],
+        "rightQualifier": "NysalgMobi"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FORMULA7_copy0",
+        "FILTER36_copy0"
+      ]
+    },
+    "FORMULA8_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "label": "KSBID",
+            "name": "KSBID",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "JOIN15_copy0"
+      ]
+    },
+    "FORMULA9_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "label": "SFB CampainId",
+            "name": "SFB_CampainId",
+            "precision": 100,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA8_copy0"
+      ]
+    },
+    "FORMULA10_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "Id",
+            "label": "SFB AccountId",
+            "name": "SFB_AccountId",
+            "precision": 18,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA9_copy0"
+      ]
+    },
+    "FORMULA11_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "KurtID__c",
+            "label": "Kurt Id",
+            "name": "Kurt_Id",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA10_copy0"
+      ]
+    },
+    "FORMULA14_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "label": "Sales tip title",
+            "name": "Sales_tip_title",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA11_copy0"
+      ]
+    },
+    "DROP_FIELDS11_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Sales_tip_description_template",
+            "KSBID",
+            "SFB_CampainId",
+            "SFB_AccountId",
+            "Kurt_Id",
+            "Sales_tip_title"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA14_copy0"
+      ]
+    },
+    "FORMULA19_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;Aktivitet for å øke penetrasjon på kunder i struktur.&#39;",
+            "label": "Sales tip description template",
+            "name": "Sales_tip_description_template",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "LOAD_DATASET14_copy0"
+      ]
+    },
+    "FILTER37": {
+      "action": "filter",
+      "parameters": {
+        "filterExpressions": [
+          {
+            "field": "Id",
+            "operands": [],
+            "operator": "IS_NOT_NULL",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "DROP_FIELDS12_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "JOIN16": {
+      "action": "join",
+      "parameters": {
+        "joinType": "INNER",
+        "leftKeys": [
+          "Id"
+        ],
+        "rightKeys": [
+          "SFB_AccountId"
+        ],
+        "rightQualifier": "TRANSFORM1"
+      },
+      "schema": {
+        "fields": [],
+        "slice": {
+          "fields": [],
+          "ignoreMissingFields": true,
+          "mode": "DROP"
+        }
+      },
+      "sources": [
+        "FILTER37",
+        "DROP_FIELDS11_copy0"
+      ]
+    },
+    "FORMULA17_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;SPOC&#39;",
+            "label": "Campaign Channels",
+            "name": "Campaign_Channels",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FILTER9"
+      ]
+    },
+    "FORMULA18_copy0_copy0_copy0_copy0": {
+      "action": "formula",
+      "parameters": {
+        "expressionType": "SQL",
+        "fields": [
+          {
+            "defaultValue": "",
+            "formulaExpression": "&#39;HunterME&#39;",
+            "label": "Telesales agency",
+            "name": "Telesales_agency",
+            "precision": 255,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "sources": [
+        "FORMULA17_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS12_copy0_copy0_copy0_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Concern__c",
+            "Id",
+            "MVPenetrat.CompanyFamily__c",
+            "Campaign_Channels",
+            "Telesales_agency"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "FORMULA18_copy0_copy0_copy0_copy0"
+      ]
+    },
+    "DROP_FIELDS13_copy0": {
+      "action": "schema",
+      "parameters": {
+        "fields": [],
+        "slice": {
+          "fields": [
+            "Campaign_Channels",
+            "Telesales_agency",
+            "TRANSFORM1.Sales_tip_description_template",
+            "TRANSFORM1.KSBID",
+            "TRANSFORM1.SFB_CampainId",
+            "TRANSFORM1.SFB_AccountId",
+            "TRANSFORM1.Kurt_Id",
+            "TRANSFORM1.Sales_tip_title"
+          ],
+          "ignoreMissingFields": true,
+          "mode": "SELECT"
+        }
+      },
+      "sources": [
+        "JOIN16"
+      ]
+    }
+  },
+  "runMode": "full",
+  "ui": {
+    "nodes": {
+      "LOAD_DATASET0_copy0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 112,
+        "left": 112,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "FILTER1_copy0": {
+        "label": "Existing Customers",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.30000000000001,
+        "left": 252.7
+      },
+      "FILTER3_copy0": {
+        "label": "Mobile S, M and Hunter M",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.19999999999999,
+        "left": 392.2
+      },
+      "FILTER4_copy0": {
+        "label": "All",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.9,
+        "left": 531.9
+      },
+      "FILTER5": {
+        "label": "Part of a Company Family",
+        "description": "",
+        "type": "FILTER",
+        "top": 252.7,
+        "left": 252
+      },
+      "TRANSFORM0": {
+        "label": "Dropping fields",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252,
+        "left": 392,
+        "graph": {
+          "DROP_FIELDS0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      },
+      "AGGREGATE0": {
+        "label": "Aggregate 0",
+        "type": "AGGREGATE",
+        "top": 252,
+        "left": 532,
+        "graph": {
+          "EXTRACT0": null,
+          "AGGREGATE1": null
+        },
+        "connectors": [
+          {
+            "source": "EXTRACT0",
+            "target": "AGGREGATE1"
+          }
+        ]
+      },
+      "TRANSFORM1": {
+        "label": "MV Penetration Company Family",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 252,
+        "left": 672,
+        "graph": {
+          "FORMULA0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "MV Penetration Company Family"
+          }
+        },
+        "connectors": []
+      },
+      "JOIN0": {
+        "label": "Company Family Info (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 112.1,
+        "left": 672
+      },
+      "FILTER6": {
+        "label": "Mothers and Daughters",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.19999999999999,
+        "left": 952.1
+      },
+      "OUTPUT0": {
+        "label": "C360 492 - New Sales MV Daughter Outside Mother Agreement",
+        "description": "",
+        "type": "OUTPUT",
+        "top": 1092.2,
+        "left": 1093.6
+      },
+      "FILTER8": {
+        "label": "At most 40% penetration (Company Family)",
+        "description": "",
+        "type": "FILTER",
+        "top": 112.19999999999999,
+        "left": 1092.1
+      },
+      "LOAD_DATASET3_copy0": {
+        "label": "Suppressions Outbound Mobile New Sales",
+        "type": "LOAD_DATASET",
+        "top": 252.2,
+        "left": 1372.2,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "JOIN1": {
+        "label": "Suppressions Outbound (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 252.2,
+        "left": 1092.2
+      },
+      "FILTER9": {
+        "label": "OK to Contact",
+        "description": "",
+        "type": "FILTER",
+        "top": 392.2,
+        "left": 1092.2
+      },
+      "LOAD_DATASET13_copy0": {
+        "label": "Campaign",
+        "type": "LOAD_DATASET",
+        "top": 952.5,
+        "left": 1792.4,
+        "parameters": {
+          "sampleSize": 2000
+        }
+      },
+      "FILTER36_copy0": {
+        "label": "Nysalg Mobil Abonnement (Døtre)",
+        "description": "",
+        "type": "FILTER",
+        "top": 952.5,
+        "left": 1512.4
+      },
+      "LOAD_DATASET14_copy0": {
+        "label": "Account",
+        "type": "LOAD_DATASET",
+        "top": 812.5,
+        "left": 1932.4,
+        "parameters": {
+          "sampleSize": 10000
+        }
+      },
+      "TRANSFORM14_copy0": {
+        "label": "Campaign ID",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.5,
+        "left": 1652.4,
+        "graph": {
+          "FORMULA7_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "JOIN15_copy0": {
+        "label": "Campaign Fangst (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 812.5,
+        "left": 1512.4
+      },
+      "TRANSFORM15_copy0": {
+        "label": "Export Definition",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.5,
+        "left": 1372.4,
+        "graph": {
+          "FORMULA8_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "KSBID"
+          },
+          "FORMULA9_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB CampainId"
+          },
+          "FORMULA10_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "SFB AccountId"
+          },
+          "FORMULA11_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Kurt Id"
+          },
+          "FORMULA14_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Sales tip title"
+          },
+          "DROP_FIELDS11_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA8_copy0",
+            "target": "FORMULA9_copy0"
+          },
+          {
+            "source": "FORMULA9_copy0",
+            "target": "FORMULA10_copy0"
+          },
+          {
+            "source": "FORMULA10_copy0",
+            "target": "FORMULA11_copy0"
+          },
+          {
+            "source": "FORMULA11_copy0",
+            "target": "FORMULA14_copy0"
+          },
+          {
+            "source": "FORMULA14_copy0",
+            "target": "DROP_FIELDS11_copy0"
+          }
+        ]
+      },
+      "TRANSFORM19_copy0": {
+        "label": "Campaign Text",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 812.5,
+        "left": 1792.4,
+        "graph": {
+          "FORMULA19_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Formula"
+          }
+        },
+        "connectors": []
+      },
+      "FILTER37": {
+        "label": "A1",
+        "description": "",
+        "type": "FILTER",
+        "top": 672.5,
+        "left": 1092.3
+      },
+      "JOIN16": {
+        "label": "Export Definition (Join)",
+        "description": "",
+        "type": "JOIN",
+        "top": 812.5,
+        "left": 1092.3
+      },
+      "TRANSFORM17_copy0_copy0_copy0_copy0": {
+        "label": "Hunter ME (Marius)",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 532,
+        "left": 1092.1,
+        "graph": {
+          "FORMULA17_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Campaign Channels"
+          },
+          "FORMULA18_copy0_copy0_copy0_copy0": {
+            "parameters": {
+              "type": "BASE_FORMULA_UI"
+            },
+            "label": "Telesales agency"
+          },
+          "DROP_FIELDS12_copy0_copy0_copy0_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": [
+          {
+            "source": "FORMULA17_copy0_copy0_copy0_copy0",
+            "target": "FORMULA18_copy0_copy0_copy0_copy0"
+          },
+          {
+            "source": "FORMULA18_copy0_copy0_copy0_copy0",
+            "target": "DROP_FIELDS12_copy0_copy0_copy0_copy0"
+          }
+        ]
+      },
+      "TRANSFORM20_copy0": {
+        "label": "Export Definition Final",
+        "description": "",
+        "type": "TRANSFORM",
+        "top": 952.1,
+        "left": 1090.5,
+        "graph": {
+          "DROP_FIELDS13_copy0": {
+            "label": "Drop Columns"
+          }
+        },
+        "connectors": []
+      }
+    },
+    "connectors": [
+      {
+        "source": "LOAD_DATASET0_copy0",
+        "target": "FILTER1_copy0"
+      },
+      {
+        "source": "FILTER1_copy0",
+        "target": "FILTER3_copy0"
+      },
+      {
+        "source": "FILTER3_copy0",
+        "target": "FILTER4_copy0"
+      },
+      {
+        "source": "LOAD_DATASET0_copy0",
+        "target": "FILTER5"
+      },
+      {
+        "source": "FILTER5",
+        "target": "TRANSFORM0"
+      },
+      {
+        "source": "TRANSFORM0",
+        "target": "AGGREGATE0"
+      },
+      {
+        "source": "AGGREGATE0",
+        "target": "TRANSFORM1"
+      },
+      {
+        "source": "FILTER4_copy0",
+        "target": "JOIN0"
+      },
+      {
+        "source": "TRANSFORM1",
+        "target": "JOIN0"
+      },
+      {
+        "source": "JOIN0",
+        "target": "FILTER6"
+      },
+      {
+        "source": "FILTER6",
+        "target": "FILTER8"
+      },
+      {
+        "source": "FILTER8",
+        "target": "JOIN1"
+      },
+      {
+        "source": "LOAD_DATASET3_copy0",
+        "target": "JOIN1"
+      },
+      {
+        "source": "JOIN1",
+        "target": "FILTER9"
+      },
+      {
+        "source": "LOAD_DATASET13_copy0",
+        "target": "FILTER36_copy0"
+      },
+      {
+        "source": "TRANSFORM14_copy0",
+        "target": "JOIN15_copy0"
+      },
+      {
+        "source": "FILTER36_copy0",
+        "target": "JOIN15_copy0"
+      },
+      {
+        "source": "JOIN15_copy0",
+        "target": "TRANSFORM15_copy0"
+      },
+      {
+        "source": "LOAD_DATASET14_copy0",
+        "target": "TRANSFORM19_copy0"
+      },
+      {
+        "source": "TRANSFORM19_copy0",
+        "target": "TRANSFORM14_copy0"
+      },
+      {
+        "source": "FILTER37",
+        "target": "JOIN16"
+      },
+      {
+        "source": "TRANSFORM15_copy0",
+        "target": "JOIN16"
+      },
+      {
+        "source": "FILTER9",
+        "target": "TRANSFORM17_copy0_copy0_copy0_copy0"
+      },
+      {
+        "source": "TRANSFORM17_copy0_copy0_copy0_copy0",
+        "target": "FILTER37"
+      },
+      {
+        "source": "JOIN16",
+        "target": "TRANSFORM20_copy0"
+      },
+      {
+        "source": "TRANSFORM20_copy0",
+        "target": "OUTPUT0"
+      }
+    ],
+    "hiddenColumns": []
+  },
+  "version": "62.0"
+}
