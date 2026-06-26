@@ -1,0 +1,457 @@
+{
+  "conversionDetails": [],
+  "createdBy": {
+    "id": "0053W000000QT9lQAG",
+    "name": "J\u00e1nos Lakatos",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "createdDate": "2023-11-10T14:04:28.000Z",
+  "dataflowLastUpdate": "2023-11-30T09:13:33.000Z",
+  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000PXxZQAW/file",
+  "format": "R3",
+  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000PXxZQAW/histories",
+  "id": "05v7Q000000PXxZQAW",
+  "label": "C360 635 - Update Sales Tips - Channel and Agency",
+  "lastModifiedBy": {
+    "id": "0053W000000QT9lQAG",
+    "name": "J\u00e1nos Lakatos",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "lastModifiedDate": "2023-11-30T09:13:33.000Z",
+  "licenseAttributes": {
+    "type": "einsteinanalytics"
+  },
+  "name": "C360_635_Update_Sales_Tips_Channel_and_Agency",
+  "publishingTarget": "Dataset",
+  "recipeDefinition": {
+    "nodes": {
+      "LOAD_DATASET4": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "connectionName": "SFDC_LOCAL_SEGMENTATION",
+            "label": "CustomerCampaignItem__c",
+            "sourceObjectName": "CustomerCampaignItem__c",
+            "type": "connectedDataset"
+          },
+          "fields": [
+            "Id",
+            "CreatedDate",
+            "KSBID__c",
+            "Response_Code__c",
+            "Response_Date__c",
+            "Campaign_Channels__c",
+            "Reason_Sub_code__c",
+            "Status__c",
+            "tm_agency__c",
+            "Callinglist__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "JOIN2": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "KSBID_2"
+          ],
+          "rightKeys": [
+            "KSBID__c"
+          ],
+          "rightQualifier": "OldST"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "LOAD_DATASET5",
+          "DROP_FIELDS4"
+        ]
+      },
+      "FORMULA24": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \r\n    when rtrim(CampaignChannels)= rtrim(&quot;OldST.Campaign_Channels__c&quot;)\r\n    then &#39;No&#39;\r\n    else\r\n    &#39;Yes&#39;\r\nend",
+              "label": "Update Channels",
+              "name": "UpdateChannels",
+              "precision": 10,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN2"
+        ]
+      },
+      "FORMULA25": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency))=rtrim(&quot;OldST.tm_agency__c&quot;)\r\n    then &#39;No - 1&#39;\r\n    when (TelesalesAgency is null) AND (&quot;OldST.tm_agency__c&quot; is null)\r\n    then &#39;No - 2&#39;\r\n    when (TelesalesAgency = &#39;&#39;) AND (&quot;OldST.tm_agency__c&quot; = &#39;&#39;)\r\n    then &#39;No - 3&#39;\r\n    when (TelesalesAgency = &#39;&#39;) AND (&quot;OldST.tm_agency__c&quot; is null)\r\n    then &#39;No - 4&#39;\r\n    else\r\n    &#39;Yes&#39;\r\nend",
+              "label": "Update Agency",
+              "name": "UpdateAgency",
+              "precision": 10,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA24"
+        ]
+      },
+      "FORMULA26": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency)) != &#39;&#39;\r\n    then ltrim(rtrim(TelesalesAgency))\r\n    else\r\n    &#39;#N/A&#39;\r\nend",
+              "label": "New Agency",
+              "name": "NewAgency",
+              "precision": 20,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA25"
+        ]
+      },
+      "DROP_FIELDS4": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Id",
+              "KSBID__c",
+              "Response_Code__c",
+              "PersonalizationConcat",
+              "Salestip_Template__c",
+              "Campaign_Channels__c",
+              "Callinglist__c",
+              "tm_agency__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "LOAD_DATASET4"
+        ]
+      },
+      "OUTPUT0": {
+        "action": "save",
+        "parameters": {
+          "dataset": {
+            "folderName": "SharedApp",
+            "label": "C360 635 Update Sales Tips - Channel and Agency",
+            "name": "C360_635_Update_Sales_Tips_Channel_and_Agency",
+            "type": "analyticsDataset"
+          },
+          "fields": [],
+          "measuresToCurrencies": []
+        },
+        "sources": [
+          "FORMULA26"
+        ]
+      },
+      "LOAD_DATASET5": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "C360 510 New Sales Tips",
+            "name": "C360_510_New_Sales_Tips",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "CampaignChannels",
+            "SFB_AccountId",
+            "Kurt_Id",
+            "Sales_tip_title",
+            "KSBID_2",
+            "TelesalesAgency",
+            "AccountCampaignID",
+            "SFB_CampainId"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FILTER0": {
+        "action": "filter",
+        "parameters": {
+          "filterBooleanLogic": "(1 AND 2) OR (3 AND 4)",
+          "filterExpressions": [
+            {
+              "field": "UpdateChannels",
+              "operands": [
+                "Yes"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            },
+            {
+              "field": "OldST.Response_Code__c",
+              "operands": [
+                "0",
+                "5",
+                "9"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            },
+            {
+              "field": "UpdateAgency",
+              "operands": [
+                "Yes"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            },
+            {
+              "field": "OldST.Response_Code__c",
+              "operands": [
+                "7"
+              ],
+              "operator": "NOT",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA26"
+        ]
+      },
+      "DROP_FIELDS5": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "CampaignChannels",
+              "OldST.Id",
+              "NewAgency"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "FILTER0"
+        ]
+      },
+      "OUTPUT2": {
+        "action": "outputExternal",
+        "parameters": {
+          "connectionName": "Salesforce_Output_Connection_for_SfB",
+          "externalIdFieldName": "",
+          "fieldsMapping": [
+            {
+              "sourceField": "CampaignChannels",
+              "targetField": "Campaign_Channels__c"
+            },
+            {
+              "sourceField": "OldST.Id",
+              "targetField": "Id"
+            },
+            {
+              "sourceField": "NewAgency",
+              "targetField": "tm_agency__c"
+            }
+          ],
+          "hyperFileName": "",
+          "object": "CustomerCampaignItem__c",
+          "operation": "update"
+        },
+        "sources": [
+          "DROP_FIELDS5"
+        ]
+      }
+    },
+    "runMode": "full",
+    "ui": {
+      "nodes": {
+        "LOAD_DATASET4": {
+          "label": "CustomerCampaignItem__c",
+          "type": "LOAD_DATASET",
+          "top": 112,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 10000
+          }
+        },
+        "JOIN2": {
+          "label": "Join 2",
+          "type": "JOIN",
+          "top": 112,
+          "left": 672
+        },
+        "TRANSFORM3": {
+          "label": "Compare Personalization fields",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 812,
+          "graph": {
+            "FORMULA24": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Update Channels"
+            },
+            "FORMULA25": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Update Agency"
+            },
+            "FORMULA26": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Format Agency"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA24",
+              "target": "FORMULA25"
+            },
+            {
+              "source": "FORMULA25",
+              "target": "FORMULA26"
+            }
+          ]
+        },
+        "TRANSFORM4": {
+          "label": "Drop Old fields",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 532,
+          "graph": {
+            "DROP_FIELDS4": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": []
+        },
+        "OUTPUT0": {
+          "label": "C360 635 Update Sales Tips - Channel and Agency",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 252.10000000000002,
+          "left": 812
+        },
+        "LOAD_DATASET5": {
+          "label": "C360 510 New Sales Tips",
+          "type": "LOAD_DATASET",
+          "top": 252,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "FILTER0": {
+          "label": "Keep only changes",
+          "description": "",
+          "type": "FILTER",
+          "top": 113.30000000000001,
+          "left": 952
+        },
+        "TRANSFORM5": {
+          "label": "Drop columns",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 1092,
+          "graph": {
+            "DROP_FIELDS5": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": []
+        },
+        "OUTPUT2": {
+          "label": "CustomerCampaignItem",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 252.39999999999998,
+          "left": 1232
+        }
+      },
+      "connectors": [
+        {
+          "source": "LOAD_DATASET5",
+          "target": "JOIN2"
+        },
+        {
+          "source": "TRANSFORM4",
+          "target": "JOIN2"
+        },
+        {
+          "source": "JOIN2",
+          "target": "TRANSFORM3"
+        },
+        {
+          "source": "TRANSFORM3",
+          "target": "OUTPUT0"
+        },
+        {
+          "source": "LOAD_DATASET4",
+          "target": "TRANSFORM4"
+        },
+        {
+          "source": "TRANSFORM3",
+          "target": "FILTER0"
+        },
+        {
+          "source": "FILTER0",
+          "target": "TRANSFORM5"
+        },
+        {
+          "source": "TRANSFORM5",
+          "target": "OUTPUT2"
+        }
+      ],
+      "hiddenColumns": []
+    },
+    "version": "62.0"
+  },
+  "scheduleAttributes": {
+    "assetId": "05v7Q000000PXxZQAW",
+    "events": {
+      "events": []
+    },
+    "frequency": "eventdriven",
+    "triggerRule": "recipe:05v7Q000000sro5QAA"
+  },
+  "scheduleType": "eventdriven",
+  "status": "Success",
+  "targetDataflowId": "02K7Q000004OrHEUA0",
+  "type": "recipe",
+  "url": "/services/data/v62.0/wave/recipes/05v7Q000000PXxZQAW?format=R3",
+  "validationDetails": []
+}

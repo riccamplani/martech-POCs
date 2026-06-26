@@ -1,0 +1,1865 @@
+{
+  "conversionDetails": [],
+  "createdBy": {
+    "id": "0053W000000QT9lQAG",
+    "name": "J\u00e1nos Lakatos",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "createdDate": "2023-10-16T09:17:01.000Z",
+  "dataflowLastUpdate": "2024-07-12T09:46:09.000Z",
+  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000sro5QAA/file",
+  "format": "R3",
+  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000sro5QAA/histories",
+  "id": "05v7Q000000sro5QAA",
+  "label": "C360 630 - Update Sales Tips - Personalization fields",
+  "lastModifiedBy": {
+    "id": "005b0000001J0bcAAC",
+    "name": "Berit Ruud",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "lastModifiedDate": "2024-07-12T09:46:09.000Z",
+  "licenseAttributes": {
+    "type": "einsteinanalytics"
+  },
+  "name": "C360_630_Update_Sales_Tips_Personalization_fields",
+  "publishingTarget": "Dataset",
+  "recipeDefinition": {
+    "nodes": {
+      "LOAD_DATASET4": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "connectionName": "SFDC_LOCAL_SEGMENTATION",
+            "label": "CustomerCampaignItem__c",
+            "sourceObjectName": "CustomerCampaignItem__c",
+            "type": "connectedDataset"
+          },
+          "fields": [
+            "Id",
+            "CreatedDate",
+            "KSBID__c",
+            "Response_Code__c",
+            "Response_Date__c",
+            "Personalization_1__c",
+            "Personalization_2__c",
+            "Personalization_3__c",
+            "Personalization_10__c",
+            "Personalization_4__c",
+            "Personalization_5__c",
+            "Personalization_6__c",
+            "Personalization_7__c",
+            "Personalization_8__c",
+            "Personalization_9__c",
+            "Personalization_11__c",
+            "Personalization_12__c",
+            "Personalization_13__c",
+            "Personalization_14__c",
+            "Personalization_15__c",
+            "Personalization_16__c",
+            "Personalization_17__c",
+            "Personalization_18__c",
+            "Personalization_19__c",
+            "Personalization_20__c",
+            "Reason_Sub_code__c",
+            "Salestip_Template__c",
+            "Status__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "FORMULA1_copy0_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_1__c&quot; is not null\n    then &quot;Personalization_1__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization1",
+              "name": "Personalization1",
+              "precision": 32000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "LOAD_DATASET4"
+        ]
+      },
+      "FORMULA2_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_2__c&quot; is not null\n    then &quot;Personalization_2__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization2",
+              "name": "Personalization2",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA1_copy0_copy0_copy0"
+        ]
+      },
+      "FORMULA3_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_3__c&quot; is not null\n    then &quot;Personalization_3__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization3",
+              "name": "Personalization3",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA2_copy0_copy0"
+        ]
+      },
+      "FORMULA4_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_4__c&quot; is not null\n    then &quot;Personalization_4__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization4",
+              "name": "Personalization4",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA3_copy0_copy0"
+        ]
+      },
+      "FORMULA5_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_5__c&quot; is not null\n    then &quot;Personalization_5__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization5",
+              "name": "Personalization5",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA4_copy0_copy0"
+        ]
+      },
+      "FORMULA6_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_6__c&quot; is not null\n    then &quot;Personalization_6__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization6",
+              "name": "Personalization6",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA5_copy0_copy0"
+        ]
+      },
+      "FORMULA7_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_7__c&quot; is not null\n    then &quot;Personalization_7__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization7",
+              "name": "Personalization7",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA6_copy0_copy0"
+        ]
+      },
+      "FORMULA8_copy0_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_8__c&quot; is not null\n    then &quot;Personalization_8__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization8",
+              "name": "Personalization8",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA7_copy0_copy0"
+        ]
+      },
+      "FORMULA9_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_9__c&quot; is not null\n    then &quot;Personalization_9__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization9",
+              "name": "Personalization9",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA8_copy0_copy0"
+        ]
+      },
+      "FORMULA10_copy0": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_10__c&quot; is not null\n    then &quot;Personalization_10__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization10",
+              "name": "Personalization10",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA9_copy0"
+        ]
+      },
+      "FORMULA11": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_11__c&quot; is not null\n    then &quot;Personalization_11__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization11",
+              "name": "Personalization11",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA10_copy0"
+        ]
+      },
+      "FORMULA12": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_12__c&quot; is not null\n    then &quot;Personalization_12__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization12",
+              "name": "Personalization12",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA11"
+        ]
+      },
+      "FORMULA13": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_13__c&quot; is not null\n    then &quot;Personalization_13__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization13",
+              "name": "Personalization13",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA12"
+        ]
+      },
+      "FORMULA14": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_14__c&quot; is not null\n    then &quot;Personalization_14__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization14",
+              "name": "Personalization14",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA13"
+        ]
+      },
+      "FORMULA15": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_15__c&quot; is not null\n    then &quot;Personalization_15__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization15",
+              "name": "Personalization15",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA14"
+        ]
+      },
+      "FORMULA16": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_16__c&quot; is not null\n    then &quot;Personalization_16__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization16",
+              "name": "Personalization16",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA15"
+        ]
+      },
+      "FORMULA17": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_17__c&quot; is not null\n    then &quot;Personalization_17__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization17",
+              "name": "Personalization17",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA16"
+        ]
+      },
+      "FORMULA18": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_18__c&quot; is not null\n    then &quot;Personalization_18__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization18",
+              "name": "Personalization18",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA17"
+        ]
+      },
+      "FORMULA19": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_19__c&quot; is not null\n    then &quot;Personalization_19__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization19",
+              "name": "Personalization19",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA18"
+        ]
+      },
+      "FORMULA20": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_20__c&quot; is not null\n    then &quot;Personalization_20__c&quot;\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization20",
+              "name": "Personalization20",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA19"
+        ]
+      },
+      "FORMULA21": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "concat(&quot;Personalization1&quot;,&quot;Personalization2&quot;,&quot;Personalization3&quot;,&quot;Personalization4&quot;,&quot;Personalization5&quot;,&quot;Personalization6&quot;,&quot;Personalization7&quot;,&quot;Personalization8&quot;,&quot;Personalization9&quot;,&quot;Personalization10&quot;,&quot;Personalization11&quot;,&quot;Personalization12&quot;,&quot;Personalization13&quot;,&quot;Personalization14&quot;,&quot;Personalization15&quot;,&quot;Personalization16&quot;,&quot;Personalization17&quot;,&quot;Personalization18&quot;,&quot;Personalization19&quot;,&quot;Personalization20&quot;)",
+              "label": "PersonalizationConcat",
+              "name": "PersonalizationConcat",
+              "precision": 32000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA20"
+        ]
+      },
+      "DROP_FIELDS3": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Personalization_1__c",
+              "Personalization_2__c",
+              "Personalization_3__c",
+              "Personalization_4__c",
+              "Personalization_5__c",
+              "Personalization_6__c",
+              "Personalization_7__c",
+              "Personalization_8__c",
+              "Personalization_9__c",
+              "Personalization_10__c",
+              "Personalization_11__c",
+              "Personalization_12__c",
+              "Personalization_13__c",
+              "Personalization_14__c",
+              "Personalization_15__c",
+              "Personalization_16__c",
+              "Personalization_17__c",
+              "Personalization_18__c",
+              "Personalization_19__c",
+              "Personalization_20__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "FORMULA21"
+        ]
+      },
+      "JOIN2": {
+        "action": "join",
+        "parameters": {
+          "joinType": "INNER",
+          "leftKeys": [
+            "KSBID_2"
+          ],
+          "rightKeys": [
+            "KSBID__c"
+          ],
+          "rightQualifier": "OldST"
+        },
+        "schema": {
+          "fields": [],
+          "slice": {
+            "fields": [],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "DROP_FIELDS3_copy1",
+          "DROP_FIELDS4"
+        ]
+      },
+      "FORMULA22": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;PersonalizationConcat&quot; = &quot;OldST.PersonalizationConcat&quot;\n    then &#39;No&#39;\n    else\n    &#39;Yes&#39;\nend",
+              "label": "Update Personalization",
+              "name": "UpdatePersonalization",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "JOIN2"
+        ]
+      },
+      "FORMULA23": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when rtrim(&quot;OldST.Salestip_Template__c&quot;)= rtrim(Sales_tip_description_template)\n    then &#39;No&#39;\n    else\n    &#39;Yes&#39;\nend",
+              "label": "Update Sales Tip template",
+              "name": "UpdateSalesTiptemplate",
+              "precision": 10,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA22"
+        ]
+      },
+      "FILTER2": {
+        "action": "filter",
+        "parameters": {
+          "filterBooleanLogic": "1 OR 2",
+          "filterExpressions": [
+            {
+              "field": "UpdatePersonalization",
+              "operands": [
+                "Yes"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            },
+            {
+              "field": "UpdateSalesTiptemplate",
+              "operands": [
+                "Yes"
+              ],
+              "operator": "EQUAL",
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA23"
+        ]
+      },
+      "FORMULA1_copy0_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_1__c&quot; is not null\n    then rtrim(&quot;Personalization_1__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization1",
+              "name": "Personalization1",
+              "precision": 32000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "LOAD_DATASET5"
+        ]
+      },
+      "FORMULA2_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_2__c&quot; is not null\n    then rtrim(&quot;Personalization_2__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization2",
+              "name": "Personalization2",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA1_copy0_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA3_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_3__c&quot; is not null\n    then rtrim(&quot;Personalization_3__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization3",
+              "name": "Personalization3",
+              "precision": 255,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA2_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA4_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_4__c&quot; is not null\n    then rtrim(&quot;Personalization_4__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization4",
+              "name": "Personalization4",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA3_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA5_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_5__c&quot; is not null\n    then rtrim(&quot;Personalization_5__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization5",
+              "name": "Personalization5",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA4_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA6_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_6__c&quot; is not null\n    then rtrim(&quot;Personalization_6__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization6",
+              "name": "Personalization6",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA5_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA7_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_7__c&quot; is not null\n    then rtrim(&quot;Personalization_7__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization7",
+              "name": "Personalization7",
+              "precision": 1000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA6_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA8_copy0_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_8__c&quot; is not null\n    then rtrim(&quot;Personalization_8__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization8",
+              "name": "Personalization8",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA7_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA9_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_9__c&quot; is not null\n    then rtrim(&quot;Personalization_9__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization9",
+              "name": "Personalization9",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA8_copy0_copy0_copy1"
+        ]
+      },
+      "FORMULA10_copy0_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_10__c&quot; is not null\n    then rtrim(&quot;Personalization_10__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization10",
+              "name": "Personalization10",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA9_copy0_copy1"
+        ]
+      },
+      "FORMULA11_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_11__c&quot; is not null\n    then rtrim(&quot;Personalization_11__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization11",
+              "name": "Personalization11",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA10_copy0_copy1"
+        ]
+      },
+      "FORMULA12_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_12__c&quot; is not null\n    then rtrim(&quot;Personalization_12__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization12",
+              "name": "Personalization12",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA11_copy1"
+        ]
+      },
+      "FORMULA13_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_13__c&quot; is not null\n    then rtrim(&quot;Personalization_13__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization13",
+              "name": "Personalization13",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA12_copy1"
+        ]
+      },
+      "FORMULA14_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_14__c&quot; is not null\n    then rtrim(&quot;Personalization_14__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization14",
+              "name": "Personalization14",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA13_copy1"
+        ]
+      },
+      "FORMULA15_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_15__c&quot; is not null\n    then rtrim(&quot;Personalization_15__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization15",
+              "name": "Personalization15",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA14_copy1"
+        ]
+      },
+      "FORMULA16_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_16__c&quot; is not null\n    then rtrim(&quot;Personalization_16__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization16",
+              "name": "Personalization16",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA15_copy1"
+        ]
+      },
+      "FORMULA17_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_17__c&quot; is not null\n    then rtrim(&quot;Personalization_17__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization17",
+              "name": "Personalization17",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA16_copy1"
+        ]
+      },
+      "FORMULA18_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_18__c&quot; is not null\n    then rtrim(&quot;Personalization_18__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization18",
+              "name": "Personalization18",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA17_copy1"
+        ]
+      },
+      "FORMULA19_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_19__c&quot; is not null\n    then rtrim(&quot;Personalization_19__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization19",
+              "name": "Personalization19",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA18_copy1"
+        ]
+      },
+      "FORMULA20_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "case \n    when &quot;Personalization_20__c&quot; is not null\n    then rtrim(&quot;Personalization_20__c&quot;)\n    else\n    &#39; &#39;\nend",
+              "label": "Personalization20",
+              "name": "Personalization20",
+              "precision": 2550,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA19_copy1"
+        ]
+      },
+      "FORMULA21_copy1": {
+        "action": "formula",
+        "parameters": {
+          "expressionType": "SQL",
+          "fields": [
+            {
+              "defaultValue": "",
+              "formulaExpression": "concat(&quot;Personalization1&quot;,&quot;Personalization2&quot;,&quot;Personalization3&quot;,&quot;Personalization4&quot;,&quot;Personalization5&quot;,&quot;Personalization6&quot;,&quot;Personalization7&quot;,&quot;Personalization8&quot;,&quot;Personalization9&quot;,&quot;Personalization10&quot;,&quot;Personalization11&quot;,&quot;Personalization12&quot;,&quot;Personalization13&quot;,&quot;Personalization14&quot;,&quot;Personalization15&quot;,&quot;Personalization16&quot;,&quot;Personalization17&quot;,&quot;Personalization18&quot;,&quot;Personalization19&quot;,&quot;Personalization20&quot;)",
+              "label": "PersonalizationConcat",
+              "name": "PersonalizationConcat",
+              "precision": 32000,
+              "type": "TEXT"
+            }
+          ]
+        },
+        "sources": [
+          "FORMULA20_copy1"
+        ]
+      },
+      "DROP_FIELDS3_copy1": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Personalization_1__c",
+              "Personalization_2__c",
+              "Personalization_3__c",
+              "Personalization_4__c",
+              "Personalization_5__c",
+              "Personalization_6__c",
+              "Personalization_7__c",
+              "Personalization_8__c",
+              "Personalization_9__c",
+              "Personalization_10__c",
+              "Personalization_11__c",
+              "Personalization_12__c",
+              "Personalization_13__c",
+              "Personalization_14__c",
+              "Personalization_15__c",
+              "Personalization_16__c",
+              "Personalization_17__c",
+              "Personalization_18__c",
+              "Personalization_19__c",
+              "Personalization_20__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "DROP"
+          }
+        },
+        "sources": [
+          "FORMULA21_copy1"
+        ]
+      },
+      "DROP_FIELDS4": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Id",
+              "KSBID__c",
+              "Response_Code__c",
+              "PersonalizationConcat",
+              "Salestip_Template__c",
+              "Callinglist__c",
+              "tm_agency__c"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "DROP_FIELDS3"
+        ]
+      },
+      "DROP_FIELDS5": {
+        "action": "schema",
+        "parameters": {
+          "fields": [],
+          "slice": {
+            "fields": [
+              "Personalization1",
+              "Personalization2",
+              "Personalization3",
+              "Personalization4",
+              "Personalization5",
+              "Personalization6",
+              "Personalization7",
+              "Personalization8",
+              "Personalization9",
+              "Personalization10",
+              "Personalization11",
+              "Personalization12",
+              "Personalization13",
+              "Personalization14",
+              "Personalization15",
+              "Personalization16",
+              "Personalization17",
+              "Personalization18",
+              "Personalization19",
+              "Personalization20",
+              "OldST.Id",
+              "Sales_tip_description_template",
+              "CampaignChannels"
+            ],
+            "ignoreMissingFields": true,
+            "mode": "SELECT"
+          }
+        },
+        "sources": [
+          "FILTER2"
+        ]
+      },
+      "OUTPUT0": {
+        "action": "save",
+        "parameters": {
+          "dataset": {
+            "folderName": "Campaign_Developer_App",
+            "label": "C360 630 Update Sales Tips - Personalization",
+            "name": "C360_630_Update_Sales_Tips_Personalization",
+            "type": "analyticsDataset"
+          },
+          "fields": [],
+          "measuresToCurrencies": []
+        },
+        "sources": [
+          "FORMULA23"
+        ]
+      },
+      "OUTPUT1": {
+        "action": "outputExternal",
+        "parameters": {
+          "connectionName": "Salesforce_Output_Connection_for_SfB",
+          "externalIdFieldName": "",
+          "fieldsMapping": [
+            {
+              "sourceField": "Sales_tip_description_template",
+              "targetField": "Salestip_Template__c"
+            },
+            {
+              "sourceField": "Personalization1",
+              "targetField": "Personalization_1__c"
+            },
+            {
+              "sourceField": "Personalization2",
+              "targetField": "Personalization_2__c"
+            },
+            {
+              "sourceField": "Personalization3",
+              "targetField": "Personalization_3__c"
+            },
+            {
+              "sourceField": "Personalization4",
+              "targetField": "Personalization_4__c"
+            },
+            {
+              "sourceField": "Personalization5",
+              "targetField": "Personalization_5__c"
+            },
+            {
+              "sourceField": "Personalization6",
+              "targetField": "Personalization_6__c"
+            },
+            {
+              "sourceField": "Personalization7",
+              "targetField": "Personalization_7__c"
+            },
+            {
+              "sourceField": "Personalization8",
+              "targetField": "Personalization_8__c"
+            },
+            {
+              "sourceField": "Personalization9",
+              "targetField": "Personalization_9__c"
+            },
+            {
+              "sourceField": "Personalization10",
+              "targetField": "Personalization_10__c"
+            },
+            {
+              "sourceField": "Personalization11",
+              "targetField": "Personalization_11__c"
+            },
+            {
+              "sourceField": "Personalization12",
+              "targetField": "Personalization_12__c"
+            },
+            {
+              "sourceField": "Personalization13",
+              "targetField": "Personalization_13__c"
+            },
+            {
+              "sourceField": "Personalization14",
+              "targetField": "Personalization_14__c"
+            },
+            {
+              "sourceField": "Personalization15",
+              "targetField": "Personalization_15__c"
+            },
+            {
+              "sourceField": "Personalization16",
+              "targetField": "Personalization_16__c"
+            },
+            {
+              "sourceField": "Personalization17",
+              "targetField": "Personalization_17__c"
+            },
+            {
+              "sourceField": "Personalization18",
+              "targetField": "Personalization_18__c"
+            },
+            {
+              "sourceField": "Personalization19",
+              "targetField": "Personalization_19__c"
+            },
+            {
+              "sourceField": "Personalization20",
+              "targetField": "Personalization_20__c"
+            },
+            {
+              "sourceField": "OldST.Id",
+              "targetField": "Id"
+            }
+          ],
+          "hyperFileName": "",
+          "object": "CustomerCampaignItem__c",
+          "operation": "update"
+        },
+        "sources": [
+          "DROP_FIELDS5"
+        ]
+      },
+      "LOAD_DATASET5": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "C360 510 New Sales Tips",
+            "name": "C360_510_New_Sales_Tips",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "Personalization_1__c",
+            "Personalization_3__c",
+            "Personalization_20__c",
+            "SFB_AccountId",
+            "Personalization_15__c",
+            "Personalization_13__c",
+            "Personalization_17__c",
+            "Personalization_7__c",
+            "Personalization_9__c",
+            "Kurt_Id",
+            "Personalization_19__c",
+            "Personalization_5__c",
+            "Personalization_11__c",
+            "Personalization_2__c",
+            "Sales_tip_title",
+            "KSBID_2",
+            "Personalization_12__c",
+            "Personalization_14__c",
+            "Personalization_16__c",
+            "Personalization_8__c",
+            "Sales_tip_description_template",
+            "Personalization_18__c",
+            "Personalization_6__c",
+            "Personalization_4__c",
+            "AccountCampaignID",
+            "Personalization_10__c",
+            "SFB_CampainId"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      }
+    },
+    "runMode": "full",
+    "ui": {
+      "nodes": {
+        "LOAD_DATASET4": {
+          "label": "CustomerCampaignItem__c",
+          "type": "LOAD_DATASET",
+          "top": 112,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 10000
+          }
+        },
+        "TRANSFORM2_copy0_copy0_copy0": {
+          "label": "OldST Personalization Concat",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 392,
+          "graph": {
+            "FORMULA1_copy0_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA2_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA3_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA4_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA5_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA6_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA7_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA8_copy0_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA9_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA10_copy0": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA11": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA12": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA13": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA14": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA15": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA16": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA17": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA18": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA19": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA20": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA21": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "DROP_FIELDS3": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA1_copy0_copy0_copy0",
+              "target": "FORMULA2_copy0_copy0"
+            },
+            {
+              "source": "FORMULA2_copy0_copy0",
+              "target": "FORMULA3_copy0_copy0"
+            },
+            {
+              "source": "FORMULA3_copy0_copy0",
+              "target": "FORMULA4_copy0_copy0"
+            },
+            {
+              "source": "FORMULA4_copy0_copy0",
+              "target": "FORMULA5_copy0_copy0"
+            },
+            {
+              "source": "FORMULA5_copy0_copy0",
+              "target": "FORMULA6_copy0_copy0"
+            },
+            {
+              "source": "FORMULA6_copy0_copy0",
+              "target": "FORMULA7_copy0_copy0"
+            },
+            {
+              "source": "FORMULA7_copy0_copy0",
+              "target": "FORMULA8_copy0_copy0"
+            },
+            {
+              "source": "FORMULA8_copy0_copy0",
+              "target": "FORMULA9_copy0"
+            },
+            {
+              "source": "FORMULA9_copy0",
+              "target": "FORMULA10_copy0"
+            },
+            {
+              "source": "FORMULA10_copy0",
+              "target": "FORMULA11"
+            },
+            {
+              "source": "FORMULA11",
+              "target": "FORMULA12"
+            },
+            {
+              "source": "FORMULA12",
+              "target": "FORMULA13"
+            },
+            {
+              "source": "FORMULA13",
+              "target": "FORMULA14"
+            },
+            {
+              "source": "FORMULA14",
+              "target": "FORMULA15"
+            },
+            {
+              "source": "FORMULA15",
+              "target": "FORMULA16"
+            },
+            {
+              "source": "FORMULA16",
+              "target": "FORMULA17"
+            },
+            {
+              "source": "FORMULA17",
+              "target": "FORMULA18"
+            },
+            {
+              "source": "FORMULA18",
+              "target": "FORMULA19"
+            },
+            {
+              "source": "FORMULA19",
+              "target": "FORMULA20"
+            },
+            {
+              "source": "FORMULA20",
+              "target": "FORMULA21"
+            },
+            {
+              "source": "FORMULA21",
+              "target": "DROP_FIELDS3"
+            }
+          ]
+        },
+        "JOIN2": {
+          "label": "Join 2",
+          "type": "JOIN",
+          "top": 112,
+          "left": 672
+        },
+        "TRANSFORM3": {
+          "label": "Compare Personalization fields",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 812,
+          "graph": {
+            "FORMULA22": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Update Personalization"
+            },
+            "FORMULA23": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Update Sales Tip template"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA22",
+              "target": "FORMULA23"
+            }
+          ]
+        },
+        "FILTER2": {
+          "label": "Filter 2",
+          "type": "FILTER",
+          "top": 112,
+          "left": 952
+        },
+        "TRANSFORM2_copy0_copy0_copy0_copy1": {
+          "label": "NewST Personalization Concat",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 252,
+          "left": 392,
+          "graph": {
+            "FORMULA1_copy0_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA2_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA3_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA4_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA5_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA6_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA7_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA8_copy0_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA9_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA10_copy0_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA11_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA12_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA13_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA14_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA15_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA16_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA17_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA18_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA19_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA20_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "FORMULA21_copy1": {
+              "parameters": {
+                "type": "BASE_FORMULA_UI"
+              },
+              "label": "Formula"
+            },
+            "DROP_FIELDS3_copy1": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": [
+            {
+              "source": "FORMULA1_copy0_copy0_copy0_copy1",
+              "target": "FORMULA2_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA2_copy0_copy0_copy1",
+              "target": "FORMULA3_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA3_copy0_copy0_copy1",
+              "target": "FORMULA4_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA4_copy0_copy0_copy1",
+              "target": "FORMULA5_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA5_copy0_copy0_copy1",
+              "target": "FORMULA6_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA6_copy0_copy0_copy1",
+              "target": "FORMULA7_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA7_copy0_copy0_copy1",
+              "target": "FORMULA8_copy0_copy0_copy1"
+            },
+            {
+              "source": "FORMULA8_copy0_copy0_copy1",
+              "target": "FORMULA9_copy0_copy1"
+            },
+            {
+              "source": "FORMULA9_copy0_copy1",
+              "target": "FORMULA10_copy0_copy1"
+            },
+            {
+              "source": "FORMULA10_copy0_copy1",
+              "target": "FORMULA11_copy1"
+            },
+            {
+              "source": "FORMULA11_copy1",
+              "target": "FORMULA12_copy1"
+            },
+            {
+              "source": "FORMULA12_copy1",
+              "target": "FORMULA13_copy1"
+            },
+            {
+              "source": "FORMULA13_copy1",
+              "target": "FORMULA14_copy1"
+            },
+            {
+              "source": "FORMULA14_copy1",
+              "target": "FORMULA15_copy1"
+            },
+            {
+              "source": "FORMULA15_copy1",
+              "target": "FORMULA16_copy1"
+            },
+            {
+              "source": "FORMULA16_copy1",
+              "target": "FORMULA17_copy1"
+            },
+            {
+              "source": "FORMULA17_copy1",
+              "target": "FORMULA18_copy1"
+            },
+            {
+              "source": "FORMULA18_copy1",
+              "target": "FORMULA19_copy1"
+            },
+            {
+              "source": "FORMULA19_copy1",
+              "target": "FORMULA20_copy1"
+            },
+            {
+              "source": "FORMULA20_copy1",
+              "target": "FORMULA21_copy1"
+            },
+            {
+              "source": "FORMULA21_copy1",
+              "target": "DROP_FIELDS3_copy1"
+            }
+          ]
+        },
+        "TRANSFORM4": {
+          "label": "Drop Old fields",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 532,
+          "graph": {
+            "DROP_FIELDS4": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": []
+        },
+        "TRANSFORM5": {
+          "label": "Drop columns",
+          "description": "",
+          "type": "TRANSFORM",
+          "top": 112,
+          "left": 1092,
+          "graph": {
+            "DROP_FIELDS5": {
+              "label": "Drop Columns"
+            }
+          },
+          "connectors": []
+        },
+        "OUTPUT0": {
+          "label": "C360 630 Update Sales Tips - Personalization",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 252.10000000000002,
+          "left": 812
+        },
+        "OUTPUT1": {
+          "label": "SFB CustomerCampaignItem",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 252.39999999999998,
+          "left": 1092
+        },
+        "LOAD_DATASET5": {
+          "label": "C360 510 New Sales Tips",
+          "type": "LOAD_DATASET",
+          "top": 252,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        }
+      },
+      "connectors": [
+        {
+          "source": "TRANSFORM3",
+          "target": "FILTER2"
+        },
+        {
+          "source": "TRANSFORM2_copy0_copy0_copy0_copy1",
+          "target": "JOIN2"
+        },
+        {
+          "source": "TRANSFORM4",
+          "target": "JOIN2"
+        },
+        {
+          "source": "JOIN2",
+          "target": "TRANSFORM3"
+        },
+        {
+          "source": "TRANSFORM2_copy0_copy0_copy0",
+          "target": "TRANSFORM4"
+        },
+        {
+          "source": "FILTER2",
+          "target": "TRANSFORM5"
+        },
+        {
+          "source": "TRANSFORM5",
+          "target": "OUTPUT1"
+        },
+        {
+          "source": "LOAD_DATASET4",
+          "target": "TRANSFORM2_copy0_copy0_copy0"
+        },
+        {
+          "source": "TRANSFORM3",
+          "target": "OUTPUT0"
+        },
+        {
+          "source": "LOAD_DATASET5",
+          "target": "TRANSFORM2_copy0_copy0_copy0_copy1"
+        }
+      ],
+      "hiddenColumns": []
+    },
+    "version": "62.0"
+  },
+  "scheduleAttributes": {
+    "assetId": "05v7Q000000sro5QAA",
+    "events": {
+      "events": []
+    },
+    "frequency": "eventdriven",
+    "triggerRule": "recipe:05v7Q000000sro0QAA"
+  },
+  "scheduleType": "eventdriven",
+  "status": "Success",
+  "targetDataflowId": "02K7Q000002xiVuUAI",
+  "type": "recipe",
+  "url": "/services/data/v62.0/wave/recipes/05v7Q000000sro5QAA?format=R3",
+  "validationDetails": []
+}

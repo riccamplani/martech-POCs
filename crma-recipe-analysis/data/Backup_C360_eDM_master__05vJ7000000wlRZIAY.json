@@ -1,0 +1,175 @@
+{
+  "conversionDetails": [],
+  "createdBy": {
+    "id": "005b0000001J0bcAAC",
+    "name": "Berit Ruud",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "createdDate": "2024-12-06T09:00:31.000Z",
+  "dataflowLastUpdate": "2024-12-06T10:48:29.000Z",
+  "fileUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wlRZIAY/file",
+  "format": "R3",
+  "historiesUrl": "/services/data/v62.0/wave/recipes/05vJ7000000wlRZIAY/histories",
+  "id": "05vJ7000000wlRZIAY",
+  "label": "Backup_C360_eDM_master",
+  "lastModifiedBy": {
+    "id": "005b0000001J0bcAAC",
+    "name": "Berit Ruud",
+    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
+  },
+  "lastModifiedDate": "2024-12-06T09:00:31.000Z",
+  "licenseAttributes": {
+    "type": "einsteinanalytics"
+  },
+  "name": "Backup_C360_eDM_master",
+  "nextScheduledDate": "2026-06-25T17:00:00.000Z",
+  "publishingTarget": "Dataset",
+  "recipeDefinition": {
+    "nodes": {
+      "LOAD_DATASET0": {
+        "action": "load",
+        "parameters": {
+          "dataset": {
+            "label": "C360_eDM_Master",
+            "name": "C360_eDM_Master",
+            "type": "analyticsDataset"
+          },
+          "fields": [
+            "Email",
+            "Personalization_1__c",
+            "Send_timestamp_string",
+            "Personalization_3__c",
+            "KurtID",
+            "Personalization_20__c",
+            "CampaignName",
+            "MobilePhone",
+            "Personalization_15__c",
+            "Personalization_13__c",
+            "Personalization_17__c",
+            "Personalization_7__c",
+            "Personalization_9__c",
+            "Personalization_19__c",
+            "Personalization_5__c",
+            "Personalization_11__c",
+            "AccountID",
+            "Personalization_2__c",
+            "ContactID",
+            "CampaignCD",
+            "Send_timestamp",
+            "Personalization_12__c",
+            "Personalization_14__c",
+            "Personalization_16__c",
+            "CampaignID",
+            "Personalization_8__c",
+            "Personalization_18__c",
+            "Personalization_6__c",
+            "Personalization_4__c",
+            "Personalization_10__c"
+          ],
+          "sampleDetails": {
+            "sortBy": [],
+            "type": "TopN"
+          }
+        },
+        "sources": []
+      },
+      "OUTPUT0": {
+        "action": "save",
+        "parameters": {
+          "dataset": {
+            "folderName": "Campaign_Developer_App",
+            "label": "Backup_C360_eDM_master",
+            "name": "Backup_C360_eDM_master",
+            "type": "analyticsDataset"
+          },
+          "fields": [],
+          "measuresToCurrencies": []
+        },
+        "sources": [
+          "LOAD_DATASET0"
+        ]
+      }
+    },
+    "runMode": "full",
+    "ui": {
+      "nodes": {
+        "LOAD_DATASET0": {
+          "label": "C360_eDM_Master",
+          "type": "LOAD_DATASET",
+          "top": 112,
+          "left": 112,
+          "parameters": {
+            "sampleSize": 2000
+          }
+        },
+        "OUTPUT0": {
+          "label": "Backup_C360_eDM_master",
+          "description": "",
+          "type": "OUTPUT",
+          "top": 112,
+          "left": 252
+        }
+      },
+      "connectors": [
+        {
+          "source": "LOAD_DATASET0",
+          "target": "OUTPUT0"
+        }
+      ],
+      "hiddenColumns": []
+    },
+    "version": "62.0"
+  },
+  "schedule": "0 0 19 ? * 1,2,3,4,5,6,7",
+  "scheduleAttributes": {
+    "assetId": "05vJ7000000wlRZIAY",
+    "daysOfWeek": [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday"
+    ],
+    "events": {
+      "events": [
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2024-12-06T10:48:28.000Z",
+          "eventType": "JobScheduleModified"
+        },
+        {
+          "createdBy": {
+            "id": "005b0000001J0bcAAC",
+            "name": "Berit Ruud",
+            "profilePhotoUrl": "https://telenor.file.force.com/profilephoto/005/T"
+          },
+          "createdDate": "2024-12-06T09:04:33.000Z",
+          "eventType": "JobScheduled"
+        }
+      ]
+    },
+    "frequency": "weekly",
+    "nextScheduledDate": "2026-06-25T17:00:00.000Z",
+    "time": {
+      "hour": 19,
+      "minute": 0,
+      "timeZone": {
+        "gmtOffset": 2,
+        "name": "Central European Summer Time",
+        "zoneId": "Europe/Paris"
+      }
+    }
+  },
+  "scheduleType": "timedriven",
+  "status": "Success",
+  "targetDataflowId": "02KJ7000000ha0NMAQ",
+  "type": "recipe",
+  "url": "/services/data/v62.0/wave/recipes/05vJ7000000wlRZIAY?format=R3",
+  "validationDetails": []
+}
