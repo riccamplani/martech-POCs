@@ -249,29 +249,43 @@ def build_cleaned(data, results, forward):
     remove those fields from downstream DROP schema nodes. Preserves original format."""
     cleaned = copy.deepcopy(data)
     nodes = get_nodes(cleaned)
-    all_removed = set()
+    removed_per_load = {}
     for load_name, result in results.items():
         orig_fields = nodes[load_name]["parameters"]["fields"]
         used_set = set(result["usedFields"])
         removed = set(result["unusedFields"])
-        all_removed.update(removed)
+        removed_per_load[load_name] = removed
         nodes[load_name]["parameters"]["fields"] = [
             f for f in orig_fields
             if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in used_set
         ]
 
-    # Clean up DROP schema nodes: remove references to fields no longer in the pipeline
-    for node_name, node in nodes.items():
-        if node.get("action") != "schema":
+    # Clean up DROP schema nodes: remove references to fields no longer in the
+    # pipeline. Only clean schemas DOWNSTREAM of the load node that lost fields,
+    # to avoid removing common field names (Name, CreatedDate, etc.) from
+    # unrelated branches.
+    for load_name, removed in removed_per_load.items():
+        if not removed:
             continue
-        slice_info = node.get("parameters", {}).get("slice", {})
-        if slice_info.get("mode") != "DROP":
-            continue
-        drop_fields = slice_info.get("fields", [])
-        cleaned_drop = [f for f in drop_fields
-                        if f not in all_removed
-                        and f.rsplit(".", 1)[-1] not in all_removed]
-        slice_info["fields"] = cleaned_drop
+        visited = set()
+        queue = [load_name]
+        while queue:
+            current = queue.pop(0)
+            if current in visited:
+                continue
+            visited.add(current)
+            node = nodes.get(current, {})
+            if node.get("action") == "schema":
+                slice_info = node.get("parameters", {}).get("slice", {})
+                if slice_info.get("mode") == "DROP":
+                    drop_fields = slice_info.get("fields", [])
+                    slice_info["fields"] = [
+                        f for f in drop_fields
+                        if f not in removed
+                        and f.rsplit(".", 1)[-1] not in removed
+                    ]
+            for downstream in forward.get(current, []):
+                queue.append(downstream)
 
     # Decode HTML entities throughout the recipe (API export encodes them,
     # but CRMA import expects decoded values)

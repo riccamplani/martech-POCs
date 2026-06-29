@@ -779,6 +779,8 @@
             "Id",
             "AccountId",
             "StageName",
+            "CreatedDate",
+            "LastModifiedDate",
             "WonLostReason__c",
             "Opportunity_Source__c",
             "Owner_Role__c",
@@ -2204,10 +2206,12 @@
         "slice": {
           "fields": [
             "IsDeleted",
+            "Name",
             "RecordTypeId",
             "ParentId",
             "Phone",
             "NumberOfEmployees",
+            "CreatedDate",
             "IsPartner",
             "IsPersonAccount",
             "PersonHasOptedOutOfEmail",
@@ -4040,7 +4044,14 @@
         "slice": {
           "fields": [
             "Id",
+            "OwnerId",
             "IsDeleted",
+            "Name",
+            "CreatedDate",
+            "CreatedById",
+            "LastModifiedDate",
+            "LastModifiedById",
+            "SystemModstamp",
             "Active_subs__c",
             "Address_Id__c",
             "Building_type__c",
@@ -4788,7 +4799,9 @@
         "slice": {
           "fields": [
             "Id",
+            "OwnerId",
             "IsDeleted",
+            "Name",
             "Active_subs__c",
             "Address_Id__c",
             "BUILDING_TYPE_LEVEL_3__c",
@@ -6327,10 +6340,12 @@
         "slice": {
           "fields": [
             "IsDeleted",
+            "Name",
             "RecordTypeId",
             "ParentId",
             "Phone",
             "NumberOfEmployees",
+            "CreatedDate",
             "IsPartner",
             "IsPersonAccount",
             "PersonHasOptedOutOfEmail",
@@ -6461,10 +6476,12 @@
             "Segment__c",
             "DPSS_Segment__c",
             "IsDeleted",
+            "Name",
             "RecordTypeId",
             "ParentId",
             "Phone",
             "NumberOfEmployees",
+            "CreatedDate",
             "IsPartner",
             "IsPersonAccount",
             "PersonHasOptedOutOfEmail",

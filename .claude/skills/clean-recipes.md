@@ -25,7 +25,7 @@ This will:
 ## What the script does (DO NOT change this logic)
 
 - **Only analyzes load nodes for the 16 target SF objects**: Account, Account_Structure__c, Account_Summary__c, Subscription, Subscription_Item, Agreement__c, Agreement_Item__c, Account_Location__c, BSS_Event__c, Contact, Shortcut_to_Product_Offer_ID__c, Payment_Status__c, User, Terminated_Subscription__c, Suspect__c, External_User__c
-- **Modifies load node `fields` arrays AND downstream DROP schema nodes** — when a field is removed from a load node, it is also removed from any DROP schema node that references it (CRMA validates that DROP fields exist in the data flow)
+- **Modifies load node `fields` arrays AND downstream DROP schema nodes** — when a field is removed from a load node, it is also removed from DROP schema nodes **downstream of that specific load node** (CRMA validates that DROP fields exist in the data flow). The cleanup is scoped per-load-node to avoid removing common field names (Name, CreatedDate, etc.) from unrelated branches.
 - **Load nodes for non-target objects are left untouched** — datasets, Case, Opportunity, etc. are not cleaned
 - **Output format matches input format** — if the input is `{nodes, ui, version}`, the output is too. If the input is an API export with `recipeDefinition`, the output extracts just the `recipeDefinition` content (what CRMA expects for import)
 - **Schema DROP mode**: fields listed in DROP mode schemas are being discarded — they do NOT count as used
