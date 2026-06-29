@@ -13,6 +13,7 @@
           "Last_Min_Bedrift_Web_Login__c",
           "Id",
           "IsDeleted",
+          "Name",
           "NumberOfEmployees",
           "KurtID__c",
           "StatusKURT__c",
@@ -290,7 +291,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;Account.SubsMobileVoice__c&quot; &gt;50\r\nthen &#39;Over 50&#39;\r\nelse &#39;Under 50&#39;\r\nend",
+            "formulaExpression": "case when\r\n\"Account.SubsMobileVoice__c\" >50\r\nthen 'Over 50'\r\nelse 'Under 50'\r\nend",
             "label": "Limit_50_abo",
             "name": "Limit_50_abo",
             "precision": 255,
@@ -309,7 +310,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen Agrol_def_1 =&#39;AGROL&#39; and Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nwhen \r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and Have_MB_Admin_active =&#39;1&#39;\r\nthen &#39;MB&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and\r\nHave_MB_Admin_active =&#39;0&#39; and Calc_segment =&#39;Large&#39; \r\nthen &#39;MB&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har MB Admin&#39; and\r\nHave_MB_Admin_active =&#39;0&#39; and Calc_segment =&#39;Small&#39; \r\nand Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nwhen\r\nAgrol_def_1 =&#39;NOT AGROL&#39; and\r\nHar_MB_Admin= &#39;Har Ikke MB Admin&#39;\r\nand Limit_50_abo =&#39;Under 50&#39;\r\nthen &#39;EC&#39;\r\nelse &#39;0&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen Agrol_def_1 ='AGROL' and Limit_50_abo ='Under 50'\r\nthen 'EC'\r\nwhen \r\nAgrol_def_1 ='NOT AGROL' and\r\nHar_MB_Admin= 'Har MB Admin' and Have_MB_Admin_active ='1'\r\nthen 'MB'\r\nwhen\r\nAgrol_def_1 ='NOT AGROL' and\r\nHar_MB_Admin= 'Har MB Admin' and\r\nHave_MB_Admin_active ='0' and Calc_segment ='Large' \r\nthen 'MB'\r\nwhen\r\nAgrol_def_1 ='NOT AGROL' and\r\nHar_MB_Admin= 'Har MB Admin' and\r\nHave_MB_Admin_active ='0' and Calc_segment ='Small' \r\nand Limit_50_abo ='Under 50'\r\nthen 'EC'\r\nwhen\r\nAgrol_def_1 ='NOT AGROL' and\r\nHar_MB_Admin= 'Har Ikke MB Admin'\r\nand Limit_50_abo ='Under 50'\r\nthen 'EC'\r\nelse '0'\r\nend",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -328,7 +329,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\ncontains(Key_have_MB_Admin, &#39;001&#39;) then\r\n&#39;Har MB Admin&#39; \r\nelse &#39;Har Ikke MB Admin&#39;\r\nend",
+            "formulaExpression": "case when\r\ncontains(Key_have_MB_Admin, '001') then\r\n'Har MB Admin' \r\nelse 'Har Ikke MB Admin'\r\nend",
             "label": "Har_MB_Admin",
             "name": "Har_MB_Admin",
             "precision": 255,
@@ -374,7 +375,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Account.Company_Family_Name__c&quot;= &#39;AGROL&#39; then &#39;AGROL&#39; else &#39;NOT AGROL&#39;\r\nend",
+            "formulaExpression": "case when \"Account.Company_Family_Name__c\"= 'AGROL' then 'AGROL' else 'NOT AGROL'\r\nend",
             "label": "Agrol_def_1",
             "name": "Agrol_def_1",
             "precision": 255,
@@ -454,7 +455,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1400&#39;",
+            "formulaExpression": "'1400'",
             "label": "Personalization_2__c",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -473,7 +474,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1500&#39;",
+            "formulaExpression": "'1500'",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -517,7 +518,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; \r\nthen &#39;A5&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;MB&#39; and &quot;Personaliz.Calc_segment&quot;=&#39;Small&#39;\r\nthen &#39;A1&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;MB&#39; and &quot;Personaliz.Calc_segment&quot;=&#39;Large&#39;\r\nthen &#39;A2&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; and &quot;Personaliz.Calc_segment&quot; =&#39;Small&#39;\r\nthen &#39;A3&#39;\r\nwhen &quot;Personaliz.Agrol_def_1&quot;=&#39;NOT AGROL&#39; and &quot;Personaliz.Personalization_5__c&quot; = &#39;EC&#39; and &quot;Personaliz.Calc_segment&quot; = &#39;Large&#39;\r\nthen &#39;A4&#39;\r\nelse &#39;A6&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen \"Personaliz.Agrol_def_1\"='AGROL' and \"Personaliz.Personalization_5__c\" = 'EC' \r\nthen 'A5'\r\nwhen \"Personaliz.Agrol_def_1\"='NOT AGROL' and \"Personaliz.Personalization_5__c\" = 'MB' and \"Personaliz.Calc_segment\"='Small'\r\nthen 'A1'\r\nwhen \"Personaliz.Agrol_def_1\"='NOT AGROL' and \"Personaliz.Personalization_5__c\" = 'MB' and \"Personaliz.Calc_segment\"='Large'\r\nthen 'A2'\r\nwhen \"Personaliz.Agrol_def_1\"='NOT AGROL' and \"Personaliz.Personalization_5__c\" = 'EC' and \"Personaliz.Calc_segment\" ='Small'\r\nthen 'A3'\r\nwhen \"Personaliz.Agrol_def_1\"='NOT AGROL' and \"Personaliz.Personalization_5__c\" = 'EC' and \"Personaliz.Calc_segment\" = 'Large'\r\nthen 'A4'\r\nelse 'A6'\r\nend",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -868,7 +869,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_151&#39;",
+            "formulaExpression": "'C360_151'",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -1144,7 +1145,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen contains(&quot;HaveMBadmi.Have_MB_Admin_active&quot;, &#39;001&#39;)\r\nthen &#39;1&#39;\r\nelse &#39;0&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen contains(\"HaveMBadmi.Have_MB_Admin_active\", '001')\r\nthen '1'\r\nelse '0'\r\nend",
             "label": "Have_MB_Admin_active",
             "name": "Have_MB_Admin_active",
             "precision": 255,
@@ -1163,7 +1164,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n(&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;L&#39; or \r\n&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;XL&#39;\r\nor &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; =&#39;Public&#39;\r\nor &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;IOT&#39;)\r\nthen &#39;Large&#39;\r\nwhen \r\n(&quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; = &#39;M&#39; or &quot;Account.Gruppering.Gruppe_mobil_service_segment&quot; =&#39;S&#39;)\r\nthen &#39;Small&#39;\r\nelse &#39;0&#39;\r\nend",
+            "formulaExpression": "case when \r\n(\"Account.Gruppering.Gruppe_mobil_service_segment\" = 'L' or \r\n\"Account.Gruppering.Gruppe_mobil_service_segment\" = 'XL'\r\nor \"Account.Gruppering.Gruppe_mobil_service_segment\" ='Public'\r\nor \"Account.Gruppering.Gruppe_mobil_service_segment\" = 'IOT')\r\nthen 'Large'\r\nwhen \r\n(\"Account.Gruppering.Gruppe_mobil_service_segment\" = 'M' or \"Account.Gruppering.Gruppe_mobil_service_segment\" ='S')\r\nthen 'Small'\r\nelse '0'\r\nend",
             "label": "Calc segment",
             "name": "Calc_segment",
             "precision": 255,

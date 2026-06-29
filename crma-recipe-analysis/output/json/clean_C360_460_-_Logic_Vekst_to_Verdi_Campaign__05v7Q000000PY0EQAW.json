@@ -14,8 +14,10 @@
           "Id",
           "IsDeleted",
           "Industry__c",
+          "Segment__c",
           "StatusKURT__c",
           "TSP_Dealer__c",
+          "Service_segment__c",
           "Mobile_Voice_Penetration__c",
           "NBR_MBN__c",
           "NBR_MBN_AVANSERT_SENTRALBORD__c",
@@ -23,6 +25,7 @@
           "MBN_PROD_SVARSGRUPER_ACT_DATE__c",
           "MBN_PROD_KO_ACT_DATE__c",
           "MPORT_FLG__c",
+          "SUM_POTENTIAL__c",
           "Migration_flag__c",
           "mobile_service_segment__c"
         ],
@@ -335,7 +338,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_40&#39;",
+            "formulaExpression": "'C360_40'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -354,7 +357,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;TM=Kunden har ikke MBN. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN eller mPort. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;TM=Kunden har ikke MBN. Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN eller mPort. Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\t\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
+            "formulaExpression": "case\r\n\twhen Migration_flag__c = 'Green' then\r\n\t'TM=Kunden har ikke MBN. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN eller mPort. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'TM=Kunden har ikke MBN. Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN eller mPort. Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\t\r\n\twhen Migration_flag__c = 'Red' then\r\n\t''\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -395,7 +398,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_41&#39;",
+            "formulaExpression": "'C360_41'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -414,7 +417,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;TM=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe) eller mPort. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.\t&#39;\t\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;TM=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe) eller mPort. Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
+            "formulaExpression": "case\r\n\twhen Migration_flag__c = 'Green' then\r\n\t'TM=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe) eller mPort. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.\t'\t\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'TM=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.~SPOC=Kunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe) eller mPort. Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t''\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -433,7 +436,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_46&#39;",
+            "formulaExpression": "'C360_46'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -452,7 +455,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har under 50% andel MBN Aktiv bruker på sine mobil abonnement. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har under 50% andel MBN Aktiv bruker på sine mobil abonnement. Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
+            "formulaExpression": "case\r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har under 50% andel MBN Aktiv bruker på sine mobil abonnement. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har under 50% andel MBN Aktiv bruker på sine mobil abonnement. Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t''\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -546,7 +549,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;VeksttilVe.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"VeksttilVe.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -565,7 +568,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;VeksttilVe.Id&quot;",
+            "formulaExpression": "\"VeksttilVe.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -622,7 +625,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;VeksttilVe.Name&quot;",
+            "formulaExpression": "\"VeksttilVe.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -663,7 +666,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;VeksttilVe.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"VeksttilVe.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -682,7 +685,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;VeksttilVe.Id&quot;",
+            "formulaExpression": "\"VeksttilVe.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -739,7 +742,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;VeksttilVe.Name&quot;",
+            "formulaExpression": "\"VeksttilVe.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -780,7 +783,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;FILTER51_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"FILTER51_c.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -799,7 +802,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER51_c.Id&quot;",
+            "formulaExpression": "\"FILTER51_c.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -856,7 +859,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER51_c.Name&quot;",
+            "formulaExpression": "\"FILTER51_c.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1059,7 +1062,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_47&#39;",
+            "formulaExpression": "'C360_47'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1078,7 +1081,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden er i Forretningsmessig tjenesteyting og har under 50% mobil abonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden er i Forretningsmessig tjenesteyting og har under 50% mobil abonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
+            "formulaExpression": "case\r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden er i Forretningsmessig tjenesteyting og har under 50% mobil abonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden er i Forretningsmessig tjenesteyting og har under 50% mobil abonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t''\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -1122,7 +1125,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;FILTER51_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"FILTER51_c.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1141,7 +1144,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER51_c.Id&quot;",
+            "formulaExpression": "\"FILTER51_c.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1198,7 +1201,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER51_c.Name&quot;",
+            "formulaExpression": "\"FILTER51_c.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1239,7 +1242,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1258,7 +1261,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1295,7 +1298,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1314,7 +1317,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1351,7 +1354,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1370,7 +1373,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1407,7 +1410,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1426,7 +1429,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1755,7 +1758,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c &lt; 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, &#39;### ### ###&#39;)",
+            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c < 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, '### ### ###')",
             "label": "Delta New Portfolio",
             "name": "Delta_New_Portfolio",
             "precision": 11,
@@ -1774,7 +1777,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen &quot;TRANSFORM1.Migration_flag__c&quot; = &#39;Green&#39; then\r\n\t\tcase when &quot;MobileVoic.Migration_recommendation__c&quot; = &#39;Bedrift Frihet Premium&#39; then\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;MobileVoic.Migration_recommendation__c&quot; || &#39;. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;MobileVoic.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\telse\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;MobileVoic.Migration_recommendation__c&quot; || &#39; eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;MobileVoic.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\tend\r\n\twhen &quot;TRANSFORM1.Migration_flag__c&quot; = &#39;Yellow&#39; then\r\n\t\tcase when &quot;MobileVoic.Migration_recommendation__c&quot; = &#39;Bedrift Frihet Premium&#39; then\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;MobileVoic.Migration_recommendation__c&quot; || &#39;. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;MobileVoic.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\telse\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;MobileVoic.Migration_recommendation__c&quot; || &#39; eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;MobileVoic.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\tend\r\n\telse\r\n\tNULL\r\nend",
+            "formulaExpression": "case\r\n\twhen \"TRANSFORM1.Migration_flag__c\" = 'Green' then\r\n\t\tcase when \"MobileVoic.Migration_recommendation__c\" = 'Bedrift Frihet Premium' then\r\n\t\t'Migrer abonnementet til ' || \"MobileVoic.Migration_recommendation__c\" || '. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"MobileVoic.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\telse\r\n\t\t'Migrer abonnementet til ' || \"MobileVoic.Migration_recommendation__c\" || ' eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"MobileVoic.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\tend\r\n\twhen \"TRANSFORM1.Migration_flag__c\" = 'Yellow' then\r\n\t\tcase when \"MobileVoic.Migration_recommendation__c\" = 'Bedrift Frihet Premium' then\r\n\t\t'Migrer abonnementet til ' || \"MobileVoic.Migration_recommendation__c\" || '. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"MobileVoic.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\telse\r\n\t\t'Migrer abonnementet til ' || \"MobileVoic.Migration_recommendation__c\" || ' eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"MobileVoic.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\tend\r\n\telse\r\n\tNULL\r\nend",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -2572,7 +2575,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2591,7 +2594,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;FarmerFornebu&#39;",
+            "formulaExpression": "'FarmerFornebu'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2628,7 +2631,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2647,7 +2650,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;FarmerFornebu&#39;",
+            "formulaExpression": "'FarmerFornebu'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2700,7 +2703,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2719,7 +2722,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;FarmerGjovik&#39;",
+            "formulaExpression": "'FarmerGjovik'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2772,7 +2775,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2791,7 +2794,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;FarmerGjovik&#39;",
+            "formulaExpression": "'FarmerGjovik'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

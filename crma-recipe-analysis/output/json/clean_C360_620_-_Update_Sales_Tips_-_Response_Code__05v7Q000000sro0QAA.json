@@ -10,11 +10,19 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Callback_Valid_To_Date__c",
           "Id",
           "CreatedDate",
           "Campaign__c",
+          "CampaignID__c",
           "KSBID__c",
+          "Response_Code__c",
+          "Response_Date__c",
+          "Reason_Sub_code__c",
+          "Dialer_Account_Id__c",
           "Status__c",
+          "tm_agency__c",
+          "Callinglist__c",
           "Callinglist_status__c"
         ],
         "sampleDetails": {
@@ -139,7 +147,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;4&#39;",
+            "formulaExpression": "'4'",
             "label": "UpdatedResponseCode",
             "name": "UpdatedResponseCode",
             "precision": 255,
@@ -158,7 +166,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;70&#39;",
+            "formulaExpression": "'70'",
             "label": "UpdatedReasonSubCode",
             "name": "UpdatedReasonSubCode",
             "precision": 2,
@@ -177,7 +185,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "format": "yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS&#39;Z&#39;",
+            "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
             "formulaExpression": "Now()",
             "label": "UpdatedResponseDate",
             "name": "UpdatedResponseDate",
@@ -274,7 +282,9 @@
         "fields": [
           "Channels__c",
           "Id",
-          "Status"
+          "Name",
+          "Status",
+          "CampaignID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -375,12 +385,35 @@
         },
         "fields": [
           "CampaignChannels",
+          "Personalization_1__c",
+          "Personalization_3__c",
+          "Personalization_20__c",
           "SFB_AccountId",
+          "Personalization_15__c",
+          "Personalization_13__c",
+          "Personalization_17__c",
+          "Personalization_7__c",
+          "Personalization_9__c",
           "Kurt_Id",
+          "Personalization_19__c",
+          "Personalization_5__c",
+          "Personalization_11__c",
+          "Personalization_2__c",
           "Sales_tip_title",
           "KSBID_2",
+          "Personalization_12__c",
+          "Personalization_14__c",
           "TelesalesAgency",
-          "SFB_CampainId"
+          "Personalization_16__c",
+          "Personalization_8__c",
+          "Sales_tip_description_template",
+          "Personalization_18__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "AccountCampaignID",
+          "Personalization_10__c",
+          "SFB_CampainId",
+          "Rank_Accounts"
         ],
         "sampleDetails": {
           "sortBy": [],

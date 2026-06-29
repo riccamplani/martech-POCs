@@ -10,9 +10,11 @@
         },
         "fields": [
           "Main_number__c",
+          "Bandwidth__c",
           "Sub_Owner__c",
           "Campaign_sensitive__c",
-          "Name"
+          "Name",
+          "FIBER_MONTHLY_FEE__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -119,7 +121,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -138,7 +140,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Medium DPSS&#39;",
+            "formulaExpression": "'Medium DPSS'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -157,7 +159,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -192,7 +194,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -227,7 +229,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39; &#39;",
+            "formulaExpression": "' '",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -246,7 +248,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1&#39;",
+            "formulaExpression": "'1'",
             "label": "Partition",
             "name": "Partition",
             "precision": 1,
@@ -294,7 +296,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "last_value(&quot;Row_Number&quot;)*1.1",
+            "formulaExpression": "last_value(\"Row_Number\")*1.1",
             "label": "Half Value",
             "name": "Half_Value",
             "precision": 10,
@@ -319,7 +321,7 @@
     "FILTER34_copy0": {
       "action": "sqlFilter",
       "parameters": {
-        "sqlFilterExpression": "&quot;Row_Number&quot; &lt;= Half_Value"
+        "sqlFilterExpression": "\"Row_Number\" <= Half_Value"
       },
       "sources": [
         "FORMULA6_copy0"
@@ -328,7 +330,7 @@
     "FILTER35_copy0": {
       "action": "sqlFilter",
       "parameters": {
-        "sqlFilterExpression": "&quot;Row_Number&quot; &gt; Half_Value"
+        "sqlFilterExpression": "\"Row_Number\" > Half_Value"
       },
       "sources": [
         "FORMULA6_copy0"
@@ -341,7 +343,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Gjovik&#39;",
+            "formulaExpression": "'Gjovik'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -378,7 +380,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -420,7 +422,14 @@
         "fields": [
           "Id",
           "Name",
+          "Type",
+          "Status",
+          "StartDate",
+          "EndDate",
           "CampaignID__c",
+          "Channels__c",
+          "Campaign_Type_Description__c",
+          "Product_Type_Description__c",
           "reporting_tag__c"
         ],
         "sampleDetails": {
@@ -603,7 +612,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( reporting_tag__c, &#39;_&#39;, &quot;Append9.KurtID__c&quot;)",
+            "formulaExpression": "concat( reporting_tag__c, '_', \"Append9.KurtID__c\")",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -641,7 +650,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.Id&quot;",
+            "formulaExpression": "\"Append9.Id\"",
             "label": "SFB AccountId",
             "name": "SFB_AccountId",
             "precision": 18,
@@ -660,7 +669,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.KurtID__c&quot;",
+            "formulaExpression": "\"Append9.KurtID__c\"",
             "label": "Kurt Id",
             "name": "Kurt_Id",
             "precision": 255,
@@ -679,7 +688,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.Channel&quot;",
+            "formulaExpression": "\"Append9.Channel\"",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -698,7 +707,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.Telesales_agency&quot;",
+            "formulaExpression": "\"Append9.Telesales_agency\"",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -736,7 +745,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.FiberRebin.Campaign_text_rebinding_mersalg&quot;",
+            "formulaExpression": "\"Append9.FiberRebin.Campaign_text_rebinding_mersalg\"",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 2000,
@@ -789,7 +798,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -808,7 +817,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Append9.FiberRebin.Personalization_2__c&quot;",
+            "formulaExpression": "\"Append9.FiberRebin.Personalization_2__c\"",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -861,7 +870,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse2.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -880,7 +889,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse3.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -899,7 +908,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse4.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -918,7 +927,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse5.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -937,7 +946,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse6.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -956,7 +965,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse7.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -975,7 +984,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse8.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -994,7 +1003,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse9.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -1013,7 +1022,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse10.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -1203,7 +1212,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Dealer O&#39;",
+            "formulaExpression": "'Dealer O'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -1222,7 +1231,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39; &#39;",
+            "formulaExpression": "' '",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -1751,6 +1760,17 @@
           "type": "analyticsDataset"
         },
         "fields": [
+          "Adresse5.Adresse5",
+          "Adresse3.Adresse3",
+          "Adresse8.Adresse8",
+          "Adresse10.Adresse10",
+          "Adresse6.Adresse6",
+          "Adresse1.Adresse1",
+          "Text_adress_1",
+          "Adresse4.Adresse4",
+          "Adresse9.Adresse9",
+          "Adresse2.Adresse2",
+          "Adresse7.Adresse7",
           "Location_Owner__c"
         ],
         "sampleDetails": {

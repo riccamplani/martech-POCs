@@ -7,8 +7,8 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET4 | Account | connectedDataset | 11 | 10 | 1 | 9% |
-| **TOTAL** | | | **11** | **10** | **1** | **9%** |
+| LOAD_DATASET4 | Account | connectedDataset | 11 | 11 | 0 | 0% |
+| **TOTAL** | | | **11** | **11** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -16,24 +16,21 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 11
-- **Fields used:** 10
-- **Fields unused:** 1
+- **Fields used:** 11
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `COM_CUSTOMER_EDM_RESERVATION__c` | FILTER4 (filter) |
-| `DPSS_Segment__c` | FILTER2 (filter) |
-| `Has_Subscriptions_Actual__c` | FORMULA39 (formula) |
-| `Id` | FORMULA0_copy0 (formula), JOIN0_copy0 (join) |
-| `NBR_FIBER_USER__c` | FILTER0_copy0 (filter) |
-| `NBR_FIXED_BBB_FIBER__c` | FILTER0_copy0 (filter) |
-| `NBR_TBB_MOBIL_USER__c` | FILTER0_copy0 (filter) |
-| `NBR_TBB_MOBIL__c` | FILTER0_copy0 (filter) |
-| `StatusKURT__c` | FILTER2 (filter) |
-| `TSP_Dealer__c` | FILTER3 (filter) |
-
-#### Fields to ELIMINATE
-
-- `KurtID__c`
+| `COM_CUSTOMER_EDM_RESERVATION__c` | FILTER4 (filter), DROP_FIELDS1 (schema) |
+| `DPSS_Segment__c` | FILTER2 (filter), DROP_FIELDS1 (schema) |
+| `Has_Subscriptions_Actual__c` | DROP_FIELDS1 (schema), FORMULA39 (formula) |
+| `Id` | FORMULA0_copy0 (formula), JOIN0_copy0 (join), JOIN1 (join), JOIN2 (join), JOIN3 (join) +8 more |
+| `KurtID__c` | DROP_FIELDS1 (schema), DROP_FIELDS12 (schema) |
+| `NBR_FIBER_USER__c` | FILTER0_copy0 (filter), DROP_FIELDS1 (schema) |
+| `NBR_FIXED_BBB_FIBER__c` | FILTER0_copy0 (filter), DROP_FIELDS1 (schema) |
+| `NBR_TBB_MOBIL_USER__c` | FILTER0_copy0 (filter), DROP_FIELDS1 (schema) |
+| `NBR_TBB_MOBIL__c` | FILTER0_copy0 (filter), DROP_FIELDS1 (schema) |
+| `StatusKURT__c` | FILTER2 (filter), DROP_FIELDS1 (schema) |
+| `TSP_Dealer__c` | FILTER3 (filter), DROP_FIELDS1 (schema) |

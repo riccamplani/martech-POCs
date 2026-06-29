@@ -168,7 +168,7 @@ def build_dag(nodes):
     return forward
 
 
-def trace_used_fields(load_name, load_fields, nodes, forward):
+def trace_used_fields(load_name, load_fields, nodes, forward, cross_recipe_datasets=None):
     load_field_set = set(load_fields)
     used_fields = set()
     visited = set()
@@ -182,10 +182,24 @@ def trace_used_fields(load_name, load_fields, nodes, forward):
 
         node = nodes.get(current, {})
         if current != load_name:
+            # Save-all node whose output is consumed by another recipe:
+            # keep all load fields since we can't know what the downstream recipe needs.
+            if (node.get("action") == "save"
+                    and not node.get("parameters", {}).get("fields", [])
+                    and cross_recipe_datasets is not None):
+                label = node.get("parameters", {}).get("dataset", {}).get("label", "")
+                if label in cross_recipe_datasets:
+                    used_fields.update(load_field_set)
+                    continue
+
             referenced, _ = extract_fields_from_node(node)
             for f in referenced:
                 if f in load_field_set:
                     used_fields.add(f)
+                elif "." in f:
+                    base = f.rsplit(".", 1)[-1]
+                    if base in load_field_set:
+                        used_fields.add(base)
 
         for downstream in forward.get(current, []):
             queue.append(downstream)
@@ -212,6 +226,10 @@ def find_field_usage_locations(load_name, load_fields, nodes, forward):
             for f in referenced:
                 if f in load_field_set:
                     field_usage[f].append((current, action))
+                elif "." in f:
+                    base = f.rsplit(".", 1)[-1]
+                    if base in load_field_set:
+                        field_usage[base].append((current, action))
 
         for downstream in forward.get(current, []):
             queue.append(downstream)
@@ -226,24 +244,55 @@ def get_nodes(data):
     return data["nodes"]
 
 
-def build_cleaned(data, results):
-    """Build cleaned recipe with only used fields in load nodes. Preserves original format."""
+def build_cleaned(data, results, forward):
+    """Build cleaned recipe with only used fields in load nodes and
+    remove those fields from downstream DROP schema nodes. Preserves original format."""
     cleaned = copy.deepcopy(data)
     nodes = get_nodes(cleaned)
+    all_removed = set()
     for load_name, result in results.items():
         orig_fields = nodes[load_name]["parameters"]["fields"]
         used_set = set(result["usedFields"])
+        removed = set(result["unusedFields"])
+        all_removed.update(removed)
         nodes[load_name]["parameters"]["fields"] = [
             f for f in orig_fields
             if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in used_set
         ]
-    # Output in raw recipe format (what CRMA expects for import)
+
+    # Clean up DROP schema nodes: remove references to fields no longer in the pipeline
+    for node_name, node in nodes.items():
+        if node.get("action") != "schema":
+            continue
+        slice_info = node.get("parameters", {}).get("slice", {})
+        if slice_info.get("mode") != "DROP":
+            continue
+        drop_fields = slice_info.get("fields", [])
+        cleaned_drop = [f for f in drop_fields
+                        if f not in all_removed
+                        and f.rsplit(".", 1)[-1] not in all_removed]
+        slice_info["fields"] = cleaned_drop
+
+    # Decode HTML entities throughout the recipe (API export encodes them,
+    # but CRMA import expects decoded values)
+    def decode_html_entities(obj):
+        if isinstance(obj, str):
+            return unescape(obj) if "&" in obj else obj
+        elif isinstance(obj, dict):
+            return {k: decode_html_entities(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [decode_html_entities(item) for item in obj]
+        return obj
+
+    for node_name in nodes:
+        nodes[node_name] = decode_html_entities(nodes[node_name])
+
     if "recipeDefinition" in cleaned:
         return cleaned["recipeDefinition"]
     return cleaned
 
 
-def analyze_recipe(input_path):
+def analyze_recipe(input_path, cross_recipe_datasets=None):
     """Analyze a single recipe and return (results, data, nodes) or None if not a valid recipe."""
     with open(input_path) as f:
         data = json.load(f)
@@ -272,13 +321,10 @@ def analyze_recipe(input_path):
                 "fields": get_load_fields(node),
             }
 
-    if not load_info:
-        return None
-
     results = {}
     for load_name, info in load_info.items():
         fields = info["fields"]
-        used_fields = trace_used_fields(load_name, fields, nodes, forward)
+        used_fields = trace_used_fields(load_name, fields, nodes, forward, cross_recipe_datasets)
         field_usage = find_field_usage_locations(load_name, fields, nodes, forward)
         results[load_name] = {
             "sourceObject": info["sourceObject"],
@@ -290,7 +336,7 @@ def analyze_recipe(input_path):
             "fieldUsage": {f: locs for f, locs in field_usage.items()},
         }
 
-    return results, data, nodes
+    return results, data, nodes, forward
 
 
 def generate_report(recipe_name, nodes, results):
@@ -360,6 +406,11 @@ def generate_report(recipe_name, nodes, results):
 def main():
     json_dir = os.path.join(OUTPUT_DIR, "json")
     reports_dir = os.path.join(OUTPUT_DIR, "reports")
+    # Clean old output files to avoid stale results
+    for d in (json_dir, reports_dir):
+        if os.path.exists(d):
+            for f in os.listdir(d):
+                os.remove(os.path.join(d, f))
     os.makedirs(json_dir, exist_ok=True)
     os.makedirs(reports_dir, exist_ok=True)
 
@@ -370,6 +421,38 @@ def main():
 
     print(f"Found {len(recipe_files)} JSON files in {DATA_DIR}/\n")
 
+    # Build cross-recipe dependency map: dataset labels that are produced by one
+    # recipe and consumed by another. Save-all nodes for these datasets must keep
+    # all upstream load fields since we can't know what the consumer needs.
+    save_producers = {}  # label -> recipe filename
+    load_consumers = defaultdict(list)  # label -> [recipe filenames]
+    for filename in recipe_files:
+        filepath = os.path.join(DATA_DIR, filename)
+        try:
+            with open(filepath) as f:
+                d = json.load(f)
+            ns = d.get("recipeDefinition", d).get("nodes", {})
+            if not isinstance(ns, dict):
+                continue
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+        for node in ns.values():
+            action = node.get("action", "")
+            label = node.get("parameters", {}).get("dataset", {}).get("label", "")
+            if not label:
+                continue
+            if action == "save":
+                save_producers[label] = filename
+            elif action == "load" and node.get("parameters", {}).get("dataset", {}).get("type") == "analyticsDataset":
+                load_consumers[label].append(filename)
+
+    cross_recipe_datasets = set()
+    for label, producer in save_producers.items():
+        consumers = [c for c in load_consumers.get(label, []) if c != producer]
+        if consumers:
+            cross_recipe_datasets.add(label)
+    print(f"Cross-recipe dataset dependencies: {len(cross_recipe_datasets)}\n")
+
     grand_total_before = 0
     grand_total_after = 0
     processed = 0
@@ -378,21 +461,26 @@ def main():
 
     for filename in recipe_files:
         input_path = os.path.join(DATA_DIR, filename)
-        result = analyze_recipe(input_path)
+        result = analyze_recipe(input_path, cross_recipe_datasets)
 
         if result is None:
-            print(f"SKIP: {filename} (not a valid recipe)")
+            print(f"SKIP: {filename} (not a valid JSON recipe)")
             skipped += 1
             continue
 
-        results, data, nodes = result
+        results, data, nodes, forward = result
         recipe_name = os.path.splitext(filename)[0]
 
-        # Generate cleaned recipe
-        cleaned = build_cleaned(data, results)
+        # Generate cleaned recipe (always — even if no target objects, for HTML decode)
+        cleaned = build_cleaned(data, results, forward)
         output_recipe_path = os.path.join(json_dir, f"clean_{filename}")
         with open(output_recipe_path, "w") as f:
             json.dump(cleaned, f, indent=2, ensure_ascii=False)
+
+        if not results:
+            print(f"OK: {filename} — no target SF objects, cleaned (HTML decode only)")
+            processed += 1
+            continue
 
         # Generate report
         safe_name = re.sub(r"[^\w\-]", "_", recipe_name)

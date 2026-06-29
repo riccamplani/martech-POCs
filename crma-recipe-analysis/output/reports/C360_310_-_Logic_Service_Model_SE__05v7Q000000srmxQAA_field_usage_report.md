@@ -8,9 +8,9 @@
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
 | LOAD_DATASET0_copy0 | Account | connectedDataset | 12 | 12 | 0 | 0% |
-| LOAD_DATASET0_copy0_copy0 | Account | connectedDataset | 15 | 9 | 6 | 40% |
+| LOAD_DATASET0_copy0_copy0 | Account | connectedDataset | 15 | 15 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy1 | Account | connectedDataset | 2 | 2 | 0 | 0% |
-| **TOTAL** | | | **29** | **23** | **6** | **21%** |
+| **TOTAL** | | | **29** | **29** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -42,8 +42,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 15
-- **Fields used:** 9
-- **Fields unused:** 6
+- **Fields used:** 15
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
@@ -55,18 +55,15 @@
 | `Id` | JOIN1 (join), JOIN4 (join), FILTER59 (filter), DROP_FIELDS3 (schema), DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0 (schema) +6 more |
 | `IsDeleted` | FILTER1_copy0_copy0_copy0 (filter) |
 | `Mobile_Voice_Penetration__c` | FILTER57 (filter) |
+| `NACE_Subclass_Code__c` |  |
 | `NumberOfEmployees` | FILTER52_copy0_copy1 (filter), FILTER52_copy0_copy0_copy0 (filter), FILTER52_copy0_copy1_copy0 (filter), FILTER52_copy0_copy1_copy0_copy0 (filter) |
+| `Portfolio__c` |  |
+| `Segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0 (filter) |
 | `SubsMobileVoice__c` | FILTER57 (filter) |
-
-#### Fields to ELIMINATE
-
-- `NACE_Subclass_Code__c`
-- `Portfolio__c`
-- `Segment__c`
-- `TM_Forbund_Flag__c`
-- `VisitingCounty__c`
-- `mobile_service_segment__c`
+| `TM_Forbund_Flag__c` |  |
+| `VisitingCounty__c` |  |
+| `mobile_service_segment__c` |  |
 
 ### Account (`LOAD_DATASET0_copy0_copy1`)
 

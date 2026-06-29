@@ -7,8 +7,8 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 8 | 7 | 1 | 12% |
-| **TOTAL** | | | **8** | **7** | **1** | **12%** |
+| LOAD_DATASET0 | Account | connectedDataset | 8 | 8 | 0 | 0% |
+| **TOTAL** | | | **8** | **8** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -16,8 +16,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 8
-- **Fields used:** 7
-- **Fields unused:** 1
+- **Fields used:** 8
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
@@ -27,10 +27,7 @@
 | `IsDeleted` | FILTER1_copy0 (filter) |
 | `Mobile_Voice_Penetration__c` | FILTER6 (filter), FILTER7 (filter), FILTER9 (filter) |
 | `NumberOfEmployees` | FILTER3_copy0_copy0_copy0 (filter) |
+| `Segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0 (filter) |
 | `SubsMobileVoice__c` | FILTER4 (filter) |
 | `mobile_service_segment__c` | FILTER3_copy0_copy0_copy0 (filter) |
-
-#### Fields to ELIMINATE
-
-- `Segment__c`

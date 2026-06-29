@@ -10,6 +10,7 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Mobile_Segment__c",
           "mobile_service_segment__c",
           "Id",
           "IsDeleted",
@@ -185,7 +186,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Nbr_Employees_Company_Family &gt; 0 then\r\n(Nbr_Subscriptions_Company_Family/Nbr_Employees_Company_Family) * 100\r\nelse\r\n100\r\nend",
+            "formulaExpression": "case when Nbr_Employees_Company_Family > 0 then\r\n(Nbr_Subscriptions_Company_Family/Nbr_Employees_Company_Family) * 100\r\nelse\r\n100\r\nend",
             "label": "MV Penetration Company Family",
             "name": "MV_Penetration_Company_Family",
             "precision": 10,
@@ -406,7 +407,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_129&#39;",
+            "formulaExpression": "'C360_129'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -450,7 +451,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -469,7 +470,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "formulaExpression": "\"NysalgMobi.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -526,7 +527,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "formulaExpression": "\"NysalgMobi.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -566,7 +567,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Aktivitet for å øke penetrasjon på kunder i struktur.&#39;",
+            "formulaExpression": "'Aktivitet for å øke penetrasjon på kunder i struktur.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -626,7 +627,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -645,7 +646,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;HunterME&#39;",
+            "formulaExpression": "'HunterME'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

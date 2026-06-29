@@ -11,9 +11,13 @@
         },
         "fields": [
           "Id",
+          "CreatedDate",
           "KSBID__c",
           "Response_Code__c",
+          "Response_Date__c",
           "Campaign_Channels__c",
+          "Reason_Sub_code__c",
+          "Status__c",
           "tm_agency__c",
           "Callinglist__c"
         ],
@@ -56,7 +60,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n    when rtrim(CampaignChannels)= rtrim(&quot;OldST.Campaign_Channels__c&quot;)\r\n    then &#39;No&#39;\r\n    else\r\n    &#39;Yes&#39;\r\nend",
+            "formulaExpression": "case \r\n    when rtrim(CampaignChannels)= rtrim(\"OldST.Campaign_Channels__c\")\r\n    then 'No'\r\n    else\r\n    'Yes'\r\nend",
             "label": "Update Channels",
             "name": "UpdateChannels",
             "precision": 10,
@@ -75,7 +79,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency))=rtrim(&quot;OldST.tm_agency__c&quot;)\r\n    then &#39;No - 1&#39;\r\n    when (TelesalesAgency is null) AND (&quot;OldST.tm_agency__c&quot; is null)\r\n    then &#39;No - 2&#39;\r\n    when (TelesalesAgency = &#39;&#39;) AND (&quot;OldST.tm_agency__c&quot; = &#39;&#39;)\r\n    then &#39;No - 3&#39;\r\n    when (TelesalesAgency = &#39;&#39;) AND (&quot;OldST.tm_agency__c&quot; is null)\r\n    then &#39;No - 4&#39;\r\n    else\r\n    &#39;Yes&#39;\r\nend",
+            "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency))=rtrim(\"OldST.tm_agency__c\")\r\n    then 'No - 1'\r\n    when (TelesalesAgency is null) AND (\"OldST.tm_agency__c\" is null)\r\n    then 'No - 2'\r\n    when (TelesalesAgency = '') AND (\"OldST.tm_agency__c\" = '')\r\n    then 'No - 3'\r\n    when (TelesalesAgency = '') AND (\"OldST.tm_agency__c\" is null)\r\n    then 'No - 4'\r\n    else\r\n    'Yes'\r\nend",
             "label": "Update Agency",
             "name": "UpdateAgency",
             "precision": 10,
@@ -94,7 +98,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency)) != &#39;&#39;\r\n    then ltrim(rtrim(TelesalesAgency))\r\n    else\r\n    &#39;#N/A&#39;\r\nend",
+            "formulaExpression": "case \r\n    when ltrim(rtrim(TelesalesAgency)) != ''\r\n    then ltrim(rtrim(TelesalesAgency))\r\n    else\r\n    '#N/A'\r\nend",
             "label": "New Agency",
             "name": "NewAgency",
             "precision": 20,
@@ -155,8 +159,13 @@
         },
         "fields": [
           "CampaignChannels",
+          "SFB_AccountId",
+          "Kurt_Id",
+          "Sales_tip_title",
           "KSBID_2",
-          "TelesalesAgency"
+          "TelesalesAgency",
+          "AccountCampaignID",
+          "SFB_CampainId"
         ],
         "sampleDetails": {
           "sortBy": [],

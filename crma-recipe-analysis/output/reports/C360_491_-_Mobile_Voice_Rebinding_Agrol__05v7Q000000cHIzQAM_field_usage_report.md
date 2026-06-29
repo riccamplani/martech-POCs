@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0_copy0 | Account | connectedDataset | 20 | 15 | 5 | 25% |
+| LOAD_DATASET0_copy0 | Account | connectedDataset | 20 | 20 | 0 | 0% |
 | LOAD_DATASET14_copy0_copy0 | Account | connectedDataset | 7 | 7 | 0 | 0% |
-| **TOTAL** | | | **27** | **22** | **5** | **19%** |
+| **TOTAL** | | | **27** | **27** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -17,36 +17,33 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 20
-- **Fields used:** 15
-- **Fields unused:** 5
+- **Fields used:** 20
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `Company_Family_Name__c` | FILTER4_copy0 (filter) |
+| `Forbund_membership__c` |  |
 | `Id` | JOIN2 (join), JOIN1 (join), FORMULA24_copy0 (computeRelative), FILTER60 (filter), FILTER19 (filter) +15 more |
 | `IsDeleted` | FILTER1_copy0 (filter) |
 | `MBN_PROD_KO_ACT_DATE__c` | FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `MBN_PROD_SVARSGRUPER_ACT_DATE__c` | FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `Migration_flag__c` | FILTER59 (filter) |
+| `Mobile_Voice_Penetration__c` |  |
 | `NBR_MBN_AVANSERT_SENTRALBORD__c` | FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `NBR_MBN_SENTRALBORD__c` | FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `NBR_MBN__c` | FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `NBR_SAFEZONE_MOBILE__c` | FILTER61 (filter), FILTER61_copy0 (filter) |
+| `OrgNo__c` |  |
+| `Reservation_Date_MV_Inbound__c` |  |
 | `Reservation_Date_MV_Outbound__c` | FILTER38 (filter), FILTER36 (filter), FILTER37 (filter) |
+| `Segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0 (filter) |
 | `SubsMobileVoice__c` | FILTER4 (filter), FILTER48_copy1_copy0 (filter), FILTER48_copy1_copy0_copy0 (filter) |
 | `TSP_Dealer__c` | FILTER10_copy0_copy0 (filter) |
 | `mobile_service_segment__c` | FILTER3_copy0_copy0_copy0 (filter) |
-
-#### Fields to ELIMINATE
-
-- `Forbund_membership__c`
-- `Mobile_Voice_Penetration__c`
-- `OrgNo__c`
-- `Reservation_Date_MV_Inbound__c`
-- `Segment__c`
 
 ### Account (`LOAD_DATASET14_copy0_copy0`)
 

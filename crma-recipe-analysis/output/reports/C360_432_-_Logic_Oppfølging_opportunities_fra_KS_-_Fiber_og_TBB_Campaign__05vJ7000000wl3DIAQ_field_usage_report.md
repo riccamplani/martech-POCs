@@ -7,8 +7,8 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET1 | Account | connectedDataset | 7 | 6 | 1 | 14% |
-| **TOTAL** | | | **7** | **6** | **1** | **14%** |
+| LOAD_DATASET1 | Account | connectedDataset | 7 | 7 | 0 | 0% |
+| **TOTAL** | | | **7** | **7** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -16,20 +16,17 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 7
-- **Fields used:** 6
-- **Fields unused:** 1
+- **Fields used:** 7
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `Has_Subscriptions_Actual__c` | FORMULA43 (formula), FORMULA43_copy0 (formula) |
-| `Id` | JOIN0 (join), FORMULA21_copy0_copy0 (formula), FORMULA22_copy0_copy0 (formula) |
+| `DPSS_Segment__c` | FILTER0 (filter) |
+| `Has_Subscriptions_Actual__c` | DROP_FIELDS0 (schema), FORMULA43 (formula), FORMULA43_copy0 (formula), APPEND0 (appendV2) |
+| `Id` | JOIN0 (join), DROP_FIELDS0 (schema), JOIN6 (join), JOIN1 (join), JOIN2 (join) +5 more |
 | `IsDeleted` | FILTER1 (filter) |
-| `KurtID__c` | FORMULA20_copy0_copy0 (formula), FORMULA23_copy0_copy0 (formula) |
-| `Name` | FORMULA26_copy0_copy0 (formula) |
+| `KurtID__c` | DROP_FIELDS0 (schema), APPEND0 (appendV2), FORMULA20_copy0_copy0 (formula), FORMULA23_copy0_copy0 (formula) |
+| `Name` | APPEND0 (appendV2), FORMULA26_copy0_copy0 (formula) |
 | `StatusKURT__c` | FILTER1 (filter) |
-
-#### Fields to ELIMINATE
-
-- `DPSS_Segment__c`

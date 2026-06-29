@@ -13,16 +13,21 @@
           "mobile_service_segment__c",
           "Id",
           "IsDeleted",
+          "OrgNo__c",
+          "Segment__c",
           "StatusKURT__c",
           "SubsMobileVoice__c",
           "TSP_Dealer__c",
           "Company_Family_Name__c",
+          "Forbund_membership__c",
+          "Mobile_Voice_Penetration__c",
           "NBR_MBN__c",
           "NBR_MBN_AVANSERT_SENTRALBORD__c",
           "NBR_MBN_SENTRALBORD__c",
           "NBR_SAFEZONE_MOBILE__c",
           "MBN_PROD_SVARSGRUPER_ACT_DATE__c",
           "MBN_PROD_KO_ACT_DATE__c",
+          "Reservation_Date_MV_Inbound__c",
           "Reservation_Date_MV_Outbound__c",
           "Migration_flag__c"
         ],
@@ -559,7 +564,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -578,7 +583,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -982,7 +987,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_120&#39;",
+            "formulaExpression": "'C360_120'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1001,7 +1006,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg.&#39;\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), &#39;# ### ###.##&#39;) || &#39; fiber abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), &#39;# ### ###.##&#39;) || &#39; Trådløs Bredbånd abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when &quot;Fibernewsa.Fiber_cost__c&quot; between 10000 and 40000 then\r\n\t&#39; Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på &#39; || &quot;Fibernewsa.Mulig_Installasjonsadresse&quot; || &#39;.&#39;\r\n\telse\r\n\t\tcase when (&quot;Fibernewsa.Capacity_code__c&quot; &gt;= 1) and (&quot;Fibernewsa.Coverage_4G__c&quot; &gt;= 3) then\r\n\t\t&#39; Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.&#39;\r\n\t\telse\r\n\t\t&#39;&#39;\r\n\t\tend\r\n\tend\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\n&#39; Husk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg.'\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), '# ### ###.##') || ' fiber abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), '# ### ###.##') || ' Trådløs Bredbånd abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when \"Fibernewsa.Fiber_cost__c\" between 10000 and 40000 then\r\n\t' Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på ' || \"Fibernewsa.Mulig_Installasjonsadresse\" || '.'\r\n\telse\r\n\t\tcase when (\"Fibernewsa.Capacity_code__c\" >= 1) and (\"Fibernewsa.Coverage_4G__c\" >= 3) then\r\n\t\t' Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.'\r\n\t\telse\r\n\t\t''\r\n\t\tend\r\n\tend\r\nelse\r\n''\r\nend\r\n||\r\n' Husk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -1020,7 +1025,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_119&#39;",
+            "formulaExpression": "'C360_119'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1039,7 +1044,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Kunden har ikke MBN-løsning. Kartlegg mulighet for mersalg.&#39;\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), &#39;# ### ###.##&#39;) || &#39; fiber abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), &#39;# ### ###.##&#39;) || &#39; Trådløs Bredbånd abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when &quot;Fibernewsa.Fiber_cost__c&quot; between 10000 and 40000 then\r\n\t&#39; Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på &#39; || &quot;Fibernewsa.Mulig_Installasjonsadresse&quot; || &#39;.&#39;\r\n\telse\r\n\t\tcase when (&quot;Fibernewsa.Capacity_code__c&quot; &gt;= 1) and (&quot;Fibernewsa.Coverage_4G__c&quot; &gt;= 3) then\r\n\t\t&#39; Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.&#39;\r\n\t\telse\r\n\t\t&#39;&#39;\r\n\t\tend\r\n\tend\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\n&#39; Husk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Kunden har ikke MBN-løsning. Kartlegg mulighet for mersalg.'\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), '# ### ###.##') || ' fiber abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), '# ### ###.##') || ' Trådløs Bredbånd abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when \"Fibernewsa.Fiber_cost__c\" between 10000 and 40000 then\r\n\t' Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på ' || \"Fibernewsa.Mulig_Installasjonsadresse\" || '.'\r\n\telse\r\n\t\tcase when (\"Fibernewsa.Capacity_code__c\" >= 1) and (\"Fibernewsa.Coverage_4G__c\" >= 3) then\r\n\t\t' Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.'\r\n\t\telse\r\n\t\t''\r\n\t\tend\r\n\tend\r\nelse\r\n''\r\nend\r\n||\r\n' Husk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -1105,7 +1110,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_121&#39;",
+            "formulaExpression": "'C360_121'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1124,7 +1129,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet.&#39;\r\n||\r\ncase when NBR_OPPDATERT__c = 0 then\r\n&#39; Kunden har SafeZone, men ikke Oppdatert. Kartlegg mulighet for mersalg.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), &#39;# ### ###.##&#39;) || &#39; fiber abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) &gt; 0 then\r\n&#39; Kunden har &#39; || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), &#39;# ### ###.##&#39;) || &#39; Trådløs Bredbånd abonnement fra Telenor.&#39;\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when &quot;Fibernewsa.Fiber_cost__c&quot; between 10000 and 40000 then\r\n\t&#39; Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på &#39; || &quot;Fibernewsa.Mulig_Installasjonsadresse&quot; || &#39;.&#39;\r\n\telse\r\n\t\tcase when (&quot;Fibernewsa.Capacity_code__c&quot; &gt;= 1) and (&quot;Fibernewsa.Coverage_4G__c&quot; &gt;= 3) then\r\n\t\t&#39; Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.&#39;\r\n\t\telse\r\n\t\t&#39;&#39;\r\n\t\tend\r\n\tend\r\nelse\r\n&#39;&#39;\r\nend\r\n||\r\n&#39; Husk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet.'\r\n||\r\ncase when NBR_OPPDATERT__c = 0 then\r\n' Kunden har SafeZone, men ikke Oppdatert. Kartlegg mulighet for mersalg.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c), '# ### ###.##') || ' fiber abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) > 0 then\r\n' Kunden har ' || format_number((NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c), '# ### ###.##') || ' Trådløs Bredbånd abonnement fra Telenor.'\r\nelse\r\n''\r\nend\r\n||\r\ncase when (NBR_FIXED_BBB_FIBER__c + NBR_FIBER_USER__c + NBR_TBB_MOBIL__c + NBR_TBB_MOBIL_USER__c) = 0 then\r\n\tcase when \"Fibernewsa.Fiber_cost__c\" between 10000 and 40000 then\r\n\t' Kunden har ikke Bredbånd fra Telenor, kunden kan få fiber på ' || \"Fibernewsa.Mulig_Installasjonsadresse\" || '.'\r\n\telse\r\n\t\tcase when (\"Fibernewsa.Capacity_code__c\" >= 1) and (\"Fibernewsa.Coverage_4G__c\" >= 3) then\r\n\t\t' Kunden har ikke Bredbånd fra Telenor, kartlegg behov for Trådløs Bredbånd.'\r\n\t\telse\r\n\t\t''\r\n\t\tend\r\n\tend\r\nelse\r\n''\r\nend\r\n||\r\n' Husk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 512,
@@ -1218,7 +1223,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1237,7 +1242,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1274,7 +1279,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1293,7 +1298,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1330,7 +1335,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;RebindingM.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"RebindingM.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1349,7 +1354,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;RebindingM.Id&quot;",
+            "formulaExpression": "\"RebindingM.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1406,7 +1411,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;RebindingM.Name&quot;",
+            "formulaExpression": "\"RebindingM.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1446,7 +1451,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;RebindingM.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"RebindingM.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1465,7 +1470,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;RebindingM.Id&quot;",
+            "formulaExpression": "\"RebindingM.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1522,7 +1527,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;RebindingM.Name&quot;",
+            "formulaExpression": "\"RebindingM.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1562,7 +1567,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;FILTER62.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"FILTER62.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1581,7 +1586,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER62.Id&quot;",
+            "formulaExpression": "\"FILTER62.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1638,7 +1643,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FILTER62.Name&quot;",
+            "formulaExpression": "\"FILTER62.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1847,7 +1852,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;",
+            "formulaExpression": "'Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,

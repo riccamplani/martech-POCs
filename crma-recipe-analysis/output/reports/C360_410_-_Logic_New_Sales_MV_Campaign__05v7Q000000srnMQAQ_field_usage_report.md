@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET12 | Account | connectedDataset | 15 | 1 | 14 | 93% |
-| LOAD_DATASET14 | Account | connectedDataset | 12 | 6 | 6 | 50% |
-| **TOTAL** | | | **27** | **7** | **20** | **74%** |
+| LOAD_DATASET12 | Account | connectedDataset | 15 | 15 | 0 | 0% |
+| LOAD_DATASET14 | Account | connectedDataset | 12 | 12 | 0 | 0% |
+| **TOTAL** | | | **27** | **27** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -17,38 +17,35 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 15
-- **Fields used:** 1
-- **Fields unused:** 14
+- **Fields used:** 15
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `Id` | FORMULA0 (formula), JOIN6 (join), JOIN7 (join), JOIN8 (join), JOIN9 (join) +193 more |
-
-#### Fields to ELIMINATE
-
-- `COM_CUSTOMER_QUALITYMARK_PHONE__c`
-- `FORBUND_START_DATE__c`
-- `Forbund_membership__c`
-- `Has_Subscriptions_Actual__c`
-- `Has_Subscriptions__c`
-- `Mobile_Voice_Penetration__c`
-- `NACE_Subclass_Code__c`
-- `NumberOfEmployees`
-- `Reservation_Date_MV_Inbound__c`
-- `Reservation_Date_MV_Outbound__c`
-- `Segment__c`
-- `TM_Forbund_Flag__c`
-- `TSP_Dealer__c`
-- `mobile_service_segment__c`
+| `COM_CUSTOMER_QUALITYMARK_PHONE__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +11 more |
+| `FORBUND_START_DATE__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +9 more |
+| `Forbund_membership__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +16 more |
+| `Has_Subscriptions_Actual__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +24 more |
+| `Has_Subscriptions__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +5 more |
+| `Id` | FORMULA0 (formula), JOIN6 (join), JOIN7 (join), JOIN8 (join), JOIN9 (join) +197 more |
+| `Mobile_Voice_Penetration__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +5 more |
+| `NACE_Subclass_Code__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), FILTER69 (filter), FILTER68 (filter) +5 more |
+| `NumberOfEmployees` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), FILTER49 (filter), FILTER47 (filter) +30 more |
+| `Reservation_Date_MV_Inbound__c` | FILTER6_copy0 (filter), FILTER6 (filter), APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2) +12 more |
+| `Reservation_Date_MV_Outbound__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), FILTER7_copy0 (filter), FILTER7 (filter) +11 more |
+| `Segment__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +5 more |
+| `TM_Forbund_Flag__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), DROP_FIELDS15 (schema), DROP_FIELDS14 (schema) +5 more |
+| `TSP_Dealer__c` | FILTER4 (filter), FILTER5 (filter), FILTER4_copy0 (filter), FILTER5_copy0 (filter), APPEND6 (appendV2) +9 more |
+| `mobile_service_segment__c` | APPEND6 (appendV2), APPEND7 (appendV2), APPEND7 (appendV2), FILTER49 (filter), DROP_FIELDS15 (schema) +6 more |
 
 ### Account (`LOAD_DATASET14`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 12
-- **Fields used:** 6
-- **Fields unused:** 6
+- **Fields used:** 12
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
@@ -59,13 +56,10 @@
 | `Has_Subscriptions__c` | FORMULA19 (formula), FORMULA42 (formula) |
 | `Id` | FORMULA9 (formula), FORMULA9_copy0 (formula), FORMULA9_copy0_copy0 (formula), FORMULA9_copy0_copy0_copy0 (formula), FORMULA9_copy2 (formula) +70 more |
 | `KurtID__c` | FORMULA8 (formula), FORMULA8_copy0 (formula), FORMULA8_copy0_copy0 (formula), FORMULA8_copy0_copy0_copy0 (formula), FORMULA8_copy2 (formula) +33 more |
+| `MBN_PROD_HOVEDNUMMER_ACT_DATE__c` |  |
+| `NBR_FIBER_USER__c` |  |
+| `NBR_FIXED_BBB_FIBER__c` |  |
+| `NBR_TBB_MOBIL_USER__c` |  |
+| `NBR_TBB_MOBIL__c` |  |
 | `NumberOfEmployees` | FORMULA19 (formula), FORMULA42 (formula) |
-
-#### Fields to ELIMINATE
-
-- `MBN_PROD_HOVEDNUMMER_ACT_DATE__c`
-- `NBR_FIBER_USER__c`
-- `NBR_FIXED_BBB_FIBER__c`
-- `NBR_TBB_MOBIL_USER__c`
-- `NBR_TBB_MOBIL__c`
-- `SubsM2M__c`
+| `SubsM2M__c` |  |

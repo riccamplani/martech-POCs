@@ -422,8 +422,12 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "NumberOfEmployees",
           "Id",
-          "KurtID__c"
+          "KurtID__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -439,7 +443,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_154&#39;",
+            "formulaExpression": "'C360_154'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -483,7 +487,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -502,7 +506,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "formulaExpression": "\"NysalgMobi.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -559,7 +563,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "formulaExpression": "\"NysalgMobi.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -599,7 +603,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Bedriften er medlem i NHO Service og Handel.​ NHO Service og Handel har tegnet ny forbundsavtale med Telenor. Spill på fordelene ved å være medlem.&#39;",
+            "formulaExpression": "'Bedriften er medlem i NHO Service og Handel.​ NHO Service og Handel har tegnet ny forbundsavtale med Telenor. Spill på fordelene ved å være medlem.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -713,7 +717,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -732,7 +736,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Gjovik&#39;",
+            "formulaExpression": "'Gjovik'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -769,7 +773,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -788,7 +792,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;HunterME&#39;",
+            "formulaExpression": "'HunterME'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

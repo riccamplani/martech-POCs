@@ -8,8 +8,8 @@
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
 | LOAD_DATASET0_copy0 | Account | connectedDataset | 20 | 20 | 0 | 0% |
-| LOAD_DATASET14_copy0 | Account | connectedDataset | 6 | 2 | 4 | 67% |
-| **TOTAL** | | | **26** | **22** | **4** | **15%** |
+| LOAD_DATASET14_copy0 | Account | connectedDataset | 6 | 6 | 0 | 0% |
+| **TOTAL** | | | **26** | **26** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -49,19 +49,16 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 6
-- **Fields used:** 2
-- **Fields unused:** 4
+- **Fields used:** 6
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
+| `FORBUND_START_DATE__c` |  |
+| `Forbund_membership__c` |  |
+| `Has_Subscriptions__c` |  |
 | `Id` | FORMULA9_copy0 (formula), FORMULA10_copy0 (formula), JOIN16 (join), FILTER37 (filter) |
 | `KurtID__c` | FORMULA8_copy0 (formula), FORMULA11_copy0 (formula) |
-
-#### Fields to ELIMINATE
-
-- `FORBUND_START_DATE__c`
-- `Forbund_membership__c`
-- `Has_Subscriptions__c`
-- `NumberOfEmployees`
+| `NumberOfEmployees` |  |

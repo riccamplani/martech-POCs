@@ -24,12 +24,19 @@
           "External_Credit_Rating__c",
           "NACE_Subclass_Code__c",
           "NACE_Subclass_Description__c",
+          "Has_Subscriptions__c",
           "Economic_Attractivity__c",
+          "NBR_FIXED_BBB_FIBER__c",
+          "NBR_FIBER_USER__c",
+          "NBR_TBB_MOBIL__c",
+          "NBR_TBB_MOBIL_USER__c",
           "COM_CUSTOMER_QUALITYMARK_PHONE__c",
           "COM_CUSTOMER_TM_RESERVATION__c",
           "Phonenumber_type__c",
           "Reservation_Date_IA_Inbound__c",
           "Reservation_Date_IA_Outbound__c",
+          "Reservation_Date_MV_Inbound__c",
+          "Reservation_Date_MV_Outbound__c",
           "Has_Subscriptions_Actual__c"
         ],
         "sampleDetails": {
@@ -3874,7 +3881,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Is_DMU__c = &#39;true&#39; then Id\r\nelse DPSS_DMU__c\r\nend",
+            "formulaExpression": "case when Is_DMU__c = 'true' then Id\r\nelse DPSS_DMU__c\r\nend",
             "label": "DPSS Decision Making Unit Calc",
             "name": "DPSS_DMU__c_calc",
             "precision": 18,

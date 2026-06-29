@@ -1061,7 +1061,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_14&#39;",
+            "formulaExpression": "'C360_14'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1105,7 +1105,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1124,7 +1124,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "formulaExpression": "\"NysalgMobi.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1181,7 +1181,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "formulaExpression": "\"NysalgMobi.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1221,7 +1221,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Bedriften er medlem av Agrol. Benytt ny avtale med Agrol og selg inn mobiltale.&#39;",
+            "formulaExpression": "'Bedriften er medlem av Agrol. Benytt ny avtale med Agrol og selg inn mobiltale.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1259,7 +1259,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_15&#39;",
+            "formulaExpression": "'C360_15'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1278,7 +1278,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Bedriften er medlem av Agrol. Kunden har Bredbånd fra Telenor i dag. Benytt ny avtale med Agrol og selg inn mobiltale.&#39;",
+            "formulaExpression": "'Bedriften er medlem av Agrol. Kunden har Bredbånd fra Telenor i dag. Benytt ny avtale med Agrol og selg inn mobiltale.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1322,7 +1322,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1341,7 +1341,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "formulaExpression": "\"NysalgMobi.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1398,7 +1398,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "formulaExpression": "\"NysalgMobi.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1438,7 +1438,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1457,7 +1457,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1497,7 +1497,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1516,7 +1516,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1556,7 +1556,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1575,7 +1575,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1615,7 +1615,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1634,7 +1634,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1900,7 +1900,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Calculated.Nbr_Voice_User&quot; is null then\r\n0\r\nelse\r\n&quot;Calculated.Nbr_Voice_User&quot;\r\nend",
+            "formulaExpression": "case when \"Calculated.Nbr_Voice_User\" is null then\r\n0\r\nelse\r\n\"Calculated.Nbr_Voice_User\"\r\nend",
             "label": "NBR_VOICE_USER",
             "name": "NBR_VOICE_USER__C",
             "precision": 10,

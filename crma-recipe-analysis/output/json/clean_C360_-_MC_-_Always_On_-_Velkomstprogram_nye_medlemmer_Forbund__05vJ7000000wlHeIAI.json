@@ -181,7 +181,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_216&#39;",
+            "formulaExpression": "'C360_216'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -351,7 +351,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_44.CampaignID__c&quot;",
+            "formulaExpression": "\"C360_44.CampaignID__c\"",
             "label": "Campaign CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -461,7 +461,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;A2&#39;",
+            "formulaExpression": "'A2'",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,
@@ -480,7 +480,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;A1&#39;",
+            "formulaExpression": "'A1'",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,

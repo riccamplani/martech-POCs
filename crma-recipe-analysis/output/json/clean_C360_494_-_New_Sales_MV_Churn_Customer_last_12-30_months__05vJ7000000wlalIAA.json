@@ -176,7 +176,16 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "Id"
+          "Reservation_Date_MV_Inbound__c",
+          "Reservation_Date_MV_Outbound__c",
+          "Id",
+          "IsDeleted",
+          "KurtID__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "Latest_Port_out_date__c",
+          "mobile_service_segment__c",
+          "Has_Subscriptions_Actual__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -446,7 +455,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_248&#39;",
+            "formulaExpression": "'C360_248'",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -490,7 +499,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -509,7 +518,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
+            "formulaExpression": "\"NysalgMobi.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -566,7 +575,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
+            "formulaExpression": "\"NysalgMobi.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -606,7 +615,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har tidligere vært en TSP-kunde, men churnet for 12-30 mnd siden. Kunden skal enten videreføre sin avtale med eksisterende leverandør, eller er i markedet etter ny leverandør av Mobil Tale tjenester. Benytt sjansen til å selge inn Telenors verdier for å vinne disse tilbake til Telenor.&#39;",
+            "formulaExpression": "'Kunden har tidligere vært en TSP-kunde, men churnet for 12-30 mnd siden. Kunden skal enten videreføre sin avtale med eksisterende leverandør, eller er i markedet etter ny leverandør av Mobil Tale tjenester. Benytt sjansen til å selge inn Telenors verdier for å vinne disse tilbake til Telenor.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -625,7 +634,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Dealer O&#39;",
+            "formulaExpression": "'Dealer O'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -644,7 +653,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

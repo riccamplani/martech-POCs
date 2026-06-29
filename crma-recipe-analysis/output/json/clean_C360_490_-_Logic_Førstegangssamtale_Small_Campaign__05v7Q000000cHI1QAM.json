@@ -313,7 +313,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;onboarding&#39;",
+            "formulaExpression": "'onboarding'",
             "label": "Gruppe_kunde",
             "name": "Gruppe_kunde",
             "precision": 255,
@@ -332,7 +332,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Ikke onboarding&#39;",
+            "formulaExpression": "'Ikke onboarding'",
             "label": "Gruppe_kunde",
             "name": "Gruppe_kunde",
             "precision": 255,
@@ -666,7 +666,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_88&#39;",
+            "formulaExpression": "'C360_88'",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -685,7 +685,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Ny kunde på mobil tale.​\r\nKunden har ikke MBN. Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Ny kunde på mobil tale.​\r\nKunden har ikke MBN. Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -704,7 +704,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_89&#39;",
+            "formulaExpression": "'C360_89'",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -723,7 +723,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Ny kunde på mobil tale.​\r\nKunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Ny kunde på mobil tale.​\r\nKunden har ikke MBN løsning (Sentralbord/Kø/Svargruppe). Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -742,7 +742,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_90&#39;",
+            "formulaExpression": "'C360_90'",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -761,7 +761,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Ny kunde på mobil tale.​\r\nKunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Ny kunde på mobil tale.​\r\nKunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -780,7 +780,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_91&#39;",
+            "formulaExpression": "'C360_91'",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -799,7 +799,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Ny kunde på mobil tale.​\r\nKartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Ny kunde på mobil tale.​\r\nKartlegg mulighet for mersalg.​\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -843,7 +843,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -862,7 +862,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -881,7 +881,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;TRANSFORM6.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat(\"TRANSFORM6.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -900,7 +900,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM6.Id&quot;",
+            "formulaExpression": "\"TRANSFORM6.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 255,
@@ -957,7 +957,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM6.Name&quot;",
+            "formulaExpression": "\"TRANSFORM6.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1520,7 +1520,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Open&#39;",
+            "formulaExpression": "'Open'",
             "label": "Gruppe_kunde",
             "name": "Gruppe_kunde",
             "precision": 255,
@@ -1795,7 +1795,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nNumberOfEmployees&lt;5 and SubsMobileVoice__c&lt;3\r\nthen &#39;1&#39;\r\nelse &#39;0&#39;\r\nend",
+            "formulaExpression": "case when\r\nNumberOfEmployees<5 and SubsMobileVoice__c<3\r\nthen '1'\r\nelse '0'\r\nend",
             "label": "employe_lt5_and_mt_lt3",
             "name": "employe_lt5_and_mt_lt3",
             "precision": 255,

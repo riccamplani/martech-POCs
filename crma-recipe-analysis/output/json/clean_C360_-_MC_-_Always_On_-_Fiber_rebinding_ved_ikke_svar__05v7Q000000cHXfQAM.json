@@ -227,6 +227,7 @@
         "fields": [
           "DPSS_Segment__c",
           "Id",
+          "KurtID__c",
           "StatusKURT__c",
           "TSP_Dealer__c",
           "COM_CUSTOMER_EDM_RESERVATION__c"
@@ -416,7 +417,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_132&#39;",
+            "formulaExpression": "'C360_132'",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -863,11 +864,33 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Id",
+          "OwnerId",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
           "Active_subs__c",
+          "BUILDING_TYPE_LEVEL_2__c",
+          "Address_Id__c",
+          "BUILDING_TYPE_LEVEL_3__c",
+          "Building_type__c",
+          "Capacity_code__c",
+          "Coverage_4GP40__c",
+          "Coverage_4G_Plus__c",
+          "Coverage_4G__c",
+          "Coverage_5G_P__c",
           "FAR_ID__c",
+          "Fiber_cost__c",
           "Location_Owner__c",
+          "LFA_IS_ONNET__c",
           "Postal_address__c",
-          "Street_address__c"
+          "Street_address__c",
+          "OAF_ID__c",
+          "COVERAGE_START_DATE_5G__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -970,7 +993,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;, &#39;",
+            "formulaExpression": "', '",
             "label": "separator",
             "name": "separator",
             "precision": 255,
@@ -1098,7 +1121,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39; med &#39;",
+            "formulaExpression": "' med '",
             "label": "concat 2 nr 1 text",
             "name": "concat_2_nr1_txt",
             "precision": 255,
@@ -1117,7 +1140,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39; hastighet&#39;",
+            "formulaExpression": "' hastighet'",
             "label": "concat 2 nr 2 text",
             "name": "concat_2_nr2_txt",
             "precision": 255,
@@ -1136,7 +1159,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(Product_Name__c,concat_2_nr1_txt,&quot;FiberRebin.Bandwidth__c&quot;,concat_2_nr2_txt)",
+            "formulaExpression": "concat(Product_Name__c,concat_2_nr1_txt,\"FiberRebin.Bandwidth__c\",concat_2_nr2_txt)",
             "label": "Personalization_2__c",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -1155,7 +1178,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;10 Mbits&#39; then &#39;20 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;20 Mbits&#39; then &#39;60 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;40 Mbits&#39; then &#39;60 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;60 Mbits&#39; then &#39;100 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;100 Mbits&#39; then &#39;200 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;200 Mbits&#39; then &#39;400 Mbits&#39;\r\nelse &#39; &#39;\r\nend",
+            "formulaExpression": "case \r\nwhen \"FiberRebin.Bandwidth__c\"='10 Mbits' then '20 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='20 Mbits' then '60 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='40 Mbits' then '60 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='60 Mbits' then '100 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='100 Mbits' then '200 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='200 Mbits' then '400 Mbits'\r\nelse ' '\r\nend",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,

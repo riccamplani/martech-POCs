@@ -12,6 +12,7 @@
         "fields": [
           "Id",
           "Main_number__c",
+          "Sub_Owner__c",
           "Campaign_sensitive__c"
         ],
         "sampleDetails": {
@@ -53,7 +54,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when &quot;NewSubSensitive.Campaign_sensitive__c&quot; is null\n    then &#39;&#39;\n    else\n    &quot;NewSubSensitive.Campaign_sensitive__c&quot;\nend",
+            "formulaExpression": "case \n    when \"NewSubSensitive.Campaign_sensitive__c\" is null\n    then ''\n    else\n    \"NewSubSensitive.Campaign_sensitive__c\"\nend",
             "label": "CRMA Campaign Sensitive",
             "name": "CRMACampaignSensitive",
             "precision": 5000,
@@ -72,7 +73,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when Campaign_sensitive__c is null\n    then &#39;&#39;\n    else\n    Campaign_sensitive__c\nend",
+            "formulaExpression": "case \n    when Campaign_sensitive__c is null\n    then ''\n    else\n    Campaign_sensitive__c\nend",
             "label": "Salesforce Campaign Sensitive",
             "name": "SalesforceCampaignSensitive",
             "precision": 5000,
@@ -91,7 +92,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n\twhen CRMACampaignSensitive != SalesforceCampaignSensitive\n\tthen\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = &#39;&#39;\n\t\t\tthen &#39;#N/A&#39;\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\n\telse\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = &#39;&#39;\n\t\t\tthen &#39;#N/A&#39;\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\nend",
+            "formulaExpression": "case \n\twhen CRMACampaignSensitive != SalesforceCampaignSensitive\n\tthen\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = ''\n\t\t\tthen '#N/A'\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\n\telse\n\t\tcase \n\t\t\twhen CRMACampaignSensitive = ''\n\t\t\tthen '#N/A'\n\t\telse\n\t\t\tCRMACampaignSensitive\n\t\tend\nend",
             "label": "Updated Campaign Sensitive",
             "name": "UpdatedCampaignSensitive",
             "precision": 5000,
@@ -178,7 +179,9 @@
         },
         "fields": [
           "FILTER7.Main_number__c",
-          "Campaign_sensitive__c"
+          "Subscription_Owner",
+          "Campaign_sensitive__c",
+          "FILTER7.Name"
         ],
         "sampleDetails": {
           "sortBy": [],

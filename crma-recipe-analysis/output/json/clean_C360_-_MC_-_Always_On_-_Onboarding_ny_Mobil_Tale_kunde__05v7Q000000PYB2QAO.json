@@ -10,14 +10,38 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "DealerSegment__c",
           "mobile_service_segment__c",
           "COM_CUSTOMER_EDM_RESERVATION__c",
           "Id",
+          "IsDeleted",
           "Name",
+          "RecordTypeId",
+          "ParentId",
+          "Phone",
+          "NumberOfEmployees",
           "CreatedDate",
+          "IsPartner",
+          "IsPersonAccount",
+          "PersonHasOptedOutOfEmail",
+          "Concern__c",
+          "Country__c",
+          "CustomerType__c",
+          "DealerChain__c",
+          "DealerID__c",
+          "DivisionSPOC__c",
+          "E_mail__c",
+          "TopLevelAccountID__c",
+          "Industry__c",
           "KurtID__c",
+          "LevelOfCertification__c",
+          "LevelOfComplexity__c",
+          "OrgNo__c",
+          "Min_Bedrift__c",
+          "Portfolio__c",
           "StatusKURT__c",
           "SubsMobileVoice__c",
+          "NBR_VOICE__c",
           "NEW_MV__c",
           "MV_FIRST_SALE_DT__c"
         ],
@@ -764,7 +788,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;0&#39;",
+            "formulaExpression": "'0'",
             "label": "Personalization_2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -783,7 +807,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(date_format(Innporteringsdato_to_use, &#39;dd.MM.yyyy&#39;),&#39; kl. &#39;,Parameter_4_Value__c)",
+            "formulaExpression": "concat(date_format(Innporteringsdato_to_use, 'dd.MM.yyyy'),' kl. ',Parameter_4_Value__c)",
             "label": "Personalization_3",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -859,7 +883,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1&#39;",
+            "formulaExpression": "'1'",
             "label": "Personalization_2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -878,7 +902,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Personalization_3",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -897,7 +921,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Personalization_4",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -916,7 +940,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Personalization 20",
             "name": "Personalization_20__c",
             "precision": 10,
@@ -983,7 +1007,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen &quot;Onboarding.Onboarding&quot; = &#39;1&#39;\r\nthen &#39;1&#39;\r\nelse &#39;0&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen \"Onboarding.Onboarding\" = '1'\r\nthen '1'\r\nelse '0'\r\nend",
             "label": "Personalization_1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -1002,7 +1026,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_309&#39;",
+            "formulaExpression": "'C360_309'",
             "label": "CampaignCD",
             "name": "CampaignCD",
             "precision": 255,
@@ -1044,7 +1068,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1&#39;",
+            "formulaExpression": "'1'",
             "label": "Onboarding",
             "name": "Onboarding",
             "precision": 255,
@@ -1626,7 +1650,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "substr(Parameter_4_Value__c, 1, 2) || &#39;:&#39; ||\r\nsubstr(Parameter_4_Value__c, 3, 4) || &#39;:00&#39;",
+            "formulaExpression": "substr(Parameter_4_Value__c, 1, 2) || ':' ||\r\nsubstr(Parameter_4_Value__c, 3, 4) || ':00'",
             "label": "kl",
             "name": "kl",
             "precision": 255,
@@ -1645,7 +1669,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "Date10||&#39; &#39; ||kl",
+            "formulaExpression": "Date10||' ' ||kl",
             "label": "Full innportdate time",
             "name": "Full_innportdate_time",
             "precision": 255,
@@ -1864,11 +1888,56 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Id",
+          "OwnerId",
+          "IsDeleted",
+          "Name",
+          "CreatedDate",
+          "CreatedById",
+          "LastModifiedDate",
+          "LastModifiedById",
+          "SystemModstamp",
+          "LastViewedDate",
+          "LastReferencedDate",
+          "Agreement_Member__c",
           "Agreement_Owner__c",
+          "Agreement_Type__c",
+          "End_Date__c",
+          "IMEI_no__c",
+          "Monthly_Price__c",
+          "Parent_Agreement__c",
           "Product_Name__c",
           "Start_Date__c",
+          "Termination_Fee__c",
+          "Source_Agreement_ID__c",
+          "Terminal__c",
+          "Agreement_Offer_ID__c",
+          "DRM__c",
+          "Parameter_1_Name__c",
           "Parameter_1_Value__c",
-          "Parameter_6_Value__c"
+          "Parameter_2_Name__c",
+          "Parameter_2_Value__c",
+          "Parameter_3_Name__c",
+          "Parameter_3_Value__c",
+          "Parameter_4_Name__c",
+          "Parameter_4_Value__c",
+          "Parameter_5_Name__c",
+          "Parameter_5_Value__c",
+          "Parameter_6_Name__c",
+          "Parameter_6_Value__c",
+          "Parameter_7_Name__c",
+          "Parameter_7_Value__c",
+          "Parameter_8_Name__c",
+          "Parameter_8_Value__c",
+          "Product_Desc__c",
+          "Product_Group_List__c",
+          "Product_Offer_ID__c",
+          "Root_Offer_Desc__c",
+          "Service_Concept__c",
+          "TOSS__c",
+          "Usage__c",
+          "Monthly_Price_Formatted__c",
+          "Agreement_Sub_Type__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -1964,7 +2033,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;MBNpakkers.Product_Name__c&quot;= &#39;MBN SMB-pakke Large&#39; \r\nthen &#39;MBN Large&#39;\r\nwhen &quot;MBNpakkers.Product_Name__c&quot; = &#39;MBN SMB-pakke Medium&#39; \r\nthen &#39;MBN Medium&#39;\r\nwhen &quot;MBNpakkers.Product_Name__c&quot; = &#39;MBN SMB-pakke Medium (utgått)&#39; \r\nthen &#39;MBN Medium&#39;\r\nwhen &quot;MBNpakkers.Product_Name__c&quot; = &#39;MBN SMB-pakke Small (utgått)&#39; \r\nthen &#39;MBN Small&#39;\r\nwhen &quot;MBNpakkers.Product_Name__c&quot; = &#39;MBN SMB-pakke Small&#39; \r\nthen &#39;MBN Small&#39;\r\nwhen\r\n&quot;Dropcolumn.FILTER2.Antall_MBN_KO&quot; &gt; 2 \r\nor &quot;Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe&quot; &gt; 2 or &quot;Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny&quot; &gt; 2\r\nthen &#39;MBN Large&#39;\r\nwhen\r\n&quot;Dropcolumn.FILTER2.Antall_MBN_KO&quot; = 2 \r\nor &quot;Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe&quot; = 2 or &quot;Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny&quot; = 2\r\nthen &#39;MBN Medium&#39;\r\nwhen\r\n&quot;Dropcolumn.FILTER2.Antall_MBN_KO&quot; = 1 \r\nand &quot;Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe&quot; = 1 \r\nthen &#39;MBN Medium&#39;\r\nwhen\r\n&quot;Dropcolumn.FILTER2.Antall_MBN_KO&quot; = 1 \r\nor &quot;Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe&quot; = 1 or &quot;Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny&quot; = 1\r\nthen &#39;MBN Small&#39;\r\nelse &#39;NO MBN&#39;\r\nend",
+            "formulaExpression": "case when \"MBNpakkers.Product_Name__c\"= 'MBN SMB-pakke Large' \r\nthen 'MBN Large'\r\nwhen \"MBNpakkers.Product_Name__c\" = 'MBN SMB-pakke Medium' \r\nthen 'MBN Medium'\r\nwhen \"MBNpakkers.Product_Name__c\" = 'MBN SMB-pakke Medium (utgått)' \r\nthen 'MBN Medium'\r\nwhen \"MBNpakkers.Product_Name__c\" = 'MBN SMB-pakke Small (utgått)' \r\nthen 'MBN Small'\r\nwhen \"MBNpakkers.Product_Name__c\" = 'MBN SMB-pakke Small' \r\nthen 'MBN Small'\r\nwhen\r\n\"Dropcolumn.FILTER2.Antall_MBN_KO\" > 2 \r\nor \"Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe\" > 2 or \"Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny\" > 2\r\nthen 'MBN Large'\r\nwhen\r\n\"Dropcolumn.FILTER2.Antall_MBN_KO\" = 2 \r\nor \"Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe\" = 2 or \"Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny\" = 2\r\nthen 'MBN Medium'\r\nwhen\r\n\"Dropcolumn.FILTER2.Antall_MBN_KO\" = 1 \r\nand \"Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe\" = 1 \r\nthen 'MBN Medium'\r\nwhen\r\n\"Dropcolumn.FILTER2.Antall_MBN_KO\" = 1 \r\nor \"Dropcolumn.MBNSvargru.Antall_MBN_Svargruppe\" = 1 or \"Dropcolumn.MBNTidssty.Antall_MBN_Tidsstyrt_Velkomstmeny\" = 1\r\nthen 'MBN Small'\r\nelse 'NO MBN'\r\nend",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -2065,7 +2134,12 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "OwnerId",
+          "Name",
+          "CreatedDate",
+          "LastModifiedDate",
           "Agreement_Owner__c",
+          "Agreement_Type__c",
           "Product_Name__c",
           "Start_Date__c"
         ],
@@ -2129,7 +2203,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen \r\nProduct_Name__c = &#39;MBN Kø&#39; \r\nthen &#39;MBN Kø&#39;\r\nwhen \r\nProduct_Name__c = &#39;MBN Svargruppe&#39; \r\nthen &#39;MBN Svargruppe&#39;\r\nwhen \r\nProduct_Name__c = &#39;MBN Tidsstyrt velkomstmeny&#39; \r\nthen &#39;MBN Tidsstyrt Velkomstmeny&#39;\r\nwhen \r\nProduct_Name__c = &#39;MBN Tidsstyrt velkomstmeny inkl&#39; \r\nthen &#39;MBN Tidsstyrt Velkomstmeny&#39;\r\nelse &#39;&#39;\r\nend\r\n",
+            "formulaExpression": "case \r\nwhen \r\nProduct_Name__c = 'MBN Kø' \r\nthen 'MBN Kø'\r\nwhen \r\nProduct_Name__c = 'MBN Svargruppe' \r\nthen 'MBN Svargruppe'\r\nwhen \r\nProduct_Name__c = 'MBN Tidsstyrt velkomstmeny' \r\nthen 'MBN Tidsstyrt Velkomstmeny'\r\nwhen \r\nProduct_Name__c = 'MBN Tidsstyrt velkomstmeny inkl' \r\nthen 'MBN Tidsstyrt Velkomstmeny'\r\nelse ''\r\nend\r\n",
             "label": "MBN_prod_gruppe",
             "name": "MBN_prod_gruppe",
             "precision": 255,
@@ -2773,7 +2847,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Primary Contact missing&#39;",
+            "formulaExpression": "'Primary Contact missing'",
             "label": "Origin Detail ",
             "name": "Origin_Detail",
             "precision": 255,
@@ -2792,7 +2866,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Account mangler Primary Contact&#39;",
+            "formulaExpression": "'Account mangler Primary Contact'",
             "label": "Subject",
             "name": "Subject",
             "precision": 255,
@@ -2811,7 +2885,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Vennligst velg riktig Contact fra Account som skal være Primary Contact. Det er viktig at kontaktopplysninger som mobilnummer og særlig e-post adresse er riktig. Lukk denne saken når dette er utført&#39;",
+            "formulaExpression": "'Vennligst velg riktig Contact fra Account som skal være Primary Contact. Det er viktig at kontaktopplysninger som mobilnummer og særlig e-post adresse er riktig. Lukk denne saken når dette er utført'",
             "label": "Description",
             "name": "Description",
             "precision": 255,
@@ -2830,7 +2904,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;01mb0000000TOOa&#39;",
+            "formulaExpression": "'01mb0000000TOOa'",
             "label": "Business_hours_id",
             "name": "Business_hours_id",
             "precision": 255,
@@ -2921,7 +2995,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Primary Contact email missing&#39;",
+            "formulaExpression": "'Primary Contact email missing'",
             "label": "Origin Detail ",
             "name": "Origin_Detail",
             "precision": 255,
@@ -2940,7 +3014,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Primary Contact mangler e-post&#39;",
+            "formulaExpression": "'Primary Contact mangler e-post'",
             "label": "Subject",
             "name": "Subject",
             "precision": 255,
@@ -2959,7 +3033,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Vennligst oppdater Primary Contact med en e-postadresse. Det er viktig at kontaktopplysninger som mobilnummer og særlig e-postadresse er riktig. Lukk denne saken når dette er utført.&#39;",
+            "formulaExpression": "'Vennligst oppdater Primary Contact med en e-postadresse. Det er viktig at kontaktopplysninger som mobilnummer og særlig e-postadresse er riktig. Lukk denne saken når dette er utført.'",
             "label": "Description",
             "name": "Description",
             "precision": 255,
@@ -3278,7 +3352,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;012b0000000UaE8AAK&#39;",
+            "formulaExpression": "'012b0000000UaE8AAK'",
             "label": "record type Order",
             "name": "record_type_Order",
             "precision": 255,
@@ -3297,7 +3371,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Endring&#39;",
+            "formulaExpression": "'Endring'",
             "label": "Type",
             "name": "Type",
             "precision": 255,
@@ -3316,7 +3390,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;false&#39;",
+            "formulaExpression": "'false'",
             "label": "Visible to customer",
             "name": "Visible_to_customer",
             "precision": 255,
@@ -3335,7 +3409,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Contact Missing&#39;",
+            "formulaExpression": "'Contact Missing'",
             "label": "Case Contact Name",
             "name": "Case_Contact_Name",
             "precision": 255,
@@ -3354,7 +3428,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;no-reply@telenor.no&#39;",
+            "formulaExpression": "'no-reply@telenor.no'",
             "label": "Case Contact Email",
             "name": "Case_Contact_Email",
             "precision": 255,
@@ -3373,7 +3447,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Mobil Tale&#39;",
+            "formulaExpression": "'Mobil Tale'",
             "label": "Product Category",
             "name": "Product_Category",
             "precision": 255,
@@ -3413,8 +3487,8 @@
         "fields": [
           {
             "defaultValue": "",
-            "format": "yyyy-MM-dd&#39;T&#39;HH:mm:ss&#39;Z&#39;",
-            "formulaExpression": "&quot;Transform1.Personalization_20__c_to_date&quot;",
+            "format": "yyyy-MM-dd'T'HH:mm:ss'Z'",
+            "formulaExpression": "\"Transform1.Personalization_20__c_to_date\"",
             "label": "Expected Completion Date",
             "name": "Expected_Completion_Date",
             "type": "DATETIME"
@@ -3432,7 +3506,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "format": "yyyy-MM-dd&#39;T&#39;HH:mm:ss&#39;Z&#39;",
+            "format": "yyyy-MM-dd'T'HH:mm:ss'Z'",
             "formulaExpression": "to_timestamp(date_add(current_date(), 3))",
             "label": "Requested Completion Date",
             "name": "Requested_Completion_Date",
@@ -3479,7 +3553,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen\r\n&quot;Dropcolumn.Parameter_6_Value__c&quot; = &#39;Loyalty Nysalg2&#39; \r\nthen &#39;0053W0000020dHPQAY&#39;\r\nwhen &quot;Dropcolumn.Parameter_6_Value__c&quot;= &#39;Loyalty retention (TM)&#39; \r\nthen &#39;0053W00000210tgQAA&#39;\r\nwhen contains(&quot;Dropcolumn.Parameter_6_Value__c&quot;, &#39;Loyalty&#39;)\r\nthen &#39;0053W000002ZthnQAC&#39;\r\nwhen contains(&quot;Dropcolumn.Parameter_6_Value__c&quot;, &#39;Telesales Bedrift Gjøvik&#39;) \r\nthen &#39;005b0000001J0byAAC&#39;\r\nwhen contains(&quot;Dropcolumn.Parameter_6_Value__c&quot;, &#39;Neras&#39;) \r\nthen &#39;005dV000005b8v0QAA&#39;\r\nelse &#39;NULL&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen\r\n\"Dropcolumn.Parameter_6_Value__c\" = 'Loyalty Nysalg2' \r\nthen '0053W0000020dHPQAY'\r\nwhen \"Dropcolumn.Parameter_6_Value__c\"= 'Loyalty retention (TM)' \r\nthen '0053W00000210tgQAA'\r\nwhen contains(\"Dropcolumn.Parameter_6_Value__c\", 'Loyalty')\r\nthen '0053W000002ZthnQAC'\r\nwhen contains(\"Dropcolumn.Parameter_6_Value__c\", 'Telesales Bedrift Gjøvik') \r\nthen '005b0000001J0byAAC'\r\nwhen contains(\"Dropcolumn.Parameter_6_Value__c\", 'Neras') \r\nthen '005dV000005b8v0QAA'\r\nelse 'NULL'\r\nend",
             "label": "Case Owner",
             "name": "Case_Owner",
             "precision": 255,

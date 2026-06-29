@@ -51,6 +51,7 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Status__c",
           "KSBID__c"
         ],
         "sampleDetails": {
@@ -84,7 +85,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;0&#39;",
+            "formulaExpression": "'0'",
             "label": "Response Code",
             "name": "ResponseCode",
             "precision": 255,
@@ -158,7 +159,33 @@
           "type": "analyticsDataset"
         },
         "fields": [
+          "CampaignChannels",
+          "Personalization_1__c",
+          "Personalization_3__c",
+          "Personalization_20__c",
+          "SFB_AccountId",
+          "Personalization_15__c",
+          "Personalization_13__c",
+          "Personalization_17__c",
+          "Personalization_7__c",
+          "Personalization_9__c",
+          "Kurt_Id",
+          "Personalization_19__c",
+          "Personalization_5__c",
+          "Personalization_11__c",
+          "Personalization_2__c",
+          "Sales_tip_title",
           "KSBID_2",
+          "Personalization_12__c",
+          "Personalization_14__c",
+          "TelesalesAgency",
+          "Personalization_16__c",
+          "Personalization_8__c",
+          "Sales_tip_description_template",
+          "Personalization_18__c",
+          "Personalization_6__c",
+          "Personalization_4__c",
+          "Personalization_10__c",
           "SFB_CampainId"
         ],
         "sampleDetails": {

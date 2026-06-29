@@ -182,7 +182,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_145&#39;",
+            "formulaExpression": "'C360_145'",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -201,7 +201,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har ikke SafeZone Mobil.​&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nBenytt muligheten til å diskutere sikkerhet og selg inn SafeZone.&#39;",
+            "formulaExpression": "'Kunden har ikke SafeZone Mobil.​</li><li>\r\n</li><li>\r\nBenytt muligheten til å diskutere sikkerhet og selg inn SafeZone.'",
             "label": "Sales tip description template_txt",
             "name": "Sales_tip_description_template_txt",
             "precision": 9999,
@@ -288,7 +288,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_146&#39;",
+            "formulaExpression": "'C360_146'",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -307,7 +307,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har SafeZone,  men ikke Oppdatert!​&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nUtnytt muligheten til å fortelle at du ser at kunden er opptatt av sikkerhet, og deretter selg kunden inn på Oppdatert!&#39;",
+            "formulaExpression": "'Kunden har SafeZone,  men ikke Oppdatert!​</li><li>\r\n</li><li>\r\nUtnytt muligheten til å fortelle at du ser at kunden er opptatt av sikkerhet, og deretter selg kunden inn på Oppdatert!'",
             "label": "Sales tip description template_txt",
             "name": "Sales_tip_description_template_txt",
             "precision": 9999,
@@ -349,7 +349,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;C360_145SZ.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"C360_145SZ.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -368,7 +368,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_145SZ.Id&quot;",
+            "formulaExpression": "\"C360_145SZ.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -425,7 +425,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -444,7 +444,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_145SZ.Name&quot;",
+            "formulaExpression": "\"C360_145SZ.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,

@@ -24,10 +24,10 @@
 
 | Field | Used In |
 |-------|---------|
-| `DPSS_Segment__c` | FILTER36 (filter), FILTER36_copy0 (filter), FILTER36_copy1 (filter), DROP_FIELDS2 (schema), DROP_FIELDS2_copy0 (schema) |
-| `Id` | JOIN5 (join), JOIN6 (join), JOIN2 (join), DROP_FIELDS2 (schema), DROP_FIELDS2_copy0 (schema) +4 more |
-| `KurtID__c` | DROP_FIELDS2 (schema), DROP_FIELDS2_copy0 (schema), FORMULA20_copy0 (formula), FORMULA23_copy0 (formula) |
-| `NBR_TBB_MOBIL__c` | FILTER39 (filter) |
+| `DPSS_Segment__c` | FILTER36 (filter), FILTER36_copy0 (filter), FILTER36_copy1 (filter), APPEND2 (appendV2), APPEND2 (appendV2) +6 more |
+| `Id` | JOIN5 (join), JOIN6 (join), JOIN2 (join), FILTER40 (filter), FILTER41 (filter) +21 more |
+| `KurtID__c` | APPEND2 (appendV2), APPEND2 (appendV2), DROP_FIELDS2 (schema), DROP_FIELDS2_copy0 (schema), DROP_FIELDS18 (schema) +7 more |
+| `NBR_TBB_MOBIL__c` | FILTER39 (filter), APPEND2 (appendV2), APPEND2 (appendV2), DROP_FIELDS18 (schema) |
 
 ### Account_Location__c (`LOAD_DATASET3`)
 
@@ -44,6 +44,6 @@
 | `Building_type__c` | DROP_FIELDS18 (schema) |
 | `FAR_ID__c` | JOIN3 (join), DROP_FIELDS18 (schema) |
 | `Fiber_cost__c` | FILTER38 (filter), FORMULA1 (formula), DROP_FIELDS18 (schema), DROP_FIELDS1_copy0 (schema), APPEND0 (appendV2) +3 more |
-| `Location_Owner__c` | JOIN3 (join), JOIN4 (join), DROP_FIELDS1_copy0 (schema), FORMULA43 (formula), APPEND0 (appendV2) +3 more |
+| `Location_Owner__c` | JOIN3 (join), JOIN4 (join), DROP_FIELDS1_copy0 (schema), DROP_FIELDS1_copy0 (schema), FORMULA43 (formula) +6 more |
 | `Postal_address__c` | DROP_FIELDS18 (schema) |
 | `Street_address__c` | DROP_FIELDS18 (schema) |

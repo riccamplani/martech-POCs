@@ -266,7 +266,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_138&#39;\r\n",
+            "formulaExpression": "'C360_138'\r\n",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -285,7 +285,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har 1 TBB aksess som kan migreres til Fiber. Se fiberkost på adressen på abonnementet.\r\n&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c} &lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nKartlegg mulighet for mersalg av nye lokasjoner, WiFi Connect, Mobil Backup og SafeZone IA.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Kunden har 1 TBB aksess som kan migreres til Fiber. Se fiberkost på adressen på abonnementet.\r\n</li><li>\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_1__c} </li><li>\r\n{Personalization_3__c} </li><li>\r\n{Personalization_4__c} </li><li>\r\n{Personalization_5__c} </li><li>\r\n{Personalization_6__c} </li><li>\r\n{Personalization_7__c} </li><li>\r\n{Personalization_8__c} </li><li>\r\n{Personalization_9__c} </li><li>\r\n{Personalization_10__c} </li><li>\r\n{Personalization_11__c} </li><li>\r\n</li><li>\r\nKartlegg mulighet for mersalg av nye lokasjoner, WiFi Connect, Mobil Backup og SafeZone IA.</li><li>\r\n</li><li>\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template_2",
             "name": "Sales_tip_description_template_2",
             "precision": 9999,
@@ -469,7 +469,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen Fiber_cost__c = 10000\r\nthen &#39;Migreres til Fiber. Fiberkost er 10K&#39;\r\nwhen Fiber_cost__c = 40000\r\nthen &#39;Migreres til Fiber. Fiberkost er 40K&#39;\r\nwhen Fiber_cost__c &gt; 40000 \r\nand Fiber_cost__c&lt;= 60000\r\nthen &#39;Migreres til Fiber. Fiberkost er 60K&#39;\r\nwhen Fiber_cost__c &gt; 60000 \r\nand Fiber_cost__c&lt;= 80000\r\nthen &#39;Migreres til Fiber. Fiberkost er 80K&#39;\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen Fiber_cost__c = 10000\r\nthen 'Migreres til Fiber. Fiberkost er 10K'\r\nwhen Fiber_cost__c = 40000\r\nthen 'Migreres til Fiber. Fiberkost er 40K'\r\nwhen Fiber_cost__c > 40000 \r\nand Fiber_cost__c<= 60000\r\nthen 'Migreres til Fiber. Fiberkost er 60K'\r\nwhen Fiber_cost__c > 60000 \r\nand Fiber_cost__c<= 80000\r\nthen 'Migreres til Fiber. Fiberkost er 80K'\r\nelse ''\r\nend",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -584,7 +584,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_137&#39;\r\n",
+            "formulaExpression": "'C360_137'\r\n",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -603,7 +603,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har 1 TBB aksess som kan migreres til Fiber. Se fiberkost på adressen på abonnementet.\r\n&lt;/li&gt;&lt;li&gt;\r\nSjekk mulighet for mersalg på safezone, mobil backup eller wifi connect.\r\n&lt;/li&gt;&lt;li&gt;\r\nHusk å oppdatere epost adresse.&#39;",
+            "formulaExpression": "'Kunden har 1 TBB aksess som kan migreres til Fiber. Se fiberkost på adressen på abonnementet.\r\n</li><li>\r\nSjekk mulighet for mersalg på safezone, mobil backup eller wifi connect.\r\n</li><li>\r\nHusk å oppdatere epost adresse.'",
             "label": "Sales tip description template_2",
             "name": "Sales_tip_description_template_2",
             "precision": 255,
@@ -642,7 +642,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;FiberandTB.Location_Owner__c&quot;, &#39;001&#39;))\r\n    then &#39;Yes&#39;\r\n    else &#39;No&#39;\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(\"FiberandTB.Location_Owner__c\", '001'))\r\n    then 'Yes'\r\n    else 'No'\r\n    end",
             "label": "Have more locations",
             "name": "Have_more_locations",
             "precision": 255,
@@ -661,7 +661,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -680,7 +680,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -719,7 +719,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;KS-I&#39;",
+            "formulaExpression": "'KS-I'",
             "label": "Channel",
             "name": "Channel",
             "precision": 10,
@@ -738,7 +738,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;&#39;",
+            "formulaExpression": "''",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 15,
@@ -1044,7 +1044,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(&quot;C360_137og.reporting_tag__c&quot;, &#39;_&#39;, &quot;TRANSFORM2.KurtID__c&quot;)",
+            "formulaExpression": "concat(\"C360_137og.reporting_tag__c\", '_', \"TRANSFORM2.KurtID__c\")",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1063,7 +1063,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_137og.Id&quot;",
+            "formulaExpression": "\"C360_137og.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1082,7 +1082,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM2.Id&quot;",
+            "formulaExpression": "\"TRANSFORM2.Id\"",
             "label": "SFB AccountId",
             "name": "SFB_AccountId",
             "precision": 18,
@@ -1101,7 +1101,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM2.KurtID__c&quot;",
+            "formulaExpression": "\"TRANSFORM2.KurtID__c\"",
             "label": "Kurt Id",
             "name": "Kurt_Id",
             "precision": 255,
@@ -1120,7 +1120,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM2.Channel&quot;",
+            "formulaExpression": "\"TRANSFORM2.Channel\"",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1139,7 +1139,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TRANSFORM2.Telesales_agency&quot;",
+            "formulaExpression": "\"TRANSFORM2.Telesales_agency\"",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1158,7 +1158,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_137og.Name&quot;",
+            "formulaExpression": "\"C360_137og.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1232,7 +1232,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -1251,7 +1251,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform21.Antall_lokasjoner_IA_mulighet_to_dimension&quot;",
+            "formulaExpression": "\"Transform21.Antall_lokasjoner_IA_mulighet_to_dimension\"",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -1304,7 +1304,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse2.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -1323,7 +1323,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse3.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -1342,7 +1342,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse4.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -1361,7 +1361,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse5.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -1380,7 +1380,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse6.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -1399,7 +1399,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse7.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -1418,7 +1418,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse8.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -1437,7 +1437,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse9.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -1456,7 +1456,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse10.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,

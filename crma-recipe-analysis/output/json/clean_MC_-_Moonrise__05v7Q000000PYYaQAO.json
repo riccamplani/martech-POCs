@@ -33,7 +33,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when HANDSET_GENERATION__c is null then\r\n    &#39;-&#39;\r\nelse\r\n    HANDSET_GENERATION__c\r\nend",
+            "formulaExpression": "case when HANDSET_GENERATION__c is null then\r\n    '-'\r\nelse\r\n    HANDSET_GENERATION__c\r\nend",
             "label": "Handset Generation",
             "name": "Handset_Generation",
             "precision": 3,
@@ -90,7 +90,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1&#39;",
+            "formulaExpression": "'1'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -147,7 +147,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;2&#39;",
+            "formulaExpression": "'2'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -203,7 +203,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;3&#39;",
+            "formulaExpression": "'3'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -259,7 +259,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;4&#39;",
+            "formulaExpression": "'4'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -317,7 +317,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;5&#39;",
+            "formulaExpression": "'5'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -374,7 +374,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;6&#39;",
+            "formulaExpression": "'6'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -431,7 +431,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;7&#39;",
+            "formulaExpression": "'7'",
             "label": "Scenario",
             "name": "Scenario",
             "precision": 1,
@@ -756,7 +756,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;1&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '1' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 1",
             "name": "Scenario_1",
             "precision": 10,
@@ -776,7 +776,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;2&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '2' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 2",
             "name": "Scenario_2",
             "precision": 10,
@@ -796,7 +796,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;3&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '3' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 3",
             "name": "Scenario_3",
             "precision": 10,
@@ -816,7 +816,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;4&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '4' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 4",
             "name": "Scenario_4",
             "precision": 10,
@@ -836,7 +836,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;5&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '5' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 5",
             "name": "Scenario_5",
             "precision": 10,
@@ -856,7 +856,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;6&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '6' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 6",
             "name": "Scenario_6",
             "precision": 10,
@@ -876,7 +876,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Scenario = &#39;7&#39; then\r\n    1\r\nelse\r\n    0\r\nend",
+            "formulaExpression": "case when Scenario = '7' then\r\n    1\r\nelse\r\n    0\r\nend",
             "label": "Scenario 7",
             "name": "Scenario_7",
             "precision": 10,

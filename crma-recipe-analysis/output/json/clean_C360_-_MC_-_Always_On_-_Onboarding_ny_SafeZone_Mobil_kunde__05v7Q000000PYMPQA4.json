@@ -10,16 +10,68 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "COM_CUSTOMER_EDM_RESERVATION__c",
           "mobile_service_segment__c",
           "Id",
+          "IsDeleted",
           "Name",
+          "RecordTypeId",
+          "ParentId",
+          "Phone",
+          "NumberOfEmployees",
+          "CreatedDate",
+          "IsPersonAccount",
+          "CompanyFamily__c",
+          "Concern__c",
+          "Country__c",
+          "CustomerType__c",
+          "DealerChain__c",
+          "DealerID__c",
+          "DealerSegment__c",
+          "DivisionSPOC__c",
+          "E_mail__c",
+          "TopLevelAccountID__c",
+          "Industry__c",
           "KurtID__c",
+          "LevelOfCertification__c",
+          "LevelOfComplexity__c",
+          "MDRevFixedL12__c",
+          "MDRevIDCL12__c",
+          "MDRevMobileL12__c",
+          "MDRevTotTelenorL12__c",
+          "MDSubsFixedBroadband__c",
+          "MDSubsMobileBroadband__c",
+          "MDSubsMobileVoice__c",
+          "MDSubsNordicConnectIPVPNAccess__c",
+          "MDSubsPOTSBLines__c",
+          "MDSubsPOTS__c",
+          "MRevFixedL12__c",
+          "MRevIDCL12__c",
+          "MRevMobileL12__c",
+          "MRevTotTelenorL12__c",
+          "MSubsFixedBroadband__c",
+          "MSubsMobileBroadband__c",
+          "MSubsMobileVoice__c",
+          "MSubsNordicConnectIPVPNAccess__c",
+          "MSubsPOTSBLines__c",
+          "MSubsPOTS__c",
+          "MarketArea__c",
+          "OrgNo__c",
+          "Min_Bedrift__c",
+          "Portfolio__c",
+          "PostalCity__c",
+          "PostalStreet__c",
+          "Segment__c",
           "StatusKURT__c",
+          "Mobile_Voice_Penetration__c",
           "NBR_FIXED_BBB_FIBER__c",
           "NBR_TBB_MOBIL__c",
           "SOURCE_ACCOUNT_ID_MOBIL__c",
+          "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
+          "NBR_SAFEZONE_MOBILE__c",
           "NBR_SAFEZONE_IA__c",
-          "SAFEZONE_MOB_START_DT__c"
+          "SAFEZONE_MOB_START_DT__c",
+          "Phonenumber_type__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -320,7 +372,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen (DRM_MARKET_PRODUCT_GROUP__c in(&#39;Bredbånd Bedrift Mobil&#39;,&#39;Trådløst Bredbånd Bedrift&#39;,&#39;Trådløst Bredbånd Bedrift IA&#39;,&#39;Trådløst Bredbånd Bedrift IA + WAN&#39;,&#39;Trådløst Bredbånd Bedrift WAN&#39; ) and\r\n(contains(Product_Name__c,&#39;B818&#39;)\r\nor contains(Terminal__c , &#39;B818&#39;)))\r\nthen &#39;0&#39;\r\nelse &#39;1&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen (DRM_MARKET_PRODUCT_GROUP__c in('Bredbånd Bedrift Mobil','Trådløst Bredbånd Bedrift','Trådløst Bredbånd Bedrift IA','Trådløst Bredbånd Bedrift IA + WAN','Trådløst Bredbånd Bedrift WAN' ) and\r\n(contains(Product_Name__c,'B818')\r\nor contains(Terminal__c , 'B818')))\r\nthen '0'\r\nelse '1'\r\nend",
             "label": "Can get SZ IA",
             "name": "Can_get_SZ_IA",
             "precision": 255,
@@ -489,7 +541,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen &quot;SZMobillas.NBR_TBB_MOBIL__c&quot; &gt;= 1 and &quot;SZMobillas.NBR_FIXED_BBB_FIBER__c&quot; &gt;= 1\r\nthen &#39;Fiber+TBB&#39;\r\nELSE \r\ncase\r\nwhen &quot;SZMobillas.NBR_TBB_MOBIL__c&quot; &gt;= 1 and &quot;SZMobillas.NBR_FIXED_BBB_FIBER__c&quot; &lt; 1\r\nThen &#39;TBB&#39;\r\nELSE\r\ncase\r\nwhen &quot;SZMobillas.NBR_TBB_MOBIL__c&quot; &lt; 1 and &quot;SZMobillas.NBR_FIXED_BBB_FIBER__c&quot; &gt;= 1\r\nthen &#39;Fiber&#39;\r\nELSE &#39;0&#39;\r\nend\r\nend\r\nend",
+            "formulaExpression": "case\r\nwhen \"SZMobillas.NBR_TBB_MOBIL__c\" >= 1 and \"SZMobillas.NBR_FIXED_BBB_FIBER__c\" >= 1\r\nthen 'Fiber+TBB'\r\nELSE \r\ncase\r\nwhen \"SZMobillas.NBR_TBB_MOBIL__c\" >= 1 and \"SZMobillas.NBR_FIXED_BBB_FIBER__c\" < 1\r\nThen 'TBB'\r\nELSE\r\ncase\r\nwhen \"SZMobillas.NBR_TBB_MOBIL__c\" < 1 and \"SZMobillas.NBR_FIXED_BBB_FIBER__c\" >= 1\r\nthen 'Fiber'\r\nELSE '0'\r\nend\r\nend\r\nend",
             "label": "Personalization_5",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -508,7 +560,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN &quot;SZMobillas.NBR_SAFEZONE_IA__c&quot; &gt;= 1 THEN &#39;1&#39;\r\nELSE &#39;0&#39; \r\nEND",
+            "formulaExpression": "CASE WHEN \"SZMobillas.NBR_SAFEZONE_IA__c\" >= 1 THEN '1'\r\nELSE '0' \r\nEND",
             "label": "Personalization_6",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -527,7 +579,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "trim(&quot;SZMobillas.SOURCE_ACCOUNT_ID_MOBIL__c&quot;)",
+            "formulaExpression": "trim(\"SZMobillas.SOURCE_ACCOUNT_ID_MOBIL__c\")",
             "label": "Personalization_1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -546,7 +598,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1400&#39;",
+            "formulaExpression": "'1400'",
             "label": "Personalization_2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -565,7 +617,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;1500&#39;",
+            "formulaExpression": "'1500'",
             "label": "Personalization_3",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -650,7 +702,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nCan_get_SZ_IA is not NULL then &#39;1&#39;\r\nelse\r\n&#39;0&#39;\r\nend",
+            "formulaExpression": "case when\r\nCan_get_SZ_IA is not NULL then '1'\r\nelse\r\n'0'\r\nend",
             "label": "Personalization_4",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -694,7 +746,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nLocation_Owner__c is not NULL then &#39;1&#39;\r\nelse\r\n&#39;0&#39;\r\nend",
+            "formulaExpression": "case when\r\nLocation_Owner__c is not NULL then '1'\r\nelse\r\n'0'\r\nend",
             "label": "Personalization 7",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -713,7 +765,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_36&#39;",
+            "formulaExpression": "'C360_36'",
             "label": "CampaignCD",
             "name": "CampaignCD",
             "precision": 255,
@@ -851,7 +903,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform9.Transform8.aftersuppr.Transform7.SZMobillas.KurtID__c&quot;",
+            "formulaExpression": "\"Transform9.Transform8.aftersuppr.Transform7.SZMobillas.KurtID__c\"",
             "label": "KurtID",
             "name": "KurtID",
             "precision": 255,
@@ -889,7 +941,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform9.Transform8.aftersuppr.Transform7.SZMobillas.Id&quot;",
+            "formulaExpression": "\"Transform9.Transform8.aftersuppr.Transform7.SZMobillas.Id\"",
             "label": "AccountID",
             "name": "AccountID",
             "precision": 18,
@@ -1311,7 +1363,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform1.Id&quot;",
+            "formulaExpression": "\"Transform1.Id\"",
             "label": "ContactID",
             "name": "ContactID",
             "precision": 255,
@@ -1330,7 +1382,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform1.MobilePhone&quot;",
+            "formulaExpression": "\"Transform1.MobilePhone\"",
             "label": "MobilePhone",
             "name": "MobilePhone",
             "precision": 255,
@@ -1349,7 +1401,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform1.Email&quot;",
+            "formulaExpression": "\"Transform1.Email\"",
             "label": "Email",
             "name": "Email",
             "precision": 255,
@@ -1542,7 +1594,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;HaveSZforp.SAFEZONE_PROFIL&quot;",
+            "formulaExpression": "\"HaveSZforp.SAFEZONE_PROFIL\"",
             "label": "Personalization 8",
             "name": "Personalization_8",
             "precision": 255,

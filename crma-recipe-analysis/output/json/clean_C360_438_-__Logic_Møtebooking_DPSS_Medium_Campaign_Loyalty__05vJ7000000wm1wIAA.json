@@ -46,8 +46,10 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "reporting_tag__c",
           "Id",
-          "CampaignID__c"
+          "CampaignID__c",
+          "Name"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -84,6 +86,17 @@
           "type": "analyticsDataset"
         },
         "fields": [
+          "Adresse5.Adresse5",
+          "Adresse3.Adresse3",
+          "Adresse8.Adresse8",
+          "Adresse10.Adresse10",
+          "Adresse6.Adresse6",
+          "Adresse1.Adresse1",
+          "Text_adress_1",
+          "Adresse4.Adresse4",
+          "Adresse9.Adresse9",
+          "Adresse2.Adresse2",
+          "Adresse7.Adresse7",
           "Location_Owner__c"
         ],
         "sampleDetails": {
@@ -100,7 +113,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -119,7 +132,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse2.Adresse2&quot;",
+            "formulaExpression": "\"Adresse2.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -138,7 +151,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse3.Adresse3&quot;",
+            "formulaExpression": "\"Adresse3.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -157,7 +170,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse4.Adresse4&quot;",
+            "formulaExpression": "\"Adresse4.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -176,7 +189,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse5.Adresse5&quot;",
+            "formulaExpression": "\"Adresse5.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -195,7 +208,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse6.Adresse6&quot;",
+            "formulaExpression": "\"Adresse6.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -214,7 +227,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse7.Adresse7&quot;",
+            "formulaExpression": "\"Adresse7.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -233,7 +246,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse8.Adresse8&quot;",
+            "formulaExpression": "\"Adresse8.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -252,7 +265,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse9.Adresse9&quot;",
+            "formulaExpression": "\"Adresse9.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -271,7 +284,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Adresse10.Adresse10&quot;",
+            "formulaExpression": "\"Adresse10.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -317,7 +330,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FiberandTB.Potensielle_IA_Adresser_to_dimension&quot;",
+            "formulaExpression": "\"FiberandTB.Potensielle_IA_Adresser_to_dimension\"",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -339,7 +352,14 @@
         },
         "fields": [
           "IA_full_new_sale_text_adresses",
-          "Location_Owner__c"
+          "Mulig_Installasjonsadresse",
+          "Location_Owner__c",
+          "Capacity_code__c",
+          "Coverage_4G_Plus__c",
+          "Coverage_4GP40__c",
+          "Coverage_5G_P__c",
+          "Coverage_4G__c",
+          "Fiber_cost__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -466,13 +486,16 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Response_Code__c",
           "Campaign__c",
           "Account__c",
+          "CampaignID__c",
           "CampaignName__c",
           "KSBID__c",
           "KurtID__c",
           "Campaign_Channels__c",
           "Personalization_1__c",
+          "Reason_Sub_code__c",
           "Salestip_Template__c",
           "Status__c",
           "tm_agency__c"
@@ -751,7 +774,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\ntm_agency__c=&#39;Medium DPS&#39; then &#39;Medium DPSS&#39;\r\nelse tm_agency__c\r\nend",
+            "formulaExpression": "case when\r\ntm_agency__c='Medium DPS' then 'Medium DPSS'\r\nelse tm_agency__c\r\nend",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

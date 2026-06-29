@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 18 | 15 | 3 | 17% |
+| LOAD_DATASET0 | Account | connectedDataset | 18 | 18 | 0 | 0% |
 | LOAD_DATASET14 | Account | connectedDataset | 4 | 4 | 0 | 0% |
-| **TOTAL** | | | **22** | **19** | **3** | **14%** |
+| **TOTAL** | | | **22** | **22** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -17,8 +17,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 18
-- **Fields used:** 15
-- **Fields unused:** 3
+- **Fields used:** 18
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
@@ -30,21 +30,18 @@
 | `MBN_PROD_KO_ACT_DATE__c` | FILTER48_copy0_copy0 (filter), FILTER48_copy0_copy0_copy0 (filter), FILTER48_copy0_copy0_copy1 (filter) |
 | `MBN_PROD_SVARSGRUPER_ACT_DATE__c` | FILTER48_copy0_copy0 (filter), FILTER48_copy0_copy0_copy0 (filter), FILTER48_copy0_copy0_copy1 (filter) |
 | `MPORT_FLG__c` | FILTER65 (filter) |
-| `Migration_flag__c` | FILTER54 (filter), FORMULA19_copy1 (formula) |
+| `Migration_flag__c` | FILTER54 (filter), APPEND0 (appendV2), APPEND1 (appendV2), APPEND2 (appendV2), APPEND7 (appendV2) +2 more |
 | `Mobile_Voice_Penetration__c` | FILTER6_copy0_copy0_copy0 (filter), FILTER6_copy0 (filter) |
 | `NBR_MBN_AVANSERT_SENTRALBORD__c` | FILTER48_copy0_copy0 (filter), FILTER48_copy0_copy0_copy0 (filter), FILTER48_copy0_copy0_copy1 (filter) |
 | `NBR_MBN_SENTRALBORD__c` | FILTER48_copy0_copy0 (filter), FILTER48_copy0_copy0_copy0 (filter), FILTER48_copy0_copy0_copy1 (filter) |
 | `NBR_MBN__c` | FILTER46_copy0 (filter), FILTER46_copy0_copy0 (filter), FILTER46_copy0_copy1 (filter), FILTER46_copy0_copy0_copy0 (filter) |
 | `NumberOfEmployees` | FILTER3_copy0_copy0_copy0_copy0 (filter) |
+| `SUM_POTENTIAL__c` |  |
+| `Segment__c` |  |
+| `Service_segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0 (filter) |
 | `TSP_Dealer__c` | FILTER63 (filter) |
 | `mobile_service_segment__c` | FILTER3_copy0_copy0_copy0_copy0 (filter) |
-
-#### Fields to ELIMINATE
-
-- `SUM_POTENTIAL__c`
-- `Segment__c`
-- `Service_segment__c`
 
 ### Account (`LOAD_DATASET14`)
 
@@ -60,4 +57,4 @@
 | `Diff_new_callplan_rev__c` | FORMULA23_copy0 (formula) |
 | `Id` | FORMULA9_copy0 (formula), FORMULA9_copy0_copy0 (formula), FORMULA9_copy0_copy1 (formula), FORMULA9_copy0_copy1_copy0 (formula), FORMULA10_copy0 (formula) +15 more |
 | `KurtID__c` | FORMULA8_copy0 (formula), FORMULA8_copy0_copy0 (formula), FORMULA8_copy0_copy1 (formula), FORMULA8_copy0_copy1_copy0 (formula), FORMULA11_copy0 (formula) +3 more |
-| `Migration_flag__c` | FORMULA19_copy0 (formula), FORMULA19_copy0_copy0 (formula), FORMULA19_copy0_copy0_copy0 (formula), FORMULA19_copy0_copy0_copy0_copy0 (formula), DROP_FIELDS11_copy0 (schema) +4 more |
+| `Migration_flag__c` | FORMULA19_copy0 (formula), FORMULA19_copy0_copy0 (formula), FORMULA19_copy0_copy0_copy0 (formula), FORMULA19_copy0_copy0_copy0_copy0 (formula), DROP_FIELDS11_copy0 (schema) +9 more |

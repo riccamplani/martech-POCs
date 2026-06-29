@@ -7,8 +7,8 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET4 | Account | connectedDataset | 6 | 5 | 1 | 17% |
-| **TOTAL** | | | **6** | **5** | **1** | **17%** |
+| LOAD_DATASET4 | Account | connectedDataset | 6 | 6 | 0 | 0% |
+| **TOTAL** | | | **6** | **6** | **0** | **0%** |
 
 ## Detail per Source Object
 
@@ -16,19 +16,16 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 6
-- **Fields used:** 5
-- **Fields unused:** 1
+- **Fields used:** 6
+- **Fields unused:** 0
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `COM_CUSTOMER_EDM_RESERVATION__c` | FILTER4 (filter) |
-| `Id` | JOIN1 (join) |
+| `Id` | JOIN1 (join), JOIN2 (join), JOIN3 (join), JOIN5 (join), JOIN4 (join) +5 more |
+| `KurtID__c` | DROP_FIELDS1 (schema), DROP_FIELDS12 (schema) |
 | `Segment__c` | FILTER2 (filter) |
 | `StatusKURT__c` | FILTER2 (filter) |
 | `TSP_Dealer__c` | FILTER3 (filter) |
-
-#### Fields to ELIMINATE
-
-- `KurtID__c`
