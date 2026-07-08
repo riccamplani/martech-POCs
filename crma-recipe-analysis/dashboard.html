@@ -472,24 +472,9 @@ let OVERRIDES = {};
 const REPO_OWNER = 'riccamplani';
 const REPO_NAME = 'martech-POCs';
 const OVERRIDES_PATH = 'docs/crma-dashboard/overrides.json';
+const GH_TOKEN = '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';
 let _overridesSha = null;
 let _savingOverrides = false;
-
-function getGitHubToken() {
-  return localStorage.getItem('crma_github_token') || '';
-}
-
-function promptForToken() {
-  const token = prompt(
-    'Enter a GitHub Personal Access Token (with "repo" scope) to save overrides to the repository.\n\n' +
-    'Create one at: https://github.com/settings/tokens'
-  );
-  if (token && token.trim()) {
-    localStorage.setItem('crma_github_token', token.trim());
-    return token.trim();
-  }
-  return null;
-}
 
 function serializeOverrides() {
   const out = { _comment: "Fields marked as required by campaign developers.", overrides: {} };
@@ -504,7 +489,7 @@ async function loadOverrides() {
   try {
     const resp = await fetch(
       'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + OVERRIDES_PATH,
-      { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' }
+      { headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' }
     );
     if (resp.ok) {
       const meta = await resp.json();
@@ -541,11 +526,6 @@ function toggleOverride(obj, field) {
 
 async function saveOverrides() {
   if (_savingOverrides) return;
-  let token = getGitHubToken();
-  if (!token) {
-    token = promptForToken();
-    if (!token) return;
-  }
   _savingOverrides = true;
   const btn = document.getElementById('save-overrides-btn');
   btn.textContent = 'Saving...';
@@ -564,7 +544,7 @@ async function saveOverrides() {
       {
         method: 'PUT',
         headers: {
-          'Authorization': 'token ' + token,
+          'Authorization': 'token ' + GH_TOKEN,
           'Accept': 'application/vnd.github.v3+json',
           'Content-Type': 'application/json'
         },
@@ -573,8 +553,7 @@ async function saveOverrides() {
     );
 
     if (resp.status === 401 || resp.status === 403) {
-      localStorage.removeItem('crma_github_token');
-      alert('GitHub token is invalid or expired. Please try again with a valid token.');
+      alert('GitHub token is invalid or expired. Please contact the repository admin to update the token.');
       return;
     }
     if (!resp.ok) {
