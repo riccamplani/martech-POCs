@@ -1,4 +1,5 @@
 {
+  "version": "67.0",
   "nodes": {
     "LOAD_DATASET1": {
       "action": "load",
@@ -63,6 +64,7 @@
           "Campaign_Score_Propensity_Value__c",
           "Reason_Sub_code__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -132,6 +134,7 @@
           "Coverage_4G__c",
           "Fiber_cost__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -184,6 +187,7 @@
           "Reservation_Date_IA_Outbound__c",
           "Has_Subscriptions_Actual__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -202,6 +206,7 @@
         "fields": [
           "Id"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -220,6 +225,7 @@
         "fields": [
           "Location_Owner__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -238,6 +244,7 @@
         "fields": [
           "Key_Suppressions_Opp_Fib_Flg"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -256,6 +263,7 @@
         "fields": [
           "Key_suppression_cancelled_Case_fiber_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -274,6 +282,7 @@
         "fields": [
           "Key_suppression_open_Case_fiber_tbb_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -292,6 +301,7 @@
         "fields": [
           "Key_Suppressions_Opp_Fib_leads"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -491,7 +501,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Fiberleads.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(\"Fiberleads.Key_Suppressions_Opp_Fib_leads\", '001'))\r\n    then 1\r\n    else 0\r\n    end",
             "label": "Opportunity_Fiber_leads",
             "name": "Opportunity_Fiber_leads",
             "precision": 10,
@@ -511,7 +521,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg1.Key_suppression_open_Case_fiber_tbb_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "formulaExpression": "case \r\n\twhen (contains(\"Casenysalg1.Key_suppression_open_Case_fiber_tbb_newsale\", '001'))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
             "label": "Case_IA_Open",
             "name": "Case_IA_Open",
             "precision": 10,
@@ -531,7 +541,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Opportunit.Key_Suppressions_Opp_Fib_Flg&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "formulaExpression": "case \r\n\twhen (contains(\"Opportunit.Key_Suppressions_Opp_Fib_Flg\", '001'))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
             "label": "Opportunity_Fiber_flag",
             "name": "Opportunity_Fiber_flag",
             "precision": 10,
@@ -551,7 +561,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Casenysalg.Key_suppression_cancelled_Case_fiber_newsale&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "formulaExpression": "case \r\n\twhen (contains(\"Casenysalg.Key_suppression_cancelled_Case_fiber_newsale\", '001'))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
             "label": "Case_canceled",
             "name": "Case_canceled",
             "precision": 10,
@@ -571,7 +581,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Transform0.Blacklist&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(\"Transform0.Blacklist\", '001'))\r\n    then 1\r\n    else 0\r\n    end",
             "label": "Blacklist",
             "name": "Blacklist",
             "precision": 10,
@@ -591,7 +601,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Suppressio.Key_Suppressions_Opp_Fib_leads&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(\"Suppressio.Key_Suppressions_Opp_Fib_leads\", '001'))\r\n    then 1\r\n    else 0\r\n    end",
             "label": "TM_Suppression",
             "name": "TM_Suppression",
             "precision": 10,
@@ -611,7 +621,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen &quot;CompanyFamily__c&quot;=&#39;TELENORBUTIKKEN O365&#39;\r\n    then 1\r\n    else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen \"CompanyFamily__c\"='TELENORBUTIKKEN O365'\r\n    then 1\r\n    else 0\r\n    end",
             "label": "TN_butikken",
             "name": "TN_butikken",
             "precision": 10,
@@ -631,7 +641,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when&quot;CustomerType__c&quot; = &#39;BRL&#39;\r\nthen 1\r\nwhen &quot;CustomerType__c&quot; = &#39;ESEK&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; = &#39;68201&#39; then 1\r\nwhen &quot;NACE_Subclass_Code__c&quot; =&#39;68209&#39; then 1\r\nwhen (&quot;CustomerType__c&quot; =&#39;FLI&#39; and &quot;NumberOfEmployees&quot; = 0)\r\nthen 1\r\nelse 0\r\nend\r\n",
+            "formulaExpression": "case when\"CustomerType__c\" = 'BRL'\r\nthen 1\r\nwhen \"CustomerType__c\" = 'ESEK' then 1\r\nwhen \"NACE_Subclass_Code__c\" = '68201' then 1\r\nwhen \"NACE_Subclass_Code__c\" ='68209' then 1\r\nwhen (\"CustomerType__c\" ='FLI' and \"NumberOfEmployees\" = 0)\r\nthen 1\r\nelse 0\r\nend\r\n",
             "label": "Borettslag_FLI",
             "name": "Borettslag_FLI",
             "precision": 10,
@@ -651,7 +661,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;StatusKURT__c&quot;= &#39;K - Personen/foretaket er OK, levende&#39;\r\nthen 0 else 1\r\nend",
+            "formulaExpression": "case when\r\n\"StatusKURT__c\"= 'K - Personen/foretaket er OK, levende'\r\nthen 0 else 1\r\nend",
             "label": "Ikke_levende kunder",
             "name": "Ikke_levende_kunder",
             "precision": 10,
@@ -671,7 +681,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;VisitingCounty__c&quot;=&#39;Svalbard&#39; then 1 else 0\r\nend",
+            "formulaExpression": "case when\r\n\"VisitingCounty__c\"='Svalbard' then 1 else 0\r\nend",
             "label": "Svalbard",
             "name": "Svalbard",
             "precision": 10,
@@ -691,7 +701,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen &quot;External_Credit_Rating__c&quot; =&#39;VHR&#39; then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case \r\nwhen \"External_Credit_Rating__c\" ='VHR' then 1\r\nelse 0\r\nend",
             "label": "creditrating",
             "name": "creditrating",
             "precision": 10,
@@ -711,7 +721,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Name&quot;, &#39;DØDSBO&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "formulaExpression": "case \r\n\twhen (contains(\"Name\", 'DØDSBO'))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
             "label": "Dødsbo",
             "name": "Dodsbo",
             "precision": 10,
@@ -731,7 +741,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;COM_CUSTOMER_TM_RESERVATION__c&quot; = &#39;true&#39; then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case when\r\n\"COM_CUSTOMER_TM_RESERVATION__c\" = 'true' then 1\r\nelse 0\r\nend",
             "label": "tm_reservation",
             "name": "tm_reservation",
             "precision": 10,
@@ -751,7 +761,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;Phonenumber_type__c&quot; = &#39;mobil&#39; then 0\r\nwhen &quot;Phonenumber_type__c&quot; =&#39;pots&#39; then 0\r\nelse 1\r\nend",
+            "formulaExpression": "case when\r\n\"Phonenumber_type__c\" = 'mobil' then 0\r\nwhen \"Phonenumber_type__c\" ='pots' then 0\r\nelse 1\r\nend",
             "label": "phonetype not dialer",
             "name": "Phone_type_not_dialer",
             "precision": 10,
@@ -771,7 +781,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n&quot;Has_Subscriptions_Actual__c&quot;=&#39;false&#39; then 0\r\nelse 1\r\nend",
+            "formulaExpression": "case when\r\n\"Has_Subscriptions_Actual__c\"='false' then 0\r\nelse 1\r\nend",
             "label": "Has Subscription",
             "name": "Has_subscription",
             "precision": 10,
@@ -791,7 +801,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen \r\n    Has_subscription = 0 and\r\n        (contains(&quot;Name&quot;, &#39;HOLDING&#39;))\r\n    then 1\r\n    when \r\n     Has_subscription = 0 and\r\n    (contains(&quot;Name&quot;, &#39;Holding&#39;))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
+            "formulaExpression": "case \r\n\twhen \r\n    Has_subscription = 0 and\r\n        (contains(\"Name\", 'HOLDING'))\r\n    then 1\r\n    when \r\n     Has_subscription = 0 and\r\n    (contains(\"Name\", 'Holding'))\r\n    then 1\r\n    else 0\r\n    end\r\n\t",
             "label": "Holding",
             "name": "Holding",
             "precision": 10,
@@ -811,7 +821,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nWhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Andre kombinerte tjenester tilknyttet eiendomsdrift&#39; then 1\r\nWhen Has_subscription =0 and\r\n &quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsforvaltning&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Eiendomsmegling&#39; then 1\r\nwhen Has_subscription =0 and \r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Finansielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Kjøp og salg av egen fast eiendom&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Leasing av immateriell eiendom og lignende produkter&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Spesielle holdingselskaper&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utleie av egen eller leid fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;Utvikling og salg av egen fast eiendom ellers&#39; then 1\r\nwhen Has_subscription =0 and\r\n&quot;NACE_Subclass_Description__c&quot; =&#39;unntatt opphavsrettsbeskyttede verker&#39; then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case \r\nWhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Andre kombinerte tjenester tilknyttet eiendomsdrift' then 1\r\nWhen Has_subscription =0 and\r\n \"NACE_Subclass_Description__c\" ='Eiendomsforvaltning' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Eiendomsmegling' then 1\r\nwhen Has_subscription =0 and \r\n\"NACE_Subclass_Description__c\" ='Finansielle holdingselskaper' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Kjøp og salg av egen fast eiendom' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Leasing av immateriell eiendom og lignende produkter' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Spesielle holdingselskaper' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Utleie av egen eller leid fast eiendom ellers' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='Utvikling og salg av egen fast eiendom ellers' then 1\r\nwhen Has_subscription =0 and\r\n\"NACE_Subclass_Description__c\" ='unntatt opphavsrettsbeskyttede verker' then 1\r\nelse 0\r\nend",
             "label": "Eiendom",
             "name": "Eiendom",
             "precision": 10,
@@ -851,7 +861,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Reservation_Date_IA_Outbound__c&quot; &gt; NOW() then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case when \"Reservation_Date_IA_Outbound__c\" > NOW() then 1\r\nelse 0\r\nend",
             "label": "Outbound_Contact_recency",
             "name": "Outbound_Contact_recency",
             "precision": 10,
@@ -911,7 +921,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n&quot;SubsMobileVoice__c&quot;&gt;= 1\r\nthen 1 else 0\r\nend",
+            "formulaExpression": "case when \r\n\"SubsMobileVoice__c\">= 1\r\nthen 1 else 0\r\nend",
             "label": "HaveMV",
             "name": "HaveMV",
             "precision": 10,
@@ -974,7 +984,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nHas_subscription = 1\r\nthen &#39;Er Telenorkunde&#39;\r\nelse &#39;Er ikke Telenorkunde&#39;\r\nend",
+            "formulaExpression": "case when\r\nHas_subscription = 1\r\nthen 'Er Telenorkunde'\r\nelse 'Er ikke Telenorkunde'\r\nend",
             "label": "Type_kunde",
             "name": "Type_kunde",
             "precision": 255,
@@ -993,7 +1003,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(&quot;Id&quot;, &#39;001&#39;))\r\n    then 1\r\n    else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(\"Id\", '001'))\r\n    then 1\r\n    else 0\r\n    end",
             "label": "Account",
             "name": "Account",
             "precision": 10,
@@ -1013,7 +1023,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen &quot;Has_subscription&quot; = 0\r\nand &quot;CustomerType__c&quot; = &#39;ENK&#39; and Have_buildingtype =&#39;1&#39; then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case \r\nwhen \"Has_subscription\" = 0\r\nand \"CustomerType__c\" = 'ENK' and Have_buildingtype ='1' then 1\r\nelse 0\r\nend",
             "label": "ENK ikke TN kunde buildningtype",
             "name": "ENK_ikke_TN_kunde",
             "precision": 10,
@@ -1033,7 +1043,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand &quot;CustomerType__c&quot; = &#39;VPFO&#39; and &quot;NumberOfEmployees&quot; = 0 then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case \r\nwhen Has_subscription = 0\r\nand \"CustomerType__c\" = 'VPFO' and \"NumberOfEmployees\" = 0 then 1\r\nelse 0\r\nend",
             "label": "VPFO ikke TN 0 ansatte",
             "name": "VPFO_ikke_tn_0_ansatte",
             "precision": 10,
@@ -1053,7 +1063,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Fiberkost1.Fiber_cost__c&quot; = 10000 then &#39;10K&#39;\r\nwhen &quot;Fiberkost1.Fiber_cost__c&quot; = 40000 then &#39;40K&#39;\r\nelse &#39;60K&#39;\r\nend",
+            "formulaExpression": "case when \"Fiberkost1.Fiber_cost__c\" = 10000 then '10K'\r\nwhen \"Fiberkost1.Fiber_cost__c\" = 40000 then '40K'\r\nelse '60K'\r\nend",
             "label": "Fibercost gruppe",
             "name": "Fibercost_gruppe",
             "precision": 255,
@@ -1072,7 +1082,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when contains(&quot;FiberTBBha.Location_Owner__c&quot;, &#39;001&#39;) then &#39;1&#39; else &#39;0&#39;\r\nend",
+            "formulaExpression": "case when contains(\"FiberTBBha.Location_Owner__c\", '001') then '1' else '0'\r\nend",
             "label": "Have_buildingtype",
             "name": "Have_buildingtype",
             "precision": 255,
@@ -1291,7 +1301,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "datediff(Reservation_Date_IA_Outbound__c, &quot;Aggregate0.Response_Date__c&quot;)",
+            "formulaExpression": "datediff(Reservation_Date_IA_Outbound__c, \"Aggregate0.Response_Date__c\")",
             "label": "Diff_reserv_response",
             "name": "Diff_reserv_response",
             "precision": 10,
@@ -1364,7 +1374,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen Type_kunde=&#39;Er ikke Telenorkunde&#39;\r\nthen &#39;C360_155&#39;\r\nwhen Type_kunde=&#39;Er Telenorkunde&#39;\r\nthen &#39;C360_156&#39;\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen Type_kunde='Er ikke Telenorkunde'\r\nthen 'C360_155'\r\nwhen Type_kunde='Er Telenorkunde'\r\nthen 'C360_156'\r\nelse ''\r\nend",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -1383,7 +1393,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;For TBB: Husk å dobbelsjekke kapasitet.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&lt;/li&gt;&lt;li&gt;Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHUSK å logge riktig telefonnummer i Salesforce, under details og Alternate Phone&#39;",
+            "formulaExpression": "'{Personalization_1__c}</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.</li><li>For TBB: Husk å dobbelsjekke kapasitet.</li><li></li><li>Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.</li><li>Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.</li><li>\r\n</li><li>\r\nHUSK å logge riktig telefonnummer i Salesforce, under details og Alternate Phone'",
             "label": "Sales tip description template_1",
             "name": "Sales_tip_description_template_1",
             "precision": 9999,
@@ -1413,6 +1423,7 @@
           "Coverage_4G__c",
           "Fiber_cost__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1442,6 +1453,7 @@
           "Adresse7.Adresse7",
           "Location_Owner__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1462,6 +1474,7 @@
           "Antall_lokasjoner_mersalg_fiber",
           "Antall_Lokasjoner_mersalg_TBB"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1617,6 +1630,7 @@
           "Name",
           "CampaignID__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1695,7 +1709,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;Campaign.reporting_tag__c&quot;, &#39;_&#39;, &quot;KurtID__c&quot;)",
+            "formulaExpression": "concat( \"Campaign.reporting_tag__c\", '_', \"KurtID__c\")",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1714,7 +1728,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Campaign.Id&quot;",
+            "formulaExpression": "\"Campaign.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1771,7 +1785,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1790,7 +1804,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Neras&#39;",
+            "formulaExpression": "'Neras'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1809,7 +1823,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Campaign.Name&quot;",
+            "formulaExpression": "\"Campaign.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1882,7 +1896,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
+            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -1901,7 +1915,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse2.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -1920,7 +1934,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse3.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -1939,7 +1953,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse4.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -1958,7 +1972,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse5.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -1977,7 +1991,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse6.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -1996,7 +2010,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse7.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -2015,7 +2029,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse8.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -2034,7 +2048,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse9.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -2053,7 +2067,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
+            "formulaExpression": "\"Fibernewsa1.Adresse10.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -2072,7 +2086,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform2.Potensielle_IA_Adresser_to_dimension&quot;",
+            "formulaExpression": "\"Transform2.Potensielle_IA_Adresser_to_dimension\"",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -2114,6 +2128,7 @@
         "fields": [
           "Key_Suppressions_Opp_Fib_leads"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -2140,7 +2155,6 @@
       ]
     }
   },
-  "runMode": "full",
   "ui": {
     "nodes": {
       "LOAD_DATASET1": {
@@ -3211,6 +3225,5 @@
       }
     ],
     "hiddenColumns": []
-  },
-  "version": "62.0"
+  }
 }

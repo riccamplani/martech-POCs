@@ -1,4 +1,5 @@
 {
+  "version": "67.0",
   "nodes": {
     "LOAD_DATASET0": {
       "action": "load",
@@ -30,6 +31,7 @@
           "Phonenumber_type__c",
           "Has_Subscriptions_Actual__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -48,6 +50,7 @@
         "fields": [
           "Location_Owner__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -244,6 +247,7 @@
           "Coverage_4G__c",
           "Fiber_cost__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -333,6 +337,7 @@
         "fields": [
           "Key_Suppressions_Innbound_Fiber_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -351,6 +356,7 @@
         "fields": [
           "Key_Suppressions_Outbound_Fiber_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -369,6 +375,7 @@
         "fields": [
           "Key_Suppressions_TM_Fiber_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -387,6 +394,7 @@
         "fields": [
           "Key_Suppressions_Inbound_TBB_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -405,6 +413,7 @@
         "fields": [
           "Key_Suppressions_Outbound_TBB_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -423,6 +432,7 @@
         "fields": [
           "Key_Suppressions_TM_TBB_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -626,7 +636,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_Fiber_Inbound",
             "name": "Key_Qualified_Fiber_Inbound",
             "precision": 18,
@@ -661,7 +671,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_Fiber_Outbound",
             "name": "Key_Qualified_Fiber_Outbound",
             "precision": 18,
@@ -867,7 +877,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_Fiber_TM",
             "name": "Key_Qualified_Fiber_TM",
             "precision": 18,
@@ -918,7 +928,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_TBB_Inbound",
             "name": "Key_Qualified_TBB_Inbound",
             "precision": 18,
@@ -969,7 +979,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_TBB_Outbound",
             "name": "Key_Qualified_TBB_Outbound",
             "precision": 18,
@@ -1020,7 +1030,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cannotgetf.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_TBB_TM",
             "name": "Key_Qualified_TBB_TM",
             "precision": 18,
@@ -1075,6 +1085,7 @@
         "fields": [
           "Key_Suppressions_Opp_Fib_leads"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1130,7 +1141,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id&quot;",
+            "formulaExpression": "\"cangetfibe.CangetFib1.HavenotIA.SEogAgrol.Id\"",
             "label": "Key_Qualified_Fiber_TM_wo_phone",
             "name": "Key_Qualified_Fiber_TM_wo_phone",
             "precision": 18,
@@ -1236,7 +1247,6 @@
       ]
     }
   },
-  "runMode": "full",
   "ui": {
     "nodes": {
       "LOAD_DATASET0": {
@@ -1994,6 +2004,5 @@
       }
     ],
     "hiddenColumns": []
-  },
-  "version": "62.0"
+  }
 }

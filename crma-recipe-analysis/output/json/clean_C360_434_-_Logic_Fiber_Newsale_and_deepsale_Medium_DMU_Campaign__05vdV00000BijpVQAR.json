@@ -1,4 +1,5 @@
 {
+  "version": "67.0",
   "nodes": {
     "LOAD_DATASET0": {
       "action": "load",
@@ -6,6 +7,7 @@
         "dataset": {
           "connectionName": "SFDC_LOCAL_SEGMENTATION",
           "label": "Account",
+          "mode": "SYNCED",
           "sourceObjectName": "Account",
           "type": "connectedDataset"
         },
@@ -25,6 +27,7 @@
           "DPSS_DMU__c",
           "Is_DMU__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -50,6 +53,7 @@
           "Coverage_4G__c",
           "Fiber_cost__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -70,6 +74,7 @@
           "Antall_lokasjoner_mersalg_fiber",
           "Antall_Lokasjoner_mersalg_TBB"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -110,7 +115,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Is_DMU__c =&#39;true&#39; then Id\r\nelse DPSS_DMU__c\r\nend",
+            "formulaExpression": "case when Is_DMU__c ='true' then Id\r\nelse DPSS_DMU__c\r\nend",
             "label": "DMU_calculation",
             "name": "DMU_calculation",
             "precision": 18,
@@ -149,7 +154,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen Industry__c in (&#39;Media&#39;,&#39;Transport/Samferdsel/Post&#39;,&#39;Varehandel/Butikk/Hotell/Restaurant&#39;)\r\nthen &#39;Klynge1&#39;\r\nwhen Industry__c in (&#39;Bygg/Anlegg&#39;,&#39;Industri/Kraftforsyning&#39;, &#39;Primærnæring: Jordbruk/Skogbruk, Fiske/Bergverk&#39;)\r\nthen &#39;Klynge2&#39;\r\nwhen Industry__c in (&#39;Bank/Finans/Forsikring&#39;, &#39;Forretningsmessig tjenesteyting&#39;, &#39;IT/Telekom&#39;)\r\nthen &#39;Klynge3&#39;\r\nwhen Industry__c in (&#39;Annen&#39;,&#39;Helse/Sosial&#39;,&#39;Offentlig forvaltning/Politi/Forsvar&#39;,&#39;Shipping/Olje/Offshore&#39;,&#39;Undervisning/Forskning&#39;)\r\nthen &#39;Klynge4&#39;\r\nelse &#39;Uten Klynge&#39;\r\nend",
+            "formulaExpression": "case \r\nwhen Industry__c in ('Media','Transport/Samferdsel/Post','Varehandel/Butikk/Hotell/Restaurant')\r\nthen 'Klynge1'\r\nwhen Industry__c in ('Bygg/Anlegg','Industri/Kraftforsyning', 'Primærnæring: Jordbruk/Skogbruk, Fiske/Bergverk')\r\nthen 'Klynge2'\r\nwhen Industry__c in ('Bank/Finans/Forsikring', 'Forretningsmessig tjenesteyting', 'IT/Telekom')\r\nthen 'Klynge3'\r\nwhen Industry__c in ('Annen','Helse/Sosial','Offentlig forvaltning/Politi/Forsvar','Shipping/Olje/Offshore','Undervisning/Forskning')\r\nthen 'Klynge4'\r\nelse 'Uten Klynge'\r\nend",
             "label": "Klynge_Medium",
             "name": "Klynge_Medium",
             "precision": 255,
@@ -337,7 +342,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;FiberandTB.Antall_lokasjoner_mersalg_fiber&quot; + &quot;FiberandTB.Antall_Lokasjoner_mersalg_TBB&quot;",
+            "formulaExpression": "\"FiberandTB.Antall_lokasjoner_mersalg_fiber\" + \"FiberandTB.Antall_Lokasjoner_mersalg_TBB\"",
             "label": "SUM antall lokasjoner IA",
             "name": "SUM_antall_lokasjoner_IA",
             "precision": 10,
@@ -357,7 +362,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when SUM_antall_lokasjoner_IA &gt;= 1\r\nthen 1\r\nelse 0\r\nend",
+            "formulaExpression": "case when SUM_antall_lokasjoner_IA >= 1\r\nthen 1\r\nelse 0\r\nend",
             "label": "Har IA potensiale",
             "name": "Har_IA_potensiale",
             "precision": 10,
@@ -486,6 +491,7 @@
           "COVERAGE_START_DATE_5G__c",
           "BUILDING_TYPE_LEVEL_2__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1030,7 +1036,7 @@
         "fields": [
           {
             "defaultValue": ".",
-            "formulaExpression": "case Street_address__c\r\n\twhen Street_address__c =&#39;&#39;\r\n\tthen &#39;.&#39;\r\n    else\r\n\tStreet_address__c\r\nend",
+            "formulaExpression": "case Street_address__c\r\n\twhen Street_address__c =''\r\n\tthen '.'\r\n    else\r\n\tStreet_address__c\r\nend",
             "label": "street calculated",
             "name": "street_calculated",
             "precision": 255,
@@ -1098,7 +1104,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen street_calculated =&#39;.&#39;\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,&#39;,&#39;,Postal_address__c)\r\nend",
+            "formulaExpression": "case \r\nwhen street_calculated ='.'\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,',',Postal_address__c)\r\nend",
             "label": "Full_Adress_1",
             "name": "Full_Adress_1",
             "precision": 700,
@@ -1117,7 +1123,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then &#39;Fiber (10K)&#39;\r\n    when (Fiber_cost__c = 40000)\r\n    Then &#39;Fiber (40K)&#39;\r\n    when (Fiber_cost__c between 40000 and 60000)\r\n    Then &#39;Fiber (60K)&#39;\r\n    when (Fiber_cost__c between 60000 and 500000)\r\n    then concat(&#39;Fiberkost &#39;,Fiber_cost__c_to_dimension)\r\n\telse\r\n\t&#39;Fiber ikke tilgjengelig&#39;\r\nend",
+            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then 'Fiber (10K)'\r\n    when (Fiber_cost__c = 40000)\r\n    Then 'Fiber (40K)'\r\n    when (Fiber_cost__c between 40000 and 60000)\r\n    Then 'Fiber (60K)'\r\n    when (Fiber_cost__c between 60000 and 500000)\r\n    then concat('Fiberkost ',Fiber_cost__c_to_dimension)\r\n\telse\r\n\t'Fiber ikke tilgjengelig'\r\nend",
             "label": "Fibercost_text_1",
             "name": "Fibercost_text_1",
             "precision": 255,
@@ -1136,7 +1142,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Capacity_code__c &gt;= 1 and Coverage_5G_P__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 400 MB&#39;\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c &gt;= 1 and Coverage_4GP40__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 60 MB&#39;\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c &gt;= 1 and Coverage_4G_Plus__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 40 MB&#39;\r\n    else\r\n    case\r\n   \twhen Capacity_code__c &gt;= 1 and Coverage_4G__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 20 MB&#39;\r\n\telse\r\n\t&#39;Trådløst Bredbånd Bedrift ikke tilgjengelig&#39;\r\n    end\r\n    end\r\n end\r\n  end",
+            "formulaExpression": "case \r\n\twhen Capacity_code__c >= 1 and Coverage_5G_P__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 400 MB'\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c >= 1 and Coverage_4GP40__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 60 MB'\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c >= 1 and Coverage_4G_Plus__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 40 MB'\r\n    else\r\n    case\r\n   \twhen Capacity_code__c >= 1 and Coverage_4G__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 20 MB'\r\n\telse\r\n\t'Trådløst Bredbånd Bedrift ikke tilgjengelig'\r\n    end\r\n    end\r\n end\r\n  end",
             "label": "TBB_coverage_text_1",
             "name": "TBB_coverage_text_1",
             "precision": 255,
@@ -1155,7 +1161,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(Full_Adress_1,&#39;: &#39;,Fibercost_text_1,&#39; - &#39;,TBB_coverage_text_1)",
+            "formulaExpression": "concat(Full_Adress_1,': ',Fibercost_text_1,' - ',TBB_coverage_text_1)",
             "label": "IA_full_new_sale_text_adresses_1",
             "name": "IA_full_new_sale_text_adresses_1",
             "precision": 700,
@@ -1209,7 +1215,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen street_calculated =&#39;.&#39;\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,&#39;,&#39;,Postal_address__c)\r\nend",
+            "formulaExpression": "case \r\nwhen street_calculated ='.'\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,',',Postal_address__c)\r\nend",
             "label": "Mulig Installasjonsadresse_1",
             "name": "Mulig_Installasjonsadresse_1",
             "precision": 255,
@@ -1228,7 +1234,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse1",
             "name": "Adresse1",
             "precision": 255,
@@ -1309,7 +1315,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse1",
             "name": "Adresse1",
             "precision": 255,
@@ -1328,7 +1334,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 2\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 2\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse2",
             "name": "Adresse2",
             "precision": 255,
@@ -1347,7 +1353,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 3\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 3\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse3",
             "name": "Adresse3",
             "precision": 255,
@@ -1366,7 +1372,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 4\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 4\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse4",
             "name": "Adresse4",
             "precision": 255,
@@ -1385,7 +1391,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 5\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 5\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse5",
             "name": "Adresse5",
             "precision": 255,
@@ -1404,7 +1410,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 6\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 6\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse6",
             "name": "Adresse6",
             "precision": 255,
@@ -1423,7 +1429,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 7\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 7\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse7",
             "name": "Adresse7",
             "precision": 255,
@@ -1442,7 +1448,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 8\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 8\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse8",
             "name": "Adresse8",
             "precision": 255,
@@ -1461,7 +1467,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 9\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 9\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse9",
             "name": "Adresse9",
             "precision": 255,
@@ -1480,7 +1486,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 10\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 10\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
             "label": "Adresse10",
             "name": "Adresse10",
             "precision": 255,
@@ -2335,7 +2341,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen &quot;Join1.Has_Subscriptions_Actual__c&quot;= &#39;false&#39;\r\nthen &#39;Er ikke Telenor kunde. &#39;\r\n\telse &#39;Er Telenor kunde. &#39;\r\nend",
+            "formulaExpression": "case \r\n\twhen \"Join1.Has_Subscriptions_Actual__c\"= 'false'\r\nthen 'Er ikke Telenor kunde. '\r\n\telse 'Er Telenor kunde. '\r\nend",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -2354,7 +2360,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;&#39;",
+            "formulaExpression": "'Kunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>'",
             "label": "Sales tip description Ikke DMU",
             "name": "Sales_tip_description_ikke_DMU",
             "precision": 9999,
@@ -2373,7 +2379,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Channel",
             "name": "Channel",
             "precision": 255,
@@ -2392,7 +2398,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Medium DPSS&#39;",
+            "formulaExpression": "'Medium DPSS'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2487,7 +2493,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;{Personalization_13__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\n&#39;",
+            "formulaExpression": "'{Personalization_13__c}</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>\r\n'",
             "label": "Salestips_Description_DMU",
             "name": "Salestips_Description_DMU",
             "precision": 9999,
@@ -2603,7 +2609,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner.&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;&#39;",
+            "formulaExpression": "'Kunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner.</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>'",
             "label": "Sales tip description Ikke DMU deepsale",
             "name": "Sales_tip_description_ikke_DMU_deepsale",
             "precision": 9999,
@@ -2622,7 +2628,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;{Personalization_13__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner.&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\n&#39;",
+            "formulaExpression": "'{Personalization_13__c}</li><li>\r\nKunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner.</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>\r\n'",
             "label": "Salestips_Description_DMU_deepsale",
             "name": "Salestips_Description_DMU_deepsale",
             "precision": 9999,
@@ -2641,7 +2647,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har IA fra oss (I DMU strukturen), sjekk muligheter for nettverk og andre tilleggstjenester&#39;",
+            "formulaExpression": "'Kunden har IA fra oss (I DMU strukturen), sjekk muligheter for nettverk og andre tilleggstjenester'",
             "label": "Sales tip description Ikke DMU mersalg",
             "name": "Sales_tip_description_ikke_DMU_mersalg",
             "precision": 9999,
@@ -2660,7 +2666,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;{Personalization_13__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har IA fra oss (I DMU strukturen), sjekk muligheter for nettverk og andre tilleggstjenester&#39;",
+            "formulaExpression": "'{Personalization_13__c}</li><li>\r\nKunden har IA fra oss (I DMU strukturen), sjekk muligheter for nettverk og andre tilleggstjenester'",
             "label": "Salestips_Description_DMU_mersalg",
             "name": "Salestips_Description_DMU_mersalg",
             "precision": 9999,
@@ -2679,7 +2685,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.Id&quot;",
+            "formulaExpression": "\"Join1.Id\"",
             "label": "SFB AccountId",
             "name": "SFB_AccountId",
             "precision": 18,
@@ -2698,7 +2704,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.KurtID__c&quot;",
+            "formulaExpression": "\"Join1.KurtID__c\"",
             "label": "Kurt Id",
             "name": "Kurt_Id",
             "precision": 255,
@@ -2787,7 +2793,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &#39;Kan få internett på følgende adresse(r):&lt;/li&gt;&lt;li&gt;&#39;,&quot;Transform3.Adresse1Co.Adresse1&quot;)\r\n",
+            "formulaExpression": "concat( 'Kan få internett på følgende adresse(r):</li><li>',\"Transform3.Adresse1Co.Adresse1\")\r\n",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -2806,7 +2812,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse2Co.Adresse2&quot;",
+            "formulaExpression": "\"Transform3.Adresse2Co.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -2825,7 +2831,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse3Co.Adresse3&quot;",
+            "formulaExpression": "\"Transform3.Adresse3Co.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -2844,7 +2850,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse4Co.Adresse4&quot;",
+            "formulaExpression": "\"Transform3.Adresse4Co.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -2863,7 +2869,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse5Co.Adresse5&quot;",
+            "formulaExpression": "\"Transform3.Adresse5Co.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -2882,7 +2888,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse6Co.Adresse6&quot;",
+            "formulaExpression": "\"Transform3.Adresse6Co.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -2901,7 +2907,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse7Co.Adresse7&quot;",
+            "formulaExpression": "\"Transform3.Adresse7Co.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -2920,7 +2926,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse8Co.Adresse8&quot;",
+            "formulaExpression": "\"Transform3.Adresse8Co.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -2939,7 +2945,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse9Co.Adresse9&quot;",
+            "formulaExpression": "\"Transform3.Adresse9Co.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -2958,7 +2964,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform3.Adresse10C.Adresse10&quot;",
+            "formulaExpression": "\"Transform3.Adresse10C.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -2977,7 +2983,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TrPotensia.Potensielle_IA_Adresser_to_dimension&quot;",
+            "formulaExpression": "\"TrPotensia.Potensielle_IA_Adresser_to_dimension\"",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -2996,7 +3002,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Antall firmaer i DMU struktur: &#39;",
+            "formulaExpression": "'Antall firmaer i DMU struktur: '",
             "label": "Antall_firmaer_DMU_struktur_text",
             "name": "Antall_firmaer_DMU_struktur_text",
             "precision": 255,
@@ -3015,7 +3021,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Antall i DMU struktur med Aksess potensiale: &#39;",
+            "formulaExpression": "'Antall i DMU struktur med Aksess potensiale: '",
             "label": "IA_Potensiale_tekst",
             "name": "IA_Potensiale_tekst",
             "precision": 255,
@@ -3034,7 +3040,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Antall Unike farid i DMU struktur: &#39;",
+            "formulaExpression": "'Antall Unike farid i DMU struktur: '",
             "label": "Farid_i_struktur",
             "name": "Farid_i_struktur",
             "precision": 255,
@@ -3053,7 +3059,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Join1.Is_DMU__c&quot; = &#39;true&#39;\r\nthen\r\nconcat( Antall_firmaer_DMU_struktur_text, SUM_Antall_firmaer,&#39;, &#39;,IA_Potensiale_tekst,SUM_Har_IA_potensiale,&#39;, &#39;,Farid_i_struktur,Unik_farid_dmu,&#39;, &#39;,Ant_unikfarid_struktur_10_60K,&quot;Aggregate4.UNIQUE_farid_txt_to_dimension&quot;)\r\nelse &#39;.&#39;\r\nend",
+            "formulaExpression": "case when \"Join1.Is_DMU__c\" = 'true'\r\nthen\r\nconcat( Antall_firmaer_DMU_struktur_text, SUM_Antall_firmaer,', ',IA_Potensiale_tekst,SUM_Har_IA_potensiale,', ',Farid_i_struktur,Unik_farid_dmu,', ',Ant_unikfarid_struktur_10_60K,\"Aggregate4.UNIQUE_farid_txt_to_dimension\")\r\nelse '.'\r\nend",
             "label": "Personalization_13__c",
             "name": "Personalization_13__c",
             "precision": 900,
@@ -3072,7 +3078,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.DMU_calculation&quot;",
+            "formulaExpression": "\"Join1.DMU_calculation\"",
             "label": "Personalization_14__c",
             "name": "Personalization_14__c",
             "precision": 255,
@@ -3091,7 +3097,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;dropcolums.Name&quot;",
+            "formulaExpression": "\"dropcolums.Name\"",
             "label": "Personalization_15__c",
             "name": "Personalization_15__c",
             "precision": 255,
@@ -3110,7 +3116,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when &quot;Join1.Is_DMU__c&quot; = &#39;true&#39; then &#39;DMU&#39; else &#39;NOT DMU&#39;\r\nend",
+            "formulaExpression": "case when \"Join1.Is_DMU__c\" = 'true' then 'DMU' else 'NOT DMU'\r\nend",
             "label": "Personalization_16__c",
             "name": "Personalization_16__c",
             "precision": 255,
@@ -3129,7 +3135,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Antall unike farid i struktur med fiberdekning 10-60K: &#39;",
+            "formulaExpression": "'Antall unike farid i struktur med fiberdekning 10-60K: '",
             "label": "Ant_unikfarid_struktur_10_60K",
             "name": "Ant_unikfarid_struktur_10_60K",
             "precision": 255,
@@ -3148,7 +3154,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform4.Aggregate4.UNIQUE_farid_txt_to_dimension&quot;",
+            "formulaExpression": "\"Transform4.Aggregate4.UNIQUE_farid_txt_to_dimension\"",
             "label": "Personalization_17__c",
             "name": "Personalization_17__c",
             "precision": 255,
@@ -3167,7 +3173,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.Antall_IA_som_eier&quot;",
+            "formulaExpression": "\"Join1.Antall_IA_som_eier\"",
             "label": "Personalization_19__c",
             "name": "Personalization_19__c",
             "precision": 255,
@@ -3186,7 +3192,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.Antall_IA_som_bruker&quot;",
+            "formulaExpression": "\"Join1.Antall_IA_som_bruker\"",
             "label": "Personalization_20__c",
             "name": "Personalization_20__c",
             "precision": 255,
@@ -3211,6 +3217,7 @@
           "Antall_lokasjoner_mersalg_fiber",
           "Antall_Lokasjoner_mersalg_TBB"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -3539,7 +3546,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform4.DMU_calculation&quot;",
+            "formulaExpression": "\"Transform4.DMU_calculation\"",
             "label": "DMU_calculation10_60K",
             "name": "DMU_calculation_10_60K",
             "precision": 18,
@@ -3763,7 +3770,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Har IA som eier eller bruker, DMU eller underliggende&#39;",
+            "formulaExpression": "'Har IA som eier eller bruker, DMU eller underliggende'",
             "label": "Have_IA",
             "name": "Have_IA",
             "precision": 255,
@@ -3843,7 +3850,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\nPersonalization_18__c= &#39;Nysalg kaldt&#39;\r\nthen &#39;C360_352&#39;\r\nwhen Personalization_18__c= &#39;Nysalg har mobil&#39;\r\nthen &#39;C360_430&#39;\r\nwhen \r\nPersonalization_18__c= &#39;Dypsalg&#39;\r\nthen &#39;C360_212&#39;\r\nwhen \r\nPersonalization_18__c= &#39;Mersalg&#39;\r\nthen &#39;C360_429&#39;\r\nelse&#39;&#39;\r\nend",
+            "formulaExpression": "case when \r\nPersonalization_18__c= 'Nysalg kaldt'\r\nthen 'C360_352'\r\nwhen Personalization_18__c= 'Nysalg har mobil'\r\nthen 'C360_430'\r\nwhen \r\nPersonalization_18__c= 'Dypsalg'\r\nthen 'C360_212'\r\nwhen \r\nPersonalization_18__c= 'Mersalg'\r\nthen 'C360_429'\r\nelse''\r\nend",
             "label": "Campaign_cd_splitt",
             "name": "Campaign_cd_splitt",
             "precision": 255,
@@ -3862,7 +3869,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\ncontains(DMU_calculation, &#39;001&#39;)\r\nthen &#39;Har IA i DMU Struktur&#39;\r\nelse &#39;Har ikke IA i DMU Struktur&#39;\r\nend",
+            "formulaExpression": "case when\r\ncontains(DMU_calculation, '001')\r\nthen 'Har IA i DMU Struktur'\r\nelse 'Har ikke IA i DMU Struktur'\r\nend",
             "label": "IA_calc_18",
             "name": "IA_calc_18",
             "precision": 255,
@@ -3881,7 +3888,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\ncontains(&quot;Transform5.DMU_calculation_mobil_tale&quot;, &#39;001&#39;)\r\nthen &#39;Har Mobil i DMU Struktur&#39;\r\nelse &#39;Har ikke Mobil i DMU Struktur&#39;\r\nend",
+            "formulaExpression": "case when\r\ncontains(\"Transform5.DMU_calculation_mobil_tale\", '001')\r\nthen 'Har Mobil i DMU Struktur'\r\nelse 'Har ikke Mobil i DMU Struktur'\r\nend",
             "label": "Mobil_calc",
             "name": "Mobil_calc",
             "precision": 255,
@@ -3900,7 +3907,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\r\nCASE\r\n    WHEN IA_calc_18 = &#39;Har ikke IA i DMU Struktur&#39;\r\n         AND Mobil_calc = &#39;Har ikke Mobil i DMU Struktur&#39;\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c&lt; 1\r\n    THEN &#39;Nysalg kaldt&#39;\r\n\r\n    WHEN IA_calc_18 = &#39;Har ikke IA i DMU Struktur&#39;\r\n         AND Mobil_calc = &#39;Har Mobil i DMU Struktur&#39;\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c&lt; 1\r\n    THEN &#39;Nysalg har mobil&#39;\r\n\r\n    WHEN IA_calc_18 = &#39;Har IA i DMU Struktur&#39;\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c&gt;= 1\r\n         and SUM_Har_IA_potensiale &gt;=1\r\n    THEN &#39;Dypsalg&#39;\r\n        WHEN IA_calc_18 = &#39;Har IA i DMU Struktur&#39;\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c &gt;= 1\r\n         and SUM_Har_IA_potensiale &lt;1\r\n    THEN &#39;Mersalg&#39;\r\n\r\n    ELSE &#39;Uklassifisert&#39;\r\nEND\r\n",
+            "formulaExpression": "\r\nCASE\r\n    WHEN IA_calc_18 = 'Har ikke IA i DMU Struktur'\r\n         AND Mobil_calc = 'Har ikke Mobil i DMU Struktur'\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c< 1\r\n    THEN 'Nysalg kaldt'\r\n\r\n    WHEN IA_calc_18 = 'Har ikke IA i DMU Struktur'\r\n         AND Mobil_calc = 'Har Mobil i DMU Struktur'\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c< 1\r\n    THEN 'Nysalg har mobil'\r\n\r\n    WHEN IA_calc_18 = 'Har IA i DMU Struktur'\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c>= 1\r\n         and SUM_Har_IA_potensiale >=1\r\n    THEN 'Dypsalg'\r\n        WHEN IA_calc_18 = 'Har IA i DMU Struktur'\r\n         AND SUM_NBR_FIXED_BBB_FIBER__c >= 1\r\n         and SUM_Har_IA_potensiale <1\r\n    THEN 'Mersalg'\r\n\r\n    ELSE 'Uklassifisert'\r\nEND\r\n",
             "label": "Personalization_18__c",
             "name": "Personalization_18__c",
             "precision": 255,
@@ -3919,7 +3926,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Join1.NBR_FIXED_BBB_FIBER__c&quot;+&quot;Join1.NBR_FIBER_USER__c&quot;+&quot;Join1.NBR_TBB_MOBIL__c&quot;+&quot;Join1.NBR_TBB_MOBIL_USER__c&quot;",
+            "formulaExpression": "\"Join1.NBR_FIXED_BBB_FIBER__c\"+\"Join1.NBR_FIBER_USER__c\"+\"Join1.NBR_TBB_MOBIL__c\"+\"Join1.NBR_TBB_MOBIL_USER__c\"",
             "label": "NBR fiber TBB som eier eller bruker",
             "name": "NBR_Fiber_TBB_som_eier_bruker",
             "precision": 10,
@@ -3947,6 +3954,7 @@
           "CampaignID__c",
           "Name"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -3986,7 +3994,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;Campaign.reporting_tag__c&quot;, &#39;_&#39;, &quot;Output.Kurt_Id&quot;)",
+            "formulaExpression": "concat( \"Campaign.reporting_tag__c\", '_', \"Output.Kurt_Id\")",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -4005,7 +4013,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Campaign.Name&quot;",
+            "formulaExpression": "\"Campaign.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -4225,7 +4233,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when&quot;Output.Aggregate3.UNIQUE_farid_txt&quot; &gt;= 5 and SUM_NBR_FIXED_BBB_FIBER__c &lt;1\r\nthen &quot;Output.Join1.Klynge_Medium&quot;\r\nwhen (&quot;Output.Aggregate3.UNIQUE_farid_txt&quot; &gt;=1\r\nand &quot;Output.Aggregate3.UNIQUE_farid_txt&quot;&lt;=4 and SUM_NBR_FIXED_BBB_FIBER__c &lt;1)\r\nthen &#39;Loyalty&#39;\r\nelse &#39; UT&#39;\r\nend",
+            "formulaExpression": "case when\"Output.Aggregate3.UNIQUE_farid_txt\" >= 5 and SUM_NBR_FIXED_BBB_FIBER__c <1\r\nthen \"Output.Join1.Klynge_Medium\"\r\nwhen (\"Output.Aggregate3.UNIQUE_farid_txt\" >=1\r\nand \"Output.Aggregate3.UNIQUE_farid_txt\"<=4 and SUM_NBR_FIXED_BBB_FIBER__c <1)\r\nthen 'Loyalty'\r\nelse ' UT'\r\nend",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -4244,7 +4252,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen (&quot;Output.Aggregate3.UNIQUE_farid_txt&quot; &gt;=1 \r\nand SUM_NBR_FIXED_BBB_FIBER__c &gt;=2) \r\nthen &quot;Output.Join1.Klynge_Medium&quot;\r\nelse &#39;UT&#39;\r\nend",
+            "formulaExpression": "case\r\nwhen (\"Output.Aggregate3.UNIQUE_farid_txt\" >=1 \r\nand SUM_NBR_FIXED_BBB_FIBER__c >=2) \r\nthen \"Output.Join1.Klynge_Medium\"\r\nelse 'UT'\r\nend",
             "label": "Personalization 1 dypsalg",
             "name": "Personalization_1__c_dypsalg",
             "precision": 255,
@@ -4263,7 +4271,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen (&quot;Output.Aggregate3.UNIQUE_farid_txt&quot; &lt;1 \r\nand SUM_NBR_FIXED_BBB_FIBER__c &gt;=2) \r\nthen &quot;Output.Join1.Klynge_Medium&quot;\r\nelse &#39;UT&#39;\r\nend",
+            "formulaExpression": "case\r\nwhen (\"Output.Aggregate3.UNIQUE_farid_txt\" <1 \r\nand SUM_NBR_FIXED_BBB_FIBER__c >=2) \r\nthen \"Output.Join1.Klynge_Medium\"\r\nelse 'UT'\r\nend",
             "label": "Personalization 1 ikke IA potensiale",
             "name": "Personalization_1__c_ikke_IA_potensiale",
             "precision": 255,
@@ -4282,7 +4290,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Output.Join1.Industry__c&quot;",
+            "formulaExpression": "\"Output.Join1.Industry__c\"",
             "label": "Industri_Loyalty",
             "name": "Industri_Loyalty",
             "precision": 255,
@@ -4326,7 +4334,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n&quot;Output.Personalization_16__c&quot; =&#39;DMU&#39;\r\nthen &quot;Output.Salestips_Description_DMU_deepsale&quot;\r\nelse &quot;Output.Sales_tip_description_ikke_DMU_deepsale&quot;\r\nend\r\n",
+            "formulaExpression": "case when \r\n\"Output.Personalization_16__c\" ='DMU'\r\nthen \"Output.Salestips_Description_DMU_deepsale\"\r\nelse \"Output.Sales_tip_description_ikke_DMU_deepsale\"\r\nend\r\n",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -4345,7 +4353,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform5.Personalization_1__c_dypsalg&quot;",
+            "formulaExpression": "\"Transform5.Personalization_1__c_dypsalg\"",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -4422,7 +4430,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n&quot;Output.Personalization_16__c&quot; =&#39;DMU&#39;\r\nthen &quot;Output.Salestips_Description_DMU&quot;\r\nelse &quot;Output.Sales_tip_description_ikke_DMU&quot;\r\nend\r\n",
+            "formulaExpression": "case when \r\n\"Output.Personalization_16__c\" ='DMU'\r\nthen \"Output.Salestips_Description_DMU\"\r\nelse \"Output.Sales_tip_description_ikke_DMU\"\r\nend\r\n",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -4811,7 +4819,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n&quot;Output.Personalization_16__c&quot; =&#39;DMU&#39;\r\nthen &quot;Output.Salestips_Description_DMU&quot;\r\nelse &quot;Output.Sales_tip_description_ikke_DMU&quot;\r\nend\r\n",
+            "formulaExpression": "case when \r\n\"Output.Personalization_16__c\" ='DMU'\r\nthen \"Output.Salestips_Description_DMU\"\r\nelse \"Output.Sales_tip_description_ikke_DMU\"\r\nend\r\n",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -4886,7 +4894,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;TM&#39;",
+            "formulaExpression": "'TM'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -4905,7 +4913,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Loyalty&#39;",
+            "formulaExpression": "'Loyalty'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -4990,7 +4998,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Transform5.Industri_Loyalty&quot;",
+            "formulaExpression": "\"Transform5.Industri_Loyalty\"",
             "label": "Personalization 1",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -5196,6 +5204,7 @@
         "fields": [
           "ErDMU.DPSS_DMU__c_calc"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -5214,6 +5223,7 @@
         "fields": [
           "DPSS_DMU__c_calc"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -5360,7 +5370,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Har Mobil Tale, DMU eller underliggende&#39;",
+            "formulaExpression": "'Har Mobil Tale, DMU eller underliggende'",
             "label": "Have_MV",
             "name": "Have_MV",
             "precision": 255,
@@ -5515,7 +5525,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\n&quot;Output.Personalization_16__c&quot; =&#39;DMU&#39;\r\nthen &quot;Output.Salestips_Description_DMU_mersalg&quot;\r\nelse &quot;Output.Sales_tip_description_ikke_DMU_mersalg&quot;\r\nend\r\n",
+            "formulaExpression": "case when \r\n\"Output.Personalization_16__c\" ='DMU'\r\nthen \"Output.Salestips_Description_DMU_mersalg\"\r\nelse \"Output.Sales_tip_description_ikke_DMU_mersalg\"\r\nend\r\n",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,
@@ -5591,7 +5601,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -5610,7 +5620,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Medium DPSS&#39;",
+            "formulaExpression": "'Medium DPSS'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -5810,7 +5820,6 @@
       ]
     }
   },
-  "runMode": "full",
   "ui": {
     "nodes": {
       "LOAD_DATASET0": {
@@ -8578,6 +8587,5 @@
       }
     ],
     "hiddenColumns": []
-  },
-  "version": "62.0"
+  }
 }

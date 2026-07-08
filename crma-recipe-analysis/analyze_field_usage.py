@@ -460,27 +460,40 @@ def main():
         with open(output_report_path, "w") as f:
             f.write(report_text)
 
-        # Collect dashboard data
+        # Collect dashboard data — use per-object conservative logic
+        # (matches what build_cleaned actually removes)
+        obj_used_union = defaultdict(set)
+        for r in results.values():
+            obj_used_union[r["sourceObject"]] |= set(r["usedFields"])
+
         load_nodes_data = []
+        dash_total = 0
+        dash_used = 0
         for load_name in sorted(results, key=lambda x: results[x]["sourceObject"]):
             r = results[load_name]
+            keep = obj_used_union[r["sourceObject"]]
+            all_fields = set(r["usedFields"]) | set(r["unusedFields"])
+            effective_unused = sorted(all_fields - keep)
+            effective_used = sorted(all_fields & keep)
+            dash_total += len(all_fields)
+            dash_used += len(effective_used)
             load_nodes_data.append({
                 "nodeName": load_name,
                 "sourceObject": r["sourceObject"],
                 "connection": r["connection"],
                 "type": r["type"],
-                "totalFields": r["totalFields"],
-                "usedFields": r["usedFields"],
-                "unusedFields": r["unusedFields"],
+                "totalFields": len(all_fields),
+                "usedFields": effective_used,
+                "unusedFields": effective_unused,
                 "fieldUsage": {f: locs for f, locs in r["fieldUsage"].items()},
             })
         dashboard_recipes.append({
             "name": recipe_name,
             "filename": filename,
             "totalNodes": len(nodes),
-            "totalFields": total_before,
-            "usedFields": total_after,
-            "unusedFields": total_before - total_after,
+            "totalFields": dash_total,
+            "usedFields": dash_used,
+            "unusedFields": dash_total - dash_used,
             "loadNodes": load_nodes_data,
         })
 

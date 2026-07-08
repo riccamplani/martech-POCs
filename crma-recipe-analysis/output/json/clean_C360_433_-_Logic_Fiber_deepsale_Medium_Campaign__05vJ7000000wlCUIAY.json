@@ -1,4 +1,5 @@
 {
+  "version": "67.0",
   "nodes": {
     "LOAD_DATASET0": {
       "action": "load",
@@ -18,6 +19,7 @@
           "NBR_FIXED_BBB_FIBER__c",
           "DPSS_Segment__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -90,6 +92,7 @@
           "Antall_lokasjoner_mersalg_fiber",
           "Antall_Lokasjoner_mersalg_TBB"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -174,6 +177,7 @@
           "Coverage_4G__c",
           "Fiber_cost__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -272,6 +276,7 @@
           "Adresse7.Adresse7",
           "Location_Owner__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -390,6 +395,7 @@
         "fields": [
           "Key_Suppressions_Outbound_Fiber_newsale"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -445,7 +451,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( &quot;C360_212.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
+            "formulaExpression": "concat( \"C360_212.reporting_tag__c\", '_', KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -464,7 +470,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_212.Id&quot;",
+            "formulaExpression": "\"C360_212.Id\"",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -521,7 +527,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;SPOC&#39;",
+            "formulaExpression": "'SPOC'",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -540,7 +546,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Medium DPSS&#39;",
+            "formulaExpression": "'Medium DPSS'",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -559,7 +565,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;C360_212.Name&quot;",
+            "formulaExpression": "\"C360_212.Name\"",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -633,7 +639,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Har10og40K.IA_full_new_sale_text_adresses&quot;",
+            "formulaExpression": "\"Har10og40K.IA_full_new_sale_text_adresses\"",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -652,7 +658,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse2.Adresse2&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse2.Adresse2\"",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -671,7 +677,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse3.Adresse3&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse3.Adresse3\"",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -690,7 +696,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse4.Adresse4&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse4.Adresse4\"",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -709,7 +715,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse5.Adresse5&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse5.Adresse5\"",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -728,7 +734,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse6.Adresse6&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse6.Adresse6\"",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -747,7 +753,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse7.Adresse7&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse7.Adresse7\"",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -766,7 +772,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse8.Adresse8&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse8.Adresse8\"",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -785,7 +791,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse9.Adresse9&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse9.Adresse9\"",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -804,7 +810,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;Fibernewsa.Adresse10.Adresse10&quot;",
+            "formulaExpression": "\"Fibernewsa.Adresse10.Adresse10\"",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -823,7 +829,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&quot;TrPotensia.Potensielle_IA_Adresser_to_dimension&quot;",
+            "formulaExpression": "\"TrPotensia.Potensielle_IA_Adresser_to_dimension\"",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -842,7 +848,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;Kunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner&#39;",
+            "formulaExpression": "'Kunden har minst 2 IA hos Telenor i dag, men har også potensiale for flere lokasjoner'",
             "label": "Personalization_1__c",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -891,7 +897,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;C360_212&#39;\r\n",
+            "formulaExpression": "'C360_212'\r\n",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -910,7 +916,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "&#39;{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;For TBB: Husk å dobbelsjekke kapasitet.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&lt;/li&gt;&lt;li&gt;Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.&lt;/li&gt;&lt;li&gt;&#39;",
+            "formulaExpression": "'{Personalization_1__c}</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.</li><li>For TBB: Husk å dobbelsjekke kapasitet.</li><li></li><li>Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.</li><li>Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.</li><li>'",
             "label": "Sales tip description template_1",
             "name": "Sales_tip_description_template_1",
             "precision": 9999,
@@ -937,6 +943,7 @@
           "CampaignID__c",
           "reporting_tag__c"
         ],
+        "preserveCurrencyFields": [],
         "sampleDetails": {
           "sortBy": [],
           "type": "TopN"
@@ -1006,7 +1013,6 @@
       ]
     }
   },
-  "runMode": "full",
   "ui": {
     "nodes": {
       "LOAD_DATASET0": {
@@ -1543,6 +1549,5 @@
       }
     ],
     "hiddenColumns": []
-  },
-  "version": "62.0"
+  }
 }
