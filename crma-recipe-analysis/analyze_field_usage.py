@@ -236,26 +236,31 @@ def get_nodes(data):
 
 def build_cleaned(data, results, forward):
     """Build cleaned recipe with only used fields in load nodes.
-    Also removes dropped fields from downstream DROP schemas so they stay
-    consistent with what the load node actually provides."""
+    A field is only removed if unused across ALL load nodes for the same
+    object in this recipe (CRMA validates fields at the object level).
+    Also cleans up downstream DROP schemas to stay consistent."""
     cleaned = copy.deepcopy(data)
     nodes = get_nodes(cleaned)
 
-    all_removed = set()
+    # Build per-object union of used fields across all load nodes
+    obj_used_fields = defaultdict(set)
+    for load_name, result in results.items():
+        obj_used_fields[result["sourceObject"]] |= set(result["usedFields"])
 
     for load_name, result in results.items():
         orig_fields = nodes[load_name]["parameters"]["fields"]
-        used_set = set(result["usedFields"])
-        removed = set(result["unusedFields"])
-        all_removed |= removed
+        keep_set = obj_used_fields[result["sourceObject"]]
+        removed = set(result["unusedFields"]) - keep_set
 
         nodes[load_name]["parameters"]["fields"] = [
             f for f in orig_fields
-            if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in used_set
+            if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in keep_set
         ]
 
         # Clean up downstream DROP schemas: remove references to fields
         # that no longer exist in the data flow
+        if not removed:
+            continue
         visited = set()
         queue = [load_name]
         while queue:

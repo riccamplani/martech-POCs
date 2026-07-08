@@ -14,12 +14,14 @@
           "Id",
           "IsDeleted",
           "Name",
+          "NumberOfEmployees",
           "Concern__c",
           "StatusKURT__c",
           "Account_Owner_Full_Name__c",
           "Company_Family_Name__c",
           "Forbund_membership__c",
           "Mobile_Voice_Penetration__c",
+          "Phonenumber_type__c",
           "Mobile_Segment__c"
         ],
         "sampleDetails": {
@@ -1486,10 +1488,16 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Forbund_membership__c",
           "NumberOfEmployees",
           "Id",
           "IsDeleted",
+          "Name",
+          "Concern__c",
+          "KurtID__c",
           "StatusKURT__c",
+          "Account_Owner_Full_Name__c",
+          "Company_Family_Name__c",
           "Phonenumber_type__c"
         ],
         "sampleDetails": {
@@ -1989,6 +1997,7 @@
         },
         "fields": [
           "Forbund_membership__c",
+          "FORBUND_START_DATE__c",
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
@@ -2857,6 +2866,7 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "KurtID__c",
           "StatusKURT__c",
           "Id",
           "IsDeleted"
@@ -3013,7 +3023,11 @@
         "fields": [
           "Mobile_Voice_Penetration__c",
           "Id",
-          "KurtID__c"
+          "NumberOfEmployees",
+          "KurtID__c",
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c",
+          "Has_Subscriptions_Actual__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -3734,10 +3748,16 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Forbund_membership__c",
           "NumberOfEmployees",
           "Id",
           "IsDeleted",
+          "Name",
+          "Concern__c",
+          "KurtID__c",
           "StatusKURT__c",
+          "Account_Owner_Full_Name__c",
+          "Company_Family_Name__c",
           "Phonenumber_type__c"
         ],
         "sampleDetails": {
@@ -4237,6 +4257,7 @@
         },
         "fields": [
           "Forbund_membership__c",
+          "FORBUND_START_DATE__c",
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",

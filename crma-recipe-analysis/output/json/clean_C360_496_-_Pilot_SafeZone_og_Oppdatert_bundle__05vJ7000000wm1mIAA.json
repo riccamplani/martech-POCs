@@ -4450,11 +4450,17 @@
           "Company_Family_Name__c",
           "Id",
           "IsDeleted",
+          "Name",
+          "NumberOfEmployees",
+          "KurtID__c",
+          "OrgNo__c",
+          "Segment__c",
           "StatusKURT__c",
           "TSP_Dealer__c",
           "Forbund_membership__c",
           "Mobile_Voice_Penetration__c",
           "Reservation_Date_MV_Outbound__c",
+          "Migration_flag__c",
           "mobile_service_segment__c",
           "NBR_OPPDATERT__c"
         ],
@@ -6361,8 +6367,11 @@
         },
         "fields": [
           "Id",
+          "NumberOfEmployees",
           "KurtID__c",
-          "Forbund_membership__c"
+          "Has_Subscriptions__c",
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -8172,8 +8181,20 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Economic_Attractivity__c",
           "Id",
-          "Phonenumber_type__c"
+          "IsDeleted",
+          "Name",
+          "NumberOfEmployees",
+          "CustomerType__c",
+          "Portfolio__c",
+          "StatusKURT__c",
+          "External_Credit_Rating__c",
+          "NACE_Subclass_Description__c",
+          "Has_Subscriptions__c",
+          "Phonenumber_type__c",
+          "Reservation_Date_MV_Outbound__c",
+          "Has_Subscriptions_Actual__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -8700,7 +8721,11 @@
         },
         "fields": [
           "Id",
-          "KurtID__c"
+          "NumberOfEmployees",
+          "KurtID__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -8946,6 +8971,7 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Economic_Attractivity__c",
           "Id",
           "IsDeleted",
           "Name",
@@ -8953,6 +8979,7 @@
           "CustomerType__c",
           "Portfolio__c",
           "StatusKURT__c",
+          "External_Credit_Rating__c",
           "NACE_Subclass_Description__c",
           "Has_Subscriptions__c",
           "Phonenumber_type__c",
@@ -10788,7 +10815,11 @@
         },
         "fields": [
           "Id",
-          "KurtID__c"
+          "NumberOfEmployees",
+          "KurtID__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -12903,7 +12934,8 @@
           "StatusKURT__c",
           "OrgNo__c",
           "Id",
-          "IsDeleted"
+          "IsDeleted",
+          "Name"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -13896,7 +13928,16 @@
           "Phonenumber_type__c",
           "Id",
           "IsDeleted",
-          "StatusKURT__c"
+          "Name",
+          "KurtID__c",
+          "StatusKURT__c",
+          "SubsMobileVoice__c",
+          "Account_Owner_Full_Name__c",
+          "TSP_Dealer__c",
+          "Company_Family_Name__c",
+          "Forbund_membership__c",
+          "mobile_service_segment__c",
+          "NBR_OPPDATERT__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14409,8 +14450,13 @@
           "type": "connectedDataset"
         },
         "fields": [
+          "Forbund_membership__c",
+          "FORBUND_START_DATE__c",
+          "NumberOfEmployees",
+          "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c"
+          "KurtID__c",
+          "OrgNo__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14753,7 +14799,9 @@
           "StatusKURT__c",
           "KurtID__c",
           "Id",
-          "IsDeleted"
+          "IsDeleted",
+          "Name",
+          "OrgNo__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14899,7 +14947,8 @@
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c"
+          "KurtID__c",
+          "OrgNo__c"
         ],
         "sampleDetails": {
           "sortBy": [],

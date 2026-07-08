@@ -1,2789 +1,2757 @@
 {
-  "conversionDetails": [],
-  "createdBy": {
-    "id": "0053W000000QT9lQAG",
-    "name": "J\u00e1nos Lakatos",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "createdDate": "2023-10-16T09:02:42.000Z",
-  "dataflowLastUpdate": "2026-06-18T20:44:08.000Z",
-  "fileUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srmxQAA/file",
-  "format": "R3",
-  "historiesUrl": "/services/data/v62.0/wave/recipes/05v7Q000000srmxQAA/histories",
-  "id": "05v7Q000000srmxQAA",
-  "label": "C360 310 - Logic Service Model SE",
-  "lastModifiedBy": {
-    "id": "005b0000001J0UIAA0",
-    "name": "Eric Ramirez",
-    "profilePhotoUrl": "/img/userprofile/default_profile_45_v2.png"
-  },
-  "lastModifiedDate": "2026-06-18T20:44:08.000Z",
-  "licenseAttributes": {
-    "type": "einsteinanalytics"
-  },
-  "name": "C360_310_Logic_Service_Model_SE",
-  "publishingTarget": "Dataset",
-  "recipeDefinition": {
+    "version": "67.0",
     "nodes": {
-      "LOAD_DATASET0_copy0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "Account_Owner_Full_Name__c",
-            "Id",
-            "IsDeleted",
-            "NumberOfEmployees",
-            "Portfolio__c",
-            "Segment__c",
-            "StatusKURT__c",
-            "SubsMobileVoice__c",
-            "VisitingCounty__c",
-            "NACE_Subclass_Code__c",
-            "Mobile_Voice_Penetration__c",
-            "mobile_service_segment__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "Unique",
-            "uniqueSampleFieldName": "Portfolio__c"
-          }
-        },
-        "sources": []
-      },
-      "OUTPUT0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Farmer Fornebu - Customers",
-            "name": "Logic_Service_Model_SPOC_Farmer_Fornebu_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "FILTER61"
-        ]
-      },
-      "DROP_FIELDS0_copy1": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER1_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2",
-          "filterExpressions": [
-            {
-              "field": "IsDeleted",
-              "operands": [
-                "false"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "StatusKURT__c",
-              "operands": [
-                "K - Personen/foretaket er OK, levende"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER53"
-        ]
-      },
-      "OUTPUT0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Farmer Gj\u00f8vik - Customers",
-            "name": "Logic_Service_Model_SPOC_Farmer_Gj_vik_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "FILTER62"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "OUTPUT0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Loyalty - Customers",
-            "name": "Logic_Service_Model_TM_Loyalty_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "APPEND17"
-        ]
-      },
-      "OUTPUT0_copy0_copy1_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Hunter ME - Customers",
-            "name": "Logic_Service_Model_SPOC_Hunter_ME_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "FILTER60"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy1_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "APPEND2_copy0": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Id",
-              "top": "Id"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER61",
-          "FILTER62"
-        ]
-      },
-      "APPEND3_copy0": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Id",
-              "top": "Id"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND2_copy0",
-          "FILTER60"
-        ]
-      },
-      "OUTPUT1_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Customers",
-            "name": "Logic_Service_Model_SPOC_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "APPEND3_copy0"
-        ]
-      },
-      "OUTPUT2_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Customers",
-            "name": "Logic_Service_Model_TM_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0"
-        ]
-      },
-      "LOAD_DATASET0_copy0_copy0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "Account_Owner_Full_Name__c",
-            "Id",
-            "IsDeleted",
-            "NumberOfEmployees",
-            "Portfolio__c",
-            "Segment__c",
-            "StatusKURT__c",
-            "SubsMobileVoice__c",
-            "VisitingCounty__c",
-            "NACE_Subclass_Code__c",
-            "Company_Family_Name__c",
-            "Forbund_membership__c",
-            "Mobile_Voice_Penetration__c",
-            "TM_Forbund_Flag__c",
-            "mobile_service_segment__c"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "Unique",
-            "uniqueSampleFieldName": "Portfolio__c"
-          }
-        },
-        "sources": []
-      },
-      "FILTER1_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2",
-          "filterExpressions": [
-            {
-              "field": "IsDeleted",
-              "operands": [
-                "false"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            },
-            {
-              "field": "StatusKURT__c",
-              "operands": [
-                "K - Personen/foretaket er OK, levende"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER54"
-        ]
-      },
-      "FILTER4_copy0_copy0_copy1": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Company_Family_Name__c",
-              "operands": [
-                "AGROL"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy1"
-        ]
-      },
-      "OUTPUT1_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Prospects",
-            "name": "Logic_Service_Model_SPOC_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS1"
-        ]
-      },
-      "DROP_FIELDS1": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER59"
-        ]
-      },
-      "OUTPUT1_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Prospects",
-            "name": "Logic_Service_Model_TM_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "APPEND15"
-        ]
-      },
-      "FILTER49": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Forbund_membership__c",
-              "operands": [],
-              "operator": "IS_NOT_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy1"
-        ]
-      },
-      "FILTER50": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Forbund_membership__c",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy1"
-        ]
-      },
-      "OUTPUT0_copy0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Gj\u00f8vik - Prospects",
-            "name": "Logic_Service_Model_TM_Gj_vik_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy0_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy1_copy0"
-        ]
-      },
-      "OUTPUT0_copy0_copy1_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model SPOC - Hunter ME - Prospects",
-            "name": "Logic_Service_Model_SPOC_Hunter_ME_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS1"
-        ]
-      },
-      "DROP_FIELDS3": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER4_copy0_copy0_copy1"
-        ]
-      },
-      "OUTPUT3": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model Agrol - Prospects",
-            "name": "Logic_Service_Model_Agrol_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS3"
-        ]
-      },
-      "OUTPUT0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Shared - Prospects",
-            "name": "Logic_Service_Model_TM_Shared_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER50"
-        ]
-      },
-      "APPEND12": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Id",
-              "top": "Id"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0",
-          "DROP_FIELDS0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "JOIN0": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "ACCOUNT_ID"
-          ],
-          "rightQualifier": "C360496SZP"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "LOAD_DATASET0_copy0",
-          "DROP_FIELDS4"
-        ]
-      },
-      "FILTER53": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "C360496SZP.ACCOUNT_ID",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN0"
-        ]
-      },
-      "JOIN1": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "ACCOUNT_ID"
-          ],
-          "rightQualifier": "C360496SZP"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "LOAD_DATASET0_copy0_copy0",
-          "DROP_FIELDS4"
-        ]
-      },
-      "FILTER54": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "C360496SZP.ACCOUNT_ID",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN1"
-        ]
-      },
-      "LOAD_DATASET20_copy0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "label": "MC - New Sales MV 20-40 employees - February 2026",
-            "name": "MC_New_Sales_MV_20_40_employees_February_2026",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "KURT_ID",
-            "ACTIVITY"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
-      },
-      "LOAD_DATASET0_copy0_copy1": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "connectionName": "SFDC_LOCAL_SEGMENTATION",
-            "label": "Account",
-            "sourceObjectName": "Account",
-            "type": "connectedDataset"
-          },
-          "fields": [
-            "KurtID__c",
-            "Id"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
-      },
-      "JOIN2": {
-        "action": "join",
-        "parameters": {
-          "joinType": "INNER",
-          "leftKeys": [
-            "KurtID__c"
-          ],
-          "rightKeys": [
-            "KURT_ID"
-          ],
-          "rightQualifier": "MCNewSales"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "LOAD_DATASET0_copy0_copy1",
-          "LOAD_DATASET20_copy0"
-        ]
-      },
-      "FORMULA1": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "Id",
-              "label": "ACCOUNT_ID",
-              "name": "ACCOUNT_ID",
-              "precision": 18,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN2"
-        ]
-      },
-      "DROP_FIELDS4": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "ACCOUNT_ID"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FORMULA1"
-        ]
-      },
-      "FILTER56": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Account_Owner_Full_Name__c",
-              "operands": [
-                "Mobile Sales",
-                "Team Small Mobile"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER1_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy1": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "0",
-                "20"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "21",
-                "40"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0_copy0"
-        ]
-      },
-      "FILTER57": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 OR 2",
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "0"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            },
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "20"
-              ],
-              "operator": "LESS_THAN",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER56"
-        ]
-      },
-      "FILTER56_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Account_Owner_Full_Name__c",
-              "operands": [
-                "Mobile Sales",
-                "Team Small Mobile"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER1_copy0_copy0"
-        ]
-      },
-      "FILTER57_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterBooleanLogic": "1 AND 2",
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "0"
-              ],
-              "operator": "GREATER_THAN",
-              "type": "NUMBER"
-            },
-            {
-              "field": "Mobile_Voice_Penetration__c",
-              "operands": [
-                "20"
-              ],
-              "operator": "GREATER_OR_EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER56_copy0"
-        ]
-      },
-      "FILTER44_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "3",
-                "9"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0"
-        ]
-      },
-      "FILTER44_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "2"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0"
-        ]
-      },
-      "FILTER44_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "SubsMobileVoice__c",
-              "operands": [
-                "1"
-              ],
-              "operator": "EQUAL",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FORMULA0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "30"
-              ],
-              "operator": "GREATER_THAN",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "0",
-                "30"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "10",
-                "30"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "31",
-                "60"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "60"
-              ],
-              "operator": "GREATER_THAN",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "0",
-                "9"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0_copy0"
-        ]
-      },
-      "LOAD_DATASET28_copy0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "label": "Suppressions NACE-codes",
-            "name": "Suppressions_NACE_codes",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_NACE_codes"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
-      },
-      "JOIN3": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_NACE_codes"
-          ],
-          "rightQualifier": "Suppressio"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER57_copy0",
-          "LOAD_DATASET28_copy0"
-        ]
-      },
-      "FORMULA0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when &quot;Suppressio.Key_Suppressions_NACE_codes&quot; is null then\r\n&#39;N&#39;\r\nelse\r\n&#39;Y&#39;\r\nend\r\n",
-              "label": "Low Priority Industry Flag",
-              "name": "Low_Priority_Industry_Flag",
-              "precision": 1,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN3"
-        ]
-      },
-      "FILTER58": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Low_Priority_Industry_Flag",
-              "operands": [
-                "N"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER58_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Low_Priority_Industry_Flag",
-              "operands": [
-                "N"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER58_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Low_Priority_Industry_Flag",
-              "operands": [
-                "N"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER59": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Id",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS5": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER58_copy1"
-        ]
-      },
-      "OUTPUT1_copy0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Large Prospects",
-            "name": "Logic_Service_Model_TM_Large_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS5"
-        ]
-      },
-      "FILTER52_copy0_copy1_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "10",
-                "20"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER49"
-        ]
-      },
-      "FILTER52_copy0_copy1_copy0_copy0": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "NumberOfEmployees",
-              "operands": [
-                "0",
-                "9"
-              ],
-              "operator": "IN_RANGE",
-              "type": "NUMBER"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER49"
-        ]
-      },
-      "DROP_FIELDS6": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy1_copy0_copy0"
-        ]
-      },
-      "OUTPUT4": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Forbund Shared - Prospects",
-            "name": "Logic_Service_Model_TM_Forbund_Shared_Prospects",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS6"
-        ]
-      },
-      "APPEND15": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Id",
-              "top": "Id"
-            }
-          ]
-        },
-        "sources": [
-          "APPEND12",
-          "DROP_FIELDS6"
-        ]
-      },
-      "DROP_FIELDS7": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "APPEND16"
-        ]
-      },
-      "OUTPUT0_copy0_copy1_copy0_copy1": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model Digital - Customers",
-            "name": "Logic_Service_Model_Digital_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS7"
-        ]
-      },
-      "APPEND16": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Account_Owner_Full_Name__c",
-              "top": "Account_Owner_Full_Name__c"
-            },
-            {
-              "bottom": "Id",
-              "top": "Id"
-            },
-            {
-              "bottom": "IsDeleted",
-              "top": "IsDeleted"
-            },
-            {
-              "bottom": "NumberOfEmployees",
-              "top": "NumberOfEmployees"
-            },
-            {
-              "bottom": "Portfolio__c",
-              "top": "Portfolio__c"
-            },
-            {
-              "bottom": "Segment__c",
-              "top": "Segment__c"
-            },
-            {
-              "bottom": "StatusKURT__c",
-              "top": "StatusKURT__c"
-            },
-            {
-              "bottom": "SubsMobileVoice__c",
-              "top": "SubsMobileVoice__c"
-            },
-            {
-              "bottom": "VisitingCounty__c",
-              "top": "VisitingCounty__c"
-            },
-            {
-              "bottom": "NACE_Subclass_Code__c",
-              "top": "NACE_Subclass_Code__c"
-            },
-            {
-              "bottom": "Mobile_Voice_Penetration__c",
-              "top": "Mobile_Voice_Penetration__c"
-            },
-            {
-              "bottom": "mobile_service_segment__c",
-              "top": "mobile_service_segment__c"
-            },
-            {
-              "bottom": "C360496SZP.ACCOUNT_ID",
-              "top": "C360496SZP.ACCOUNT_ID"
-            },
-            {
-              "bottom": "Suppressio.Key_Suppressions_NACE_codes",
-              "top": "Suppressio.Key_Suppressions_NACE_codes"
-            },
-            {
-              "bottom": "Low_Priority_Industry_Flag",
-              "top": "Low_Priority_Industry_Flag"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER44_copy0_copy0_copy0_copy0",
-          "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "FILTER60": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Id",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy1_copy0"
-        ]
-      },
-      "DROP_FIELDS8": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "OUTPUT1_copy0_copy0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Large Customers",
-            "name": "Logic_Service_Model_TM_Large_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS8"
-        ]
-      },
-      "FILTER61": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Id",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS0_copy1"
-        ]
-      },
-      "FILTER62": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Id",
-              "operands": [],
-              "operator": "IS_NULL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0"
-        ]
-      },
-      "DROP_FIELDS9": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER58_copy0_copy0"
-        ]
-      },
-      "OUTPUT1_copy0_copy0_copy0_copy0_copy0_copy0": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Gj\u00f8vik - Large Customers",
-            "name": "Logic_Service_Model_TM_Gj_vik_Large_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS9"
-        ]
-      },
-      "APPEND17": {
-        "action": "appendV2",
-        "parameters": {
-          "fieldMappings": [
-            {
-              "bottom": "Account_Owner_Full_Name__c",
-              "top": "Account_Owner_Full_Name__c"
-            },
-            {
-              "bottom": "Id",
-              "top": "Id"
-            },
-            {
-              "bottom": "IsDeleted",
-              "top": "IsDeleted"
-            },
-            {
-              "bottom": "NumberOfEmployees",
-              "top": "NumberOfEmployees"
-            },
-            {
-              "bottom": "Portfolio__c",
-              "top": "Portfolio__c"
-            },
-            {
-              "bottom": "Segment__c",
-              "top": "Segment__c"
-            },
-            {
-              "bottom": "StatusKURT__c",
-              "top": "StatusKURT__c"
-            },
-            {
-              "bottom": "SubsMobileVoice__c",
-              "top": "SubsMobileVoice__c"
-            },
-            {
-              "bottom": "VisitingCounty__c",
-              "top": "VisitingCounty__c"
-            },
-            {
-              "bottom": "NACE_Subclass_Code__c",
-              "top": "NACE_Subclass_Code__c"
-            },
-            {
-              "bottom": "Mobile_Voice_Penetration__c",
-              "top": "Mobile_Voice_Penetration__c"
-            },
-            {
-              "bottom": "mobile_service_segment__c",
-              "top": "mobile_service_segment__c"
-            },
-            {
-              "bottom": "C360496SZP.ACCOUNT_ID",
-              "top": "C360496SZP.ACCOUNT_ID"
-            },
-            {
-              "bottom": "Suppressio.Key_Suppressions_NACE_codes",
-              "top": "Suppressio.Key_Suppressions_NACE_codes"
-            },
-            {
-              "bottom": "Low_Priority_Industry_Flag",
-              "top": "Low_Priority_Industry_Flag"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER58",
-          "FILTER52_copy0_copy0_copy0_copy0_copy0"
-        ]
-      },
-      "OUTPUT0_copy0_copy0_copy0_copy1": {
-        "action": "save",
-        "parameters": {
-          "dataset": {
-            "folderName": "Campaign_Developer_App",
-            "label": "Logic Service Model TM - Loyalty - New Sales - Customers",
-            "name": "Logic_Service_Model_TM_Loyalty_New_Sales_Customers",
-            "type": "analyticsDataset"
-          },
-          "fields": [],
-          "measuresToCurrencies": []
-        },
-        "sources": [
-          "DROP_FIELDS0_copy0_copy0_copy0_copy1"
-        ]
-      },
-      "DROP_FIELDS0_copy0_copy0_copy0_copy1": {
-        "action": "schema",
-        "parameters": {
-          "fields": [],
-          "slice": {
-            "fields": [
-              "Id"
-            ],
-            "ignoreMissingFields": true,
-            "mode": "SELECT"
-          }
-        },
-        "sources": [
-          "FILTER58_copy0"
-        ]
-      },
-      "LOAD_DATASET28_copy0_copy0": {
-        "action": "load",
-        "parameters": {
-          "dataset": {
-            "label": "Suppressions NACE-codes",
-            "name": "Suppressions_NACE_codes",
-            "type": "analyticsDataset"
-          },
-          "fields": [
-            "Key_Suppressions_NACE_codes"
-          ],
-          "sampleDetails": {
-            "sortBy": [],
-            "type": "TopN"
-          }
-        },
-        "sources": []
-      },
-      "JOIN4": {
-        "action": "join",
-        "parameters": {
-          "joinType": "LEFT_OUTER",
-          "leftKeys": [
-            "Id"
-          ],
-          "rightKeys": [
-            "Key_Suppressions_NACE_codes"
-          ],
-          "rightQualifier": "Suppressio"
-        },
-        "schema": {
-          "fields": [],
-          "slice": {
-            "fields": [],
-            "ignoreMissingFields": true,
-            "mode": "DROP"
-          }
-        },
-        "sources": [
-          "FILTER57",
-          "LOAD_DATASET28_copy0_copy0"
-        ]
-      },
-      "FORMULA0_copy0": {
-        "action": "formula",
-        "parameters": {
-          "expressionType": "SQL",
-          "fields": [
-            {
-              "defaultValue": "",
-              "formulaExpression": "case when &quot;Suppressio.Key_Suppressions_NACE_codes&quot; is null then\r\n&#39;N&#39;\r\nelse\r\n&#39;Y&#39;\r\nend\r\n",
-              "label": "Low Priority Industry Flag",
-              "name": "Low_Priority_Industry_Flag",
-              "precision": 1,
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "JOIN4"
-        ]
-      },
-      "FILTER58_copy1": {
-        "action": "filter",
-        "parameters": {
-          "filterExpressions": [
-            {
-              "field": "Low_Priority_Industry_Flag",
-              "operands": [
-                "N"
-              ],
-              "operator": "EQUAL",
-              "type": "TEXT"
-            }
-          ]
-        },
-        "sources": [
-          "FILTER52_copy0_copy0_copy0"
-        ]
-      }
-    },
-    "runMode": "full",
-    "ui": {
-      "nodes": {
         "LOAD_DATASET0_copy0": {
-          "label": "Account",
-          "description": "",
-          "type": "LOAD_DATASET",
-          "top": 811.2,
-          "left": 533.2,
-          "parameters": {
-            "sampleSize": 10000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "connectionName": "SFDC_LOCAL_SEGMENTATION",
+                    "label": "Account",
+                    "mode": "SYNCED",
+                    "sourceObjectName": "Account",
+                    "type": "connectedDataset"
+                },
+                "fields": [
+                    "Account_Owner_Full_Name__c",
+                    "Id",
+                    "IsDeleted",
+                    "NumberOfEmployees",
+                    "Portfolio__c",
+                    "Segment__c",
+                    "StatusKURT__c",
+                    "SubsMobileVoice__c",
+                    "VisitingCounty__c",
+                    "NACE_Subclass_Code__c",
+                    "Mobile_Voice_Penetration__c",
+                    "mobile_service_segment__c"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "Unique",
+                    "uniqueSampleFieldName": "Portfolio__c"
+                }
+            },
+            "sources": []
         },
         "OUTPUT0_copy0": {
-          "label": "SPOC - Farmer Fornebu - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 112,
-          "left": 2351.8
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Farmer Fornebu - Customers",
+                    "name": "Logic_Service_Model_SPOC_Farmer_Fornebu_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "FILTER61"
+            ]
         },
-        "TRANSFORM0_copy1": {
-          "label": "SPOC - Farmer Fornebu (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 113,
-          "left": 1931.6,
-          "graph": {
-            "DROP_FIELDS0_copy1": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy1": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0"
+            ]
         },
         "FILTER1_copy0_copy0": {
-          "label": "Existing Customers",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 953.2
+            "action": "filter",
+            "parameters": {
+                "filterBooleanLogic": "1 AND 2",
+                "filterExpressions": [
+                    {
+                        "field": "IsDeleted",
+                        "operands": [
+                            "false"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    },
+                    {
+                        "field": "StatusKURT__c",
+                        "operands": [
+                            "K - Personen/foretaket er OK, levende"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER53"
+            ]
         },
         "OUTPUT0_copy0_copy0": {
-          "label": "SPOC - Farmer Gj\u00f8vik - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 252,
-          "left": 2352.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Farmer Gjøvik - Customers",
+                    "name": "Logic_Service_Model_SPOC_Farmer_Gj_vik_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "FILTER62"
+            ]
         },
-        "TRANSFORM0_copy0_copy0": {
-          "label": "SPOC - Farmer Gj\u00f8vik (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 253,
-          "left": 1931.6,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy0": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0"
+            ]
         },
         "OUTPUT0_copy0_copy0_copy0": {
-          "label": "TM - Loyalty - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 812,
-          "left": 2352.5
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Loyalty - Customers",
+                    "name": "Logic_Service_Model_TM_Loyalty_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0"
+            ]
         },
-        "TRANSFORM0_copy0_copy0_copy0": {
-          "label": "TM - Loyalty (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 812,
-          "left": 2072.1,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy0_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy0_copy0": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "APPEND17"
+            ]
         },
         "OUTPUT0_copy0_copy1_copy0": {
-          "label": "SPOC - Hunter ME - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 392,
-          "left": 2353
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Hunter ME - Customers",
+                    "name": "Logic_Service_Model_SPOC_Hunter_ME_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "FILTER60"
+            ]
         },
-        "TRANSFORM0_copy0_copy1_copy0": {
-          "label": "SPOC - Hunter ME (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 393,
-          "left": 1931.6,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy1_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy1_copy0": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0"
+            ]
         },
         "APPEND2_copy0": {
-          "label": "Append 2",
-          "type": "APPEND",
-          "top": 252,
-          "left": 2212.1
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER61",
+                "FILTER62"
+            ]
         },
         "APPEND3_copy0": {
-          "label": "Append 3",
-          "type": "APPEND",
-          "top": 392.1,
-          "left": 2212
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    }
+                ]
+            },
+            "sources": [
+                "APPEND2_copy0",
+                "FILTER60"
+            ]
         },
         "OUTPUT1_copy0": {
-          "label": "SPOC - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 531.5,
-          "left": 2352
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Customers",
+                    "name": "Logic_Service_Model_SPOC_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "APPEND3_copy0"
+            ]
         },
         "OUTPUT2_copy0": {
-          "label": "TM - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 952,
-          "left": 2353.5
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Customers",
+                    "name": "Logic_Service_Model_TM_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0"
+            ]
         },
         "LOAD_DATASET0_copy0_copy0": {
-          "label": "Account",
-          "description": "",
-          "type": "LOAD_DATASET",
-          "top": 1931.3,
-          "left": 533.2,
-          "parameters": {
-            "sampleSize": 10000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "connectionName": "SFDC_LOCAL_SEGMENTATION",
+                    "label": "Account",
+                    "mode": "SYNCED",
+                    "sourceObjectName": "Account",
+                    "type": "connectedDataset"
+                },
+                "fields": [
+                    "Account_Owner_Full_Name__c",
+                    "Id",
+                    "IsDeleted",
+                    "NumberOfEmployees",
+                    "Portfolio__c",
+                    "Segment__c",
+                    "StatusKURT__c",
+                    "SubsMobileVoice__c",
+                    "VisitingCounty__c",
+                    "NACE_Subclass_Code__c",
+                    "Company_Family_Name__c",
+                    "Forbund_membership__c",
+                    "Mobile_Voice_Penetration__c",
+                    "TM_Forbund_Flag__c",
+                    "mobile_service_segment__c"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "Unique",
+                    "uniqueSampleFieldName": "Portfolio__c"
+                }
+            },
+            "sources": []
         },
         "FILTER1_copy0_copy0_copy0": {
-          "label": "Existing Customers",
-          "description": "",
-          "type": "FILTER",
-          "top": 1931.3,
-          "left": 953.2
+            "action": "filter",
+            "parameters": {
+                "filterBooleanLogic": "1 AND 2",
+                "filterExpressions": [
+                    {
+                        "field": "IsDeleted",
+                        "operands": [
+                            "false"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    },
+                    {
+                        "field": "StatusKURT__c",
+                        "operands": [
+                            "K - Personen/foretaket er OK, levende"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER54"
+            ]
         },
         "FILTER4_copy0_copy0_copy1": {
-          "label": "Agrol",
-          "description": "",
-          "type": "FILTER",
-          "top": 2072.1,
-          "left": 1790.7
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Company_Family_Name__c",
+                        "operands": [
+                            "AGROL"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy1"
+            ]
         },
         "OUTPUT1_copy0_copy0": {
-          "label": "SPOC - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1791.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Prospects",
+                    "name": "Logic_Service_Model_SPOC_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS1"
+            ]
         },
-        "TRANSFORM1": {
-          "label": "SPOC - Hunter ME (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1652.2,
-          "left": 2072.1,
-          "graph": {
-            "DROP_FIELDS1": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS1": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER59"
+            ]
         },
         "OUTPUT1_copy0_copy0_copy0": {
-          "label": "TM - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 2351.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Prospects",
+                    "name": "Logic_Service_Model_TM_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "APPEND15"
+            ]
         },
         "FILTER49": {
-          "label": "Forbund",
-          "description": "",
-          "type": "FILTER",
-          "top": 2492.4,
-          "left": 1791.8
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Forbund_membership__c",
+                        "operands": [],
+                        "operator": "IS_NOT_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy1"
+            ]
         },
         "FILTER50": {
-          "label": "Non Forbund",
-          "description": "",
-          "type": "FILTER",
-          "top": 2212.4,
-          "left": 1791.9
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Forbund_membership__c",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy1"
+            ]
         },
         "OUTPUT0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Gj\u00f8vik - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 2491.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Gjøvik - Prospects",
+                    "name": "Logic_Service_Model_TM_Gj_vik_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0_copy0"
+            ]
         },
-        "TRANSFORM0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Gj\u00f8vik (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 2491.3,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy0_copy0_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy0_copy0_copy0": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy1_copy0"
+            ]
         },
         "OUTPUT0_copy0_copy1_copy0_copy0": {
-          "label": "SPOC - Hunter ME - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1651.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model SPOC - Hunter ME - Prospects",
+                    "name": "Logic_Service_Model_SPOC_Hunter_ME_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS1"
+            ]
         },
-        "TRANSFORM3": {
-          "label": "Agrol Prospects (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 2071.3,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS3": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS3": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER4_copy0_copy0_copy1"
+            ]
         },
         "OUTPUT3": {
-          "label": "Agrol - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 2071.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model Agrol - Prospects",
+                    "name": "Logic_Service_Model_Agrol_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS3"
+            ]
         },
         "OUTPUT0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Shared - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 2211.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Shared - Prospects",
+                    "name": "Logic_Service_Model_TM_Shared_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
-        "TRANSFORM0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Shared (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 2211.3,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER50"
+            ]
         },
         "APPEND12": {
-          "label": "TM",
-          "description": "",
-          "type": "APPEND",
-          "top": 2351.3,
-          "left": 2073.2
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    }
+                ]
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0",
+                "DROP_FIELDS0_copy0_copy0_copy0_copy0"
+            ]
         },
         "JOIN0": {
-          "label": "Pilot (Join)",
-          "description": "",
-          "type": "JOIN",
-          "top": 811.2,
-          "left": 673.2
+            "action": "join",
+            "parameters": {
+                "joinType": "LEFT_OUTER",
+                "leftKeys": [
+                    "Id"
+                ],
+                "rightKeys": [
+                    "ACCOUNT_ID"
+                ],
+                "rightQualifier": "C360496SZP"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "LOAD_DATASET0_copy0",
+                "DROP_FIELDS4"
+            ]
         },
         "FILTER53": {
-          "label": "No Pilot",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 813.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "C360496SZP.ACCOUNT_ID",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "JOIN0"
+            ]
         },
         "JOIN1": {
-          "label": "Pilot (Join)",
-          "description": "",
-          "type": "JOIN",
-          "top": 1931.3,
-          "left": 673.2
+            "action": "join",
+            "parameters": {
+                "joinType": "LEFT_OUTER",
+                "leftKeys": [
+                    "Id"
+                ],
+                "rightKeys": [
+                    "ACCOUNT_ID"
+                ],
+                "rightQualifier": "C360496SZP"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "LOAD_DATASET0_copy0_copy0",
+                "DROP_FIELDS4"
+            ]
         },
         "FILTER54": {
-          "label": "No Pilot",
-          "description": "",
-          "type": "FILTER",
-          "top": 1931.3,
-          "left": 813.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "C360496SZP.ACCOUNT_ID",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "JOIN1"
+            ]
         },
         "LOAD_DATASET20_copy0": {
-          "label": "MC - New Sales MV 20-40 employees - February 2026",
-          "type": "LOAD_DATASET",
-          "top": 1231.2,
-          "left": 113.19999999999999,
-          "parameters": {
-            "sampleSize": 10000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "MC - New Sales MV 20-40 employees - February 2026",
+                    "name": "MC_New_Sales_MV_20_40_employees_February_2026",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "KURT_ID",
+                    "ACTIVITY"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
         },
         "LOAD_DATASET0_copy0_copy1": {
-          "label": "Account",
-          "description": "",
-          "type": "LOAD_DATASET",
-          "top": 1371.2,
-          "left": 113.19999999999999,
-          "parameters": {
-            "sampleSize": 10000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "connectionName": "SFDC_LOCAL_SEGMENTATION",
+                    "label": "Account",
+                    "mode": "SYNCED",
+                    "sourceObjectName": "Account",
+                    "type": "connectedDataset"
+                },
+                "fields": [
+                    "KurtID__c",
+                    "Id"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
         },
         "JOIN2": {
-          "label": "Customers (Join)",
-          "description": "",
-          "type": "JOIN",
-          "top": 1231.2,
-          "left": 253.2
-        },
-        "TRANSFORM4": {
-          "label": "Dropping fields",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1231.2,
-          "left": 393.2,
-          "graph": {
-            "FORMULA1": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "ACCOUNT_ID"
+            "action": "join",
+            "parameters": {
+                "joinType": "INNER",
+                "leftKeys": [
+                    "KurtID__c"
+                ],
+                "rightKeys": [
+                    "KURT_ID"
+                ],
+                "rightQualifier": "MCNewSales"
             },
-            "DROP_FIELDS4": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": [
-            {
-              "source": "FORMULA1",
-              "target": "DROP_FIELDS4"
-            }
-          ]
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "LOAD_DATASET0_copy0_copy1",
+                "LOAD_DATASET20_copy0"
+            ]
+        },
+        "FORMULA1": {
+            "action": "formula",
+            "parameters": {
+                "expressionType": "SQL",
+                "fields": [
+                    {
+                        "defaultValue": "",
+                        "formulaExpression": "Id",
+                        "label": "ACCOUNT_ID",
+                        "name": "ACCOUNT_ID",
+                        "precision": 18,
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "JOIN2"
+            ]
+        },
+        "DROP_FIELDS4": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "ACCOUNT_ID"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FORMULA1"
+            ]
         },
         "FILTER56": {
-          "label": "Mass Market",
-          "description": "",
-          "type": "FILTER",
-          "top": 1931.3,
-          "left": 1093.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Account_Owner_Full_Name__c",
+                        "operands": [
+                            "Mobile Sales",
+                            "Team Small Mobile"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER1_copy0_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy1": {
-          "label": "0 to 20 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 2072.1,
-          "left": 1651.7
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "0",
+                            "20"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FORMULA0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0": {
-          "label": "21 to 40 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 1932.1,
-          "left": 1651.6
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "21",
+                            "40"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FORMULA0_copy0"
+            ]
         },
         "FILTER57": {
-          "label": "MV Prospects",
-          "description": "",
-          "type": "FILTER",
-          "top": 1931.3,
-          "left": 1233.2
+            "action": "filter",
+            "parameters": {
+                "filterBooleanLogic": "1 OR 2",
+                "filterExpressions": [
+                    {
+                        "field": "SubsMobileVoice__c",
+                        "operands": [
+                            "0"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "NUMBER"
+                    },
+                    {
+                        "field": "Mobile_Voice_Penetration__c",
+                        "operands": [
+                            "20"
+                        ],
+                        "operator": "LESS_THAN",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER56"
+            ]
         },
         "FILTER56_copy0": {
-          "label": "Mass Market",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 1093.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Account_Owner_Full_Name__c",
+                        "operands": [
+                            "Mobile Sales",
+                            "Team Small Mobile"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER1_copy0_copy0"
+            ]
         },
         "FILTER57_copy0": {
-          "label": "MV Customers",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 1233.2
+            "action": "filter",
+            "parameters": {
+                "filterBooleanLogic": "1 AND 2",
+                "filterExpressions": [
+                    {
+                        "field": "SubsMobileVoice__c",
+                        "operands": [
+                            "0"
+                        ],
+                        "operator": "GREATER_THAN",
+                        "type": "NUMBER"
+                    },
+                    {
+                        "field": "Mobile_Voice_Penetration__c",
+                        "operands": [
+                            "20"
+                        ],
+                        "operator": "GREATER_OR_EQUAL",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER56_copy0"
+            ]
         },
         "FILTER44_copy0_copy0": {
-          "label": "3 to 9 MV Subs",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 1653.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "SubsMobileVoice__c",
+                        "operands": [
+                            "3",
+                            "9"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FORMULA0"
+            ]
         },
         "FILTER44_copy0_copy0_copy0": {
-          "label": "2 MV Subs",
-          "description": "",
-          "type": "FILTER",
-          "top": 951.2,
-          "left": 1653.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "SubsMobileVoice__c",
+                        "operands": [
+                            "2"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FORMULA0"
+            ]
         },
         "FILTER44_copy0_copy0_copy0_copy0": {
-          "label": "1 MV Sub",
-          "description": "",
-          "type": "FILTER",
-          "top": 1511.2,
-          "left": 1653.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "SubsMobileVoice__c",
+                        "operands": [
+                            "1"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FORMULA0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0": {
-          "label": "More than 30 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 671.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "30"
+                        ],
+                        "operator": "GREATER_THAN",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0_copy0": {
-          "label": "0 to 30 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 811.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "0",
+                            "30"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "10 to 30 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 951.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "10",
+                            "30"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "31 to 60 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 1091.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "31",
+                            "60"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "More than 60 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 1231.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "60"
+                        ],
+                        "operator": "GREATER_THAN",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0_copy0"
+            ]
         },
         "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "0 to 9 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 1371.2,
-          "left": 1793.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "0",
+                            "9"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0_copy0"
+            ]
         },
         "LOAD_DATASET28_copy0": {
-          "label": "Suppressions NACE-codes",
-          "type": "LOAD_DATASET",
-          "top": 671.2,
-          "left": 1373.2,
-          "parameters": {
-            "sampleSize": 2000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "Suppressions NACE-codes",
+                    "name": "Suppressions_NACE_codes",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "Key_Suppressions_NACE_codes"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
         },
         "JOIN3": {
-          "label": "NACE-Code (Join)",
-          "description": "",
-          "type": "JOIN",
-          "top": 811.2,
-          "left": 1373.2
+            "action": "join",
+            "parameters": {
+                "joinType": "LEFT_OUTER",
+                "leftKeys": [
+                    "Id"
+                ],
+                "rightKeys": [
+                    "Key_Suppressions_NACE_codes"
+                ],
+                "rightQualifier": "Suppressio"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "FILTER57_copy0",
+                "LOAD_DATASET28_copy0"
+            ]
         },
-        "TRANSFORM5": {
-          "label": "Calculations",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 811.2,
-          "left": 1513.2,
-          "graph": {
-            "FORMULA0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Low Priority Industry Flag"
-            }
-          },
-          "connectors": []
+        "FORMULA0": {
+            "action": "formula",
+            "parameters": {
+                "expressionType": "SQL",
+                "fields": [
+                    {
+                        "defaultValue": "",
+                        "formulaExpression": "case when \"Suppressio.Key_Suppressions_NACE_codes\" is null then\r\n'N'\r\nelse\r\n'Y'\r\nend\r\n",
+                        "label": "Low Priority Industry Flag",
+                        "name": "Low_Priority_Industry_Flag",
+                        "precision": 1,
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "JOIN3"
+            ]
         },
         "FILTER58": {
-          "label": "Prioritised Industry",
-          "description": "",
-          "type": "FILTER",
-          "top": 951.2,
-          "left": 1933.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Low_Priority_Industry_Flag",
+                        "operands": [
+                            "N"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
         "FILTER58_copy0": {
-          "label": "Prioritised Industry",
-          "description": "",
-          "type": "FILTER",
-          "top": 1091.2,
-          "left": 1933.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Low_Priority_Industry_Flag",
+                        "operands": [
+                            "N"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
         "FILTER58_copy0_copy0": {
-          "label": "Prioritised Industry",
-          "description": "",
-          "type": "FILTER",
-          "top": 1231.2,
-          "left": 1933.2
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Low_Priority_Industry_Flag",
+                        "operands": [
+                            "N"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
         "FILTER59": {
-          "label": "ZERO",
-          "description": "",
-          "type": "FILTER",
-          "top": 1652,
-          "left": 1650.7
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Id",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0"
+            ]
         },
-        "TRANSFORM6": {
-          "label": "TM - Large Prospects (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1931.3,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS5": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS5": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER58_copy1"
+            ]
         },
         "OUTPUT1_copy0_copy0_copy0_copy0": {
-          "label": "TM - Large Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1931.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Large Prospects",
+                    "name": "Logic_Service_Model_TM_Large_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS5"
+            ]
         },
         "FILTER52_copy0_copy1_copy0": {
-          "label": "10 to 20 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 2492,
-          "left": 1931.9
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "10",
+                            "20"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER49"
+            ]
         },
         "FILTER52_copy0_copy1_copy0_copy0": {
-          "label": "0 to 9 employees",
-          "description": "",
-          "type": "FILTER",
-          "top": 2632,
-          "left": 1931.7
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "NumberOfEmployees",
+                        "operands": [
+                            "0",
+                            "9"
+                        ],
+                        "operator": "IN_RANGE",
+                        "type": "NUMBER"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER49"
+            ]
         },
-        "TRANSFORM7": {
-          "label": "TM - Forbund Shared (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 2631.3,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS6": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS6": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy1_copy0_copy0"
+            ]
         },
         "OUTPUT4": {
-          "label": "TM - Forbund Shared - Prospects",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 2631.3,
-          "left": 2353.2
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Forbund Shared - Prospects",
+                    "name": "Logic_Service_Model_TM_Forbund_Shared_Prospects",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS6"
+            ]
         },
         "APPEND15": {
-          "label": "TM All",
-          "description": "",
-          "type": "APPEND",
-          "top": 2351.3,
-          "left": 2213.2
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    }
+                ]
+            },
+            "sources": [
+                "APPEND12",
+                "DROP_FIELDS6"
+            ]
         },
-        "TRANSFORM8": {
-          "label": "Digital (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1372,
-          "left": 2072.1,
-          "graph": {
-            "DROP_FIELDS7": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS7": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "APPEND16"
+            ]
         },
         "OUTPUT0_copy0_copy1_copy0_copy1": {
-          "label": "Digital - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1372,
-          "left": 2351.5
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model Digital - Customers",
+                    "name": "Logic_Service_Model_Digital_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS7"
+            ]
         },
         "APPEND16": {
-          "label": "All",
-          "description": "",
-          "type": "APPEND",
-          "top": 1372,
-          "left": 1932.1
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Account_Owner_Full_Name__c",
+                        "top": "Account_Owner_Full_Name__c"
+                    },
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    },
+                    {
+                        "bottom": "IsDeleted",
+                        "top": "IsDeleted"
+                    },
+                    {
+                        "bottom": "NumberOfEmployees",
+                        "top": "NumberOfEmployees"
+                    },
+                    {
+                        "bottom": "Portfolio__c",
+                        "top": "Portfolio__c"
+                    },
+                    {
+                        "bottom": "Segment__c",
+                        "top": "Segment__c"
+                    },
+                    {
+                        "bottom": "StatusKURT__c",
+                        "top": "StatusKURT__c"
+                    },
+                    {
+                        "bottom": "SubsMobileVoice__c",
+                        "top": "SubsMobileVoice__c"
+                    },
+                    {
+                        "bottom": "VisitingCounty__c",
+                        "top": "VisitingCounty__c"
+                    },
+                    {
+                        "bottom": "NACE_Subclass_Code__c",
+                        "top": "NACE_Subclass_Code__c"
+                    },
+                    {
+                        "bottom": "Mobile_Voice_Penetration__c",
+                        "top": "Mobile_Voice_Penetration__c"
+                    },
+                    {
+                        "bottom": "mobile_service_segment__c",
+                        "top": "mobile_service_segment__c"
+                    },
+                    {
+                        "bottom": "C360496SZP.ACCOUNT_ID",
+                        "top": "C360496SZP.ACCOUNT_ID"
+                    },
+                    {
+                        "bottom": "Suppressio.Key_Suppressions_NACE_codes",
+                        "top": "Suppressio.Key_Suppressions_NACE_codes"
+                    },
+                    {
+                        "bottom": "Low_Priority_Industry_Flag",
+                        "top": "Low_Priority_Industry_Flag"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER44_copy0_copy0_copy0_copy0",
+                "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
         "FILTER60": {
-          "label": "ZERO",
-          "description": "",
-          "type": "FILTER",
-          "top": 392.2,
-          "left": 2072.6
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Id",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy1_copy0"
+            ]
         },
-        "TRANSFORM9": {
-          "label": "TM - Large Customers (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 672,
-          "left": 2071.2,
-          "graph": {
-            "DROP_FIELDS8": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS8": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0_copy0"
+            ]
         },
         "OUTPUT1_copy0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Large Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 672,
-          "left": 2352
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Large Customers",
+                    "name": "Logic_Service_Model_TM_Large_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS8"
+            ]
         },
         "FILTER61": {
-          "label": "ZERO",
-          "description": "",
-          "type": "FILTER",
-          "top": 112.19999999999999,
-          "left": 2072.6
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Id",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "DROP_FIELDS0_copy1"
+            ]
         },
         "FILTER62": {
-          "label": "ZERO",
-          "description": "",
-          "type": "FILTER",
-          "top": 252.2,
-          "left": 2072.6
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Id",
+                        "operands": [],
+                        "operator": "IS_NULL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0"
+            ]
         },
-        "TRANSFORM10": {
-          "label": "TM - Gj\u00f8vik - Large Customers (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1231.2,
-          "left": 2073.2,
-          "graph": {
-            "DROP_FIELDS9": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS9": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER58_copy0_copy0"
+            ]
         },
         "OUTPUT1_copy0_copy0_copy0_copy0_copy0_copy0": {
-          "label": "TM - Gj\u00f8vik - Large Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1232,
-          "left": 2351.7
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Gjøvik - Large Customers",
+                    "name": "Logic_Service_Model_TM_Gj_vik_Large_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS9"
+            ]
         },
         "APPEND17": {
-          "label": "All",
-          "description": "",
-          "type": "APPEND",
-          "top": 812,
-          "left": 1932
+            "action": "appendV2",
+            "parameters": {
+                "fieldMappings": [
+                    {
+                        "bottom": "Account_Owner_Full_Name__c",
+                        "top": "Account_Owner_Full_Name__c"
+                    },
+                    {
+                        "bottom": "Id",
+                        "top": "Id"
+                    },
+                    {
+                        "bottom": "IsDeleted",
+                        "top": "IsDeleted"
+                    },
+                    {
+                        "bottom": "NumberOfEmployees",
+                        "top": "NumberOfEmployees"
+                    },
+                    {
+                        "bottom": "Portfolio__c",
+                        "top": "Portfolio__c"
+                    },
+                    {
+                        "bottom": "Segment__c",
+                        "top": "Segment__c"
+                    },
+                    {
+                        "bottom": "StatusKURT__c",
+                        "top": "StatusKURT__c"
+                    },
+                    {
+                        "bottom": "SubsMobileVoice__c",
+                        "top": "SubsMobileVoice__c"
+                    },
+                    {
+                        "bottom": "VisitingCounty__c",
+                        "top": "VisitingCounty__c"
+                    },
+                    {
+                        "bottom": "NACE_Subclass_Code__c",
+                        "top": "NACE_Subclass_Code__c"
+                    },
+                    {
+                        "bottom": "Mobile_Voice_Penetration__c",
+                        "top": "Mobile_Voice_Penetration__c"
+                    },
+                    {
+                        "bottom": "mobile_service_segment__c",
+                        "top": "mobile_service_segment__c"
+                    },
+                    {
+                        "bottom": "C360496SZP.ACCOUNT_ID",
+                        "top": "C360496SZP.ACCOUNT_ID"
+                    },
+                    {
+                        "bottom": "Suppressio.Key_Suppressions_NACE_codes",
+                        "top": "Suppressio.Key_Suppressions_NACE_codes"
+                    },
+                    {
+                        "bottom": "Low_Priority_Industry_Flag",
+                        "top": "Low_Priority_Industry_Flag"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER58",
+                "FILTER52_copy0_copy0_copy0_copy0_copy0"
+            ]
         },
         "OUTPUT0_copy0_copy0_copy0_copy1": {
-          "label": "TM - Loyalty New Sales - Customers",
-          "description": "",
-          "type": "OUTPUT",
-          "top": 1092.1,
-          "left": 2352.3
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "folderName": "Campaign_Developer_App",
+                    "label": "Logic Service Model TM - Loyalty - New Sales - Customers",
+                    "name": "Logic_Service_Model_TM_Loyalty_New_Sales_Customers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "DROP_FIELDS0_copy0_copy0_copy0_copy1"
+            ]
         },
-        "TRANSFORM0_copy0_copy0_copy0_copy1": {
-          "label": "TM - Loyalty New Sales (Drop Fields)",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1092,
-          "left": 2072.3,
-          "graph": {
-            "DROP_FIELDS0_copy0_copy0_copy0_copy1": {
-              "label": "Drop Columns"
-            }
-          },
-          "connectors": []
+        "DROP_FIELDS0_copy0_copy0_copy0_copy1": {
+            "action": "schema",
+            "parameters": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "Id"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "SELECT"
+                }
+            },
+            "sources": [
+                "FILTER58_copy0"
+            ]
         },
         "LOAD_DATASET28_copy0_copy0": {
-          "label": "Suppressions NACE-codes",
-          "description": "",
-          "type": "LOAD_DATASET",
-          "top": 1792.1,
-          "left": 1371.8,
-          "parameters": {
-            "sampleSize": 2000
-          }
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "Suppressions NACE-codes",
+                    "name": "Suppressions_NACE_codes",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "Key_Suppressions_NACE_codes"
+                ],
+                "preserveCurrencyFields": [],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
         },
         "JOIN4": {
-          "label": "NACE-Code (Join)",
-          "description": "",
-          "type": "JOIN",
-          "top": 1932,
-          "left": 1372
+            "action": "join",
+            "parameters": {
+                "joinType": "LEFT_OUTER",
+                "leftKeys": [
+                    "Id"
+                ],
+                "rightKeys": [
+                    "Key_Suppressions_NACE_codes"
+                ],
+                "rightQualifier": "Suppressio"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "FILTER57",
+                "LOAD_DATASET28_copy0_copy0"
+            ]
         },
-        "TRANSFORM5_copy0": {
-          "label": "Calculations",
-          "description": "",
-          "type": "TRANSFORM",
-          "top": 1931.9,
-          "left": 1512,
-          "graph": {
-            "FORMULA0_copy0": {
-              "parameters": {
-                "type": "BASE_FORMULA_UI"
-              },
-              "label": "Low Priority Industry Flag"
-            }
-          },
-          "connectors": []
+        "FORMULA0_copy0": {
+            "action": "formula",
+            "parameters": {
+                "expressionType": "SQL",
+                "fields": [
+                    {
+                        "defaultValue": "",
+                        "formulaExpression": "case when \"Suppressio.Key_Suppressions_NACE_codes\" is null then\r\n'N'\r\nelse\r\n'Y'\r\nend\r\n",
+                        "label": "Low Priority Industry Flag",
+                        "name": "Low_Priority_Industry_Flag",
+                        "precision": 1,
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "JOIN4"
+            ]
         },
         "FILTER58_copy1": {
-          "label": "Prioritised Industry",
-          "description": "",
-          "type": "FILTER",
-          "top": 1932,
-          "left": 1792
+            "action": "filter",
+            "parameters": {
+                "filterExpressions": [
+                    {
+                        "field": "Low_Priority_Industry_Flag",
+                        "operands": [
+                            "N"
+                        ],
+                        "operator": "EQUAL",
+                        "type": "TEXT"
+                    }
+                ]
+            },
+            "sources": [
+                "FILTER52_copy0_copy0_copy0"
+            ]
         }
-      },
-      "connectors": [
-        {
-          "source": "FILTER61",
-          "target": "APPEND2_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0",
-          "target": "OUTPUT0_copy0_copy0_copy0"
-        },
-        {
-          "source": "APPEND2_copy0",
-          "target": "APPEND3_copy0"
-        },
-        {
-          "source": "APPEND3_copy0",
-          "target": "OUTPUT1_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0",
-          "target": "OUTPUT2_copy0"
-        },
-        {
-          "source": "TRANSFORM1",
-          "target": "OUTPUT1_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0_copy0",
-          "target": "OUTPUT0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM1",
-          "target": "OUTPUT0_copy0_copy1_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM3",
-          "target": "OUTPUT3"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0",
-          "target": "APPEND12"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0_copy0",
-          "target": "APPEND12"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0",
-          "target": "OUTPUT0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "LOAD_DATASET0_copy0",
-          "target": "JOIN0"
-        },
-        {
-          "source": "JOIN0",
-          "target": "FILTER53"
-        },
-        {
-          "source": "FILTER53",
-          "target": "FILTER1_copy0_copy0"
-        },
-        {
-          "source": "LOAD_DATASET0_copy0_copy0",
-          "target": "JOIN1"
-        },
-        {
-          "source": "JOIN1",
-          "target": "FILTER54"
-        },
-        {
-          "source": "FILTER54",
-          "target": "FILTER1_copy0_copy0_copy0"
-        },
-        {
-          "source": "LOAD_DATASET0_copy0_copy1",
-          "target": "JOIN2"
-        },
-        {
-          "source": "LOAD_DATASET20_copy0",
-          "target": "JOIN2"
-        },
-        {
-          "source": "JOIN2",
-          "target": "TRANSFORM4"
-        },
-        {
-          "source": "FILTER1_copy0_copy0_copy0",
-          "target": "FILTER56"
-        },
-        {
-          "source": "FILTER56",
-          "target": "FILTER57"
-        },
-        {
-          "source": "FILTER52_copy0_copy1",
-          "target": "FILTER4_copy0_copy0_copy1"
-        },
-        {
-          "source": "FILTER4_copy0_copy0_copy1",
-          "target": "TRANSFORM3"
-        },
-        {
-          "source": "FILTER59",
-          "target": "TRANSFORM1"
-        },
-        {
-          "source": "FILTER52_copy0_copy1",
-          "target": "FILTER50"
-        },
-        {
-          "source": "FILTER52_copy0_copy1",
-          "target": "FILTER49"
-        },
-        {
-          "source": "FILTER50",
-          "target": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER56_copy0",
-          "target": "FILTER57_copy0"
-        },
-        {
-          "source": "FILTER1_copy0_copy0",
-          "target": "FILTER56_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER44_copy0_copy0_copy0",
-          "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM5",
-          "target": "FILTER44_copy0_copy0"
-        },
-        {
-          "source": "FILTER57_copy0",
-          "target": "JOIN3"
-        },
-        {
-          "source": "LOAD_DATASET28_copy0",
-          "target": "JOIN3"
-        },
-        {
-          "source": "JOIN3",
-          "target": "TRANSFORM5"
-        },
-        {
-          "source": "TRANSFORM5",
-          "target": "FILTER44_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM5",
-          "target": "FILTER44_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0",
-          "target": "FILTER58"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
-          "target": "FILTER58_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
-          "target": "FILTER58_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM4",
-          "target": "JOIN0"
-        },
-        {
-          "source": "TRANSFORM4",
-          "target": "JOIN1"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0",
-          "target": "FILTER59"
-        },
-        {
-          "source": "TRANSFORM6",
-          "target": "OUTPUT1_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER49",
-          "target": "FILTER52_copy0_copy1_copy0"
-        },
-        {
-          "source": "FILTER49",
-          "target": "FILTER52_copy0_copy1_copy0_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy1_copy0",
-          "target": "TRANSFORM0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy1_copy0_copy0",
-          "target": "TRANSFORM7"
-        },
-        {
-          "source": "TRANSFORM7",
-          "target": "OUTPUT4"
-        },
-        {
-          "source": "APPEND12",
-          "target": "APPEND15"
-        },
-        {
-          "source": "TRANSFORM7",
-          "target": "APPEND15"
-        },
-        {
-          "source": "APPEND15",
-          "target": "OUTPUT1_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM8",
-          "target": "OUTPUT0_copy0_copy1_copy0_copy1"
-        },
-        {
-          "source": "FILTER44_copy0_copy0_copy0_copy0",
-          "target": "APPEND16"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
-          "target": "APPEND16"
-        },
-        {
-          "source": "APPEND16",
-          "target": "TRANSFORM8"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy1_copy0",
-          "target": "FILTER60"
-        },
-        {
-          "source": "FILTER60",
-          "target": "APPEND3_copy0"
-        },
-        {
-          "source": "FILTER60",
-          "target": "OUTPUT0_copy0_copy1_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0",
-          "target": "TRANSFORM9"
-        },
-        {
-          "source": "TRANSFORM9",
-          "target": "OUTPUT1_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy1",
-          "target": "FILTER61"
-        },
-        {
-          "source": "FILTER61",
-          "target": "OUTPUT0_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0",
-          "target": "FILTER62"
-        },
-        {
-          "source": "FILTER62",
-          "target": "OUTPUT0_copy0_copy0"
-        },
-        {
-          "source": "FILTER62",
-          "target": "APPEND2_copy0"
-        },
-        {
-          "source": "FILTER58_copy0_copy0",
-          "target": "TRANSFORM10"
-        },
-        {
-          "source": "TRANSFORM10",
-          "target": "OUTPUT1_copy0_copy0_copy0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER58",
-          "target": "APPEND17"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0_copy0",
-          "target": "APPEND17"
-        },
-        {
-          "source": "APPEND17",
-          "target": "TRANSFORM0_copy0_copy0_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0",
-          "target": "TRANSFORM0_copy1"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0",
-          "target": "TRANSFORM0_copy0_copy0"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0_copy0",
-          "target": "TRANSFORM0_copy0_copy1_copy0"
-        },
-        {
-          "source": "TRANSFORM0_copy0_copy0_copy0_copy1",
-          "target": "OUTPUT0_copy0_copy0_copy0_copy1"
-        },
-        {
-          "source": "FILTER58_copy0",
-          "target": "TRANSFORM0_copy0_copy0_copy0_copy1"
-        },
-        {
-          "source": "FILTER57",
-          "target": "JOIN4"
-        },
-        {
-          "source": "LOAD_DATASET28_copy0_copy0",
-          "target": "JOIN4"
-        },
-        {
-          "source": "JOIN4",
-          "target": "TRANSFORM5_copy0"
-        },
-        {
-          "source": "TRANSFORM5_copy0",
-          "target": "FILTER52_copy0_copy0_copy0"
-        },
-        {
-          "source": "TRANSFORM5_copy0",
-          "target": "FILTER52_copy0_copy1"
-        },
-        {
-          "source": "FILTER52_copy0_copy0_copy0",
-          "target": "FILTER58_copy1"
-        },
-        {
-          "source": "FILTER58_copy1",
-          "target": "TRANSFORM6"
-        }
-      ],
-      "hiddenColumns": []
     },
-    "version": "62.0"
-  },
-  "scheduleAttributes": {
-    "assetId": "05v7Q000000srmxQAA",
-    "events": {
-      "events": []
-    },
-    "frequency": "eventdriven",
-    "triggerRule": "recipe:05v7Q000000srmsQAA"
-  },
-  "scheduleType": "eventdriven",
-  "status": "Success",
-  "targetDataflowId": "02K7Q000002xiUSUAY",
-  "type": "recipe",
-  "url": "/services/data/v62.0/wave/recipes/05v7Q000000srmxQAA?format=R3",
-  "validationDetails": []
+    "ui": {
+        "nodes": {
+            "LOAD_DATASET0_copy0": {
+                "label": "Account",
+                "description": "",
+                "type": "LOAD_DATASET",
+                "top": 811.2,
+                "left": 533.2,
+                "parameters": {
+                    "sampleSize": 10000
+                }
+            },
+            "OUTPUT0_copy0": {
+                "label": "SPOC - Farmer Fornebu - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 112,
+                "left": 2351.8
+            },
+            "TRANSFORM0_copy1": {
+                "label": "SPOC - Farmer Fornebu (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 113,
+                "left": 1931.6,
+                "graph": {
+                    "DROP_FIELDS0_copy1": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "FILTER1_copy0_copy0": {
+                "label": "Existing Customers",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 953.2
+            },
+            "OUTPUT0_copy0_copy0": {
+                "label": "SPOC - Farmer Gjøvik - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 252,
+                "left": 2352.2
+            },
+            "TRANSFORM0_copy0_copy0": {
+                "label": "SPOC - Farmer Gjøvik (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 253,
+                "left": 1931.6,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy0": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT0_copy0_copy0_copy0": {
+                "label": "TM - Loyalty - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 812,
+                "left": 2352.5
+            },
+            "TRANSFORM0_copy0_copy0_copy0": {
+                "label": "TM - Loyalty (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 812,
+                "left": 2072.1,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy0_copy0": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT0_copy0_copy1_copy0": {
+                "label": "SPOC - Hunter ME - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 392,
+                "left": 2353
+            },
+            "TRANSFORM0_copy0_copy1_copy0": {
+                "label": "SPOC - Hunter ME (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 393,
+                "left": 1931.6,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy1_copy0": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "APPEND2_copy0": {
+                "label": "Append 2",
+                "type": "APPEND",
+                "top": 252,
+                "left": 2212.1
+            },
+            "APPEND3_copy0": {
+                "label": "Append 3",
+                "type": "APPEND",
+                "top": 392.1,
+                "left": 2212
+            },
+            "OUTPUT1_copy0": {
+                "label": "SPOC - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 531.5,
+                "left": 2352
+            },
+            "OUTPUT2_copy0": {
+                "label": "TM - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 952,
+                "left": 2353.5
+            },
+            "LOAD_DATASET0_copy0_copy0": {
+                "label": "Account",
+                "description": "",
+                "type": "LOAD_DATASET",
+                "top": 1931.3,
+                "left": 533.2,
+                "parameters": {
+                    "sampleSize": 10000
+                }
+            },
+            "FILTER1_copy0_copy0_copy0": {
+                "label": "Existing Customers",
+                "description": "",
+                "type": "FILTER",
+                "top": 1931.3,
+                "left": 953.2
+            },
+            "FILTER4_copy0_copy0_copy1": {
+                "label": "Agrol",
+                "description": "",
+                "type": "FILTER",
+                "top": 2072.1,
+                "left": 1790.7
+            },
+            "OUTPUT1_copy0_copy0": {
+                "label": "SPOC - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1791.3,
+                "left": 2353.2
+            },
+            "TRANSFORM1": {
+                "label": "SPOC - Hunter ME (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1652.2,
+                "left": 2072.1,
+                "graph": {
+                    "DROP_FIELDS1": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT1_copy0_copy0_copy0": {
+                "label": "TM - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 2351.3,
+                "left": 2353.2
+            },
+            "FILTER49": {
+                "label": "Forbund",
+                "description": "",
+                "type": "FILTER",
+                "top": 2492.4,
+                "left": 1791.8
+            },
+            "FILTER50": {
+                "label": "Non Forbund",
+                "description": "",
+                "type": "FILTER",
+                "top": 2212.4,
+                "left": 1791.9
+            },
+            "OUTPUT0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Gjøvik - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 2491.3,
+                "left": 2353.2
+            },
+            "TRANSFORM0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Gjøvik (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 2491.3,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy0_copy0_copy0": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT0_copy0_copy1_copy0_copy0": {
+                "label": "SPOC - Hunter ME - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1651.3,
+                "left": 2353.2
+            },
+            "TRANSFORM3": {
+                "label": "Agrol Prospects (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 2071.3,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS3": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT3": {
+                "label": "Agrol - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 2071.3,
+                "left": 2353.2
+            },
+            "OUTPUT0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Shared - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 2211.3,
+                "left": 2353.2
+            },
+            "TRANSFORM0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Shared (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 2211.3,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy0_copy0_copy0_copy0": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "APPEND12": {
+                "label": "TM",
+                "description": "",
+                "type": "APPEND",
+                "top": 2351.3,
+                "left": 2073.2
+            },
+            "JOIN0": {
+                "label": "Pilot (Join)",
+                "description": "",
+                "type": "JOIN",
+                "top": 811.2,
+                "left": 673.2
+            },
+            "FILTER53": {
+                "label": "No Pilot",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 813.2
+            },
+            "JOIN1": {
+                "label": "Pilot (Join)",
+                "description": "",
+                "type": "JOIN",
+                "top": 1931.3,
+                "left": 673.2
+            },
+            "FILTER54": {
+                "label": "No Pilot",
+                "description": "",
+                "type": "FILTER",
+                "top": 1931.3,
+                "left": 813.2
+            },
+            "LOAD_DATASET20_copy0": {
+                "label": "MC - New Sales MV 20-40 employees - February 2026",
+                "type": "LOAD_DATASET",
+                "top": 1231.2,
+                "left": 113.19999999999999,
+                "parameters": {
+                    "sampleSize": 10000
+                }
+            },
+            "LOAD_DATASET0_copy0_copy1": {
+                "label": "Account",
+                "description": "",
+                "type": "LOAD_DATASET",
+                "top": 1371.2,
+                "left": 113.19999999999999,
+                "parameters": {
+                    "sampleSize": 10000
+                }
+            },
+            "JOIN2": {
+                "label": "Customers (Join)",
+                "description": "",
+                "type": "JOIN",
+                "top": 1231.2,
+                "left": 253.2
+            },
+            "TRANSFORM4": {
+                "label": "Dropping fields",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1231.2,
+                "left": 393.2,
+                "graph": {
+                    "FORMULA1": {
+                        "parameters": {
+                            "type": "BASE_FORMULA_UI"
+                        },
+                        "label": "ACCOUNT_ID"
+                    },
+                    "DROP_FIELDS4": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": [
+                    {
+                        "source": "FORMULA1",
+                        "target": "DROP_FIELDS4"
+                    }
+                ]
+            },
+            "FILTER56": {
+                "label": "Mass Market",
+                "description": "",
+                "type": "FILTER",
+                "top": 1931.3,
+                "left": 1093.2
+            },
+            "FILTER52_copy0_copy1": {
+                "label": "0 to 20 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 2072.1,
+                "left": 1651.7
+            },
+            "FILTER52_copy0_copy0_copy0": {
+                "label": "21 to 40 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 1932.1,
+                "left": 1651.6
+            },
+            "FILTER57": {
+                "label": "MV Prospects",
+                "description": "",
+                "type": "FILTER",
+                "top": 1931.3,
+                "left": 1233.2
+            },
+            "FILTER56_copy0": {
+                "label": "Mass Market",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 1093.2
+            },
+            "FILTER57_copy0": {
+                "label": "MV Customers",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 1233.2
+            },
+            "FILTER44_copy0_copy0": {
+                "label": "3 to 9 MV Subs",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 1653.2
+            },
+            "FILTER44_copy0_copy0_copy0": {
+                "label": "2 MV Subs",
+                "description": "",
+                "type": "FILTER",
+                "top": 951.2,
+                "left": 1653.2
+            },
+            "FILTER44_copy0_copy0_copy0_copy0": {
+                "label": "1 MV Sub",
+                "description": "",
+                "type": "FILTER",
+                "top": 1511.2,
+                "left": 1653.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0": {
+                "label": "More than 30 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 671.2,
+                "left": 1793.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0_copy0": {
+                "label": "0 to 30 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 811.2,
+                "left": 1793.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "10 to 30 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 951.2,
+                "left": 1793.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "31 to 60 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 1091.2,
+                "left": 1793.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "More than 60 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 1231.2,
+                "left": 1793.2
+            },
+            "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "0 to 9 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 1371.2,
+                "left": 1793.2
+            },
+            "LOAD_DATASET28_copy0": {
+                "label": "Suppressions NACE-codes",
+                "type": "LOAD_DATASET",
+                "top": 671.2,
+                "left": 1373.2,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN3": {
+                "label": "NACE-Code (Join)",
+                "description": "",
+                "type": "JOIN",
+                "top": 811.2,
+                "left": 1373.2
+            },
+            "TRANSFORM5": {
+                "label": "Calculations",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 811.2,
+                "left": 1513.2,
+                "graph": {
+                    "FORMULA0": {
+                        "parameters": {
+                            "type": "BASE_FORMULA_UI"
+                        },
+                        "label": "Low Priority Industry Flag"
+                    }
+                },
+                "connectors": []
+            },
+            "FILTER58": {
+                "label": "Prioritised Industry",
+                "description": "",
+                "type": "FILTER",
+                "top": 951.2,
+                "left": 1933.2
+            },
+            "FILTER58_copy0": {
+                "label": "Prioritised Industry",
+                "description": "",
+                "type": "FILTER",
+                "top": 1091.2,
+                "left": 1933.2
+            },
+            "FILTER58_copy0_copy0": {
+                "label": "Prioritised Industry",
+                "description": "",
+                "type": "FILTER",
+                "top": 1231.2,
+                "left": 1933.2
+            },
+            "FILTER59": {
+                "label": "ZERO",
+                "description": "",
+                "type": "FILTER",
+                "top": 1652,
+                "left": 1650.7
+            },
+            "TRANSFORM6": {
+                "label": "TM - Large Prospects (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1931.3,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS5": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT1_copy0_copy0_copy0_copy0": {
+                "label": "TM - Large Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1931.3,
+                "left": 2353.2
+            },
+            "FILTER52_copy0_copy1_copy0": {
+                "label": "10 to 20 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 2492,
+                "left": 1931.9
+            },
+            "FILTER52_copy0_copy1_copy0_copy0": {
+                "label": "0 to 9 employees",
+                "description": "",
+                "type": "FILTER",
+                "top": 2632,
+                "left": 1931.7
+            },
+            "TRANSFORM7": {
+                "label": "TM - Forbund Shared (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 2631.3,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS6": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT4": {
+                "label": "TM - Forbund Shared - Prospects",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 2631.3,
+                "left": 2353.2
+            },
+            "APPEND15": {
+                "label": "TM All",
+                "description": "",
+                "type": "APPEND",
+                "top": 2351.3,
+                "left": 2213.2
+            },
+            "TRANSFORM8": {
+                "label": "Digital (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1372,
+                "left": 2072.1,
+                "graph": {
+                    "DROP_FIELDS7": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT0_copy0_copy1_copy0_copy1": {
+                "label": "Digital - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1372,
+                "left": 2351.5
+            },
+            "APPEND16": {
+                "label": "All",
+                "description": "",
+                "type": "APPEND",
+                "top": 1372,
+                "left": 1932.1
+            },
+            "FILTER60": {
+                "label": "ZERO",
+                "description": "",
+                "type": "FILTER",
+                "top": 392.2,
+                "left": 2072.6
+            },
+            "TRANSFORM9": {
+                "label": "TM - Large Customers (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 672,
+                "left": 2071.2,
+                "graph": {
+                    "DROP_FIELDS8": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT1_copy0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Large Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 672,
+                "left": 2352
+            },
+            "FILTER61": {
+                "label": "ZERO",
+                "description": "",
+                "type": "FILTER",
+                "top": 112.19999999999999,
+                "left": 2072.6
+            },
+            "FILTER62": {
+                "label": "ZERO",
+                "description": "",
+                "type": "FILTER",
+                "top": 252.2,
+                "left": 2072.6
+            },
+            "TRANSFORM10": {
+                "label": "TM - Gjøvik - Large Customers (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1231.2,
+                "left": 2073.2,
+                "graph": {
+                    "DROP_FIELDS9": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "OUTPUT1_copy0_copy0_copy0_copy0_copy0_copy0": {
+                "label": "TM - Gjøvik - Large Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1232,
+                "left": 2351.7
+            },
+            "APPEND17": {
+                "label": "All",
+                "description": "",
+                "type": "APPEND",
+                "top": 812,
+                "left": 1932
+            },
+            "OUTPUT0_copy0_copy0_copy0_copy1": {
+                "label": "TM - Loyalty New Sales - Customers",
+                "description": "",
+                "type": "OUTPUT",
+                "top": 1092.1,
+                "left": 2352.3
+            },
+            "TRANSFORM0_copy0_copy0_copy0_copy1": {
+                "label": "TM - Loyalty New Sales (Drop Fields)",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1092,
+                "left": 2072.3,
+                "graph": {
+                    "DROP_FIELDS0_copy0_copy0_copy0_copy1": {
+                        "label": "Drop Columns"
+                    }
+                },
+                "connectors": []
+            },
+            "LOAD_DATASET28_copy0_copy0": {
+                "label": "Suppressions NACE-codes",
+                "description": "",
+                "type": "LOAD_DATASET",
+                "top": 1792.1,
+                "left": 1371.8,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN4": {
+                "label": "NACE-Code (Join)",
+                "description": "",
+                "type": "JOIN",
+                "top": 1932,
+                "left": 1372
+            },
+            "TRANSFORM5_copy0": {
+                "label": "Calculations",
+                "description": "",
+                "type": "TRANSFORM",
+                "top": 1931.9,
+                "left": 1512,
+                "graph": {
+                    "FORMULA0_copy0": {
+                        "parameters": {
+                            "type": "BASE_FORMULA_UI"
+                        },
+                        "label": "Low Priority Industry Flag"
+                    }
+                },
+                "connectors": []
+            },
+            "FILTER58_copy1": {
+                "label": "Prioritised Industry",
+                "description": "",
+                "type": "FILTER",
+                "top": 1932,
+                "left": 1792
+            }
+        },
+        "connectors": [
+            {
+                "source": "FILTER61",
+                "target": "APPEND2_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0",
+                "target": "OUTPUT0_copy0_copy0_copy0"
+            },
+            {
+                "source": "APPEND2_copy0",
+                "target": "APPEND3_copy0"
+            },
+            {
+                "source": "APPEND3_copy0",
+                "target": "OUTPUT1_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0",
+                "target": "OUTPUT2_copy0"
+            },
+            {
+                "source": "TRANSFORM1",
+                "target": "OUTPUT1_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0_copy0",
+                "target": "OUTPUT0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM1",
+                "target": "OUTPUT0_copy0_copy1_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM3",
+                "target": "OUTPUT3"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0",
+                "target": "APPEND12"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0_copy0",
+                "target": "APPEND12"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0",
+                "target": "OUTPUT0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "LOAD_DATASET0_copy0",
+                "target": "JOIN0"
+            },
+            {
+                "source": "JOIN0",
+                "target": "FILTER53"
+            },
+            {
+                "source": "FILTER53",
+                "target": "FILTER1_copy0_copy0"
+            },
+            {
+                "source": "LOAD_DATASET0_copy0_copy0",
+                "target": "JOIN1"
+            },
+            {
+                "source": "JOIN1",
+                "target": "FILTER54"
+            },
+            {
+                "source": "FILTER54",
+                "target": "FILTER1_copy0_copy0_copy0"
+            },
+            {
+                "source": "LOAD_DATASET0_copy0_copy1",
+                "target": "JOIN2"
+            },
+            {
+                "source": "LOAD_DATASET20_copy0",
+                "target": "JOIN2"
+            },
+            {
+                "source": "JOIN2",
+                "target": "TRANSFORM4"
+            },
+            {
+                "source": "FILTER1_copy0_copy0_copy0",
+                "target": "FILTER56"
+            },
+            {
+                "source": "FILTER56",
+                "target": "FILTER57"
+            },
+            {
+                "source": "FILTER52_copy0_copy1",
+                "target": "FILTER4_copy0_copy0_copy1"
+            },
+            {
+                "source": "FILTER4_copy0_copy0_copy1",
+                "target": "TRANSFORM3"
+            },
+            {
+                "source": "FILTER59",
+                "target": "TRANSFORM1"
+            },
+            {
+                "source": "FILTER52_copy0_copy1",
+                "target": "FILTER50"
+            },
+            {
+                "source": "FILTER52_copy0_copy1",
+                "target": "FILTER49"
+            },
+            {
+                "source": "FILTER50",
+                "target": "TRANSFORM0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER56_copy0",
+                "target": "FILTER57_copy0"
+            },
+            {
+                "source": "FILTER1_copy0_copy0",
+                "target": "FILTER56_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER44_copy0_copy0_copy0",
+                "target": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM5",
+                "target": "FILTER44_copy0_copy0"
+            },
+            {
+                "source": "FILTER57_copy0",
+                "target": "JOIN3"
+            },
+            {
+                "source": "LOAD_DATASET28_copy0",
+                "target": "JOIN3"
+            },
+            {
+                "source": "JOIN3",
+                "target": "TRANSFORM5"
+            },
+            {
+                "source": "TRANSFORM5",
+                "target": "FILTER44_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM5",
+                "target": "FILTER44_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0",
+                "target": "FILTER58"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
+                "target": "FILTER58_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
+                "target": "FILTER58_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM4",
+                "target": "JOIN0"
+            },
+            {
+                "source": "TRANSFORM4",
+                "target": "JOIN1"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0",
+                "target": "FILTER59"
+            },
+            {
+                "source": "TRANSFORM6",
+                "target": "OUTPUT1_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER49",
+                "target": "FILTER52_copy0_copy1_copy0"
+            },
+            {
+                "source": "FILTER49",
+                "target": "FILTER52_copy0_copy1_copy0_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy1_copy0",
+                "target": "TRANSFORM0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy1_copy0_copy0",
+                "target": "TRANSFORM7"
+            },
+            {
+                "source": "TRANSFORM7",
+                "target": "OUTPUT4"
+            },
+            {
+                "source": "APPEND12",
+                "target": "APPEND15"
+            },
+            {
+                "source": "TRANSFORM7",
+                "target": "APPEND15"
+            },
+            {
+                "source": "APPEND15",
+                "target": "OUTPUT1_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM8",
+                "target": "OUTPUT0_copy0_copy1_copy0_copy1"
+            },
+            {
+                "source": "FILTER44_copy0_copy0_copy0_copy0",
+                "target": "APPEND16"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0",
+                "target": "APPEND16"
+            },
+            {
+                "source": "APPEND16",
+                "target": "TRANSFORM8"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy1_copy0",
+                "target": "FILTER60"
+            },
+            {
+                "source": "FILTER60",
+                "target": "APPEND3_copy0"
+            },
+            {
+                "source": "FILTER60",
+                "target": "OUTPUT0_copy0_copy1_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0",
+                "target": "TRANSFORM9"
+            },
+            {
+                "source": "TRANSFORM9",
+                "target": "OUTPUT1_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy1",
+                "target": "FILTER61"
+            },
+            {
+                "source": "FILTER61",
+                "target": "OUTPUT0_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0",
+                "target": "FILTER62"
+            },
+            {
+                "source": "FILTER62",
+                "target": "OUTPUT0_copy0_copy0"
+            },
+            {
+                "source": "FILTER62",
+                "target": "APPEND2_copy0"
+            },
+            {
+                "source": "FILTER58_copy0_copy0",
+                "target": "TRANSFORM10"
+            },
+            {
+                "source": "TRANSFORM10",
+                "target": "OUTPUT1_copy0_copy0_copy0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER58",
+                "target": "APPEND17"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0_copy0",
+                "target": "APPEND17"
+            },
+            {
+                "source": "APPEND17",
+                "target": "TRANSFORM0_copy0_copy0_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0",
+                "target": "TRANSFORM0_copy1"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0",
+                "target": "TRANSFORM0_copy0_copy0"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0_copy0",
+                "target": "TRANSFORM0_copy0_copy1_copy0"
+            },
+            {
+                "source": "TRANSFORM0_copy0_copy0_copy0_copy1",
+                "target": "OUTPUT0_copy0_copy0_copy0_copy1"
+            },
+            {
+                "source": "FILTER58_copy0",
+                "target": "TRANSFORM0_copy0_copy0_copy0_copy1"
+            },
+            {
+                "source": "FILTER57",
+                "target": "JOIN4"
+            },
+            {
+                "source": "LOAD_DATASET28_copy0_copy0",
+                "target": "JOIN4"
+            },
+            {
+                "source": "JOIN4",
+                "target": "TRANSFORM5_copy0"
+            },
+            {
+                "source": "TRANSFORM5_copy0",
+                "target": "FILTER52_copy0_copy0_copy0"
+            },
+            {
+                "source": "TRANSFORM5_copy0",
+                "target": "FILTER52_copy0_copy1"
+            },
+            {
+                "source": "FILTER52_copy0_copy0_copy0",
+                "target": "FILTER58_copy1"
+            },
+            {
+                "source": "FILTER58_copy1",
+                "target": "TRANSFORM6"
+            }
+        ],
+        "hiddenColumns": []
+    }
 }

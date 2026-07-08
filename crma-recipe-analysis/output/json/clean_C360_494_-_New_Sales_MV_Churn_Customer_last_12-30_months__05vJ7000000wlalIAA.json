@@ -179,6 +179,7 @@
           "Reservation_Date_MV_Inbound__c",
           "Reservation_Date_MV_Outbound__c",
           "Id",
+          "KurtID__c",
           "Latest_Port_out_date__c",
           "mobile_service_segment__c"
         ],

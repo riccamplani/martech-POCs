@@ -423,7 +423,9 @@
         },
         "fields": [
           "Id",
-          "KurtID__c"
+          "KurtID__c",
+          "Has_Subscriptions__c",
+          "Forbund_membership__c"
         ],
         "sampleDetails": {
           "sortBy": [],
