@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET11 | Account | connectedDataset | 10 | 10 | 0 | 0% |
+| LOAD_DATASET11 | Account | connectedDataset | 10 | 5 | 5 | 50% |
 | LOAD_DATASET14_copy0 | Account | connectedDataset | 2 | 2 | 0 | 0% |
-| **TOTAL** | | | **12** | **12** | **0** | **0%** |
+| **TOTAL** | | | **12** | **7** | **5** | **42%** |
 
 ## Detail per Source Object
 
@@ -17,23 +17,26 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 10
-- **Fields used:** 10
-- **Fields unused:** 0
+- **Fields used:** 5
+- **Fields unused:** 5
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `Has_Subscriptions_Actual__c` |  |
 | `Id` | JOIN1 (join), DROP_FIELDS12_copy0_copy1_copy0 (schema), JOIN16 (join) |
-| `IsDeleted` |  |
-| `KurtID__c` |  |
 | `Latest_Port_out_date__c` | FILTER3 (filter) |
 | `Reservation_Date_MV_Inbound__c` | FILTER6_copy2_copy0 (filter) |
 | `Reservation_Date_MV_Outbound__c` | FILTER8_copy0 (filter) |
-| `StatusKURT__c` |  |
-| `SubsMobileVoice__c` |  |
 | `mobile_service_segment__c` | FILTER2 (filter) |
+
+#### Fields to ELIMINATE
+
+- `Has_Subscriptions_Actual__c`
+- `IsDeleted`
+- `KurtID__c`
+- `StatusKURT__c`
+- `SubsMobileVoice__c`
 
 ### Account (`LOAD_DATASET14_copy0`)
 

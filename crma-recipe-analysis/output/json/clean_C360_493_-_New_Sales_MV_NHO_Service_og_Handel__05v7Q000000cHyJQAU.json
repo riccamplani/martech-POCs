@@ -422,12 +422,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "NumberOfEmployees",
           "Id",
-          "KurtID__c",
-          "Has_Subscriptions__c",
-          "Forbund_membership__c",
-          "FORBUND_START_DATE__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],

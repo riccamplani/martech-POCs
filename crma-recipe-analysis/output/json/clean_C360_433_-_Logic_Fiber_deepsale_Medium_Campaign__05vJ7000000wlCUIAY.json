@@ -10,18 +10,12 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "CompanyFamily__c",
           "Id",
           "IsDeleted",
           "Name",
           "KurtID__c",
           "StatusKURT__c",
           "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_PAYER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "NBR_TBB_MOBIL_PAYER__c",
           "DPSS_Segment__c"
         ],
         "sampleDetails": {

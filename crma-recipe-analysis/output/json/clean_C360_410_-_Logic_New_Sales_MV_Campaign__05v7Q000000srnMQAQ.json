@@ -2596,17 +2596,11 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBN_PROD_HOVEDNUMMER_ACT_DATE__c",
           "Id",
           "NumberOfEmployees",
           "KurtID__c",
-          "SubsM2M__c",
           "Has_Subscriptions__c",
           "Forbund_membership__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
           "FORBUND_START_DATE__c"
         ],
         "sampleDetails": {

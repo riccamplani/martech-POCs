@@ -7,12 +7,12 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET7 | Account | connectedDataset | 59 | 59 | 0 | 0% |
-| LOAD_DATASET11 | Account | connectedDataset | 3 | 3 | 0 | 0% |
+| LOAD_DATASET7 | Account | connectedDataset | 59 | 17 | 42 | 71% |
+| LOAD_DATASET11 | Account | connectedDataset | 3 | 2 | 1 | 33% |
 | LOAD_DATASET5_copy0_copy0 | Account_Location__c | connectedDataset | 21 | 21 | 0 | 0% |
 | LOAD_DATASET1_copy0_copy0 | BSS_Event__c | connectedDataset | 27 | 7 | 20 | 74% |
-| LOAD_DATASET6 | Contact | connectedDataset | 50 | 50 | 0 | 0% |
-| **TOTAL** | | | **160** | **140** | **20** | **12%** |
+| LOAD_DATASET6 | Contact | connectedDataset | 50 | 14 | 36 | 72% |
+| **TOTAL** | | | **160** | **61** | **99** | **62%** |
 
 ## Detail per Source Object
 
@@ -20,79 +20,82 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 59
-- **Fields used:** 59
-- **Fields unused:** 0
+- **Fields used:** 17
+- **Fields unused:** 42
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `Account_Owner_Full_Name__c` | FORMULA39_copy3_copy0 (formula) |
-| `CompanyFamily__c` |  |
 | `Company_Family_Name__c` | FILTER8_copy0_copy0_copy0 (filter) |
-| `Concern__c` |  |
-| `Country__c` |  |
-| `CreatedDate` |  |
 | `CustomerType__c` | FILTER42 (filter) |
 | `DPSS_Segment__c` | DROP_FIELDS25 (schema), FILTER40 (filter) |
-| `DealerChain__c` |  |
-| `DealerID__c` |  |
-| `DivisionSPOC__c` |  |
-| `E_mail__c` |  |
 | `Forbund_membership__c` | FILTER41 (filter) |
 | `Id` | DROP_FIELDS25 (schema), APPEND0_copy1 (appendV2), APPEND1_copy1 (appendV2), APPEND1_copy1 (appendV2), FORMULA51 (formula) +20 more |
-| `Industry__c` |  |
 | `IsDeleted` | FILTER42 (filter) |
-| `IsPartner` |  |
-| `IsPersonAccount` |  |
 | `KurtID__c` | JOIN0_copy0 (join), JOIN21 (join), APPEND0_copy1 (appendV2), APPEND1_copy1 (appendV2), APPEND1_copy1 (appendV2) +2 more |
 | `Latest_Port_out_date__c` | FILTER35 (filter) |
-| `LevelOfCertification__c` |  |
-| `LevelOfComplexity__c` |  |
-| `MDRevFixedL12__c` |  |
-| `MDRevIDCL12__c` |  |
-| `MDRevMobileL12__c` |  |
-| `MDRevTotTelenorL12__c` |  |
-| `MDSubsFixedBroadband__c` |  |
-| `MDSubsMobileBroadband__c` |  |
-| `MDSubsMobileVoice__c` |  |
-| `MDSubsNordicConnectIPVPNAccess__c` |  |
-| `MDSubsPOTSBLines__c` |  |
-| `MDSubsPOTS__c` |  |
-| `MRevFixedL12__c` |  |
-| `MRevIDCL12__c` |  |
-| `MRevMobileL12__c` |  |
-| `MRevTotTelenorL12__c` |  |
-| `MSubsFixedBroadband__c` |  |
-| `MSubsMobileBroadband__c` |  |
-| `MSubsMobileVoice__c` |  |
-| `MSubsNordicConnectIPVPNAccess__c` |  |
-| `MSubsPOTSBLines__c` |  |
-| `MSubsPOTS__c` |  |
-| `MarketArea__c` |  |
-| `Min_Bedrift__c` |  |
 | `Name` | FILTER8_copy0_copy0_copy0 (filter) |
 | `NumberOfEmployees` | FORMULA47 (formula) |
 | `OrgNo__c` | FILTER8_copy0_copy0_copy0 (filter) |
-| `ParentId` |  |
-| `PersonHasOptedOutOfEmail` |  |
 | `Phone` | JOIN1_copy1 (join), JOIN2_copy1 (join), FILTER42 (filter), JOIN18 (join), APPEND0_copy1 (appendV2) +3 more |
-| `Portfolio__c` |  |
-| `PostalCity__c` |  |
-| `RecordTypeId` |  |
-| `Segment__c` |  |
 | `StatusKURT__c` | FILTER42 (filter) |
 | `SubsMobileVoice__c` | FILTER5_copy0_copy0 (filter), DROP_FIELDS0_copy0_copy3 (schema), FILTER6_copy0 (filter) |
-| `TopLevelAccountID__c` |  |
 | `VisitingZipcode__c` | JOIN19 (join) |
 | `mobile_service_segment__c` | FORMULA47 (formula) |
+
+#### Fields to ELIMINATE
+
+- `CompanyFamily__c`
+- `Concern__c`
+- `Country__c`
+- `CreatedDate`
+- `DealerChain__c`
+- `DealerID__c`
+- `DivisionSPOC__c`
+- `E_mail__c`
+- `Industry__c`
+- `IsPartner`
+- `IsPersonAccount`
+- `LevelOfCertification__c`
+- `LevelOfComplexity__c`
+- `MDRevFixedL12__c`
+- `MDRevIDCL12__c`
+- `MDRevMobileL12__c`
+- `MDRevTotTelenorL12__c`
+- `MDSubsFixedBroadband__c`
+- `MDSubsMobileBroadband__c`
+- `MDSubsMobileVoice__c`
+- `MDSubsNordicConnectIPVPNAccess__c`
+- `MDSubsPOTSBLines__c`
+- `MDSubsPOTS__c`
+- `MRevFixedL12__c`
+- `MRevIDCL12__c`
+- `MRevMobileL12__c`
+- `MRevTotTelenorL12__c`
+- `MSubsFixedBroadband__c`
+- `MSubsMobileBroadband__c`
+- `MSubsMobileVoice__c`
+- `MSubsNordicConnectIPVPNAccess__c`
+- `MSubsPOTSBLines__c`
+- `MSubsPOTS__c`
+- `MarketArea__c`
+- `Min_Bedrift__c`
+- `ParentId`
+- `PersonHasOptedOutOfEmail`
+- `Portfolio__c`
+- `PostalCity__c`
+- `RecordTypeId`
+- `Segment__c`
+- `TopLevelAccountID__c`
 
 ### Account (`LOAD_DATASET11`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 3
-- **Fields used:** 3
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 1
 
 #### Fields to KEEP
 
@@ -100,7 +103,10 @@
 |-------|---------|
 | `Id` | FORMULA72 (formula) |
 | `NACE_Subclass_Code__c` | JOIN24 (join) |
-| `NACE_Subclass_Description__c` |  |
+
+#### Fields to ELIMINATE
+
+- `NACE_Subclass_Description__c`
 
 ### Account_Location__c (`LOAD_DATASET5_copy0_copy0`)
 
@@ -181,60 +187,63 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 50
-- **Fields used:** 50
-- **Fields unused:** 0
+- **Fields used:** 14
+- **Fields unused:** 36
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `AccountId` | JOIN17 (join), DROP_FIELDS13 (schema), DROP_FIELDS17 (schema), DROP_FIELDS17_copy0 (schema), DROP_FIELDS13_copy1 (schema) +19 more |
-| `AccountId__c` |  |
-| `Account_KURT_Id__c` |  |
-| `Account_Market_Name__c` |  |
-| `Average_Rating__c` |  |
-| `Birthdate` |  |
-| `Business_Area__c` |  |
-| `Business_Customer_Contact__c` |  |
-| `Business_Customer_Primary_Contact__c` |  |
-| `Consent_status__c` |  |
-| `ContactID__c` |  |
-| `CreatedDate` |  |
-| `Data_Quality_Email_Mob__c` |  |
 | `Email` | DROP_FIELDS13 (schema), DROP_FIELDS17 (schema), DROP_FIELDS17_copy0 (schema), DROP_FIELDS13_copy1 (schema), DROP_FIELDS17_copy2 (schema) +1 more |
-| `Event__c` |  |
-| `EvergageFilters__c` |  |
-| `FirstName` |  |
 | `HasOptedOutOfEmail` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER32_copy0_copy0 (filter) |
-| `Has_Norwegian_Mobile__c` |  |
 | `Has_eMail__c` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER32_copy0_copy0 (filter), FILTER32_copy1 (filter), FILTER32_copy0_copy1 (filter) +1 more |
 | `Id` | DROP_FIELDS13 (schema), DROP_FIELDS17 (schema), DROP_FIELDS17_copy0 (schema), DROP_FIELDS13_copy1 (schema), DROP_FIELDS17_copy2 (schema) +11 more |
-| `IoT__c` |  |
 | `IsDeleted` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER0_copy0 (filter), FILTER32_copy0_copy0 (filter), FILTER32_copy1 (filter) +2 more |
-| `IsPersonAccount` |  |
-| `KTIFTI__c` |  |
 | `Key_contact__c` | FILTER32_copy0 (filter), FILTER32_copy0_copy1 (filter) |
-| `KurtID__c` |  |
-| `LastName` |  |
-| `Legal_Notification_Contact__c` |  |
-| `Legal_Owner__c` |  |
-| `Legal_Role_Phone__c` |  |
-| `Legal_Role__c` |  |
 | `MBSuperadmin__c` | FILTER32_copy0_copy0 (filter), FILTER32_copy0_copy0_copy0 (filter) |
 | `MB_Admin__c` | FILTER32_copy0_copy0 (filter), FILTER32_copy0_copy0_copy0 (filter) |
 | `Marketing_Cloud_Contact2__c` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER32_copy0_copy0 (filter), FILTER32_copy1 (filter), FILTER32_copy0_copy1 (filter) +1 more |
 | `Marketing_Cloud_Email_Bounced__c` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER32_copy0_copy0 (filter), FILTER32_copy1 (filter), FILTER32_copy0_copy1 (filter) +1 more |
 | `MobilePhone` | DROP_FIELDS13 (schema), DROP_FIELDS17 (schema), FORMULA0_copy0 (formula), DROP_FIELDS17_copy0 (schema), DROP_FIELDS13_copy1 (schema) +2 more |
-| `Name` |  |
-| `Nettverksteknologi__c` |  |
-| `Non_Marketable_Contact__c` |  |
-| `Nyheter_fra_Telenor_Bedrift__c` |  |
 | `Primary__c` | FILTER32 (filter), FILTER0_copy0 (filter), FILTER32_copy1 (filter) |
-| `RecordTypeId` |  |
-| `Role_Level__c` |  |
-| `Role__c` |  |
-| `Sikkerhet__c` |  |
 | `StatusKURT__c` | FILTER32 (filter), FILTER32_copy0 (filter), FILTER32_copy0_copy0 (filter), FILTER32_copy1 (filter), FILTER32_copy0_copy1 (filter) +1 more |
-| `Title` |  |
-| `Top_Level_Kurt_ID__c` |  |
-| `et4ae5__HasOptedOutOfMobile__c` |  |
+
+#### Fields to ELIMINATE
+
+- `AccountId__c`
+- `Account_KURT_Id__c`
+- `Account_Market_Name__c`
+- `Average_Rating__c`
+- `Birthdate`
+- `Business_Area__c`
+- `Business_Customer_Contact__c`
+- `Business_Customer_Primary_Contact__c`
+- `Consent_status__c`
+- `ContactID__c`
+- `CreatedDate`
+- `Data_Quality_Email_Mob__c`
+- `Event__c`
+- `EvergageFilters__c`
+- `FirstName`
+- `Has_Norwegian_Mobile__c`
+- `IoT__c`
+- `IsPersonAccount`
+- `KTIFTI__c`
+- `KurtID__c`
+- `LastName`
+- `Legal_Notification_Contact__c`
+- `Legal_Owner__c`
+- `Legal_Role_Phone__c`
+- `Legal_Role__c`
+- `Name`
+- `Nettverksteknologi__c`
+- `Non_Marketable_Contact__c`
+- `Nyheter_fra_Telenor_Bedrift__c`
+- `RecordTypeId`
+- `Role_Level__c`
+- `Role__c`
+- `Sikkerhet__c`
+- `Title`
+- `Top_Level_Kurt_ID__c`
+- `et4ae5__HasOptedOutOfMobile__c`

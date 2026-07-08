@@ -8,8 +8,8 @@
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
 | LOAD_DATASET0_copy0 | Account | connectedDataset | 20 | 20 | 0 | 0% |
-| LOAD_DATASET14 | Account | connectedDataset | 5 | 5 | 0 | 0% |
-| **TOTAL** | | | **25** | **25** | **0** | **0%** |
+| LOAD_DATASET14 | Account | connectedDataset | 5 | 4 | 1 | 20% |
+| **TOTAL** | | | **25** | **24** | **1** | **4%** |
 
 ## Detail per Source Object
 
@@ -49,8 +49,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 5
-- **Fields used:** 5
-- **Fields unused:** 0
+- **Fields used:** 4
+- **Fields unused:** 1
 
 #### Fields to KEEP
 
@@ -60,4 +60,7 @@
 | `Id` | FORMULA9_copy0 (formula), FORMULA10_copy0 (formula), JOIN23 (join), DROP_FIELDS17 (schema), AGGREGATE5 (aggregate) +1 more |
 | `KurtID__c` | FORMULA8_copy0 (formula), FORMULA11_copy0 (formula) |
 | `Migration_flag__c` | DROP_FIELDS17 (schema), AGGREGATE5 (aggregate) |
-| `NBR_SAFEZONE_MOBILE__c` |  |
+
+#### Fields to ELIMINATE
+
+- `NBR_SAFEZONE_MOBILE__c`

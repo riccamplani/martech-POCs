@@ -13,7 +13,6 @@
           "NumberOfEmployees",
           "Id",
           "IsDeleted",
-          "Segment__c",
           "StatusKURT__c",
           "SubsMobileVoice__c",
           "Mobile_Voice_Penetration__c",

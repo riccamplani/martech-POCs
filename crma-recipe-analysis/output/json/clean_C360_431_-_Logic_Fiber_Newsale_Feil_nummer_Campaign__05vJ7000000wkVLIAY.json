@@ -167,9 +167,7 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "DPSS_Segment__c",
           "Id",
-          "IsDeleted",
           "Name",
           "NumberOfEmployees",
           "CompanyFamily__c",

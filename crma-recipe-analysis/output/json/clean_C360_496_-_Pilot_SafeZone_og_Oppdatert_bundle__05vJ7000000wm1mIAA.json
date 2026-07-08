@@ -4450,27 +4450,11 @@
           "Company_Family_Name__c",
           "Id",
           "IsDeleted",
-          "Name",
-          "NumberOfEmployees",
-          "Industry__c",
-          "KurtID__c",
-          "OrgNo__c",
-          "Segment__c",
           "StatusKURT__c",
           "TSP_Dealer__c",
           "Forbund_membership__c",
-          "Service_segment__c",
           "Mobile_Voice_Penetration__c",
-          "NBR_MBN__c",
-          "NBR_MBN_AVANSERT_SENTRALBORD__c",
-          "NBR_MBN_SENTRALBORD__c",
-          "MBN_PROD_SVARSGRUPER_ACT_DATE__c",
-          "MBN_PROD_KO_ACT_DATE__c",
-          "MPORT_FLG__c",
           "Reservation_Date_MV_Outbound__c",
-          "SUM_POTENTIAL__c",
-          "TM_Forbund_Flag__c",
-          "Migration_flag__c",
           "mobile_service_segment__c",
           "NBR_OPPDATERT__c"
         ],
@@ -6376,18 +6360,9 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBN_PROD_HOVEDNUMMER_ACT_DATE__c",
           "Id",
-          "NumberOfEmployees",
           "KurtID__c",
-          "SubsM2M__c",
-          "Has_Subscriptions__c",
-          "Forbund_membership__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "FORBUND_START_DATE__c"
+          "Forbund_membership__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -8197,32 +8172,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "Economic_Attractivity__c",
           "Id",
-          "IsDeleted",
-          "Name",
-          "NumberOfEmployees",
-          "CompanyFamily__c",
-          "CustomerType__c",
-          "Portfolio__c",
-          "StatusKURT__c",
-          "VisitingCounty__c",
-          "External_Credit_Rating__c",
-          "NACE_Subclass_Code__c",
-          "NACE_Subclass_Description__c",
-          "Has_Subscriptions__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "COM_CUSTOMER_QUALITYMARK_PHONE__c",
-          "COM_CUSTOMER_TM_RESERVATION__c",
-          "Phonenumber_type__c",
-          "Reservation_Date_IA_Inbound__c",
-          "Reservation_Date_IA_Outbound__c",
-          "Reservation_Date_MV_Inbound__c",
-          "Reservation_Date_MV_Outbound__c",
-          "Has_Subscriptions_Actual__c"
+          "Phonenumber_type__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -8748,18 +8699,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBN_PROD_HOVEDNUMMER_ACT_DATE__c",
           "Id",
-          "NumberOfEmployees",
-          "KurtID__c",
-          "SubsM2M__c",
-          "Has_Subscriptions__c",
-          "Forbund_membership__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "FORBUND_START_DATE__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -9005,30 +8946,16 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "Economic_Attractivity__c",
           "Id",
           "IsDeleted",
           "Name",
           "NumberOfEmployees",
-          "CompanyFamily__c",
           "CustomerType__c",
           "Portfolio__c",
           "StatusKURT__c",
-          "VisitingCounty__c",
-          "External_Credit_Rating__c",
-          "NACE_Subclass_Code__c",
           "NACE_Subclass_Description__c",
           "Has_Subscriptions__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "COM_CUSTOMER_QUALITYMARK_PHONE__c",
-          "COM_CUSTOMER_TM_RESERVATION__c",
           "Phonenumber_type__c",
-          "Reservation_Date_IA_Inbound__c",
-          "Reservation_Date_IA_Outbound__c",
-          "Reservation_Date_MV_Inbound__c",
           "Reservation_Date_MV_Outbound__c",
           "Has_Subscriptions_Actual__c"
         ],
@@ -10860,18 +10787,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBN_PROD_HOVEDNUMMER_ACT_DATE__c",
           "Id",
-          "NumberOfEmployees",
-          "KurtID__c",
-          "SubsM2M__c",
-          "Has_Subscriptions__c",
-          "Forbund_membership__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "FORBUND_START_DATE__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -11122,25 +11039,13 @@
           "IsDeleted",
           "Name",
           "NumberOfEmployees",
-          "CompanyFamily__c",
           "CustomerType__c",
           "Portfolio__c",
           "StatusKURT__c",
-          "VisitingCounty__c",
           "External_Credit_Rating__c",
-          "NACE_Subclass_Code__c",
           "NACE_Subclass_Description__c",
           "Has_Subscriptions__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "COM_CUSTOMER_QUALITYMARK_PHONE__c",
-          "COM_CUSTOMER_TM_RESERVATION__c",
           "Phonenumber_type__c",
-          "Reservation_Date_IA_Inbound__c",
-          "Reservation_Date_IA_Outbound__c",
-          "Reservation_Date_MV_Inbound__c",
           "Reservation_Date_MV_Outbound__c",
           "Has_Subscriptions_Actual__c"
         ],
@@ -12998,8 +12903,7 @@
           "StatusKURT__c",
           "OrgNo__c",
           "Id",
-          "IsDeleted",
-          "Name"
+          "IsDeleted"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -13992,26 +13896,7 @@
           "Phonenumber_type__c",
           "Id",
           "IsDeleted",
-          "Name",
-          "PersonHasOptedOutOfEmail",
-          "CompanyFamily__c",
-          "Concern__c",
-          "KurtID__c",
-          "StatusKURT__c",
-          "SubsMobileVoice__c",
-          "Has_Min_Bedrift__c",
-          "Last_Min_Bedrift_Web_Login__c",
-          "Account_Owner_Full_Name__c",
-          "TSP_Dealer__c",
-          "Company_Family_Name__c",
-          "Forbund_membership__c",
-          "SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SAFEZONE_MOBILE__c",
-          "COM_CUSTOMER_EDM_RESERVATION__c",
-          "MV_FIRST_SALE_DT__c",
-          "mobile_service_segment__c",
-          "NBR_OPPDATERT__c"
+          "StatusKURT__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14160,16 +14045,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBSuperadmin__c",
-          "MB_Admin__c",
-          "Primary__c",
-          "Key_contact__c",
-          "Name",
           "AccountId",
-          "AccountId__c",
-          "StatusKURT__c",
-          "Id",
-          "IsDeleted"
+          "Id"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14532,13 +14409,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "Forbund_membership__c",
-          "FORBUND_START_DATE__c",
-          "NumberOfEmployees",
-          "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -14881,9 +14753,7 @@
           "StatusKURT__c",
           "KurtID__c",
           "Id",
-          "IsDeleted",
-          "Name",
-          "OrgNo__c"
+          "IsDeleted"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -15029,8 +14899,7 @@
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],

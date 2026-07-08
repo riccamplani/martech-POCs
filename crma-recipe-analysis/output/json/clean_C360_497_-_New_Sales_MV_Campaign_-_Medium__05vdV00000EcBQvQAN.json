@@ -14,28 +14,12 @@
           "Id",
           "IsDeleted",
           "Name",
-          "NumberOfEmployees",
           "Concern__c",
-          "CustomerType__c",
-          "Segment__c",
           "StatusKURT__c",
-          "SubsMobileVoice__c",
-          "NACE_Subclass_Description__c",
           "Account_Owner_Full_Name__c",
-          "TSP_Dealer__c",
           "Company_Family_Name__c",
           "Forbund_membership__c",
           "Mobile_Voice_Penetration__c",
-          "NBR_FIXED_BBB_FIBER__c",
-          "NBR_VOICE_PAYER__c",
-          "NBR_FIBER_USER__c",
-          "NBR_TBB_MOBIL__c",
-          "NBR_TBB_MOBIL_USER__c",
-          "COM_CUSTOMER_PHONENBR_STATUS__c",
-          "TAG_TALKMORE_BEDRIFT__c",
-          "TAG_TALKMORE_PRIVATE__c",
-          "Phonenumber_type__c",
-          "mobile_service_segment__c",
           "Mobile_Segment__c"
         ],
         "sampleDetails": {
@@ -739,8 +723,7 @@
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -1277,8 +1260,7 @@
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -1504,30 +1486,11 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "PersonHasOptedOutOfEmail",
-          "Forbund_membership__c",
           "NumberOfEmployees",
           "Id",
           "IsDeleted",
-          "Name",
-          "CompanyFamily__c",
-          "Concern__c",
-          "KurtID__c",
           "StatusKURT__c",
-          "SubsMobileVoice__c",
-          "Has_Min_Bedrift__c",
-          "Last_Min_Bedrift_Web_Login__c",
-          "Account_Owner_Full_Name__c",
-          "TSP_Dealer__c",
-          "Company_Family_Name__c",
-          "SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SAFEZONE_MOBILE__c",
-          "COM_CUSTOMER_EDM_RESERVATION__c",
-          "MV_FIRST_SALE_DT__c",
-          "Phonenumber_type__c",
-          "mobile_service_segment__c",
-          "NBR_OPPDATERT__c"
+          "Phonenumber_type__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -1677,16 +1640,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBSuperadmin__c",
-          "MB_Admin__c",
-          "Primary__c",
-          "Key_contact__c",
-          "Name",
           "AccountId",
-          "AccountId__c",
-          "StatusKURT__c",
-          "Id",
-          "IsDeleted"
+          "Id"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -2034,12 +1989,10 @@
         },
         "fields": [
           "Forbund_membership__c",
-          "FORBUND_START_DATE__c",
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -2904,7 +2857,6 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "KurtID__c",
           "StatusKURT__c",
           "Id",
           "IsDeleted"
@@ -3061,12 +3013,7 @@
         "fields": [
           "Mobile_Voice_Penetration__c",
           "Id",
-          "NumberOfEmployees",
-          "KurtID__c",
-          "OrgNo__c",
-          "Forbund_membership__c",
-          "FORBUND_START_DATE__c",
-          "Has_Subscriptions_Actual__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -3787,30 +3734,11 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "PersonHasOptedOutOfEmail",
-          "Forbund_membership__c",
           "NumberOfEmployees",
           "Id",
           "IsDeleted",
-          "Name",
-          "CompanyFamily__c",
-          "Concern__c",
-          "KurtID__c",
           "StatusKURT__c",
-          "SubsMobileVoice__c",
-          "Has_Min_Bedrift__c",
-          "Last_Min_Bedrift_Web_Login__c",
-          "Account_Owner_Full_Name__c",
-          "TSP_Dealer__c",
-          "Company_Family_Name__c",
-          "SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SAFEZONE_MOBILE__c",
-          "COM_CUSTOMER_EDM_RESERVATION__c",
-          "MV_FIRST_SALE_DT__c",
-          "Phonenumber_type__c",
-          "mobile_service_segment__c",
-          "NBR_OPPDATERT__c"
+          "Phonenumber_type__c"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -3960,16 +3888,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "MBSuperadmin__c",
-          "MB_Admin__c",
-          "Primary__c",
-          "Key_contact__c",
-          "Name",
           "AccountId",
-          "AccountId__c",
-          "StatusKURT__c",
-          "Id",
-          "IsDeleted"
+          "Id"
         ],
         "sampleDetails": {
           "sortBy": [],
@@ -4317,12 +4237,10 @@
         },
         "fields": [
           "Forbund_membership__c",
-          "FORBUND_START_DATE__c",
           "NumberOfEmployees",
           "Has_Subscriptions_Actual__c",
           "Id",
-          "KurtID__c",
-          "OrgNo__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],

@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 18 | 18 | 0 | 0% |
+| LOAD_DATASET0 | Account | connectedDataset | 18 | 15 | 3 | 17% |
 | LOAD_DATASET14 | Account | connectedDataset | 4 | 4 | 0 | 0% |
-| **TOTAL** | | | **22** | **22** | **0** | **0%** |
+| **TOTAL** | | | **22** | **19** | **3** | **14%** |
 
 ## Detail per Source Object
 
@@ -17,8 +17,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 18
-- **Fields used:** 18
-- **Fields unused:** 0
+- **Fields used:** 15
+- **Fields unused:** 3
 
 #### Fields to KEEP
 
@@ -36,12 +36,15 @@
 | `NBR_MBN_SENTRALBORD__c` | FILTER48_copy0_copy0 (filter), FILTER48_copy0_copy0_copy0 (filter), FILTER48_copy0_copy0_copy1 (filter) |
 | `NBR_MBN__c` | FILTER46_copy0 (filter), FILTER46_copy0_copy0 (filter), FILTER46_copy0_copy1 (filter), FILTER46_copy0_copy0_copy0 (filter) |
 | `NumberOfEmployees` | FILTER3_copy0_copy0_copy0_copy0 (filter) |
-| `SUM_POTENTIAL__c` |  |
-| `Segment__c` |  |
-| `Service_segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0 (filter) |
 | `TSP_Dealer__c` | FILTER63 (filter) |
 | `mobile_service_segment__c` | FILTER3_copy0_copy0_copy0_copy0 (filter) |
+
+#### Fields to ELIMINATE
+
+- `SUM_POTENTIAL__c`
+- `Segment__c`
+- `Service_segment__c`
 
 ### Account (`LOAD_DATASET14`)
 

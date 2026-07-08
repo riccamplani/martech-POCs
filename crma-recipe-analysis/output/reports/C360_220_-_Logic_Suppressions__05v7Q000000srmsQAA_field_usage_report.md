@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 28 | 28 | 0 | 0% |
+| LOAD_DATASET0 | Account | connectedDataset | 28 | 21 | 7 | 25% |
 | LOAD_DATASET16_copy0 | Contact | connectedDataset | 4 | 4 | 0 | 0% |
-| **TOTAL** | | | **32** | **32** | **0** | **0%** |
+| **TOTAL** | | | **32** | **25** | **7** | **22%** |
 
 ## Detail per Source Object
 
@@ -17,8 +17,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 28
-- **Fields used:** 28
-- **Fields unused:** 0
+- **Fields used:** 21
+- **Fields unused:** 7
 
 #### Fields to KEEP
 
@@ -32,26 +32,29 @@
 | `Economic_Attractivity__c` | FILTER24 (filter) |
 | `External_Credit_Rating__c` | FILTER0 (filter) |
 | `Has_Subscriptions_Actual__c` | FILTER20 (filter), FILTER23 (filter), FILTER20_copy0 (filter), FILTER25 (filter) |
-| `Has_Subscriptions__c` |  |
 | `Id` | DROP_FIELDS37 (schema), DROP_FIELDS7 (schema), DROP_FIELDS10 (schema), DROP_FIELDS4 (schema), DROP_FIELDS5 (schema) +76 more |
 | `IsDeleted` | FILTER1_copy0 (filter) |
 | `Is_DMU__c` | DROP_FIELDS37 (schema), FORMULA8 (formula), FILTER30 (filter) |
 | `NACE_Subclass_Code__c` | FILTER18 (filter), JOIN4 (join) |
 | `NACE_Subclass_Description__c` | FILTER20 (filter) |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
 | `Name` | FILTER2 (filter), FILTER20 (filter) |
 | `NumberOfEmployees` | FILTER18 (filter), FILTER25 (filter) |
 | `Phonenumber_type__c` | FILTER3 (filter) |
 | `Portfolio__c` | FILTER7 (filter) |
 | `Reservation_Date_IA_Inbound__c` | FILTER15 (filter) |
 | `Reservation_Date_IA_Outbound__c` | FILTER16 (filter) |
-| `Reservation_Date_MV_Inbound__c` |  |
-| `Reservation_Date_MV_Outbound__c` |  |
 | `StatusKURT__c` | FILTER1_copy0_copy0 (filter) |
 | `VisitingCounty__c` | FILTER22 (filter) |
+
+#### Fields to ELIMINATE
+
+- `Has_Subscriptions__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `Reservation_Date_MV_Inbound__c`
+- `Reservation_Date_MV_Outbound__c`
 
 ### Contact (`LOAD_DATASET16_copy0`)
 

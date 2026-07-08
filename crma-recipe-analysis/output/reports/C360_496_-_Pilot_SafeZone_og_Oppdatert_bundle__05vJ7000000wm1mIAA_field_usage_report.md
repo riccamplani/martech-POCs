@@ -14,28 +14,28 @@
 | LOAD_DATASET0_copy0_copy0_copy1 | Account | connectedDataset | 2 | 2 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy1_copy0_copy0 | Account | connectedDataset | 1 | 1 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy1_copy0_copy0_copy0 | Account | connectedDataset | 6 | 6 | 0 | 0% |
-| LOAD_DATASET0_copy0_copy1 | Account | connectedDataset | 26 | 26 | 0 | 0% |
+| LOAD_DATASET0_copy0_copy1 | Account | connectedDataset | 26 | 10 | 16 | 62% |
 | LOAD_DATASET14_copy0_copy0_copy0 | Account | connectedDataset | 2 | 2 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy2 | Account | connectedDataset | 21 | 21 | 0 | 0% |
-| LOAD_DATASET14_copy0_copy0 | Account | connectedDataset | 12 | 12 | 0 | 0% |
+| LOAD_DATASET14_copy0_copy0 | Account | connectedDataset | 12 | 3 | 9 | 75% |
 | LOAD_DATASET0_copy0_copy0_copy1_copy0_copy0 | Account | connectedDataset | 2 | 2 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy1_copy0_copy0_copy0_copy0_copy0 | Account | connectedDataset | 7 | 7 | 0 | 0% |
 | LOAD_DATASET0_copy0_copy1_copy0_copy0_copy1 | Account | connectedDataset | 1 | 1 | 0 | 0% |
-| LOAD_DATASET0_copy1_copy0 | Account | connectedDataset | 26 | 26 | 0 | 0% |
+| LOAD_DATASET0_copy1_copy0 | Account | connectedDataset | 26 | 2 | 24 | 92% |
 | LOAD_DATASET0_copy0_copy3 | Account | connectedDataset | 26 | 26 | 0 | 0% |
-| LOAD_DATASET14_copy0_copy1 | Account | connectedDataset | 12 | 12 | 0 | 0% |
-| LOAD_DATASET0_copy1_copy1 | Account | connectedDataset | 26 | 26 | 0 | 0% |
+| LOAD_DATASET14_copy0_copy1 | Account | connectedDataset | 12 | 2 | 10 | 83% |
+| LOAD_DATASET0_copy1_copy1 | Account | connectedDataset | 26 | 12 | 14 | 54% |
 | LOAD_DATASET0_copy0_copy4 | Account | connectedDataset | 28 | 28 | 0 | 0% |
-| LOAD_DATASET14_copy0_copy2 | Account | connectedDataset | 12 | 12 | 0 | 0% |
-| LOAD_DATASET0_copy1_copy2 | Account | connectedDataset | 26 | 26 | 0 | 0% |
-| LOAD_DATASET5_copy0 | Account | connectedDataset | 5 | 5 | 0 | 0% |
+| LOAD_DATASET14_copy0_copy2 | Account | connectedDataset | 12 | 2 | 10 | 83% |
+| LOAD_DATASET0_copy1_copy2 | Account | connectedDataset | 26 | 14 | 12 | 46% |
+| LOAD_DATASET5_copy0 | Account | connectedDataset | 5 | 4 | 1 | 20% |
 | LOAD_DATASET14_copy0_copy0_copy0_copy0 | Account | connectedDataset | 4 | 4 | 0 | 0% |
-| LOAD_DATASET0_copy0_copy5 | Account | connectedDataset | 23 | 23 | 0 | 0% |
-| LOAD_DATASET14_copy0_copy0_copy0_copy0_copy0 | Account | connectedDataset | 7 | 7 | 0 | 0% |
-| LOAD_DATASET5_copy1 | Account | connectedDataset | 6 | 6 | 0 | 0% |
-| LOAD_DATASET14_copy0_copy0_copy0_copy1 | Account | connectedDataset | 7 | 7 | 0 | 0% |
-| LOAD_DATASET2_copy0_copy1 | Contact | connectedDataset | 10 | 10 | 0 | 0% |
-| **TOTAL** | | | **320** | **320** | **0** | **0%** |
+| LOAD_DATASET0_copy0_copy5 | Account | connectedDataset | 23 | 4 | 19 | 83% |
+| LOAD_DATASET14_copy0_copy0_copy0_copy0_copy0 | Account | connectedDataset | 7 | 2 | 5 | 71% |
+| LOAD_DATASET5_copy1 | Account | connectedDataset | 6 | 4 | 2 | 33% |
+| LOAD_DATASET14_copy0_copy0_copy0_copy1 | Account | connectedDataset | 7 | 6 | 1 | 14% |
+| LOAD_DATASET2_copy0_copy1 | Contact | connectedDataset | 10 | 2 | 8 | 80% |
+| **TOTAL** | | | **320** | **189** | **131** | **41%** |
 
 ## Detail per Source Object
 
@@ -158,8 +158,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 26
-- **Fields used:** 26
-- **Fields unused:** 0
+- **Fields used:** 10
+- **Fields unused:** 16
 
 #### Fields to KEEP
 
@@ -168,29 +168,32 @@
 | `Company_Family_Name__c` | FILTER110 (filter) |
 | `Forbund_membership__c` | FILTER108 (filter) |
 | `Id` | JOIN0_copy0_copy0 (join), JOIN29_copy0 (join), JOIN27_copy0 (join), JOIN28_copy0 (join), JOIN11_copy0_copy0 (join) +12 more |
-| `Industry__c` |  |
 | `IsDeleted` | FILTER1_copy0_copy0_copy0 (filter) |
-| `KurtID__c` |  |
-| `MBN_PROD_KO_ACT_DATE__c` |  |
-| `MBN_PROD_SVARSGRUPER_ACT_DATE__c` |  |
-| `MPORT_FLG__c` |  |
-| `Migration_flag__c` |  |
 | `Mobile_Voice_Penetration__c` | FILTER3_copy0_copy0_copy0_copy0_copy0_copy0 (filter) |
-| `NBR_MBN_AVANSERT_SENTRALBORD__c` |  |
-| `NBR_MBN_SENTRALBORD__c` |  |
-| `NBR_MBN__c` |  |
 | `NBR_OPPDATERT__c` | FILTER67_copy0 (filter) |
-| `Name` |  |
-| `NumberOfEmployees` |  |
-| `OrgNo__c` |  |
 | `Reservation_Date_MV_Outbound__c` | FILTER34_copy0_copy0_copy0_copy1 (filter), FILTER34_copy0_copy0_copy0_copy0_copy0 (filter) |
-| `SUM_POTENTIAL__c` |  |
-| `Segment__c` |  |
-| `Service_segment__c` |  |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0 (filter) |
-| `TM_Forbund_Flag__c` |  |
 | `TSP_Dealer__c` | FILTER63_copy0_copy0 (filter) |
 | `mobile_service_segment__c` | FILTER3_copy0_copy0_copy0_copy0_copy0_copy0 (filter) |
+
+#### Fields to ELIMINATE
+
+- `Industry__c`
+- `KurtID__c`
+- `MBN_PROD_KO_ACT_DATE__c`
+- `MBN_PROD_SVARSGRUPER_ACT_DATE__c`
+- `MPORT_FLG__c`
+- `Migration_flag__c`
+- `NBR_MBN_AVANSERT_SENTRALBORD__c`
+- `NBR_MBN_SENTRALBORD__c`
+- `NBR_MBN__c`
+- `Name`
+- `NumberOfEmployees`
+- `OrgNo__c`
+- `SUM_POTENTIAL__c`
+- `Segment__c`
+- `Service_segment__c`
+- `TM_Forbund_Flag__c`
 
 ### Account (`LOAD_DATASET14_copy0_copy0_copy0`)
 
@@ -243,25 +246,28 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 12
-- **Fields used:** 12
-- **Fields unused:** 0
+- **Fields used:** 3
+- **Fields unused:** 9
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `FORBUND_START_DATE__c` |  |
 | `Forbund_membership__c` | FORMULA19_copy0_copy1 (formula) |
-| `Has_Subscriptions__c` |  |
 | `Id` | FORMULA9_copy0_copy1 (formula), FORMULA10_copy0_copy1 (formula), JOIN16_copy0 (join) |
 | `KurtID__c` | FORMULA8_copy0_copy1 (formula), FORMULA11_copy0_copy1 (formula) |
-| `MBN_PROD_HOVEDNUMMER_ACT_DATE__c` |  |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
-| `NumberOfEmployees` |  |
-| `SubsM2M__c` |  |
+
+#### Fields to ELIMINATE
+
+- `FORBUND_START_DATE__c`
+- `Has_Subscriptions__c`
+- `MBN_PROD_HOVEDNUMMER_ACT_DATE__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `NumberOfEmployees`
+- `SubsM2M__c`
 
 ### Account (`LOAD_DATASET0_copy0_copy0_copy1_copy0_copy0`)
 
@@ -313,39 +319,42 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 26
-- **Fields used:** 26
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 24
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `COM_CUSTOMER_QUALITYMARK_PHONE__c` |  |
-| `COM_CUSTOMER_TM_RESERVATION__c` |  |
-| `CompanyFamily__c` |  |
-| `CustomerType__c` |  |
-| `Economic_Attractivity__c` |  |
-| `External_Credit_Rating__c` |  |
-| `Has_Subscriptions_Actual__c` |  |
-| `Has_Subscriptions__c` |  |
 | `Id` | DROP_FIELDS30 (schema), APPEND71 (appendV2), FORMULA45 (computeRelative), FORMULA41 (formula), JOIN31 (join) +7 more |
-| `IsDeleted` |  |
-| `NACE_Subclass_Code__c` |  |
-| `NACE_Subclass_Description__c` |  |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
-| `Name` |  |
-| `NumberOfEmployees` |  |
 | `Phonenumber_type__c` | FILTER3_copy0_copy0 (filter) |
-| `Portfolio__c` |  |
-| `Reservation_Date_IA_Inbound__c` |  |
-| `Reservation_Date_IA_Outbound__c` |  |
-| `Reservation_Date_MV_Inbound__c` |  |
-| `Reservation_Date_MV_Outbound__c` |  |
-| `StatusKURT__c` |  |
-| `VisitingCounty__c` |  |
+
+#### Fields to ELIMINATE
+
+- `COM_CUSTOMER_QUALITYMARK_PHONE__c`
+- `COM_CUSTOMER_TM_RESERVATION__c`
+- `CompanyFamily__c`
+- `CustomerType__c`
+- `Economic_Attractivity__c`
+- `External_Credit_Rating__c`
+- `Has_Subscriptions_Actual__c`
+- `Has_Subscriptions__c`
+- `IsDeleted`
+- `NACE_Subclass_Code__c`
+- `NACE_Subclass_Description__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `Name`
+- `NumberOfEmployees`
+- `Portfolio__c`
+- `Reservation_Date_IA_Inbound__c`
+- `Reservation_Date_IA_Outbound__c`
+- `Reservation_Date_MV_Inbound__c`
+- `Reservation_Date_MV_Outbound__c`
+- `StatusKURT__c`
+- `VisitingCounty__c`
 
 ### Account (`LOAD_DATASET0_copy0_copy3`)
 
@@ -389,63 +398,69 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 12
-- **Fields used:** 12
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 10
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `FORBUND_START_DATE__c` |  |
-| `Forbund_membership__c` |  |
-| `Has_Subscriptions__c` |  |
 | `Id` | FORMULA9_copy0_copy2 (formula), FORMULA10_copy0_copy2 (formula), JOIN16_copy1 (join), JOIN32 (join), APPEND62 (appendV2) |
 | `KurtID__c` | FORMULA8_copy0_copy2 (formula), FORMULA11_copy0_copy2 (formula) |
-| `MBN_PROD_HOVEDNUMMER_ACT_DATE__c` |  |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
-| `NumberOfEmployees` |  |
-| `SubsM2M__c` |  |
+
+#### Fields to ELIMINATE
+
+- `FORBUND_START_DATE__c`
+- `Forbund_membership__c`
+- `Has_Subscriptions__c`
+- `MBN_PROD_HOVEDNUMMER_ACT_DATE__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `NumberOfEmployees`
+- `SubsM2M__c`
 
 ### Account (`LOAD_DATASET0_copy1_copy1`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 26
-- **Fields used:** 26
-- **Fields unused:** 0
+- **Fields used:** 12
+- **Fields unused:** 14
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `COM_CUSTOMER_QUALITYMARK_PHONE__c` |  |
-| `COM_CUSTOMER_TM_RESERVATION__c` |  |
-| `CompanyFamily__c` |  |
 | `CustomerType__c` | APPEND58_copy0 (appendV2) |
-| `Economic_Attractivity__c` |  |
-| `External_Credit_Rating__c` |  |
 | `Has_Subscriptions_Actual__c` | APPEND58_copy0 (appendV2) |
 | `Has_Subscriptions__c` | APPEND58_copy0 (appendV2) |
 | `Id` | DROP_FIELDS4_copy0_copy0 (schema), DROP_FIELDS5_copy0_copy0 (schema), DROP_FIELDS11_copy1_copy0 (schema), APPEND0_copy0_copy0 (appendV2), APPEND5_copy0_copy0 (appendV2) +15 more |
 | `IsDeleted` | FILTER1_copy0_copy0_copy1 (filter), APPEND58_copy0 (appendV2) |
-| `NACE_Subclass_Code__c` |  |
 | `NACE_Subclass_Description__c` | APPEND58_copy0 (appendV2) |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
 | `Name` | APPEND58_copy0 (appendV2), DROP_FIELDS16_copy0 (schema) |
 | `NumberOfEmployees` | FILTER21_copy0_copy1 (filter), APPEND58_copy0 (appendV2), DROP_FIELDS16_copy0 (schema) |
 | `Phonenumber_type__c` | FILTER3_copy0_copy1 (filter), APPEND58_copy0 (appendV2) |
 | `Portfolio__c` | APPEND58_copy0 (appendV2) |
-| `Reservation_Date_IA_Inbound__c` |  |
-| `Reservation_Date_IA_Outbound__c` |  |
-| `Reservation_Date_MV_Inbound__c` |  |
 | `Reservation_Date_MV_Outbound__c` | FILTER9_copy0_copy1 (filter), APPEND58_copy0 (appendV2) |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0_copy0 (filter), APPEND58_copy0 (appendV2) |
-| `VisitingCounty__c` |  |
+
+#### Fields to ELIMINATE
+
+- `COM_CUSTOMER_QUALITYMARK_PHONE__c`
+- `COM_CUSTOMER_TM_RESERVATION__c`
+- `CompanyFamily__c`
+- `Economic_Attractivity__c`
+- `External_Credit_Rating__c`
+- `NACE_Subclass_Code__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `Reservation_Date_IA_Inbound__c`
+- `Reservation_Date_IA_Outbound__c`
+- `Reservation_Date_MV_Inbound__c`
+- `VisitingCounty__c`
 
 ### Account (`LOAD_DATASET0_copy0_copy4`)
 
@@ -491,40 +506,40 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 12
-- **Fields used:** 12
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 10
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `FORBUND_START_DATE__c` |  |
-| `Forbund_membership__c` |  |
-| `Has_Subscriptions__c` |  |
 | `Id` | FORMULA9_copy0_copy3 (formula), FORMULA10_copy0_copy3 (formula), JOIN16_copy2 (join) |
 | `KurtID__c` | FORMULA8_copy0_copy3 (formula), FORMULA11_copy0_copy3 (formula) |
-| `MBN_PROD_HOVEDNUMMER_ACT_DATE__c` |  |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
-| `NumberOfEmployees` |  |
-| `SubsM2M__c` |  |
+
+#### Fields to ELIMINATE
+
+- `FORBUND_START_DATE__c`
+- `Forbund_membership__c`
+- `Has_Subscriptions__c`
+- `MBN_PROD_HOVEDNUMMER_ACT_DATE__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `NumberOfEmployees`
+- `SubsM2M__c`
 
 ### Account (`LOAD_DATASET0_copy1_copy2`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 26
-- **Fields used:** 26
-- **Fields unused:** 0
+- **Fields used:** 14
+- **Fields unused:** 12
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `COM_CUSTOMER_QUALITYMARK_PHONE__c` |  |
-| `COM_CUSTOMER_TM_RESERVATION__c` |  |
-| `CompanyFamily__c` |  |
 | `CustomerType__c` | APPEND61_copy0 (appendV2) |
 | `Economic_Attractivity__c` | FILTER43_copy0 (filter) |
 | `External_Credit_Rating__c` | FILTER0_copy0_copy0 (filter) |
@@ -532,29 +547,35 @@
 | `Has_Subscriptions__c` | APPEND61_copy0 (appendV2) |
 | `Id` | DROP_FIELDS4_copy0_copy1 (schema), DROP_FIELDS5_copy0_copy1 (schema), DROP_FIELDS11_copy1_copy1 (schema), DROP_FIELDS6_copy0_copy0 (schema), APPEND0_copy0_copy1 (appendV2) +17 more |
 | `IsDeleted` | FILTER1_copy0_copy0_copy2 (filter), APPEND61_copy0 (appendV2) |
-| `NACE_Subclass_Code__c` |  |
 | `NACE_Subclass_Description__c` | APPEND61_copy0 (appendV2) |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
 | `Name` | APPEND61_copy0 (appendV2) |
 | `NumberOfEmployees` | APPEND61_copy0 (appendV2), FILTER21_copy0_copy2 (filter) |
 | `Phonenumber_type__c` | FILTER3_copy0_copy2 (filter), FILTER8_copy0_copy0_copy1 (filter), APPEND61_copy0 (appendV2) |
 | `Portfolio__c` | FILTER7_copy1_copy0 (filter), APPEND61_copy0 (appendV2) |
-| `Reservation_Date_IA_Inbound__c` |  |
-| `Reservation_Date_IA_Outbound__c` |  |
-| `Reservation_Date_MV_Inbound__c` |  |
 | `Reservation_Date_MV_Outbound__c` | APPEND61_copy0 (appendV2), FILTER9_copy0_copy2 (filter) |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0_copy1 (filter), APPEND61_copy0 (appendV2) |
-| `VisitingCounty__c` |  |
+
+#### Fields to ELIMINATE
+
+- `COM_CUSTOMER_QUALITYMARK_PHONE__c`
+- `COM_CUSTOMER_TM_RESERVATION__c`
+- `CompanyFamily__c`
+- `NACE_Subclass_Code__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `Reservation_Date_IA_Inbound__c`
+- `Reservation_Date_IA_Outbound__c`
+- `Reservation_Date_MV_Inbound__c`
+- `VisitingCounty__c`
 
 ### Account (`LOAD_DATASET5_copy0`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 5
-- **Fields used:** 5
-- **Fields unused:** 0
+- **Fields used:** 4
+- **Fields unused:** 1
 
 #### Fields to KEEP
 
@@ -562,9 +583,12 @@
 |-------|---------|
 | `Id` | FORMULA42_copy0 (formula), JOIN31_copy0 (join), DROP_FIELDS12_copy0_copy0_copy1_copy0_copy0_copy1_copy0_copy0_copy2_copy0_copy0_copy0_copy0_copy0_copy0_copy0_copy0 (schema), JOIN26_copy0_copy0 (join) |
 | `IsDeleted` | FILTER1_copy0_copy0_copy0_copy2 (filter) |
-| `Name` |  |
 | `OrgNo__c` | JOIN30_copy0 (join) |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0_copy2 (filter) |
+
+#### Fields to ELIMINATE
+
+- `Name`
 
 ### Account (`LOAD_DATASET14_copy0_copy0_copy0_copy0`)
 
@@ -586,62 +610,68 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 23
-- **Fields used:** 23
-- **Fields unused:** 0
+- **Fields used:** 4
+- **Fields unused:** 19
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `Account_Owner_Full_Name__c` |  |
-| `COM_CUSTOMER_EDM_RESERVATION__c` |  |
-| `CompanyFamily__c` |  |
-| `Company_Family_Name__c` |  |
-| `Concern__c` |  |
-| `Forbund_membership__c` |  |
-| `Has_Min_Bedrift__c` |  |
 | `Id` | JOIN1_copy0 (join), FORMULA1_copy1 (computeRelative), JOIN33 (join), FILTER100 (filter), JOIN35 (join) +2 more |
 | `IsDeleted` | FILTER1_copy0_copy0_copy3 (filter) |
-| `KurtID__c` |  |
-| `Last_Min_Bedrift_Web_Login__c` |  |
-| `MV_FIRST_SALE_DT__c` |  |
-| `NBR_OPPDATERT__c` |  |
-| `NBR_SAFEZONE_MOBILE__c` |  |
-| `NBR_SOURCE_ACCOUNT_ID_MOBIL__c` |  |
-| `Name` |  |
-| `PersonHasOptedOutOfEmail` |  |
 | `Phonenumber_type__c` | FILTER15_copy0_copy2 (filter) |
-| `SOURCE_ACCOUNT_ID_MOBIL__c` |  |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy3 (filter) |
-| `SubsMobileVoice__c` |  |
-| `TSP_Dealer__c` |  |
-| `mobile_service_segment__c` |  |
+
+#### Fields to ELIMINATE
+
+- `Account_Owner_Full_Name__c`
+- `COM_CUSTOMER_EDM_RESERVATION__c`
+- `CompanyFamily__c`
+- `Company_Family_Name__c`
+- `Concern__c`
+- `Forbund_membership__c`
+- `Has_Min_Bedrift__c`
+- `KurtID__c`
+- `Last_Min_Bedrift_Web_Login__c`
+- `MV_FIRST_SALE_DT__c`
+- `NBR_OPPDATERT__c`
+- `NBR_SAFEZONE_MOBILE__c`
+- `NBR_SOURCE_ACCOUNT_ID_MOBIL__c`
+- `Name`
+- `PersonHasOptedOutOfEmail`
+- `SOURCE_ACCOUNT_ID_MOBIL__c`
+- `SubsMobileVoice__c`
+- `TSP_Dealer__c`
+- `mobile_service_segment__c`
 
 ### Account (`LOAD_DATASET14_copy0_copy0_copy0_copy0_copy0`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 7
-- **Fields used:** 7
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 5
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `FORBUND_START_DATE__c` |  |
-| `Forbund_membership__c` |  |
-| `Has_Subscriptions_Actual__c` |  |
 | `Id` | FORMULA9_copy0_copy0_copy0_copy0_copy0_copy1 (formula), FORMULA10_copy0_copy0_copy0_copy0_copy0_copy1 (formula), JOIN26_copy0_copy0_copy0 (join) |
 | `KurtID__c` | FORMULA8_copy0_copy0_copy0_copy0_copy0_copy1 (formula), FORMULA11_copy0_copy0_copy0_copy0_copy0_copy1 (formula) |
-| `NumberOfEmployees` |  |
-| `OrgNo__c` |  |
+
+#### Fields to ELIMINATE
+
+- `FORBUND_START_DATE__c`
+- `Forbund_membership__c`
+- `Has_Subscriptions_Actual__c`
+- `NumberOfEmployees`
+- `OrgNo__c`
 
 ### Account (`LOAD_DATASET5_copy1`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 6
-- **Fields used:** 6
-- **Fields unused:** 0
+- **Fields used:** 4
+- **Fields unused:** 2
 
 #### Fields to KEEP
 
@@ -650,16 +680,19 @@
 | `Id` | FORMULA42_copy1 (formula), JOIN31_copy1 (join), JOIN32_copy0 (join), JOIN36 (join), FORMULA5_copy0_copy1 (computeRelative) +6 more |
 | `IsDeleted` | FILTER1_copy0_copy0_copy0_copy3 (filter) |
 | `KurtID__c` | JOIN30_copy1 (join) |
-| `Name` |  |
-| `OrgNo__c` |  |
 | `StatusKURT__c` | FILTER1_copy0_copy0_copy0_copy3 (filter) |
+
+#### Fields to ELIMINATE
+
+- `Name`
+- `OrgNo__c`
 
 ### Account (`LOAD_DATASET14_copy0_copy0_copy0_copy1`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 7
-- **Fields used:** 7
-- **Fields unused:** 0
+- **Fields used:** 6
+- **Fields unused:** 1
 
 #### Fields to KEEP
 
@@ -671,26 +704,32 @@
 | `Id` | FORMULA9_copy0_copy0_copy0_copy0_copy2 (formula), FORMULA10_copy0_copy0_copy0_copy0_copy2 (formula), JOIN26_copy0_copy1 (join) |
 | `KurtID__c` | FORMULA8_copy0_copy0_copy0_copy0_copy2 (formula), FORMULA11_copy0_copy0_copy0_copy0_copy2 (formula) |
 | `NumberOfEmployees` | FORMULA19_copy0_copy0_copy0_copy0_copy2 (formula) |
-| `OrgNo__c` |  |
+
+#### Fields to ELIMINATE
+
+- `OrgNo__c`
 
 ### Contact (`LOAD_DATASET2_copy0_copy1`)
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 10
-- **Fields used:** 10
-- **Fields unused:** 0
+- **Fields used:** 2
+- **Fields unused:** 8
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `AccountId` | DROP_FIELDS0_copy2 (schema), FORMULA0_copy0 (formula) |
-| `AccountId__c` |  |
 | `Id` | DROP_FIELDS0_copy2 (schema), JOIN0_copy2 (join), JOIN1_copy0 (join), FORMULA1_copy1 (computeRelative), JOIN33 (join) +4 more |
-| `IsDeleted` |  |
-| `Key_contact__c` |  |
-| `MBSuperadmin__c` |  |
-| `MB_Admin__c` |  |
-| `Name` |  |
-| `Primary__c` |  |
-| `StatusKURT__c` |  |
+
+#### Fields to ELIMINATE
+
+- `AccountId__c`
+- `IsDeleted`
+- `Key_contact__c`
+- `MBSuperadmin__c`
+- `MB_Admin__c`
+- `Name`
+- `Primary__c`
+- `StatusKURT__c`

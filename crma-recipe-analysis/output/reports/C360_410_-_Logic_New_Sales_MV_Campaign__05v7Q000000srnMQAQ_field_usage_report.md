@@ -8,8 +8,8 @@
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
 | LOAD_DATASET12 | Account | connectedDataset | 15 | 15 | 0 | 0% |
-| LOAD_DATASET14 | Account | connectedDataset | 12 | 12 | 0 | 0% |
-| **TOTAL** | | | **27** | **27** | **0** | **0%** |
+| LOAD_DATASET14 | Account | connectedDataset | 12 | 6 | 6 | 50% |
+| **TOTAL** | | | **27** | **21** | **6** | **22%** |
 
 ## Detail per Source Object
 
@@ -44,8 +44,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 12
-- **Fields used:** 12
-- **Fields unused:** 0
+- **Fields used:** 6
+- **Fields unused:** 6
 
 #### Fields to KEEP
 
@@ -56,10 +56,13 @@
 | `Has_Subscriptions__c` | FORMULA19 (formula), FORMULA42 (formula) |
 | `Id` | FORMULA9 (formula), FORMULA9_copy0 (formula), FORMULA9_copy0_copy0 (formula), FORMULA9_copy0_copy0_copy0 (formula), FORMULA9_copy2 (formula) +70 more |
 | `KurtID__c` | FORMULA8 (formula), FORMULA8_copy0 (formula), FORMULA8_copy0_copy0 (formula), FORMULA8_copy0_copy0_copy0 (formula), FORMULA8_copy2 (formula) +33 more |
-| `MBN_PROD_HOVEDNUMMER_ACT_DATE__c` |  |
-| `NBR_FIBER_USER__c` |  |
-| `NBR_FIXED_BBB_FIBER__c` |  |
-| `NBR_TBB_MOBIL_USER__c` |  |
-| `NBR_TBB_MOBIL__c` |  |
 | `NumberOfEmployees` | FORMULA19 (formula), FORMULA42 (formula) |
-| `SubsM2M__c` |  |
+
+#### Fields to ELIMINATE
+
+- `MBN_PROD_HOVEDNUMMER_ACT_DATE__c`
+- `NBR_FIBER_USER__c`
+- `NBR_FIXED_BBB_FIBER__c`
+- `NBR_TBB_MOBIL_USER__c`
+- `NBR_TBB_MOBIL__c`
+- `SubsM2M__c`

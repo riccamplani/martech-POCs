@@ -2196,8 +2196,7 @@
           "Diff_new_callplan_rev__c",
           "Migration_flag__c",
           "Id",
-          "KurtID__c",
-          "NBR_SAFEZONE_MOBILE__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],

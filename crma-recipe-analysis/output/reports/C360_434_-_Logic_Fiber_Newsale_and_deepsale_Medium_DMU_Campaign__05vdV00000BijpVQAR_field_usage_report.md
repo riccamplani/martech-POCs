@@ -7,9 +7,9 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 25 | 25 | 0 | 0% |
+| LOAD_DATASET0 | Account | connectedDataset | 25 | 14 | 11 | 44% |
 | LOAD_DATASET5_copy0_copy0_copy0 | Account_Location__c | connectedDataset | 21 | 21 | 0 | 0% |
-| **TOTAL** | | | **46** | **46** | **0** | **0%** |
+| **TOTAL** | | | **46** | **35** | **11** | **24%** |
 
 ## Detail per Source Object
 
@@ -17,38 +17,41 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 25
-- **Fields used:** 25
-- **Fields unused:** 0
+- **Fields used:** 14
+- **Fields unused:** 11
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
-| `CompanyFamily__c` |  |
 | `DPSS_DMU__c` | FORMULA47 (formula), DROP_FIELDS18 (schema) |
-| `DPSS_Owner_Full_Name__c` |  |
 | `DPSS_Segment__c` | FILTER9 (filter), DROP_FIELDS18 (schema) |
 | `Has_Subscriptions_Actual__c` | FORMULA0_copy0 (formula), DROP_FIELDS18 (schema) |
 | `Id` | DROP_FIELDS21 (schema), FORMULA47 (formula), JOIN19 (join), JOIN0 (join), JOIN3 (join) +22 more |
 | `Industry__c` | FORMULA87 (formula), DROP_FIELDS18 (schema), FORMULA97 (formula), DROP_FIELDS8_copy0_copy0 (schema) |
-| `IsDeleted` |  |
 | `Is_DMU__c` | FORMULA47 (formula), DROP_FIELDS18 (schema), FILTER39 (filter), FORMULA57 (formula), FORMULA60 (formula) |
 | `KurtID__c` | DROP_FIELDS18 (schema), FORMULA23_copy0_copy0 (formula) |
-| `NBR_FIBER_PAYER__c` |  |
 | `NBR_FIBER_USER__c` | FORMULA71 (formula), AGGREGATE38 (aggregate), FORMULA69 (formula) |
 | `NBR_FIXED_BBB_FIBER__c` | FORMULA70 (formula), AGGREGATE38 (aggregate), FORMULA69 (formula) |
-| `NBR_TBB_MOBIL_PAYER__c` |  |
 | `NBR_TBB_MOBIL_USER__c` | FORMULA71 (formula), AGGREGATE38 (aggregate), FORMULA69 (formula) |
 | `NBR_TBB_MOBIL__c` | FORMULA70 (formula), AGGREGATE38 (aggregate), FORMULA69 (formula) |
 | `Name` | DROP_FIELDS21 (schema), DROP_FIELDS18 (schema), FORMULA78 (formula), FORMULA59 (formula) |
-| `PostalCity__c` |  |
-| `PostalStreet__c` |  |
-| `PostalZipcode__c` |  |
 | `StatusKURT__c` | FILTER9 (filter) |
 | `SubsMobileVoice__c` | AGGREGATE38 (aggregate) |
-| `VisitingCity__c` |  |
-| `VisitingStreet__c` |  |
-| `VisitingZipcode__c` |  |
+
+#### Fields to ELIMINATE
+
+- `CompanyFamily__c`
+- `DPSS_Owner_Full_Name__c`
+- `IsDeleted`
+- `NBR_FIBER_PAYER__c`
+- `NBR_TBB_MOBIL_PAYER__c`
+- `PostalCity__c`
+- `PostalStreet__c`
+- `PostalZipcode__c`
+- `VisitingCity__c`
+- `VisitingStreet__c`
+- `VisitingZipcode__c`
 
 ### Account_Location__c (`LOAD_DATASET5_copy0_copy0_copy0`)
 

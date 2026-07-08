@@ -10,7 +10,6 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "Mobile_Segment__c",
           "mobile_service_segment__c",
           "Id",
           "IsDeleted",

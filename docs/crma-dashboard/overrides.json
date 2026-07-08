@@ -1,0 +1,4 @@
+{
+  "_comment": "Fields marked as required by campaign developers. These will be excluded from the 'safe to remove' list in the dashboard. Format: object name -> array of field API names.",
+  "overrides": {}
+}

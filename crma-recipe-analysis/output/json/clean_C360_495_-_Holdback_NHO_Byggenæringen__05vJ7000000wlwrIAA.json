@@ -10,25 +10,12 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "NumberOfEmployees",
           "Id",
           "IsDeleted",
-          "Name",
-          "CustomerType__c",
           "KurtID__c",
-          "Portfolio__c",
-          "Segment__c",
           "StatusKURT__c",
           "SubsMobileVoice__c",
-          "NACE_Subclass_Description__c",
-          "Has_Subscriptions__c",
           "Forbund_membership__c",
-          "Mobile_Voice_Penetration__c",
-          "NBR_VOICE_PAYER__c",
-          "COM_CUSTOMER_PHONENBR_STATUS__c",
-          "TAG_TALKMORE_BEDRIFT__c",
-          "TAG_TALKMORE_PRIVATE__c",
-          "Phonenumber_type__c",
           "Reservation_Date_MV_Inbound__c",
           "Reservation_Date_MV_Outbound__c",
           "mobile_service_segment__c"
@@ -347,12 +334,8 @@
           "type": "connectedDataset"
         },
         "fields": [
-          "NumberOfEmployees",
           "Id",
-          "KurtID__c",
-          "Has_Subscriptions__c",
-          "Forbund_membership__c",
-          "FORBUND_START_DATE__c"
+          "KurtID__c"
         ],
         "sampleDetails": {
           "sortBy": [],

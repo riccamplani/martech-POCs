@@ -168,7 +168,7 @@ def build_dag(nodes):
     return forward
 
 
-def trace_used_fields(load_name, load_fields, nodes, forward, cross_recipe_datasets=None):
+def trace_used_fields(load_name, load_fields, nodes, forward):
     load_field_set = set(load_fields)
     used_fields = set()
     visited = set()
@@ -182,16 +182,6 @@ def trace_used_fields(load_name, load_fields, nodes, forward, cross_recipe_datas
 
         node = nodes.get(current, {})
         if current != load_name:
-            # Save-all node whose output is consumed by another recipe:
-            # keep all load fields since we can't know what the downstream recipe needs.
-            if (node.get("action") == "save"
-                    and not node.get("parameters", {}).get("fields", [])
-                    and cross_recipe_datasets is not None):
-                label = node.get("parameters", {}).get("dataset", {}).get("label", "")
-                if label in cross_recipe_datasets:
-                    used_fields.update(load_field_set)
-                    continue
-
             referenced, _ = extract_fields_from_node(node)
             for f in referenced:
                 if f in load_field_set:
@@ -245,28 +235,22 @@ def get_nodes(data):
 
 
 def build_cleaned(data, results, forward):
-    """Build cleaned recipe with only used fields in load nodes and
-    remove those fields from downstream DROP schema nodes. Preserves original format."""
+    """Build cleaned recipe with only used fields in load nodes.
+    Fields referenced in downstream DROP schemas are kept in the load node
+    (DROP schemas need them to exist in the data flow). Preserves original format."""
     cleaned = copy.deepcopy(data)
     nodes = get_nodes(cleaned)
-    removed_per_load = {}
     for load_name, result in results.items():
         orig_fields = nodes[load_name]["parameters"]["fields"]
         used_set = set(result["usedFields"])
         removed = set(result["unusedFields"])
-        removed_per_load[load_name] = removed
-        nodes[load_name]["parameters"]["fields"] = [
-            f for f in orig_fields
-            if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in used_set
-        ]
 
-    # Clean up DROP schema nodes: remove references to fields no longer in the
-    # pipeline. Only clean schemas DOWNSTREAM of the load node that lost fields,
-    # to avoid removing common field names (Name, CreatedDate, etc.) from
-    # unrelated branches.
-    for load_name, removed in removed_per_load.items():
-        if not removed:
-            continue
+        # Find which removed fields are referenced in downstream DROP schemas.
+        # These must stay in the load node — CRMA validates that DROP fields
+        # exist in the data flow. We do NOT modify DROP schemas themselves,
+        # because after joins the same field name may refer to a different
+        # source object.
+        drop_referenced = set()
         visited = set()
         queue = [load_name]
         while queue:
@@ -275,17 +259,21 @@ def build_cleaned(data, results, forward):
                 continue
             visited.add(current)
             node = nodes.get(current, {})
-            if node.get("action") == "schema":
+            if current != load_name and node.get("action") == "schema":
                 slice_info = node.get("parameters", {}).get("slice", {})
                 if slice_info.get("mode") == "DROP":
-                    drop_fields = slice_info.get("fields", [])
-                    slice_info["fields"] = [
-                        f for f in drop_fields
-                        if f not in removed
-                        and f.rsplit(".", 1)[-1] not in removed
-                    ]
+                    for f in slice_info.get("fields", []):
+                        base = f.rsplit(".", 1)[-1] if "." in f else f
+                        if base in removed:
+                            drop_referenced.add(base)
             for downstream in forward.get(current, []):
                 queue.append(downstream)
+
+        keep_set = used_set | drop_referenced
+        nodes[load_name]["parameters"]["fields"] = [
+            f for f in orig_fields
+            if (f if isinstance(f, str) else f.get("name", f.get("fieldName", ""))) in keep_set
+        ]
 
     # Decode HTML entities throughout the recipe (API export encodes them,
     # but CRMA import expects decoded values)
@@ -306,7 +294,7 @@ def build_cleaned(data, results, forward):
     return cleaned
 
 
-def analyze_recipe(input_path, cross_recipe_datasets=None):
+def analyze_recipe(input_path):
     """Analyze a single recipe and return (results, data, nodes) or None if not a valid recipe."""
     with open(input_path) as f:
         data = json.load(f)
@@ -338,7 +326,7 @@ def analyze_recipe(input_path, cross_recipe_datasets=None):
     results = {}
     for load_name, info in load_info.items():
         fields = info["fields"]
-        used_fields = trace_used_fields(load_name, fields, nodes, forward, cross_recipe_datasets)
+        used_fields = trace_used_fields(load_name, fields, nodes, forward)
         field_usage = find_field_usage_locations(load_name, fields, nodes, forward)
         results[load_name] = {
             "sourceObject": info["sourceObject"],
@@ -435,38 +423,6 @@ def main():
 
     print(f"Found {len(recipe_files)} JSON files in {DATA_DIR}/\n")
 
-    # Build cross-recipe dependency map: dataset labels that are produced by one
-    # recipe and consumed by another. Save-all nodes for these datasets must keep
-    # all upstream load fields since we can't know what the consumer needs.
-    save_producers = {}  # label -> recipe filename
-    load_consumers = defaultdict(list)  # label -> [recipe filenames]
-    for filename in recipe_files:
-        filepath = os.path.join(DATA_DIR, filename)
-        try:
-            with open(filepath) as f:
-                d = json.load(f)
-            ns = d.get("recipeDefinition", d).get("nodes", {})
-            if not isinstance(ns, dict):
-                continue
-        except (json.JSONDecodeError, KeyError, TypeError):
-            continue
-        for node in ns.values():
-            action = node.get("action", "")
-            label = node.get("parameters", {}).get("dataset", {}).get("label", "")
-            if not label:
-                continue
-            if action == "save":
-                save_producers[label] = filename
-            elif action == "load" and node.get("parameters", {}).get("dataset", {}).get("type") == "analyticsDataset":
-                load_consumers[label].append(filename)
-
-    cross_recipe_datasets = set()
-    for label, producer in save_producers.items():
-        consumers = [c for c in load_consumers.get(label, []) if c != producer]
-        if consumers:
-            cross_recipe_datasets.add(label)
-    print(f"Cross-recipe dataset dependencies: {len(cross_recipe_datasets)}\n")
-
     grand_total_before = 0
     grand_total_after = 0
     processed = 0
@@ -475,7 +431,7 @@ def main():
 
     for filename in recipe_files:
         input_path = os.path.join(DATA_DIR, filename)
-        result = analyze_recipe(input_path, cross_recipe_datasets)
+        result = analyze_recipe(input_path)
 
         if result is None:
             print(f"SKIP: {filename} (not a valid JSON recipe)")
@@ -492,6 +448,16 @@ def main():
             json.dump(cleaned, f, indent=2, ensure_ascii=False)
 
         if not results:
+            dashboard_recipes.append({
+                "name": recipe_name,
+                "filename": filename,
+                "totalNodes": len(nodes),
+                "totalFields": 0,
+                "usedFields": 0,
+                "unusedFields": 0,
+                "loadNodes": [],
+                "noTargetObjects": True,
+            })
             print(f"OK: {filename} — no target SF objects, cleaned (HTML decode only)")
             processed += 1
             continue
@@ -549,6 +515,7 @@ def main():
     if grand_total_before > 0:
         grand_removed = grand_total_before - grand_total_after
         print(f"Total fields: {grand_total_after}/{grand_total_before} used, {grand_removed} removed ({(grand_removed / grand_total_before * 100):.0f}%)")
+
     print(f"\nOutputs in {OUTPUT_DIR}/")
 
 

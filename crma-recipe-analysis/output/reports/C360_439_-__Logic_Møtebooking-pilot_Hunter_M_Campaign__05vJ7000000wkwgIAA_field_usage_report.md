@@ -7,8 +7,8 @@
 
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
-| LOAD_DATASET0 | Account | connectedDataset | 26 | 26 | 0 | 0% |
-| **TOTAL** | | | **26** | **26** | **0** | **0%** |
+| LOAD_DATASET0 | Account | connectedDataset | 26 | 25 | 1 | 4% |
+| **TOTAL** | | | **26** | **25** | **1** | **4%** |
 
 ## Detail per Source Object
 
@@ -16,8 +16,8 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 26
-- **Fields used:** 26
-- **Fields unused:** 0
+- **Fields used:** 25
+- **Fields unused:** 1
 
 #### Fields to KEEP
 
@@ -37,7 +37,6 @@
 | `Latest_Port_out_date__c` | FILTER37 (filter), DROP_FIELDS0 (schema), DROP_FIELDS15 (schema) |
 | `Mobile_Voice_Penetration__c` | FILTER0 (filter) |
 | `NACE_Subclass_Code__c` | FILTER41_copy1_copy0 (filter) |
-| `NACE_Subclass_Description__c` |  |
 | `Name` | FILTER2_copy0 (filter), DROP_FIELDS0 (schema), DROP_FIELDS15 (schema), FORMULA12_copy0 (formula) |
 | `NumberOfEmployees` | FILTER0 (filter), FORMULA0 (formula), DROP_FIELDS0 (schema) |
 | `OrgNo__c` | DROP_FIELDS0 (schema), DROP_FIELDS15 (schema) |
@@ -49,3 +48,7 @@
 | `VisitingCounty__c` | FORMULA1 (formula), DROP_FIELDS0 (schema), DROP_FIELDS15 (schema), FORMULA4 (formula) |
 | `alternate_phone__c` | DROP_FIELDS0 (schema) |
 | `mobile_service_segment__c` | FILTER0 (filter), DROP_FIELDS0 (schema), DROP_FIELDS15 (schema) |
+
+#### Fields to ELIMINATE
+
+- `NACE_Subclass_Description__c`

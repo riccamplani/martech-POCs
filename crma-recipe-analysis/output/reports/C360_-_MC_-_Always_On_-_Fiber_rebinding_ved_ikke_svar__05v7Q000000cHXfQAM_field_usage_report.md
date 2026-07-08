@@ -8,8 +8,8 @@
 | Load Node | Source Object | Type | Total Fields | Used | Unused | Reduction |
 |-----------|--------------|------|-------------|------|--------|-----------|
 | LOAD_DATASET4 | Account | connectedDataset | 6 | 6 | 0 | 0% |
-| LOAD_DATASET10 | Account_Location__c | connectedDataset | 27 | 27 | 0 | 0% |
-| **TOTAL** | | | **33** | **33** | **0** | **0%** |
+| LOAD_DATASET10 | Account_Location__c | connectedDataset | 27 | 6 | 21 | 78% |
+| **TOTAL** | | | **33** | **12** | **21** | **64%** |
 
 ## Detail per Source Object
 
@@ -35,37 +35,40 @@
 
 - **Connection:** SFDC_LOCAL_SEGMENTATION
 - **Fields loaded:** 27
-- **Fields used:** 27
-- **Fields unused:** 0
+- **Fields used:** 6
+- **Fields unused:** 21
 
 #### Fields to KEEP
 
 | Field | Used In |
 |-------|---------|
 | `Active_subs__c` | DROP_FIELDS14 (schema), DROP_FIELDS15 (schema) |
-| `Address_Id__c` |  |
-| `BUILDING_TYPE_LEVEL_2__c` |  |
-| `BUILDING_TYPE_LEVEL_3__c` |  |
-| `Building_type__c` |  |
-| `COVERAGE_START_DATE_5G__c` |  |
-| `Capacity_code__c` |  |
-| `Coverage_4GP40__c` |  |
-| `Coverage_4G_Plus__c` |  |
-| `Coverage_4G__c` |  |
-| `Coverage_5G_P__c` |  |
-| `CreatedById` |  |
-| `CreatedDate` |  |
 | `FAR_ID__c` | TO_DIMENSION0 (typeCast) |
-| `Fiber_cost__c` |  |
 | `Id` | JOIN10 (join), DROP_FIELDS17 (schema), DROP_FIELDS17 (schema), DROP_FIELDS17 (schema) |
-| `IsDeleted` |  |
-| `LFA_IS_ONNET__c` |  |
-| `LastModifiedById` |  |
-| `LastModifiedDate` |  |
 | `Location_Owner__c` | DROP_FIELDS14 (schema), DROP_FIELDS15 (schema), JOIN9 (join), JOIN10 (join) |
-| `Name` |  |
-| `OAF_ID__c` |  |
-| `OwnerId` |  |
 | `Postal_address__c` | DROP_FIELDS14 (schema), FORMULA34 (formula), DROP_FIELDS15 (schema) |
 | `Street_address__c` | DROP_FIELDS14 (schema), FORMULA34 (formula), DROP_FIELDS15 (schema) |
-| `SystemModstamp` |  |
+
+#### Fields to ELIMINATE
+
+- `Address_Id__c`
+- `BUILDING_TYPE_LEVEL_2__c`
+- `BUILDING_TYPE_LEVEL_3__c`
+- `Building_type__c`
+- `COVERAGE_START_DATE_5G__c`
+- `Capacity_code__c`
+- `Coverage_4GP40__c`
+- `Coverage_4G_Plus__c`
+- `Coverage_4G__c`
+- `Coverage_5G_P__c`
+- `CreatedById`
+- `CreatedDate`
+- `Fiber_cost__c`
+- `IsDeleted`
+- `LFA_IS_ONNET__c`
+- `LastModifiedById`
+- `LastModifiedDate`
+- `Name`
+- `OAF_ID__c`
+- `OwnerId`
+- `SystemModstamp`

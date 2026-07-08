@@ -14,10 +14,8 @@
           "Id",
           "IsDeleted",
           "Industry__c",
-          "Segment__c",
           "StatusKURT__c",
           "TSP_Dealer__c",
-          "Service_segment__c",
           "Mobile_Voice_Penetration__c",
           "NBR_MBN__c",
           "NBR_MBN_AVANSERT_SENTRALBORD__c",
@@ -25,7 +23,6 @@
           "MBN_PROD_SVARSGRUPER_ACT_DATE__c",
           "MBN_PROD_KO_ACT_DATE__c",
           "MPORT_FLG__c",
-          "SUM_POTENTIAL__c",
           "Migration_flag__c",
           "mobile_service_segment__c"
         ],

@@ -68,7 +68,6 @@
           "NBR_TBB_MOBIL__c",
           "SOURCE_ACCOUNT_ID_MOBIL__c",
           "NBR_SOURCE_ACCOUNT_ID_MOBIL__c",
-          "NBR_SAFEZONE_MOBILE__c",
           "NBR_SAFEZONE_IA__c",
           "SAFEZONE_MOB_START_DT__c",
           "Phonenumber_type__c"

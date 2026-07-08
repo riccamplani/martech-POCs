@@ -262,17 +262,11 @@
           "Id",
           "IsDeleted",
           "NumberOfEmployees",
-          "Portfolio__c",
-          "Segment__c",
           "StatusKURT__c",
           "SubsMobileVoice__c",
-          "VisitingCounty__c",
-          "NACE_Subclass_Code__c",
           "Company_Family_Name__c",
           "Forbund_membership__c",
-          "Mobile_Voice_Penetration__c",
-          "TM_Forbund_Flag__c",
-          "mobile_service_segment__c"
+          "Mobile_Voice_Penetration__c"
         ],
         "sampleDetails": {
           "sortBy": [],
