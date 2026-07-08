@@ -275,20 +275,6 @@ def build_cleaned(data, results, forward):
             for downstream in forward.get(current, []):
                 queue.append(downstream)
 
-    # Decode HTML entities throughout the recipe (API export encodes them,
-    # but CRMA import expects decoded values)
-    def decode_html_entities(obj):
-        if isinstance(obj, str):
-            return unescape(obj) if "&" in obj else obj
-        elif isinstance(obj, dict):
-            return {k: decode_html_entities(v) for k, v in obj.items()}
-        elif isinstance(obj, list):
-            return [decode_html_entities(item) for item in obj]
-        return obj
-
-    for node_name in nodes:
-        nodes[node_name] = decode_html_entities(nodes[node_name])
-
     if "recipeDefinition" in cleaned:
         return cleaned["recipeDefinition"]
     return cleaned

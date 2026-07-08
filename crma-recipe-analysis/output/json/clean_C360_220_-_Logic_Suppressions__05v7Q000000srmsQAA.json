@@ -3874,7 +3874,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Is_DMU__c = 'true' then Id\r\nelse DPSS_DMU__c\r\nend",
+            "formulaExpression": "case when Is_DMU__c = &#39;true&#39; then Id\r\nelse DPSS_DMU__c\r\nend",
             "label": "DPSS Decision Making Unit Calc",
             "name": "DPSS_DMU__c_calc",
             "precision": 18,

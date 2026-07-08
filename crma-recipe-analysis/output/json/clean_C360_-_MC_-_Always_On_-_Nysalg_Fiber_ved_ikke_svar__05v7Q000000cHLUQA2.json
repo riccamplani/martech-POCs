@@ -510,7 +510,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_96'",
+            "formulaExpression": "&#39;C360_96&#39;",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -529,7 +529,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Dialer_Strategy__c='B_Loyalty_Fib' then 'A1'\r\nwhen Dialer_Strategy__c='B_Gjovik_Fib' then 'A2' else '0'\r\nend",
+            "formulaExpression": "case when Dialer_Strategy__c=&#39;B_Loyalty_Fib&#39; then &#39;A1&#39;\r\nwhen Dialer_Strategy__c=&#39;B_Gjovik_Fib&#39; then &#39;A2&#39; else &#39;0&#39;\r\nend",
             "label": "Personalization_1__c",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -548,7 +548,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa.Mulig_Installasjonsadresse\"",
+            "formulaExpression": "&quot;Fibernewsa.Mulig_Installasjonsadresse&quot;",
             "label": "Personalization_2__c",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -567,7 +567,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \"Fibernewsa.Fiber_cost__c\" = 10000\r\nthen 'Fiberkost på adressen er 10K'\r\nwhen \"Fibernewsa.Fiber_cost__c\" = 40000\r\nthen 'Fiberkost på adressen er 40K'\r\nelse '0'\r\nend",
+            "formulaExpression": "case when &quot;Fibernewsa.Fiber_cost__c&quot; = 10000\r\nthen &#39;Fiberkost på adressen er 10K&#39;\r\nwhen &quot;Fibernewsa.Fiber_cost__c&quot; = 40000\r\nthen &#39;Fiberkost på adressen er 40K&#39;\r\nelse &#39;0&#39;\r\nend",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,

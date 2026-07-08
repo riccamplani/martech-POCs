@@ -240,7 +240,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_199'",
+            "formulaExpression": "&#39;C360_199&#39;",
             "label": "Campaign_CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -259,7 +259,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -278,7 +278,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Medium DPSS'",
+            "formulaExpression": "&#39;Medium DPSS&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -383,7 +383,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"C360_199.reporting_tag__c\", '_', \"Account.KurtID__c\")",
+            "formulaExpression": "concat( &quot;C360_199.reporting_tag__c&quot;, &#39;_&#39;, &quot;Account.KurtID__c&quot;)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -402,7 +402,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"C360_199.Id\"",
+            "formulaExpression": "&quot;C360_199.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -421,7 +421,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Account.Id\"",
+            "formulaExpression": "&quot;Account.Id&quot;",
             "label": "SFB AccountId",
             "name": "SFB_AccountId",
             "precision": 18,
@@ -440,7 +440,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Account.KurtID__c\"",
+            "formulaExpression": "&quot;Account.KurtID__c&quot;",
             "label": "Kurt Id",
             "name": "Kurt_Id",
             "precision": 255,
@@ -459,7 +459,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"C360_199.Name\"",
+            "formulaExpression": "&quot;C360_199.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -515,7 +515,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
+            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -534,7 +534,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse2.Adresse2\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse2.Adresse2&quot;",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -553,7 +553,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse3.Adresse3\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse3.Adresse3&quot;",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -572,7 +572,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse4.Adresse4\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse4.Adresse4&quot;",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -591,7 +591,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse5.Adresse5\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse5.Adresse5&quot;",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -610,7 +610,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse6.Adresse6\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse6.Adresse6&quot;",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -629,7 +629,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse7.Adresse7\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse7.Adresse7&quot;",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -648,7 +648,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse8.Adresse8\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse8.Adresse8&quot;",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -667,7 +667,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse9.Adresse9\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse9.Adresse9&quot;",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -686,7 +686,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa1.Adresse10.Adresse10\"",
+            "formulaExpression": "&quot;Fibernewsa1.Adresse10.Adresse10&quot;",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -705,7 +705,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Transform2.Potensielle_IA_Adresser_to_dimension\"",
+            "formulaExpression": "&quot;Transform2.Potensielle_IA_Adresser_to_dimension&quot;",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -724,7 +724,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kundeservice har en opportunity som ikke er fulgt opp på denne kunden. Vennligst sjekk ut og følg opp dette.</li><li>\r\n</li><li>\r\n{Personalization_1__c}</li><li>\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_2__c}</li><li>\r\n{Personalization_3__c}</li><li>\r\n{Personalization_4__c}</li><li>\r\n{Personalization_5__c}</li><li>\r\n{Personalization_6__c}</li><li>\r\n{Personalization_7__c}</li><li>\r\n{Personalization_8__c}</li><li>\r\n{Personalization_9__c}</li><li>\r\n{Personalization_10__c}</li><li>\r\n{Personalization_11__c}</li><li>\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.</li><li>For TBB: Husk å dobbelsjekke kapasitet.</li><li></li><li>Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.</li><li>Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.'",
+            "formulaExpression": "&#39;Kundeservice har en opportunity som ikke er fulgt opp på denne kunden. Vennligst sjekk ut og følg opp dette.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_12__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_2__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c}&lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c}&lt;/li&gt;&lt;li&gt;\r\nFor fiber: Husk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;For TBB: Husk å dobbelsjekke kapasitet.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;Husk SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&lt;/li&gt;&lt;li&gt;Husk også å benytte andre verdibudskap for tjenestene, se mer info på infoweb.&#39;",
             "label": "Sales Tips Description Template",
             "name": "Sales_tips_description_template",
             "precision": 9999,
@@ -743,7 +743,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n\"Account.Has_Subscriptions_Actual__c\" ='false'\r\nthen 'Er ikke Telenor kunde.' else\r\n'Er Telenor kunde.'\r\nend",
+            "formulaExpression": "case when\r\n&quot;Account.Has_Subscriptions_Actual__c&quot; =&#39;false&#39;\r\nthen &#39;Er ikke Telenor kunde.&#39; else\r\n&#39;Er Telenor kunde.&#39;\r\nend",
             "label": "Personalization_1__c",
             "name": "Personalization_1__c",
             "precision": 255,
@@ -1130,7 +1130,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kundeservice har en opportunity som ikke er fulgt opp på denne kunden. Vennligst sjekk ut og følg opp dette.</li><li>\r\n</li><li>\r\n{Personalization_1__c}</li><li>\r\nKunden har ikke som eier nye potensielle fiberadresser.'",
+            "formulaExpression": "&#39;Kundeservice har en opportunity som ikke er fulgt opp på denne kunden. Vennligst sjekk ut og følg opp dette.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c}&lt;/li&gt;&lt;li&gt;\r\nKunden har ikke som eier nye potensielle fiberadresser.&#39;",
             "label": "Sales Tips Description Template",
             "name": "Sales_tips_description_template",
             "precision": 9999,
@@ -1149,7 +1149,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n\"Account.Has_Subscriptions_Actual__c\" ='false'\r\nthen 'Er ikke Telenor kunde.' else\r\n'Er Telenor kunde.'\r\nend",
+            "formulaExpression": "case when\r\n&quot;Account.Has_Subscriptions_Actual__c&quot; =&#39;false&#39;\r\nthen &#39;Er ikke Telenor kunde.&#39; else\r\n&#39;Er Telenor kunde.&#39;\r\nend",
             "label": "Personalization_1__c",
             "name": "Personalization_1__c",
             "precision": 255,

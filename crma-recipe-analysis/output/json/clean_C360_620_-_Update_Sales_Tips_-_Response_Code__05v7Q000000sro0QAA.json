@@ -147,7 +147,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'4'",
+            "formulaExpression": "&#39;4&#39;",
             "label": "UpdatedResponseCode",
             "name": "UpdatedResponseCode",
             "precision": 255,
@@ -166,7 +166,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'70'",
+            "formulaExpression": "&#39;70&#39;",
             "label": "UpdatedReasonSubCode",
             "name": "UpdatedReasonSubCode",
             "precision": 2,
@@ -185,7 +185,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+            "format": "yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS&#39;Z&#39;",
             "formulaExpression": "Now()",
             "label": "UpdatedResponseDate",
             "name": "UpdatedResponseDate",

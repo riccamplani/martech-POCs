@@ -113,7 +113,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Fibernewsa.IA_full_new_sale_text_adresses\"",
+            "formulaExpression": "&quot;Fibernewsa.IA_full_new_sale_text_adresses&quot;",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -132,7 +132,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse2.Adresse2\"",
+            "formulaExpression": "&quot;Adresse2.Adresse2&quot;",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -151,7 +151,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse3.Adresse3\"",
+            "formulaExpression": "&quot;Adresse3.Adresse3&quot;",
             "label": "Personalization_4__c",
             "name": "Personalization_4__c",
             "precision": 255,
@@ -170,7 +170,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse4.Adresse4\"",
+            "formulaExpression": "&quot;Adresse4.Adresse4&quot;",
             "label": "Personalization_5__c",
             "name": "Personalization_5__c",
             "precision": 255,
@@ -189,7 +189,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse5.Adresse5\"",
+            "formulaExpression": "&quot;Adresse5.Adresse5&quot;",
             "label": "Personalization_6__c",
             "name": "Personalization_6__c",
             "precision": 255,
@@ -208,7 +208,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse6.Adresse6\"",
+            "formulaExpression": "&quot;Adresse6.Adresse6&quot;",
             "label": "Personalization_7__c",
             "name": "Personalization_7__c",
             "precision": 255,
@@ -227,7 +227,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse7.Adresse7\"",
+            "formulaExpression": "&quot;Adresse7.Adresse7&quot;",
             "label": "Personalization_8__c",
             "name": "Personalization_8__c",
             "precision": 255,
@@ -246,7 +246,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse8.Adresse8\"",
+            "formulaExpression": "&quot;Adresse8.Adresse8&quot;",
             "label": "Personalization_9__c",
             "name": "Personalization_9__c",
             "precision": 255,
@@ -265,7 +265,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse9.Adresse9\"",
+            "formulaExpression": "&quot;Adresse9.Adresse9&quot;",
             "label": "Personalization_10__c",
             "name": "Personalization_10__c",
             "precision": 255,
@@ -284,7 +284,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Adresse10.Adresse10\"",
+            "formulaExpression": "&quot;Adresse10.Adresse10&quot;",
             "label": "Personalization_11__c",
             "name": "Personalization_11__c",
             "precision": 255,
@@ -330,7 +330,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FiberandTB.Potensielle_IA_Adresser_to_dimension\"",
+            "formulaExpression": "&quot;FiberandTB.Potensielle_IA_Adresser_to_dimension&quot;",
             "label": "Personalization_12__c",
             "name": "Personalization_12__c",
             "precision": 255,
@@ -774,7 +774,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\ntm_agency__c='Medium DPS' then 'Medium DPSS'\r\nelse tm_agency__c\r\nend",
+            "formulaExpression": "case when\r\ntm_agency__c=&#39;Medium DPS&#39; then &#39;Medium DPSS&#39;\r\nelse tm_agency__c\r\nend",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

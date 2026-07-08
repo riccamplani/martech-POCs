@@ -75,7 +75,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_443'",
+            "formulaExpression": "&#39;C360_443&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -285,7 +285,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'1'",
+            "formulaExpression": "&#39;1&#39;",
             "label": "Partition",
             "name": "Partition",
             "precision": 1,
@@ -514,7 +514,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'A1'",
+            "formulaExpression": "&#39;A1&#39;",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,
@@ -533,7 +533,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'A2'",
+            "formulaExpression": "&#39;A2&#39;",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,
@@ -615,7 +615,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"C360_44.CampaignID__c\"",
+            "formulaExpression": "&quot;C360_44.CampaignID__c&quot;",
             "label": "Campaign CD",
             "name": "Campaign_CD",
             "precision": 255,
@@ -663,7 +663,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "trim(format_number(\"Calculated.Nbr_Rebindable__c\", '# ### ###.##'))",
+            "formulaExpression": "trim(format_number(&quot;Calculated.Nbr_Rebindable__c&quot;, &#39;# ### ###.##&#39;))",
             "label": "Personalization 2",
             "name": "Personalization_2",
             "precision": 255,
@@ -682,7 +682,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "trim(format_number(\"Calculated.Nbr_Rebindable__c\" * 50 * 24, '# ### ###.##'))",
+            "formulaExpression": "trim(format_number(&quot;Calculated.Nbr_Rebindable__c&quot; * 50 * 24, &#39;# ### ###.##&#39;))",
             "label": "Personalization 3",
             "name": "Personalization_3",
             "precision": 255,
@@ -701,7 +701,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "trim(format_number(\"Calculated.Nbr_Type_Legacy\", '# ### ###.##'))",
+            "formulaExpression": "trim(format_number(&quot;Calculated.Nbr_Type_Legacy&quot;, &#39;# ### ###.##&#39;))",
             "label": "Personalization 4",
             "name": "Personalization_4",
             "precision": 255,
@@ -1163,7 +1163,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \"PrimaryCon.AccountId\" is not null then\r\n'eDM'\r\nelse\r\n'DM'\r\nend",
+            "formulaExpression": "case when &quot;PrimaryCon.AccountId&quot; is not null then\r\n&#39;eDM&#39;\r\nelse\r\n&#39;DM&#39;\r\nend",
             "label": "Channel",
             "name": "Channel",
             "precision": 3,
@@ -1310,7 +1310,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'true'",
+            "formulaExpression": "&#39;true&#39;",
             "label": "Experience Cloud Value",
             "name": "Experience_Cloud_Value",
             "precision": 255,
@@ -1499,7 +1499,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'A3'",
+            "formulaExpression": "&#39;A3&#39;",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,
@@ -1518,7 +1518,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'A4'",
+            "formulaExpression": "&#39;A4&#39;",
             "label": "Personalization 1",
             "name": "Personalization_1",
             "precision": 255,
@@ -1780,7 +1780,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Contact.AccountId\"",
+            "formulaExpression": "&quot;Contact.AccountId&quot;",
             "label": "Customer Key",
             "name": "Customer_Key",
             "precision": 18,
@@ -1973,7 +1973,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Contact.AccountId\"",
+            "formulaExpression": "&quot;Contact.AccountId&quot;",
             "label": "Customer ID",
             "name": "Customer_ID",
             "precision": 18,
@@ -2279,7 +2279,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Droppingfi.AccountId\"",
+            "formulaExpression": "&quot;Droppingfi.AccountId&quot;",
             "label": "Account Key",
             "name": "Account_Key",
             "precision": 18,

@@ -53,7 +53,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_1__c\" is not null\n    then \"Personalization_1__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_1__c&quot; is not null\n    then &quot;Personalization_1__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization1",
             "name": "Personalization1",
             "precision": 32000,
@@ -72,7 +72,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_2__c\" is not null\n    then \"Personalization_2__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_2__c&quot; is not null\n    then &quot;Personalization_2__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization2",
             "name": "Personalization2",
             "precision": 255,
@@ -91,7 +91,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_3__c\" is not null\n    then \"Personalization_3__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_3__c&quot; is not null\n    then &quot;Personalization_3__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization3",
             "name": "Personalization3",
             "precision": 255,
@@ -110,7 +110,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_4__c\" is not null\n    then \"Personalization_4__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_4__c&quot; is not null\n    then &quot;Personalization_4__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization4",
             "name": "Personalization4",
             "precision": 1000,
@@ -129,7 +129,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_5__c\" is not null\n    then \"Personalization_5__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_5__c&quot; is not null\n    then &quot;Personalization_5__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization5",
             "name": "Personalization5",
             "precision": 1000,
@@ -148,7 +148,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_6__c\" is not null\n    then \"Personalization_6__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_6__c&quot; is not null\n    then &quot;Personalization_6__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization6",
             "name": "Personalization6",
             "precision": 1000,
@@ -167,7 +167,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_7__c\" is not null\n    then \"Personalization_7__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_7__c&quot; is not null\n    then &quot;Personalization_7__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization7",
             "name": "Personalization7",
             "precision": 1000,
@@ -186,7 +186,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_8__c\" is not null\n    then \"Personalization_8__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_8__c&quot; is not null\n    then &quot;Personalization_8__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization8",
             "name": "Personalization8",
             "precision": 2550,
@@ -205,7 +205,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_9__c\" is not null\n    then \"Personalization_9__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_9__c&quot; is not null\n    then &quot;Personalization_9__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization9",
             "name": "Personalization9",
             "precision": 2550,
@@ -224,7 +224,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_10__c\" is not null\n    then \"Personalization_10__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_10__c&quot; is not null\n    then &quot;Personalization_10__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization10",
             "name": "Personalization10",
             "precision": 2550,
@@ -243,7 +243,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_11__c\" is not null\n    then \"Personalization_11__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_11__c&quot; is not null\n    then &quot;Personalization_11__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization11",
             "name": "Personalization11",
             "precision": 2550,
@@ -262,7 +262,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_12__c\" is not null\n    then \"Personalization_12__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_12__c&quot; is not null\n    then &quot;Personalization_12__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization12",
             "name": "Personalization12",
             "precision": 2550,
@@ -281,7 +281,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_13__c\" is not null\n    then \"Personalization_13__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_13__c&quot; is not null\n    then &quot;Personalization_13__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization13",
             "name": "Personalization13",
             "precision": 2550,
@@ -300,7 +300,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_14__c\" is not null\n    then \"Personalization_14__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_14__c&quot; is not null\n    then &quot;Personalization_14__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization14",
             "name": "Personalization14",
             "precision": 2550,
@@ -319,7 +319,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_15__c\" is not null\n    then \"Personalization_15__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_15__c&quot; is not null\n    then &quot;Personalization_15__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization15",
             "name": "Personalization15",
             "precision": 2550,
@@ -338,7 +338,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_16__c\" is not null\n    then \"Personalization_16__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_16__c&quot; is not null\n    then &quot;Personalization_16__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization16",
             "name": "Personalization16",
             "precision": 2550,
@@ -357,7 +357,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_17__c\" is not null\n    then \"Personalization_17__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_17__c&quot; is not null\n    then &quot;Personalization_17__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization17",
             "name": "Personalization17",
             "precision": 2550,
@@ -376,7 +376,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_18__c\" is not null\n    then \"Personalization_18__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_18__c&quot; is not null\n    then &quot;Personalization_18__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization18",
             "name": "Personalization18",
             "precision": 2550,
@@ -395,7 +395,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_19__c\" is not null\n    then \"Personalization_19__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_19__c&quot; is not null\n    then &quot;Personalization_19__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization19",
             "name": "Personalization19",
             "precision": 2550,
@@ -414,7 +414,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_20__c\" is not null\n    then \"Personalization_20__c\"\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_20__c&quot; is not null\n    then &quot;Personalization_20__c&quot;\n    else\n    &#39; &#39;\nend",
             "label": "Personalization20",
             "name": "Personalization20",
             "precision": 2550,
@@ -433,7 +433,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Personalization1\",\"Personalization2\",\"Personalization3\",\"Personalization4\",\"Personalization5\",\"Personalization6\",\"Personalization7\",\"Personalization8\",\"Personalization9\",\"Personalization10\",\"Personalization11\",\"Personalization12\",\"Personalization13\",\"Personalization14\",\"Personalization15\",\"Personalization16\",\"Personalization17\",\"Personalization18\",\"Personalization19\",\"Personalization20\")",
+            "formulaExpression": "concat(&quot;Personalization1&quot;,&quot;Personalization2&quot;,&quot;Personalization3&quot;,&quot;Personalization4&quot;,&quot;Personalization5&quot;,&quot;Personalization6&quot;,&quot;Personalization7&quot;,&quot;Personalization8&quot;,&quot;Personalization9&quot;,&quot;Personalization10&quot;,&quot;Personalization11&quot;,&quot;Personalization12&quot;,&quot;Personalization13&quot;,&quot;Personalization14&quot;,&quot;Personalization15&quot;,&quot;Personalization16&quot;,&quot;Personalization17&quot;,&quot;Personalization18&quot;,&quot;Personalization19&quot;,&quot;Personalization20&quot;)",
             "label": "PersonalizationConcat",
             "name": "PersonalizationConcat",
             "precision": 32000,
@@ -512,7 +512,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"PersonalizationConcat\" = \"OldST.PersonalizationConcat\"\n    then 'No'\n    else\n    'Yes'\nend",
+            "formulaExpression": "case \n    when &quot;PersonalizationConcat&quot; = &quot;OldST.PersonalizationConcat&quot;\n    then &#39;No&#39;\n    else\n    &#39;Yes&#39;\nend",
             "label": "Update Personalization",
             "name": "UpdatePersonalization",
             "precision": 255,
@@ -531,7 +531,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when rtrim(\"OldST.Salestip_Template__c\")= rtrim(Sales_tip_description_template)\n    then 'No'\n    else\n    'Yes'\nend",
+            "formulaExpression": "case \n    when rtrim(&quot;OldST.Salestip_Template__c&quot;)= rtrim(Sales_tip_description_template)\n    then &#39;No&#39;\n    else\n    &#39;Yes&#39;\nend",
             "label": "Update Sales Tip template",
             "name": "UpdateSalesTiptemplate",
             "precision": 10,
@@ -577,7 +577,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_1__c\" is not null\n    then rtrim(\"Personalization_1__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_1__c&quot; is not null\n    then rtrim(&quot;Personalization_1__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization1",
             "name": "Personalization1",
             "precision": 32000,
@@ -596,7 +596,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_2__c\" is not null\n    then rtrim(\"Personalization_2__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_2__c&quot; is not null\n    then rtrim(&quot;Personalization_2__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization2",
             "name": "Personalization2",
             "precision": 255,
@@ -615,7 +615,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_3__c\" is not null\n    then rtrim(\"Personalization_3__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_3__c&quot; is not null\n    then rtrim(&quot;Personalization_3__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization3",
             "name": "Personalization3",
             "precision": 255,
@@ -634,7 +634,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_4__c\" is not null\n    then rtrim(\"Personalization_4__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_4__c&quot; is not null\n    then rtrim(&quot;Personalization_4__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization4",
             "name": "Personalization4",
             "precision": 1000,
@@ -653,7 +653,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_5__c\" is not null\n    then rtrim(\"Personalization_5__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_5__c&quot; is not null\n    then rtrim(&quot;Personalization_5__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization5",
             "name": "Personalization5",
             "precision": 1000,
@@ -672,7 +672,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_6__c\" is not null\n    then rtrim(\"Personalization_6__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_6__c&quot; is not null\n    then rtrim(&quot;Personalization_6__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization6",
             "name": "Personalization6",
             "precision": 1000,
@@ -691,7 +691,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_7__c\" is not null\n    then rtrim(\"Personalization_7__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_7__c&quot; is not null\n    then rtrim(&quot;Personalization_7__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization7",
             "name": "Personalization7",
             "precision": 1000,
@@ -710,7 +710,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_8__c\" is not null\n    then rtrim(\"Personalization_8__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_8__c&quot; is not null\n    then rtrim(&quot;Personalization_8__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization8",
             "name": "Personalization8",
             "precision": 2550,
@@ -729,7 +729,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_9__c\" is not null\n    then rtrim(\"Personalization_9__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_9__c&quot; is not null\n    then rtrim(&quot;Personalization_9__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization9",
             "name": "Personalization9",
             "precision": 2550,
@@ -748,7 +748,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_10__c\" is not null\n    then rtrim(\"Personalization_10__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_10__c&quot; is not null\n    then rtrim(&quot;Personalization_10__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization10",
             "name": "Personalization10",
             "precision": 2550,
@@ -767,7 +767,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_11__c\" is not null\n    then rtrim(\"Personalization_11__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_11__c&quot; is not null\n    then rtrim(&quot;Personalization_11__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization11",
             "name": "Personalization11",
             "precision": 2550,
@@ -786,7 +786,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_12__c\" is not null\n    then rtrim(\"Personalization_12__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_12__c&quot; is not null\n    then rtrim(&quot;Personalization_12__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization12",
             "name": "Personalization12",
             "precision": 2550,
@@ -805,7 +805,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_13__c\" is not null\n    then rtrim(\"Personalization_13__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_13__c&quot; is not null\n    then rtrim(&quot;Personalization_13__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization13",
             "name": "Personalization13",
             "precision": 2550,
@@ -824,7 +824,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_14__c\" is not null\n    then rtrim(\"Personalization_14__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_14__c&quot; is not null\n    then rtrim(&quot;Personalization_14__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization14",
             "name": "Personalization14",
             "precision": 2550,
@@ -843,7 +843,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_15__c\" is not null\n    then rtrim(\"Personalization_15__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_15__c&quot; is not null\n    then rtrim(&quot;Personalization_15__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization15",
             "name": "Personalization15",
             "precision": 2550,
@@ -862,7 +862,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_16__c\" is not null\n    then rtrim(\"Personalization_16__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_16__c&quot; is not null\n    then rtrim(&quot;Personalization_16__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization16",
             "name": "Personalization16",
             "precision": 2550,
@@ -881,7 +881,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_17__c\" is not null\n    then rtrim(\"Personalization_17__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_17__c&quot; is not null\n    then rtrim(&quot;Personalization_17__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization17",
             "name": "Personalization17",
             "precision": 2550,
@@ -900,7 +900,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_18__c\" is not null\n    then rtrim(\"Personalization_18__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_18__c&quot; is not null\n    then rtrim(&quot;Personalization_18__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization18",
             "name": "Personalization18",
             "precision": 2550,
@@ -919,7 +919,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_19__c\" is not null\n    then rtrim(\"Personalization_19__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_19__c&quot; is not null\n    then rtrim(&quot;Personalization_19__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization19",
             "name": "Personalization19",
             "precision": 2550,
@@ -938,7 +938,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \n    when \"Personalization_20__c\" is not null\n    then rtrim(\"Personalization_20__c\")\n    else\n    ' '\nend",
+            "formulaExpression": "case \n    when &quot;Personalization_20__c&quot; is not null\n    then rtrim(&quot;Personalization_20__c&quot;)\n    else\n    &#39; &#39;\nend",
             "label": "Personalization20",
             "name": "Personalization20",
             "precision": 2550,
@@ -957,7 +957,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Personalization1\",\"Personalization2\",\"Personalization3\",\"Personalization4\",\"Personalization5\",\"Personalization6\",\"Personalization7\",\"Personalization8\",\"Personalization9\",\"Personalization10\",\"Personalization11\",\"Personalization12\",\"Personalization13\",\"Personalization14\",\"Personalization15\",\"Personalization16\",\"Personalization17\",\"Personalization18\",\"Personalization19\",\"Personalization20\")",
+            "formulaExpression": "concat(&quot;Personalization1&quot;,&quot;Personalization2&quot;,&quot;Personalization3&quot;,&quot;Personalization4&quot;,&quot;Personalization5&quot;,&quot;Personalization6&quot;,&quot;Personalization7&quot;,&quot;Personalization8&quot;,&quot;Personalization9&quot;,&quot;Personalization10&quot;,&quot;Personalization11&quot;,&quot;Personalization12&quot;,&quot;Personalization13&quot;,&quot;Personalization14&quot;,&quot;Personalization15&quot;,&quot;Personalization16&quot;,&quot;Personalization17&quot;,&quot;Personalization18&quot;,&quot;Personalization19&quot;,&quot;Personalization20&quot;)",
             "label": "PersonalizationConcat",
             "name": "PersonalizationConcat",
             "precision": 32000,

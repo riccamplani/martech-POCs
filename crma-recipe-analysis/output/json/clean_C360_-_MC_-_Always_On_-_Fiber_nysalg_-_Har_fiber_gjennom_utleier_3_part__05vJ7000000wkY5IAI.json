@@ -461,7 +461,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_157'",
+            "formulaExpression": "&#39;C360_157&#39;",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -480,7 +480,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n\"Account.SEogAgrol.Has_Subscriptions_Actual__c\"='false'\r\nthen 'A1' \r\nelse 'A2'\r\nend",
+            "formulaExpression": "case when\r\n&quot;Account.SEogAgrol.Has_Subscriptions_Actual__c&quot;=&#39;false&#39;\r\nthen &#39;A1&#39; \r\nelse &#39;A2&#39;\r\nend",
             "label": "Personalization_1__c",
             "name": "Personalization_1__c",
             "precision": 255,

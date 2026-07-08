@@ -101,7 +101,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\n(NumberOfEmployees >=20 and NumberOfEmployees <35)\r\nthen '20-34'\r\nwhen (NumberOfEmployees >=35 and NumberOfEmployees <=50)\r\nthen '35-50'\r\nelse 'ikke gruppert'\r\nend\r\n",
+            "formulaExpression": "case when\r\n(NumberOfEmployees &gt;=20 and NumberOfEmployees &lt;35)\r\nthen &#39;20-34&#39;\r\nwhen (NumberOfEmployees &gt;=35 and NumberOfEmployees &lt;=50)\r\nthen &#39;35-50&#39;\r\nelse &#39;ikke gruppert&#39;\r\nend\r\n",
             "label": "Gruppering ansatte",
             "name": "Gruppering_ansatte",
             "precision": 255,
@@ -120,7 +120,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "Case \r\nwhen\r\n(VisitingCounty__c = 'Agder'\r\nor VisitingCounty__c = 'AGDER'\r\nor VisitingCounty__c = 'Telemark'\r\nor VisitingCounty__c = 'TELEMARK')\r\nthen 'Kristiansand'\r\nwhen\r\n(VisitingCounty__c = 'Oslo'\r\nor VisitingCounty__c = 'OSLO'\r\nor VisitingCounty__c = 'Østfold'\r\nor VisitingCounty__c = 'ØSTFOLD'\r\nor VisitingCounty__c = 'Akershus'\r\nor VisitingCounty__c = 'AKERSHUS'\r\nor VisitingCounty__c = 'Buskerud'\r\nor VisitingCounty__c = 'BUSKERUD'\r\nor VisitingCounty__c = 'Vestfold'\r\nor VisitingCounty__c = 'VESTFOLD'\r\nor VisitingCounty__c = 'Innlandet'\r\nor VisitingCounty__c = 'INNLANDET')\r\nthen 'Fornebu'\r\nwhen\r\n(VisitingCounty__c = 'Trøndelag'\r\nor VisitingCounty__c = 'TRØNDELAG'\r\nor VisitingCounty__c = 'MØRE OG ROMSDAL'\r\nor VisitingCounty__c = 'Møre og Romsdal')\r\nthen 'Trondheim'\r\nwhen\r\n(VisitingCounty__c = 'Nordland'\r\nor VisitingCounty__c = 'NORDLAND'\r\nor VisitingCounty__c = 'Troms'\r\nor VisitingCounty__c = 'TROMS'\r\nor VisitingCounty__c = 'Finnmark'\r\nor VisitingCounty__c = 'FINNMARK')\r\nthen 'Bodø'\r\nwhen\r\n(VisitingCounty__c = 'Rogaland'\r\nor VisitingCounty__c = 'ROGALAND'\r\nor VisitingCounty__c = 'Vestland'\r\nor VisitingCounty__c = 'VESTLAND')\r\nthen 'Stavanger'\r\nelse 'Ikke gruppert'\r\nend\r\n\r\n",
+            "formulaExpression": "Case \r\nwhen\r\n(VisitingCounty__c = &#39;Agder&#39;\r\nor VisitingCounty__c = &#39;AGDER&#39;\r\nor VisitingCounty__c = &#39;Telemark&#39;\r\nor VisitingCounty__c = &#39;TELEMARK&#39;)\r\nthen &#39;Kristiansand&#39;\r\nwhen\r\n(VisitingCounty__c = &#39;Oslo&#39;\r\nor VisitingCounty__c = &#39;OSLO&#39;\r\nor VisitingCounty__c = &#39;Østfold&#39;\r\nor VisitingCounty__c = &#39;ØSTFOLD&#39;\r\nor VisitingCounty__c = &#39;Akershus&#39;\r\nor VisitingCounty__c = &#39;AKERSHUS&#39;\r\nor VisitingCounty__c = &#39;Buskerud&#39;\r\nor VisitingCounty__c = &#39;BUSKERUD&#39;\r\nor VisitingCounty__c = &#39;Vestfold&#39;\r\nor VisitingCounty__c = &#39;VESTFOLD&#39;\r\nor VisitingCounty__c = &#39;Innlandet&#39;\r\nor VisitingCounty__c = &#39;INNLANDET&#39;)\r\nthen &#39;Fornebu&#39;\r\nwhen\r\n(VisitingCounty__c = &#39;Trøndelag&#39;\r\nor VisitingCounty__c = &#39;TRØNDELAG&#39;\r\nor VisitingCounty__c = &#39;MØRE OG ROMSDAL&#39;\r\nor VisitingCounty__c = &#39;Møre og Romsdal&#39;)\r\nthen &#39;Trondheim&#39;\r\nwhen\r\n(VisitingCounty__c = &#39;Nordland&#39;\r\nor VisitingCounty__c = &#39;NORDLAND&#39;\r\nor VisitingCounty__c = &#39;Troms&#39;\r\nor VisitingCounty__c = &#39;TROMS&#39;\r\nor VisitingCounty__c = &#39;Finnmark&#39;\r\nor VisitingCounty__c = &#39;FINNMARK&#39;)\r\nthen &#39;Bodø&#39;\r\nwhen\r\n(VisitingCounty__c = &#39;Rogaland&#39;\r\nor VisitingCounty__c = &#39;ROGALAND&#39;\r\nor VisitingCounty__c = &#39;Vestland&#39;\r\nor VisitingCounty__c = &#39;VESTLAND&#39;)\r\nthen &#39;Stavanger&#39;\r\nelse &#39;Ikke gruppert&#39;\r\nend\r\n\r\n",
             "label": "Avdeling Hunter Direkte",
             "name": "Avdeling_hunter_direkte",
             "precision": 255,
@@ -201,7 +201,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nHas_Subscriptions_Actual__c ='true'\r\nthen 'Ja'\r\nelse 'Nei'\r\nend",
+            "formulaExpression": "case when\r\nHas_Subscriptions_Actual__c =&#39;true&#39;\r\nthen &#39;Ja&#39;\r\nelse &#39;Nei&#39;\r\nend",
             "label": "Har andre produkter hos Telenor",
             "name": "Har_andre_produkter_hos_Telenor",
             "precision": 255,
@@ -518,7 +518,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Suppression manuelt'",
+            "formulaExpression": "&#39;Suppression manuelt&#39;",
             "label": "Suppression",
             "name": "Suppression",
             "precision": 18,
@@ -762,7 +762,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nHas_Subscriptions_Actual__c ='false' \r\nthen 'Kunden har ingen produkter fra Telenor'\r\n\r\nwhen Has_Subscriptions_Actual__c ='true' \r\nand SubsMobileVoice__c = 0\r\nthen 'Kunden har andre produkter fra Telenor, men ikke Mobil Tale.'\r\n\r\nelse 'Kunden har Mobil fra Telenor, men lav Mobil Tale penetrasjon.'\r\nend",
+            "formulaExpression": "case when\r\nHas_Subscriptions_Actual__c =&#39;false&#39; \r\nthen &#39;Kunden har ingen produkter fra Telenor&#39;\r\n\r\nwhen Has_Subscriptions_Actual__c =&#39;true&#39; \r\nand SubsMobileVoice__c = 0\r\nthen &#39;Kunden har andre produkter fra Telenor, men ikke Mobil Tale.&#39;\r\n\r\nelse &#39;Kunden har Mobil fra Telenor, men lav Mobil Tale penetrasjon.&#39;\r\nend",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,
@@ -781,7 +781,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_314'",
+            "formulaExpression": "&#39;C360_314&#39;",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -844,7 +844,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -863,7 +863,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -882,7 +882,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"C360_196.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;C360_196.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -901,7 +901,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"C360_196.Id\"",
+            "formulaExpression": "&quot;C360_196.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 255,
@@ -958,7 +958,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"C360_196.Name\"",
+            "formulaExpression": "&quot;C360_196.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1005,7 +1005,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er fra region {Personalization_1__c}​</li><li>\r\nKunden er medlem av forbund {Personalization_2__c}  ​</li><li>\r\n{Personalization_3__c} ​</li><li>\r\nBook møte og følg rutinen.'",
+            "formulaExpression": "&#39;Kunden er fra region {Personalization_1__c}​&lt;/li&gt;&lt;li&gt;\r\nKunden er medlem av forbund {Personalization_2__c}  ​&lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} ​&lt;/li&gt;&lt;li&gt;\r\nBook møte og følg rutinen.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 9999,

@@ -1602,7 +1602,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat('Kunden har Fiber med hastighet ',Bandwidth__c,' til kr ',Monthly_Fee_txt)",
+            "formulaExpression": "concat(&#39;Kunden har Fiber med hastighet &#39;,Bandwidth__c,&#39; til kr &#39;,Monthly_Fee_txt)",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -1662,7 +1662,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat('Kunden har Fiber med hastighet ',Bandwidth__c,' til kr ',Monthly_fee_txt)",
+            "formulaExpression": "concat(&#39;Kunden har Fiber med hastighet &#39;,Bandwidth__c,&#39; til kr &#39;,Monthly_fee_txt)",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -1722,7 +1722,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat('Kunden har Fiber med hastighet ',Bandwidth__c,' til kr ',Monthly_Fee_txt)",
+            "formulaExpression": "concat(&#39;Kunden har Fiber med hastighet &#39;,Bandwidth__c,&#39; til kr &#39;,Monthly_Fee_txt)",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -1782,7 +1782,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat('Kunden har Fiber med hastighet ',Bandwidth__c,' til kr ',Monthly_Fee_txt)",
+            "formulaExpression": "concat(&#39;Kunden har Fiber med hastighet &#39;,Bandwidth__c,&#39; til kr &#39;,Monthly_Fee_txt)",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -1842,7 +1842,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat('Kunden har Fiber med hastighet ',Bandwidth__c,' til kr ',Monthly_Fee_txt)",
+            "formulaExpression": "concat(&#39;Kunden har Fiber med hastighet &#39;,Bandwidth__c,&#39; til kr &#39;,Monthly_Fee_txt)",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -2309,7 +2309,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Fase2'",
+            "formulaExpression": "&#39;Fase2&#39;",
             "label": "Fiber rebinding fase",
             "name": "Fiber_rebinding_fase",
             "precision": 255,
@@ -2344,7 +2344,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Fase1'",
+            "formulaExpression": "&#39;Fase1&#39;",
             "label": "Fiber rebinding fase",
             "name": "Fiber_rebinding_fase",
             "precision": 255,
@@ -2363,7 +2363,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'On Offnet'",
+            "formulaExpression": "&#39;On Offnet&#39;",
             "label": "Prisgruppe Fiber Rebinding",
             "name": "Prisgruppe_fiber_rebinding",
             "precision": 255,
@@ -2430,7 +2430,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(\"NewSalesPo.Location_Owner__c\", '001'))\r\n    then 'Yes'\r\n    else 'No'\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;NewSalesPo.Location_Owner__c&quot;, &#39;001&#39;))\r\n    then &#39;Yes&#39;\r\n    else &#39;No&#39;\r\n    end",
             "label": "Have more locations",
             "name": "Have_more_locations",
             "precision": 255,
@@ -2598,7 +2598,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(Additional_Products__c,'MOBIL BACKUP'))\r\n   then 1\r\n   else 0\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(Additional_Products__c,&#39;MOBIL BACKUP&#39;))\r\n   then 1\r\n   else 0\r\n    end",
             "label": "Har mobil backup",
             "name": "Har_mobil_backup",
             "precision": 10,
@@ -2618,7 +2618,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(Additional_Products__c,'WIFI CONNECT LITE'))\r\n   then 1\r\n   else 0\r\nend",
+            "formulaExpression": "case \r\n\twhen (contains(Additional_Products__c,&#39;WIFI CONNECT LITE&#39;))\r\n   then 1\r\n   else 0\r\nend",
             "label": "Har Wifi Connect Lite",
             "name": "Har_Wifi_Connect_lite",
             "precision": 10,
@@ -2638,7 +2638,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen SafeZone_Fixed__c = 'true'\r\nthen 1\r\nelse 0\r\nend",
+            "formulaExpression": "case\r\nwhen SafeZone_Fixed__c = &#39;true&#39;\r\nthen 1\r\nelse 0\r\nend",
             "label": "Have Safezone IA (Fiber)",
             "name": "Have_safezone_IA_Fiber",
             "precision": 10,
@@ -2873,7 +2873,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FiberandTB.Antall_lokasjoner_mersalg_fiber\"+\"FiberandTB.Antall_Lokasjoner_mersalg_TBB\"",
+            "formulaExpression": "&quot;FiberandTB.Antall_lokasjoner_mersalg_fiber&quot;+&quot;FiberandTB.Antall_Lokasjoner_mersalg_TBB&quot;",
             "label": "Antall lokasjoner IA mulighet",
             "name": "Antall_lokasjoner_IA_mulighet",
             "precision": 10,
@@ -2893,7 +2893,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nPrisgruppe_fiber_rebinding = 'On Offnet' then\r\n'C360_5'\r\nwhen Prisgruppe_fiber_rebinding = 'Over Offnett' then 'C360_1'\r\nwhen Prisgruppe_fiber_rebinding = 'Mellom Offnett og Onnett' then 'C360_4'\r\nwhen Prisgruppe_fiber_rebinding = 'On Onnett' then 'C360_2'\r\nwhen Prisgruppe_fiber_rebinding = 'Under Onnett' then 'C360_3'\r\nelse ''\r\nend",
+            "formulaExpression": "case when\r\nPrisgruppe_fiber_rebinding = &#39;On Offnet&#39; then\r\n&#39;C360_5&#39;\r\nwhen Prisgruppe_fiber_rebinding = &#39;Over Offnett&#39; then &#39;C360_1&#39;\r\nwhen Prisgruppe_fiber_rebinding = &#39;Mellom Offnett og Onnett&#39; then &#39;C360_4&#39;\r\nwhen Prisgruppe_fiber_rebinding = &#39;On Onnett&#39; then &#39;C360_2&#39;\r\nwhen Prisgruppe_fiber_rebinding = &#39;Under Onnett&#39; then &#39;C360_3&#39;\r\nelse &#39;&#39;\r\nend",
             "label": "CAMPAIGN_CD_TSP_KSI",
             "name": "CAMPAIGN_CD_TSP_KSI",
             "precision": 100,
@@ -2933,7 +2933,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\nPersonalization_2__c_txt = '0'\r\nthen ''\r\nelse Personalization_2__c_txt\r\nend",
+            "formulaExpression": "case when \r\nPersonalization_2__c_txt = &#39;0&#39;\r\nthen &#39;&#39;\r\nelse Personalization_2__c_txt\r\nend",
             "label": "Personalization 2",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -2952,7 +2952,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Over Offnett'",
+            "formulaExpression": "&#39;Over Offnett&#39;",
             "label": "Prisgruppe Fiber Rebinding",
             "name": "Prisgruppe_fiber_rebinding",
             "precision": 255,
@@ -2971,7 +2971,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Mellom Offnett og Onnett'",
+            "formulaExpression": "&#39;Mellom Offnett og Onnett&#39;",
             "label": "Prisgruppe Fiber Rebinding",
             "name": "Prisgruppe_fiber_rebinding",
             "precision": 255,
@@ -2990,7 +2990,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'On Onnett'",
+            "formulaExpression": "&#39;On Onnett&#39;",
             "label": "Prisgruppe Fiber Rebinding",
             "name": "Prisgruppe_fiber_rebinding",
             "precision": 255,
@@ -3009,7 +3009,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Under Onnett'",
+            "formulaExpression": "&#39;Under Onnett&#39;",
             "label": "Prisgruppe Fiber Rebinding",
             "name": "Prisgruppe_fiber_rebinding",
             "precision": 255,
@@ -3132,7 +3132,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(\"have1fiber.Transform1.Id\", '001'))\r\n    then 'Mersalgspotensiale'\r\n    else '0'\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;have1fiber.Transform1.Id&quot;, &#39;001&#39;))\r\n    then &#39;Mersalgspotensiale&#39;\r\n    else &#39;0&#39;\r\n    end",
             "label": "Kampanjegruppe",
             "name": "Kampanjegruppe",
             "precision": 255,
@@ -3151,7 +3151,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_68'",
+            "formulaExpression": "&#39;C360_68&#39;",
             "label": "CAMPAIGN_CD",
             "name": "CAMPAIGN_CD",
             "precision": 100,
@@ -3170,7 +3170,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har fiberabonnement som kan rebindes/bindes.</li><li>\r\nKunden har ikke WiFi Connect. Kartlegg mulighet for mersalg av WiFi Connect, Mobil Backup og SafeZone IA.</li><li>\r\n</li><li>\r\nHusk å oppdatere epost adresse.'",
+            "formulaExpression": "&#39;Kunden har fiberabonnement som kan rebindes/bindes.&lt;/li&gt;&lt;li&gt;\r\nKunden har ikke WiFi Connect. Kartlegg mulighet for mersalg av WiFi Connect, Mobil Backup og SafeZone IA.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHusk å oppdatere epost adresse.&#39;",
             "label": "Sales tip description template",
             "name": "Campaign_text_rebinding_mersalg",
             "precision": 9999,
@@ -3217,7 +3217,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(\"have1fiber.Transform1.Id\", '001'))\r\n    then 'Flere lokasjoner'\r\n    else '0'\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;have1fiber.Transform1.Id&quot;, &#39;001&#39;))\r\n    then &#39;Flere lokasjoner&#39;\r\n    else &#39;0&#39;\r\n    end",
             "label": "Kampanjegruppe",
             "name": "Kampanjegruppe",
             "precision": 255,
@@ -3236,7 +3236,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Harwificon.Number_wifi_connect\"+\"Harikkewif.SUM_Har_mobil_backup\"+\"Harikkewif.SUM_Har_Wifi_Connect_lite\"+\"Harikkewif.SUM_Have_safezone_IA_Fiber\"",
+            "formulaExpression": "&quot;Harwificon.Number_wifi_connect&quot;+&quot;Harikkewif.SUM_Har_mobil_backup&quot;+&quot;Harikkewif.SUM_Har_Wifi_Connect_lite&quot;+&quot;Harikkewif.SUM_Have_safezone_IA_Fiber&quot;",
             "label": "Sum wifi_mobilbackup_sz",
             "name": "Sum_wifi_mobilbackup_sz",
             "precision": 10,
@@ -3256,7 +3256,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_67'",
+            "formulaExpression": "&#39;C360_67&#39;",
             "label": "CAMPAIGN_CD",
             "name": "CAMPAIGN_CD",
             "precision": 100,
@@ -3275,7 +3275,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\nFiber_rebinding_fase = 'Fase1'\r\nthen\r\n'KS-I=Kunden har 1 fiberaksess med offnet-pris, anbefales at det rebindes på høyere hastighet eller samme hastighet ved bruk av onnet pris. </li><li>\r\nObs, 100 mbit , 200 mbit , 400 mbit og 1 gig kan rebindes på samme hastighet til onnett pris.</li><li>\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_1__c} </li><li>\r\n{Personalization_3__c} </li><li>\r\n{Personalization_4__c} </li><li>\r\n{Personalization_5__c} </li><li>\r\n{Personalization_6__c} </li><li>\r\n{Personalization_7__c} </li><li>\r\n{Personalization_8__c} </li><li>\r\n{Personalization_9__c} </li><li>\r\n{Personalization_10__c} </li><li>\r\n{Personalization_11__c} </li><li>\r\n </li><li>\r\nHusk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.</li><li></li><li>\r\nHusk Nettverk- og sikkerhet-verdibudskap!~DEFAULT=Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.</li><li>\r\nObs, gjelder ikke 400 mbit og 1 gig.</li><li> \r\nHusk Nettverk- og sikkerhet-verdibudskap!</li><li>\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_1__c} </li><li>\r\n{Personalization_3__c} </li><li>\r\n{Personalization_4__c} </li><li>\r\n{Personalization_5__c} </li><li>\r\n{Personalization_6__c} </li><li>\r\n{Personalization_7__c} </li><li>\r\n{Personalization_8__c} </li><li>\r\n{Personalization_9__c} </li><li>\r\n{Personalization_10__c} </li><li>\r\n{Personalization_11__c} </li><li>'\r\nwhen Fiber_rebinding_fase ='Fase2'\r\nthen\r\n'Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.</li><li>\r\nObs, gjelder ikke 400 mbit og 1 gig.</li><li> Husk Nettverk- og sikkerhet-verdibudskap!</li><li>\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_1__c} </li><li>\r\n{Personalization_3__c} </li><li>\r\n{Personalization_4__c} </li><li>\r\n{Personalization_5__c} </li><li>\r\n{Personalization_6__c} </li><li>\r\n{Personalization_7__c} </li><li>\r\n{Personalization_8__c} </li><li>\r\n{Personalization_9__c} </li><li>\r\n{Personalization_10__c} </li><li>\r\n{Personalization_11__c} </li><li>'\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\nFiber_rebinding_fase = &#39;Fase1&#39;\r\nthen\r\n&#39;KS-I=Kunden har 1 fiberaksess med offnet-pris, anbefales at det rebindes på høyere hastighet eller samme hastighet ved bruk av onnet pris. &lt;/li&gt;&lt;li&gt;\r\nObs, 100 mbit , 200 mbit , 400 mbit og 1 gig kan rebindes på samme hastighet til onnett pris.&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c} &lt;/li&gt;&lt;li&gt;\r\n &lt;/li&gt;&lt;li&gt;\r\nHusk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;\r\nHusk Nettverk- og sikkerhet-verdibudskap!~DEFAULT=Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.&lt;/li&gt;&lt;li&gt;\r\nObs, gjelder ikke 400 mbit og 1 gig.&lt;/li&gt;&lt;li&gt; \r\nHusk Nettverk- og sikkerhet-verdibudskap!&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c} &lt;/li&gt;&lt;li&gt;&#39;\r\nwhen Fiber_rebinding_fase =&#39;Fase2&#39;\r\nthen\r\n&#39;Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.&lt;/li&gt;&lt;li&gt;\r\nObs, gjelder ikke 400 mbit og 1 gig.&lt;/li&gt;&lt;li&gt; Husk Nettverk- og sikkerhet-verdibudskap!&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c} &lt;/li&gt;&lt;li&gt;&#39;\r\nelse &#39;&#39;\r\nend",
             "label": "Sales tip description template TSP/KSI",
             "name": "Campaign_text_oppsalg_fase12_mersalg",
             "precision": 9999,
@@ -3294,7 +3294,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har fiberabonnement som kan rebindes/bindes.</li><li>\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.</li><li>\r\n{Personalization_1__c} </li><li>\r\n{Personalization_3__c} </li><li>\r\n{Personalization_4__c} </li><li>\r\n{Personalization_5__c} </li><li>\r\n{Personalization_6__c} </li><li>\r\n{Personalization_7__c} </li><li>\r\n{Personalization_8__c} </li><li>\r\n{Personalization_9__c} </li><li>\r\n{Personalization_10__c} </li><li>\r\n{Personalization_11__c} </li><li>\r\n</li><li>\r\nKartlegg mulighet for mersalg av nye lokasjoner, WiFi Connect, Mobil Backup og SafeZone IA.</li><li>\r\n</li><li>\r\nHusk å oppdatere epost adresse.'",
+            "formulaExpression": "&#39;Kunden har fiberabonnement som kan rebindes/bindes.&lt;/li&gt;&lt;li&gt;\r\nKunden har inntil {Personalization_2__c} lokasjoner som ikke har bredbånd fra Telenor. Sjekk lokasjoner under Coverage i Salesforce.&lt;/li&gt;&lt;li&gt;\r\n{Personalization_1__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_3__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_4__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_5__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_6__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_7__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_8__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_9__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_10__c} &lt;/li&gt;&lt;li&gt;\r\n{Personalization_11__c} &lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nKartlegg mulighet for mersalg av nye lokasjoner, WiFi Connect, Mobil Backup og SafeZone IA.&lt;/li&gt;&lt;li&gt;\r\n&lt;/li&gt;&lt;li&gt;\r\nHusk å oppdatere epost adresse.&#39;",
             "label": "Sales tip description template",
             "name": "Campaign_text_lokasjoner",
             "precision": 9999,
@@ -3341,7 +3341,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(\"have1fiber.Transform1.Id\", '001'))\r\n    then 'Øvrige Rebindinger'\r\n    else '0'\r\n    end",
+            "formulaExpression": "case \r\n\twhen (contains(&quot;have1fiber.Transform1.Id&quot;, &#39;001&#39;))\r\n    then &#39;Øvrige Rebindinger&#39;\r\n    else &#39;0&#39;\r\n    end",
             "label": "Kampanjegruppe",
             "name": "Kampanjegruppe",
             "precision": 255,
@@ -3360,7 +3360,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_69'",
+            "formulaExpression": "&#39;C360_69&#39;",
             "label": "CAMPAIGN_CD",
             "name": "CAMPAIGN_CD",
             "precision": 100,
@@ -3379,7 +3379,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har fiberabonnement som kan rebindes/bindes.</li><li>\r\nSjekk mulighet for mersalg på safezone, mobil backup eller wifi connect.\r\n</li><li>\r\nHusk å oppdatere epost adresse.'",
+            "formulaExpression": "&#39;Kunden har fiberabonnement som kan rebindes/bindes.&lt;/li&gt;&lt;li&gt;\r\nSjekk mulighet for mersalg på safezone, mobil backup eller wifi connect.\r\n&lt;/li&gt;&lt;li&gt;\r\nHusk å oppdatere epost adresse.&#39;",
             "label": "Sales tip description template",
             "name": "Campaign_text_rebinding_andre",
             "precision": 9999,
@@ -3474,7 +3474,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Harwificon.Number_wifi_connect\"+\"Harikkewif.SUM_Har_mobil_backup\"+\"Harikkewif.SUM_Har_Wifi_Connect_lite\"+\"Harikkewif.SUM_Have_safezone_IA_Fiber\"",
+            "formulaExpression": "&quot;Harwificon.Number_wifi_connect&quot;+&quot;Harikkewif.SUM_Har_mobil_backup&quot;+&quot;Harikkewif.SUM_Har_Wifi_Connect_lite&quot;+&quot;Harikkewif.SUM_Have_safezone_IA_Fiber&quot;",
             "label": "Sum wifi_mobilbackup_sz",
             "name": "Sum_wifi_mobilbackup_sz",
             "precision": 10,
@@ -3494,7 +3494,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\nFiber_rebinding_fase = 'Fase1'\r\nthen\r\n'KS-I=Kunden har 1 fiberaksess med offnet-pris, anbefales at det rebindes på høyere hastighet eller samme hastighet ved bruk av onnet pris. </li><li>\r\nObs, 100 mbit , 200 mbit , 400 mbit og 1 gig kan rebindes på samme hastighet til onnett pris.</li><li> \r\n</li><li>\r\nHusk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.</li><li></li><li>\r\nHusk Nettverk- og sikkerhet-verdibudskap!~DEFAULT=Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.</li><li>\r\nObs, gjelder ikke 400 mbit og 1 gig.</li><li> \r\nHusk Nettverk- og sikkerhet-verdibudskap!'\r\nwhen Fiber_rebinding_fase ='Fase2'\r\nthen\r\n'Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.</li><li>\r\nObs, gjelder ikke 400 mbit og 1 gig.</li><li> Husk Nettverk- og sikkerhet-verdibudskap!'\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\nFiber_rebinding_fase = &#39;Fase1&#39;\r\nthen\r\n&#39;KS-I=Kunden har 1 fiberaksess med offnet-pris, anbefales at det rebindes på høyere hastighet eller samme hastighet ved bruk av onnet pris. &lt;/li&gt;&lt;li&gt;\r\nObs, 100 mbit , 200 mbit , 400 mbit og 1 gig kan rebindes på samme hastighet til onnett pris.&lt;/li&gt;&lt;li&gt; \r\n&lt;/li&gt;&lt;li&gt;\r\nHusk kampanjetilbud og mandatpriser på fiber. HUSK forventningsstyr på leveransetider.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;\r\nHusk Nettverk- og sikkerhet-verdibudskap!~DEFAULT=Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.&lt;/li&gt;&lt;li&gt;\r\nObs, gjelder ikke 400 mbit og 1 gig.&lt;/li&gt;&lt;li&gt; \r\nHusk Nettverk- og sikkerhet-verdibudskap!&#39;\r\nwhen Fiber_rebinding_fase =&#39;Fase2&#39;\r\nthen\r\n&#39;Kunden har 1 fiberaksess – anbefales at det rebindes på høyere hastighet til samme pris.&lt;/li&gt;&lt;li&gt;\r\nObs, gjelder ikke 400 mbit og 1 gig.&lt;/li&gt;&lt;li&gt; Husk Nettverk- og sikkerhet-verdibudskap!&#39;\r\nelse &#39;&#39;\r\nend",
             "label": "Sales tip description template TSP/KSI",
             "name": "Campaign_text_oppsalg_fase12_rest",
             "precision": 9999,

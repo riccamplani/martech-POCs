@@ -2111,7 +2111,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend\r\n||\r\nCASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n' Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend\r\n||\r\nCASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n&#39; Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2130,7 +2130,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend\r\n||\r\nCASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n' Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "case\r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend\r\n||\r\nCASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n&#39; Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "DO Campaign Text",
             "name": "DO_Campaign_Text",
             "precision": 1024,
@@ -2149,7 +2149,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n' Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "CASE WHEN NBR_SAFEZONE_MOBILE__c = 0 THEN\r\n&#39; Husk også SafeZone - en sikkerhetstjeneste som beskytter mot trusler på nett.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "SafeZone Text",
             "name": "SafeZone_Text",
             "precision": 78,
@@ -2168,7 +2168,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'TM=Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. ' || case when ((Mobile_Voice_Penetration__c > 20) and (Mobile_Voice_Penetration__c < 60)) then 'Kunden har ' || Penetration_Mobile_Voice || '% penetrasjon på mobil tale abonnement. Kunde har ' || Employees || ' ansatte. Undersøk mulighetene for å selge flere abonnement i tillegg til annet mersalg.' else 'Kartlegg mulighet for mersalg.' end || ' Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.' || SafeZone_Text || '~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.' || SafeZone_Text\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'TM=Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. ' || case when ((Mobile_Voice_Penetration__c > 20) and (Mobile_Voice_Penetration__c < 60)) then 'Kunden har ' || Penetration_Mobile_Voice || '% penetrasjon på mobil tale abonnement. Kunde har ' || Employees || ' ansatte. Undersøk mulighetene for å selge flere abonnement i tillegg til annet mersalg.' else 'Kartlegg mulighet for mersalg.' end || ' Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.' || SafeZone_Text || '~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.' || SafeZone_Text\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'TM=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'TM=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text\r\n\telse\r\n\t'TM=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text || '~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.' || SafeZone_Text\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;TM=Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. &#39; || case when ((Mobile_Voice_Penetration__c &gt; 20) and (Mobile_Voice_Penetration__c &lt; 60)) then &#39;Kunden har &#39; || Penetration_Mobile_Voice || &#39;% penetrasjon på mobil tale abonnement. Kunde har &#39; || Employees || &#39; ansatte. Undersøk mulighetene for å selge flere abonnement i tillegg til annet mersalg.&#39; else &#39;Kartlegg mulighet for mersalg.&#39; end || &#39; Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.&#39; || SafeZone_Text\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;TM=Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. &#39; || case when ((Mobile_Voice_Penetration__c &gt; 20) and (Mobile_Voice_Penetration__c &lt; 60)) then &#39;Kunden har &#39; || Penetration_Mobile_Voice || &#39;% penetrasjon på mobil tale abonnement. Kunde har &#39; || Employees || &#39; ansatte. Undersøk mulighetene for å selge flere abonnement i tillegg til annet mersalg.&#39; else &#39;Kartlegg mulighet for mersalg.&#39; end || &#39; Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Tilby kunden ny portefølje. Benytt muligheten til å selge kunden mer verdi i form av tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett. Husk å oppdatere epost adresse.&#39; || SafeZone_Text\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;TM=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;TM=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text\r\n\telse\r\n\t&#39;TM=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~SPOC=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text || &#39;~DEFAULT=Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39; || SafeZone_Text\r\nend",
             "label": "Multi Campaign Text",
             "name": "Multi_Campaign_Text",
             "precision": 1024,
@@ -2187,7 +2187,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har ikke SafeZone Mobil. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2206,7 +2206,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har ikke MBN. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2225,7 +2225,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har MBN uten MBN løsning. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2244,7 +2244,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_33'",
+            "formulaExpression": "&#39;C360_33&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2263,7 +2263,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_29'",
+            "formulaExpression": "&#39;C360_29&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2282,7 +2282,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_34'",
+            "formulaExpression": "&#39;C360_34&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2301,7 +2301,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_35'",
+            "formulaExpression": "&#39;C360_35&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2647,7 +2647,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2666,7 +2666,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerFornebu'",
+            "formulaExpression": "&#39;FarmerFornebu&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2708,7 +2708,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2727,7 +2727,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -3254,7 +3254,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Dealer O'",
+            "formulaExpression": "&#39;Dealer O&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3273,7 +3273,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "''",
+            "formulaExpression": "&#39;&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -3315,7 +3315,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'KS-I,Dealer I'",
+            "formulaExpression": "&#39;KS-I,Dealer I&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3334,7 +3334,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "''",
+            "formulaExpression": "&#39;&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -3376,7 +3376,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingo.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingo.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3395,7 +3395,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Id\"",
+            "formulaExpression": "&quot;Rebindingo.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3452,7 +3452,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Name\"",
+            "formulaExpression": "&quot;Rebindingo.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3519,7 +3519,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingm.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingm.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3538,7 +3538,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Id\"",
+            "formulaExpression": "&quot;Rebindingm.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3595,7 +3595,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Name\"",
+            "formulaExpression": "&quot;Rebindingm.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3635,7 +3635,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER52.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER52.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3654,7 +3654,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52.Id\"",
+            "formulaExpression": "&quot;FILTER52.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3711,7 +3711,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52.Name\"",
+            "formulaExpression": "&quot;FILTER52.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3751,7 +3751,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingm.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingm.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3770,7 +3770,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Id\"",
+            "formulaExpression": "&quot;Rebindingm.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3827,7 +3827,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Name\"",
+            "formulaExpression": "&quot;Rebindingm.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3917,7 +3917,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3936,7 +3936,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -3978,7 +3978,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3997,7 +3997,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -4039,7 +4039,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -4058,7 +4058,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -4487,7 +4487,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\n\twhen \"Account.Migration_flag__c\" = 'Green' then\r\n\t\tcase when \"FILTER7.Migration_recommendation__c\" = 'Bedrift Frihet Premium' then\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || '. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"AVG_FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\telse\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || ' eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"AVG_FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\tend\r\n\twhen \"Account.Migration_flag__c\" = 'Yellow' then\r\n\t\tcase when \"FILTER7.Migration_recommendation__c\" = 'Bedrift Frihet Premium' then\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || '. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"AVG_FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\telse\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || ' eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"AVG_FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\t\tend\r\n\telse\r\n\tNULL\r\nend",
+            "formulaExpression": "case\r\n\twhen &quot;Account.Migration_flag__c&quot; = &#39;Green&#39; then\r\n\t\tcase when &quot;FILTER7.Migration_recommendation__c&quot; = &#39;Bedrift Frihet Premium&#39; then\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39;. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;AVG_FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\telse\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39; eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;AVG_FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\tend\r\n\twhen &quot;Account.Migration_flag__c&quot; = &#39;Yellow&#39; then\r\n\t\tcase when &quot;FILTER7.Migration_recommendation__c&quot; = &#39;Bedrift Frihet Premium&#39; then\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39;. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;AVG_FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\telse\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39; eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;AVG_FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\t\tend\r\n\telse\r\n\tNULL\r\nend",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -4912,7 +4912,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c < 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, '### ### ###')",
+            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c &lt; 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, &#39;### ### ###&#39;)",
             "label": "Delta New Portfolio",
             "name": "Delta_New_Portfolio",
             "precision": 11,
@@ -4931,7 +4931,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen NumberofEmployees_clean__c is null then\r\n'0'\r\nwhen trim(NumberofEmployees_clean__c) = '' then\r\n'0'\r\nelse\r\nNumberofEmployees_clean__c\r\nend",
+            "formulaExpression": "case\r\nwhen NumberofEmployees_clean__c is null then\r\n&#39;0&#39;\r\nwhen trim(NumberofEmployees_clean__c) = &#39;&#39; then\r\n&#39;0&#39;\r\nelse\r\nNumberofEmployees_clean__c\r\nend",
             "label": "Employees",
             "name": "Employees",
             "precision": 255,
@@ -4950,7 +4950,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "format_number(Mobile_Voice_Penetration__c, '### ### ###.##')",
+            "formulaExpression": "format_number(Mobile_Voice_Penetration__c, &#39;### ### ###.##&#39;)",
             "label": "Penetration Mobile Voice",
             "name": "Penetration_Mobile_Voice",
             "precision": 14,
@@ -4989,7 +4989,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Campaign_Channels = 'Dealer O' then\r\n\"TRANSFORM1.Multi_Campaign_Text\"\r\n--\"TRANSFORM1.DO_Campaign_Text\"\r\nwhen Campaign_Channels = 'KS-I,Dealer I' then\r\n\"TRANSFORM1.Multi_Campaign_Text\"\r\n--\"TRANSFORM1.DO_Campaign_Text\"\r\nelse\r\n\"TRANSFORM1.Multi_Campaign_Text\"\r\n--\"TRANSFORM1.DO_Campaign_Text\"\r\n--\"TRANSFORM1.Sales_tip_description_template\"\r\nend",
+            "formulaExpression": "case when Campaign_Channels = &#39;Dealer O&#39; then\r\n&quot;TRANSFORM1.Multi_Campaign_Text&quot;\r\n--&quot;TRANSFORM1.DO_Campaign_Text&quot;\r\nwhen Campaign_Channels = &#39;KS-I,Dealer I&#39; then\r\n&quot;TRANSFORM1.Multi_Campaign_Text&quot;\r\n--&quot;TRANSFORM1.DO_Campaign_Text&quot;\r\nelse\r\n&quot;TRANSFORM1.Multi_Campaign_Text&quot;\r\n--&quot;TRANSFORM1.DO_Campaign_Text&quot;\r\n--&quot;TRANSFORM1.Sales_tip_description_template&quot;\r\nend",
             "label": "Campaign Text Final",
             "name": "Campaign_Text_Final",
             "precision": 1024,
@@ -5460,7 +5460,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -5479,7 +5479,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -5521,7 +5521,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -5540,7 +5540,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'HunterME'",
+            "formulaExpression": "&#39;HunterME&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -6012,7 +6012,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har mobilabonnement som kan bindes/rebindes.\r\n\r\nBenytt også muligheten til å selge kunden mer verdi i form av økt data, tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett.'",
+            "formulaExpression": "&#39;Kunden har mobilabonnement som kan bindes/rebindes.\r\n\r\nBenytt også muligheten til å selge kunden mer verdi i form av økt data, tilleggstjenester som feks. SafeZone og Mobilt Bedriftsnett.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -6031,7 +6031,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_29'",
+            "formulaExpression": "&#39;C360_29&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -6075,7 +6075,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingo.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingo.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -6094,7 +6094,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Id\"",
+            "formulaExpression": "&quot;Rebindingo.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -6151,7 +6151,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Name\"",
+            "formulaExpression": "&quot;Rebindingo.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -6303,7 +6303,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\n\telse\r\n\t'Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.'\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Kunden kan tilbys ny portefølje basert på anbefalingene. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Det kreves et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Benytt anbefalinger for oppsalg gammel portefølje. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\n\telse\r\n\t&#39;Kunden har mobilabonnement som kan bindes/rebindes. Rebind kunden på ny portefølje og anbefal abonnement basert på kundens dataforbruk. Kunden har SafeZone Mobil, men ikke Oppdatert. Kartlegg mulighet for mersalg. Husk å oppdatere epost adresse.&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -6322,7 +6322,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_139'",
+            "formulaExpression": "&#39;C360_139&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -6366,7 +6366,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingm.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingm.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -6385,7 +6385,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Id\"",
+            "formulaExpression": "&quot;Rebindingm.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -6442,7 +6442,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Name\"",
+            "formulaExpression": "&quot;Rebindingm.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -6516,7 +6516,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -6535,7 +6535,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -6946,7 +6946,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -6965,7 +6965,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -7007,7 +7007,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -7026,7 +7026,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -7617,7 +7617,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \"Calculated.Nbr_Rebindable__c\" > \"Calculated.Nbr_Rebindable_Legacy\" then\r\n'Y'\r\nelse\r\n'N'\r\nend",
+            "formulaExpression": "case when &quot;Calculated.Nbr_Rebindable__c&quot; &gt; &quot;Calculated.Nbr_Rebindable_Legacy&quot; then\r\n&#39;Y&#39;\r\nelse\r\n&#39;N&#39;\r\nend",
             "label": "Valid Rebindable Subs",
             "name": "Valid_Rebindable_Subs",
             "precision": 1,

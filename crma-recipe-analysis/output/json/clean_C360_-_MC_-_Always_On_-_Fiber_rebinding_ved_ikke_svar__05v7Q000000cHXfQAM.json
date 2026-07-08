@@ -417,7 +417,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_132'",
+            "formulaExpression": "&#39;C360_132&#39;",
             "label": "Campaign_cd",
             "name": "Campaign_cd",
             "precision": 255,
@@ -972,7 +972,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "', '",
+            "formulaExpression": "&#39;, &#39;",
             "label": "separator",
             "name": "separator",
             "precision": 255,
@@ -1100,7 +1100,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "' med '",
+            "formulaExpression": "&#39; med &#39;",
             "label": "concat 2 nr 1 text",
             "name": "concat_2_nr1_txt",
             "precision": 255,
@@ -1119,7 +1119,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "' hastighet'",
+            "formulaExpression": "&#39; hastighet&#39;",
             "label": "concat 2 nr 2 text",
             "name": "concat_2_nr2_txt",
             "precision": 255,
@@ -1138,7 +1138,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(Product_Name__c,concat_2_nr1_txt,\"FiberRebin.Bandwidth__c\",concat_2_nr2_txt)",
+            "formulaExpression": "concat(Product_Name__c,concat_2_nr1_txt,&quot;FiberRebin.Bandwidth__c&quot;,concat_2_nr2_txt)",
             "label": "Personalization_2__c",
             "name": "Personalization_2__c",
             "precision": 255,
@@ -1157,7 +1157,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen \"FiberRebin.Bandwidth__c\"='10 Mbits' then '20 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='20 Mbits' then '60 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='40 Mbits' then '60 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='60 Mbits' then '100 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='100 Mbits' then '200 Mbits'\r\nwhen \"FiberRebin.Bandwidth__c\"='200 Mbits' then '400 Mbits'\r\nelse ' '\r\nend",
+            "formulaExpression": "case \r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;10 Mbits&#39; then &#39;20 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;20 Mbits&#39; then &#39;60 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;40 Mbits&#39; then &#39;60 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;60 Mbits&#39; then &#39;100 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;100 Mbits&#39; then &#39;200 Mbits&#39;\r\nwhen &quot;FiberRebin.Bandwidth__c&quot;=&#39;200 Mbits&#39; then &#39;400 Mbits&#39;\r\nelse &#39; &#39;\r\nend",
             "label": "Personalization_3__c",
             "name": "Personalization_3__c",
             "precision": 255,

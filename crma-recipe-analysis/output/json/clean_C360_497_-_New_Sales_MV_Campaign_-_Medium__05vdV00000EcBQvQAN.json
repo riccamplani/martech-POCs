@@ -652,7 +652,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_428'",
+            "formulaExpression": "&#39;C360_428&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -671,7 +671,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN (datediff(FORBUND_START_DATE__c, current_date()) BETWEEN -10 AND 0) AND (Forbund_membership__c IS NOT NULL) THEN\r\n'Bedriften meldte seg inn i ' || Forbund_membership__c || ' siste 10 dager. Spill på fordelene ved å være medlem i ' || Forbund_membership__c || '.'\r\nELSE\r\n''\r\nEND\r\n||\r\nCASE WHEN Has_Subscriptions_Actual__c = 'false' THEN\r\n'Bedrift med '\r\nELSE\r\n'Eksisterende kunde med '\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees < 20 OR NumberOfEmployees IS NULL) THEN 'under 20 '\r\nWHEN (NumberOfEmployees >= 20 AND NumberOfEmployees <= 40)  THEN '20-40 '\r\nELSE 'over 40 '\r\nEND\r\n||\r\n'ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. '\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n'Bruk forbundsavtalen ' || Forbund_membership__c || '.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "CASE WHEN (datediff(FORBUND_START_DATE__c, current_date()) BETWEEN -10 AND 0) AND (Forbund_membership__c IS NOT NULL) THEN\r\n&#39;Bedriften meldte seg inn i &#39; || Forbund_membership__c || &#39; siste 10 dager. Spill på fordelene ved å være medlem i &#39; || Forbund_membership__c || &#39;.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND\r\n||\r\nCASE WHEN Has_Subscriptions_Actual__c = &#39;false&#39; THEN\r\n&#39;Bedrift med &#39;\r\nELSE\r\n&#39;Eksisterende kunde med &#39;\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees &lt; 20 OR NumberOfEmployees IS NULL) THEN &#39;under 20 &#39;\r\nWHEN (NumberOfEmployees &gt;= 20 AND NumberOfEmployees &lt;= 40)  THEN &#39;20-40 &#39;\r\nELSE &#39;over 40 &#39;\r\nEND\r\n||\r\n&#39;ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. &#39;\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n&#39;Bruk forbundsavtalen &#39; || Forbund_membership__c || &#39;.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -739,7 +739,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"Pilotnysal.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;Pilotnysal.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -758,7 +758,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Id\"",
+            "formulaExpression": "&quot;Pilotnysal.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -815,7 +815,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Name\"",
+            "formulaExpression": "&quot;Pilotnysal.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -903,7 +903,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -922,7 +922,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'HunterME'",
+            "formulaExpression": "&#39;HunterME&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1090,7 +1090,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1109,7 +1109,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1189,7 +1189,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_434'",
+            "formulaExpression": "&#39;C360_434&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1208,7 +1208,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN (datediff(FORBUND_START_DATE__c, current_date()) BETWEEN -10 AND 0) AND (Forbund_membership__c IS NOT NULL) THEN\r\n'Bedriften meldte seg inn i ' || Forbund_membership__c || ' siste 10 dager. Spill på fordelene ved å være medlem i ' || Forbund_membership__c || '.'\r\nELSE\r\n''\r\nEND\r\n||\r\nCASE WHEN Has_Subscriptions_Actual__c = 'false' THEN\r\n'Bedrift med '\r\nELSE\r\n'Eksisterende kunde med '\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees < 20 OR NumberOfEmployees IS NULL) THEN 'under 20 '\r\nWHEN (NumberOfEmployees >= 20 AND NumberOfEmployees <= 40)  THEN '20-40 '\r\nELSE 'over 40 '\r\nEND\r\n||\r\n'ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. '\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n'Bruk forbundsavtalen ' || Forbund_membership__c || '.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "CASE WHEN (datediff(FORBUND_START_DATE__c, current_date()) BETWEEN -10 AND 0) AND (Forbund_membership__c IS NOT NULL) THEN\r\n&#39;Bedriften meldte seg inn i &#39; || Forbund_membership__c || &#39; siste 10 dager. Spill på fordelene ved å være medlem i &#39; || Forbund_membership__c || &#39;.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND\r\n||\r\nCASE WHEN Has_Subscriptions_Actual__c = &#39;false&#39; THEN\r\n&#39;Bedrift med &#39;\r\nELSE\r\n&#39;Eksisterende kunde med &#39;\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees &lt; 20 OR NumberOfEmployees IS NULL) THEN &#39;under 20 &#39;\r\nWHEN (NumberOfEmployees &gt;= 20 AND NumberOfEmployees &lt;= 40)  THEN &#39;20-40 &#39;\r\nELSE &#39;over 40 &#39;\r\nEND\r\n||\r\n&#39;ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. &#39;\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n&#39;Bruk forbundsavtalen &#39; || Forbund_membership__c || &#39;.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -1276,7 +1276,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"Pilotnysal.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;Pilotnysal.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1295,7 +1295,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Id\"",
+            "formulaExpression": "&quot;Pilotnysal.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1352,7 +1352,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Name\"",
+            "formulaExpression": "&quot;Pilotnysal.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1733,7 +1733,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Droppingfi.AccountId\"",
+            "formulaExpression": "&quot;Droppingfi.AccountId&quot;",
             "label": "Customer Key",
             "name": "Customer_Key",
             "precision": 18,
@@ -1922,7 +1922,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_441'",
+            "formulaExpression": "&#39;C360_441&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1941,7 +1941,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN Has_Subscriptions_Actual__c = 'false' THEN\r\n'Bedrift med '\r\nELSE\r\n'Eksisterende kunde med '\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees < 10 OR NumberOfEmployees IS NULL) THEN\r\n'under 10 '\r\nWHEN (NumberOfEmployees >= 10 AND NumberOfEmployees <= 29) THEN\r\n'10-29 '\r\nELSE \r\n'over 30 '\r\nEND\r\n||\r\n'ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. '\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n'Bedriften er medlem av ' || Forbund_membership__c || '. Bruk verdiene I forbundsavtalen.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "CASE WHEN Has_Subscriptions_Actual__c = &#39;false&#39; THEN\r\n&#39;Bedrift med &#39;\r\nELSE\r\n&#39;Eksisterende kunde med &#39;\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees &lt; 10 OR NumberOfEmployees IS NULL) THEN\r\n&#39;under 10 &#39;\r\nWHEN (NumberOfEmployees &gt;= 10 AND NumberOfEmployees &lt;= 29) THEN\r\n&#39;10-29 &#39;\r\nELSE \r\n&#39;over 30 &#39;\r\nEND\r\n||\r\n&#39;ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. &#39;\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n&#39;Bedriften er medlem av &#39; || Forbund_membership__c || &#39;. Bruk verdiene I forbundsavtalen.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2008,7 +2008,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"Pilotnysal.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;Pilotnysal.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2027,7 +2027,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Id\"",
+            "formulaExpression": "&quot;Pilotnysal.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2084,7 +2084,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Name\"",
+            "formulaExpression": "&quot;Pilotnysal.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2649,7 +2649,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2668,7 +2668,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Neras'",
+            "formulaExpression": "&#39;Neras&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2705,7 +2705,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2724,7 +2724,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Gjovik'",
+            "formulaExpression": "&#39;Gjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2945,7 +2945,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_455'",
+            "formulaExpression": "&#39;C360_455&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2964,7 +2964,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har mottatt epost vedr endring av åpningstider og talemeldinger i Mobilt Bedriftsnett. Kartlegg behov for endringer og veiled kunden.'\r\n||\r\nCASE\r\nWHEN \"Calculated.Nbr_SafeZone_Total\" = 0 THEN\r\n' Kunden har ikke SafeZone. Bruk verdiforslag og kartlegg behov for SafeZone.'\r\nELSE\r\n''\r\nEND\r\n||\r\nCASE\r\nWHEN Mobile_Voice_Penetration__c < 20 THEN\r\n' Kunden har få mobilabonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg av mobilabonnement.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "&#39;Kunden har mottatt epost vedr endring av åpningstider og talemeldinger i Mobilt Bedriftsnett. Kartlegg behov for endringer og veiled kunden.&#39;\r\n||\r\nCASE\r\nWHEN &quot;Calculated.Nbr_SafeZone_Total&quot; = 0 THEN\r\n&#39; Kunden har ikke SafeZone. Bruk verdiforslag og kartlegg behov for SafeZone.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND\r\n||\r\nCASE\r\nWHEN Mobile_Voice_Penetration__c &lt; 20 THEN\r\n&#39; Kunden har få mobilabonnement i forhold til antall ansatte. Kartlegg mulighet for mersalg av mobilabonnement.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -3029,7 +3029,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"Pilotnysal.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;Pilotnysal.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3048,7 +3048,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Id\"",
+            "formulaExpression": "&quot;Pilotnysal.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3105,7 +3105,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Name\"",
+            "formulaExpression": "&quot;Pilotnysal.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3566,7 +3566,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'KS-I'",
+            "formulaExpression": "&#39;KS-I&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3585,7 +3585,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "''",
+            "formulaExpression": "&#39;&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -3981,7 +3981,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Droppingfi.AccountId\"",
+            "formulaExpression": "&quot;Droppingfi.AccountId&quot;",
             "label": "Customer Key",
             "name": "Customer_Key",
             "precision": 18,
@@ -4170,7 +4170,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_459'",
+            "formulaExpression": "&#39;C360_459&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -4189,7 +4189,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "CASE WHEN Has_Subscriptions_Actual__c = 'false' THEN\r\n'Bedrift med '\r\nELSE\r\n'Eksisterende kunde med '\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees < 10 OR NumberOfEmployees IS NULL) THEN\r\n'under 10 '\r\nWHEN (NumberOfEmployees >= 10 AND NumberOfEmployees <= 29) THEN\r\n'10-29 '\r\nELSE \r\n'over 30 '\r\nEND\r\n||\r\n'ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. '\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n'Bedriften er medlem av ' || Forbund_membership__c || '. Bruk verdiene I forbundsavtalen.'\r\nELSE\r\n''\r\nEND",
+            "formulaExpression": "CASE WHEN Has_Subscriptions_Actual__c = &#39;false&#39; THEN\r\n&#39;Bedrift med &#39;\r\nELSE\r\n&#39;Eksisterende kunde med &#39;\r\nEND\r\n||\r\nCASE WHEN (NumberOfEmployees &lt; 10 OR NumberOfEmployees IS NULL) THEN\r\n&#39;under 10 &#39;\r\nWHEN (NumberOfEmployees &gt;= 10 AND NumberOfEmployees &lt;= 29) THEN\r\n&#39;10-29 &#39;\r\nELSE \r\n&#39;over 30 &#39;\r\nEND\r\n||\r\n&#39;ansatte uten mobilabonnement hos Telenor. Bruk verdiene våre. &#39;\r\n||\r\nCASE WHEN Forbund_membership__c IS NOT NULL THEN\r\n&#39;Bedriften er medlem av &#39; || Forbund_membership__c || &#39;. Bruk verdiene I forbundsavtalen.&#39;\r\nELSE\r\n&#39;&#39;\r\nEND",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -4256,7 +4256,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"Pilotnysal.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;Pilotnysal.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -4275,7 +4275,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Id\"",
+            "formulaExpression": "&quot;Pilotnysal.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -4332,7 +4332,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Pilotnysal.Name\"",
+            "formulaExpression": "&quot;Pilotnysal.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -4897,7 +4897,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -4916,7 +4916,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Neras'",
+            "formulaExpression": "&#39;Neras&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -4953,7 +4953,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -4972,7 +4972,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Gjovik'",
+            "formulaExpression": "&#39;Gjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -5091,7 +5091,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Droppingfi.AccountId\"",
+            "formulaExpression": "&quot;Droppingfi.AccountId&quot;",
             "label": "Customer Key",
             "name": "Customer_Key",
             "precision": 18,

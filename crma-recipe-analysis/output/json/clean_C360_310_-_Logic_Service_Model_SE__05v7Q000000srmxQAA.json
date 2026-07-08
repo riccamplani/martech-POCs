@@ -1056,7 +1056,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \"Suppressio.Key_Suppressions_NACE_codes\" is null then\r\n'N'\r\nelse\r\n'Y'\r\nend\r\n",
+            "formulaExpression": "case when &quot;Suppressio.Key_Suppressions_NACE_codes&quot; is null then\r\n&#39;N&#39;\r\nelse\r\n&#39;Y&#39;\r\nend\r\n",
             "label": "Low Priority Industry Flag",
             "name": "Low_Priority_Industry_Flag",
             "precision": 1,
@@ -1623,7 +1623,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \"Suppressio.Key_Suppressions_NACE_codes\" is null then\r\n'N'\r\nelse\r\n'Y'\r\nend\r\n",
+            "formulaExpression": "case when &quot;Suppressio.Key_Suppressions_NACE_codes&quot; is null then\r\n&#39;N&#39;\r\nelse\r\n&#39;Y&#39;\r\nend\r\n",
             "label": "Low Priority Industry Flag",
             "name": "Low_Priority_Industry_Flag",
             "precision": 1,

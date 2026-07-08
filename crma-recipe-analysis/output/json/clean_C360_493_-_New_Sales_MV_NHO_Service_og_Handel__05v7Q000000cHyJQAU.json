@@ -439,7 +439,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_154'",
+            "formulaExpression": "&#39;C360_154&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -483,7 +483,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -502,7 +502,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"NysalgMobi.Id\"",
+            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -559,7 +559,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"NysalgMobi.Name\"",
+            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -599,7 +599,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Bedriften er medlem i NHO Service og Handel.​ NHO Service og Handel har tegnet ny forbundsavtale med Telenor. Spill på fordelene ved å være medlem.'",
+            "formulaExpression": "&#39;Bedriften er medlem i NHO Service og Handel.​ NHO Service og Handel har tegnet ny forbundsavtale med Telenor. Spill på fordelene ved å være medlem.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -713,7 +713,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -732,7 +732,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Gjovik'",
+            "formulaExpression": "&#39;Gjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -769,7 +769,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -788,7 +788,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'HunterME'",
+            "formulaExpression": "&#39;HunterME&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

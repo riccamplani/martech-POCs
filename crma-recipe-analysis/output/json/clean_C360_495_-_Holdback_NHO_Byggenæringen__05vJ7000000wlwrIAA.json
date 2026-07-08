@@ -351,7 +351,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_261'",
+            "formulaExpression": "&#39;C360_261&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -395,7 +395,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat( \"NysalgMobi.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat( &quot;NysalgMobi.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -414,7 +414,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"NysalgMobi.Id\"",
+            "formulaExpression": "&quot;NysalgMobi.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -471,7 +471,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"NysalgMobi.Name\"",
+            "formulaExpression": "&quot;NysalgMobi.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -511,7 +511,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, men er registrert med listepris. Sikre at kunden kan få forbundspris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, men er registrert med listepris. Sikre at kunden kan få forbundspris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -530,7 +530,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -549,7 +549,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -586,7 +586,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -605,7 +605,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerFornebu'",
+            "formulaExpression": "&#39;FarmerFornebu&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -725,7 +725,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -744,7 +744,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'HunterME'",
+            "formulaExpression": "&#39;HunterME&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -893,7 +893,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Agreement (NHO Byggenæringen)'",
+            "formulaExpression": "&#39;Agreement (NHO Byggenæringen)&#39;",
             "label": "Price Type",
             "name": "Price_Type",
             "precision": 255,
@@ -912,7 +912,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Agreement (Stand-alone)'",
+            "formulaExpression": "&#39;Agreement (Stand-alone)&#39;",
             "label": "Price Type",
             "name": "Price_Type",
             "precision": 255,
@@ -931,7 +931,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'List Price'",
+            "formulaExpression": "&#39;List Price&#39;",
             "label": "Price Type",
             "name": "Price_Type",
             "precision": 255,
@@ -1181,7 +1181,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1200,7 +1200,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1237,7 +1237,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1256,7 +1256,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1293,7 +1293,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1312,7 +1312,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerFornebu'",
+            "formulaExpression": "&#39;FarmerFornebu&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1349,7 +1349,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1368,7 +1368,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerFornebu'",
+            "formulaExpression": "&#39;FarmerFornebu&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1519,7 +1519,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_262'",
+            "formulaExpression": "&#39;C360_262&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1538,7 +1538,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, og er registrert med forbundspris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, og er registrert med forbundspris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1557,7 +1557,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_263'",
+            "formulaExpression": "&#39;C360_263&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1576,7 +1576,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, og er registrert med egen avtalepris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, og er registrert med egen avtalepris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1595,7 +1595,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_264'",
+            "formulaExpression": "&#39;C360_264&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1614,7 +1614,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, men er registrert med listepris. Sikre at kunden kan få forbundspris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, men er registrert med listepris. Sikre at kunden kan få forbundspris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1633,7 +1633,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_265'",
+            "formulaExpression": "&#39;C360_265&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1652,7 +1652,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, og er registrert med forbundspris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, og er registrert med forbundspris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1671,7 +1671,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_266'",
+            "formulaExpression": "&#39;C360_266&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1690,7 +1690,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen, og er registrert med egen avtalepris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen, og er registrert med egen avtalepris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1709,7 +1709,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_267'",
+            "formulaExpression": "&#39;C360_267&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1728,7 +1728,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden er medlem av NHO Byggenæringen. Nysalgsaktivitet. Selg inn forbundspris.'",
+            "formulaExpression": "&#39;Kunden er medlem av NHO Byggenæringen. Nysalgsaktivitet. Selg inn forbundspris.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 255,
@@ -1897,7 +1897,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"MobileSFor.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;MobileSFor.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1916,7 +1916,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileSFor.Id\"",
+            "formulaExpression": "&quot;MobileSFor.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1973,7 +1973,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileSFor.Name\"",
+            "formulaExpression": "&quot;MobileSFor.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2013,7 +2013,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"MobileSAvt.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;MobileSAvt.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2032,7 +2032,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileSAvt.Id\"",
+            "formulaExpression": "&quot;MobileSAvt.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2089,7 +2089,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileSAvt.Name\"",
+            "formulaExpression": "&quot;MobileSAvt.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2129,7 +2129,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"MobileMLis.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;MobileMLis.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2148,7 +2148,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMLis.Id\"",
+            "formulaExpression": "&quot;MobileMLis.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2205,7 +2205,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMLis.Name\"",
+            "formulaExpression": "&quot;MobileMLis.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2245,7 +2245,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"MobileMFor.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;MobileMFor.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2264,7 +2264,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMFor.Id\"",
+            "formulaExpression": "&quot;MobileMFor.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2321,7 +2321,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMFor.Name\"",
+            "formulaExpression": "&quot;MobileMFor.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2361,7 +2361,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"MobileMAvt.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;MobileMAvt.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2380,7 +2380,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMAvt.Id\"",
+            "formulaExpression": "&quot;MobileMAvt.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2437,7 +2437,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"MobileMAvt.Name\"",
+            "formulaExpression": "&quot;MobileMAvt.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2477,7 +2477,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"HunterM.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;HunterM.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2496,7 +2496,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"HunterM.Id\"",
+            "formulaExpression": "&quot;HunterM.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2553,7 +2553,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"HunterM.Name\"",
+            "formulaExpression": "&quot;HunterM.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,

@@ -615,7 +615,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Rebindable'",
+            "formulaExpression": "&#39;Rebindable&#39;",
             "label": "Rebindable Flag",
             "name": "Rebindable_Flag",
             "precision": 255,
@@ -634,7 +634,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Non Rebindable'",
+            "formulaExpression": "&#39;Non Rebindable&#39;",
             "label": "Rebindable Flag",
             "name": "Rebindable_Flag",
             "precision": 255,
@@ -1534,7 +1534,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1553,7 +1553,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1590,7 +1590,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1609,7 +1609,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1794,7 +1794,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1813,7 +1813,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1850,7 +1850,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1869,7 +1869,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1906,7 +1906,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1925,7 +1925,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1962,7 +1962,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1981,7 +1981,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2018,7 +2018,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2037,7 +2037,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2074,7 +2074,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -2093,7 +2093,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -2212,7 +2212,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Det bør være et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Det bør være et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden har gammel Forbundsavtale - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2231,7 +2231,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Migration_flag__c = 'Green' then\r\n\t'Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Yellow' then\r\n\t'Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Det bør være et mersalg på ' || Delta_New_Portfolio || ' kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Red' then\r\n\t'Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.'\r\n\twhen Migration_flag__c = 'Grey' then\r\n\t''\r\n\telse\r\n\t''\r\nend",
+            "formulaExpression": "case \r\n\twhen Migration_flag__c = &#39;Green&#39; then\r\n\t&#39;Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Kunden kan tilbys ny portefølje basert på anbefalingene. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Yellow&#39; then\r\n\t&#39;Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes ved oppsalg til ny portefølje - Flyt eller Frihet. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Det bør være et mersalg på &#39; || Delta_New_Portfolio || &#39; kr pr mnd for at det er lønnsomt å tilby ny portefølje. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Red&#39; then\r\n\t&#39;Kunden er Forbund, men har listepris - flytt over til ny avtale. Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Oppdatert, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.&#39;\r\n\twhen Migration_flag__c = &#39;Grey&#39; then\r\n\t&#39;&#39;\r\n\telse\r\n\t&#39;&#39;\r\nend",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -2250,7 +2250,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_113'",
+            "formulaExpression": "&#39;C360_113&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2269,7 +2269,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_109'",
+            "formulaExpression": "&#39;C360_109&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2288,7 +2288,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER52.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER52.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2307,7 +2307,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52.Id\"",
+            "formulaExpression": "&quot;FILTER52.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2364,7 +2364,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52.Name\"",
+            "formulaExpression": "&quot;FILTER52.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2404,7 +2404,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingm.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingm.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2423,7 +2423,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Id\"",
+            "formulaExpression": "&quot;Rebindingm.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -2480,7 +2480,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingm.Name\"",
+            "formulaExpression": "&quot;Rebindingm.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -2570,7 +2570,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c < 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, '### ### ###')",
+            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c &lt; 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, &#39;### ### ###&#39;)",
             "label": "Delta New Portfolio",
             "name": "Delta_New_Portfolio",
             "precision": 11,
@@ -2697,7 +2697,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_110'",
+            "formulaExpression": "&#39;C360_110&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2716,7 +2716,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_111'",
+            "formulaExpression": "&#39;C360_111&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2735,7 +2735,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_112'",
+            "formulaExpression": "&#39;C360_112&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2754,7 +2754,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_114'",
+            "formulaExpression": "&#39;C360_114&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2773,7 +2773,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_115'",
+            "formulaExpression": "&#39;C360_115&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2792,7 +2792,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_116'",
+            "formulaExpression": "&#39;C360_116&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -2961,7 +2961,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER52_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER52_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -2980,7 +2980,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52_c.Id\"",
+            "formulaExpression": "&quot;FILTER52_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3037,7 +3037,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER52_c.Name\"",
+            "formulaExpression": "&quot;FILTER52_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3077,7 +3077,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER53_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER53_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3096,7 +3096,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Id\"",
+            "formulaExpression": "&quot;FILTER53_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3153,7 +3153,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Name\"",
+            "formulaExpression": "&quot;FILTER53_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3193,7 +3193,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER53_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER53_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3212,7 +3212,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Id\"",
+            "formulaExpression": "&quot;FILTER53_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3269,7 +3269,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Name\"",
+            "formulaExpression": "&quot;FILTER53_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3309,7 +3309,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER53_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER53_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3328,7 +3328,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Id\"",
+            "formulaExpression": "&quot;FILTER53_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3385,7 +3385,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Name\"",
+            "formulaExpression": "&quot;FILTER53_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3425,7 +3425,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER53_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER53_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3444,7 +3444,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Id\"",
+            "formulaExpression": "&quot;FILTER53_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3501,7 +3501,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Name\"",
+            "formulaExpression": "&quot;FILTER53_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -3541,7 +3541,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"FILTER53_c.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;FILTER53_c.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -3560,7 +3560,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Id\"",
+            "formulaExpression": "&quot;FILTER53_c.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -3617,7 +3617,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"FILTER53_c.Name\"",
+            "formulaExpression": "&quot;FILTER53_c.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -4227,7 +4227,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when ((\"FILTER7.Migration_recommendation__c\" is not null)  and (\"FILTER7.Migration_recommendation__c\" != ''))  then\r\n\tcase when \"FILTER7.Migration_recommendation__c\" = 'Bedrift Frihet Premium' then\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || '. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\telse\r\n\t\t'Migrer abonnementet til ' || \"FILTER7.Migration_recommendation__c\" || ' eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er ' || format_number(\"FILTER7.Average_data_use_3_months\", '# ### ###.##') || 'GB.'\r\n\tend\r\nend",
+            "formulaExpression": "case when ((&quot;FILTER7.Migration_recommendation__c&quot; is not null)  and (&quot;FILTER7.Migration_recommendation__c&quot; != &#39;&#39;))  then\r\n\tcase when &quot;FILTER7.Migration_recommendation__c&quot; = &#39;Bedrift Frihet Premium&#39; then\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39;. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\telse\r\n\t\t&#39;Migrer abonnementet til &#39; || &quot;FILTER7.Migration_recommendation__c&quot; || &#39; eller høyere. Gjennomsnittlig dataforbruk siste 3 måneder er &#39; || format_number(&quot;FILTER7.Average_data_use_3_months&quot;, &#39;# ### ###.##&#39;) || &#39;GB.&#39;\r\n\tend\r\nend",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,

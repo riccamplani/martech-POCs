@@ -107,7 +107,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "Case\nwhen array_contains(WonLostReason__c, 'Kansellert') \nthen 'Yes'\nelse 'No'\nend",
+            "formulaExpression": "Case\nwhen array_contains(WonLostReason__c, &#39;Kansellert&#39;) \nthen &#39;Yes&#39;\nelse &#39;No&#39;\nend",
             "label": "Is Won Lost Reason Kansellert",
             "name": "IsWonLostReasonKansellert",
             "precision": 10,
@@ -126,7 +126,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "array_join(\"All_Product_Categories__c\", ',')",
+            "formulaExpression": "array_join(&quot;All_Product_Categories__c&quot;, &#39;,&#39;)",
             "label": "prod_cat_sum_text",
             "name": "prod_cat_sum_text",
             "precision": 255,
@@ -202,7 +202,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(prod_cat_sum_text, 'Bredbånd')\r\n    OR\r\n    contains(prod_cat_sum_text, 'Nordic Connect')\r\n\tOR\r\n\t  contains(prod_cat_sum_text, 'Ethernet Connect')\t)\r\n\tthen 'Fiber'\r\n\twhen (contains(prod_cat_sum_text, 'Mobil Tale'))\r\nthen 'Mobil'\r\n\telse 'No'\r\nend",
+            "formulaExpression": "case \r\n\twhen (contains(prod_cat_sum_text, &#39;Bredbånd&#39;)\r\n    OR\r\n    contains(prod_cat_sum_text, &#39;Nordic Connect&#39;)\r\n\tOR\r\n\t  contains(prod_cat_sum_text, &#39;Ethernet Connect&#39;)\t)\r\n\tthen &#39;Fiber&#39;\r\n\twhen (contains(prod_cat_sum_text, &#39;Mobil Tale&#39;))\r\nthen &#39;Mobil&#39;\r\n\telse &#39;No&#39;\r\nend",
             "label": "type_opp_fiber_mobil",
             "name": "type_opp_fiber_mobil",
             "precision": 255,
@@ -221,7 +221,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when (contains(prod_cat_sum_text, 'Mobilt Bedriftsnett'))\r\nthen 'MBN'\r\n\telse 'No'\r\nend",
+            "formulaExpression": "case when (contains(prod_cat_sum_text, &#39;Mobilt Bedriftsnett&#39;))\r\nthen &#39;MBN&#39;\r\n\telse &#39;No&#39;\r\nend",
             "label": "type_opp_MBN",
             "name": "type_opp_MBN",
             "precision": 255,
@@ -378,7 +378,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (contains(Status,'Closed')\r\n    OR \r\n    contains(Status,'Cancelled')\r\n    OR \r\n    contains(Status,'Declined')\r\n    OR \r\n    contains(Status,'On Hold')\r\n    OR \r\n    contains(Status,'Completed')\r\n    OR \r\n    contains(Status,'Signed Off')\r\n    OR\r\n\tcontains(Status,'Solved'))\r\n    then 'Yes'\r\n\telse\r\n\t'No'\r\nend",
+            "formulaExpression": "case \r\n\twhen (contains(Status,&#39;Closed&#39;)\r\n    OR \r\n    contains(Status,&#39;Cancelled&#39;)\r\n    OR \r\n    contains(Status,&#39;Declined&#39;)\r\n    OR \r\n    contains(Status,&#39;On Hold&#39;)\r\n    OR \r\n    contains(Status,&#39;Completed&#39;)\r\n    OR \r\n    contains(Status,&#39;Signed Off&#39;)\r\n    OR\r\n\tcontains(Status,&#39;Solved&#39;))\r\n    then &#39;Yes&#39;\r\n\telse\r\n\t&#39;No&#39;\r\nend",
             "label": "Closed",
             "name": "Closed",
             "precision": 10,
@@ -1059,7 +1059,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when DRM_MARKET_PRODUCT_GROUP__c = 'Mobil Tale' then 1\r\nelse 0\r\nend",
+            "formulaExpression": "case when DRM_MARKET_PRODUCT_GROUP__c = &#39;Mobil Tale&#39; then 1\r\nelse 0\r\nend",
             "label": "Voice Flag",
             "name": "Voice_Flag__c",
             "precision": 1,
@@ -1235,7 +1235,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "case when Nbr_Voice__c > 0 then\r\nNbr_Rebindable__c/Nbr_Voice__c\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Nbr_Voice__c &gt; 0 then\r\nNbr_Rebindable__c/Nbr_Voice__c\r\nelse\r\n0\r\nend",
             "label": "Ratio Rebindable MV subs",
             "name": "Ratio_Rebindable_MV_subs__c",
             "precision": 10,
@@ -2028,7 +2028,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "case when Nbr_Voice__c > 0 then\r\nNbr_MBN__c/Nbr_Voice__c\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Nbr_Voice__c &gt; 0 then\r\nNbr_MBN__c/Nbr_Voice__c\r\nelse\r\n0\r\nend",
             "label": "Ratio MBN to MV subs",
             "name": "Ratio_MBN_to_MV_subs__c",
             "precision": 10,
@@ -3491,7 +3491,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen Product_Name__c = 'Bedrift+ XS' then\r\n1\r\nwhen Product_Name__c = 'Bedrift+ M' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 1GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 4GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 8GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 20GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 40GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri+ 60GB' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Fri Tale' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt XS' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt S' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt M' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt M20' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt M+' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Flyt L' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Frihet Basis' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Frihet Standard' then\r\n1\r\nwhen Product_Name__c = 'Bedrift Frihet Maks' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case\r\nwhen Product_Name__c = &#39;Bedrift+ XS&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift+ M&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 1GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 4GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 8GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 20GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 40GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 60GB&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Fri Tale&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt XS&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt S&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt M&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt M20&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt M+&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Flyt L&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Frihet Basis&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Frihet Standard&#39; then\r\n1\r\nwhen Product_Name__c = &#39;Bedrift Frihet Maks&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Migrateable Portugal Flag",
             "name": "Migrateable_Portugal_Flag",
             "precision": 10,
@@ -3748,7 +3748,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(text_full_adress,Full_Adress_1,': ',Fibercost_text_1,' - ',TBB_coverage_text_1)",
+            "formulaExpression": "concat(text_full_adress,Full_Adress_1,&#39;: &#39;,Fibercost_text_1,&#39; - &#39;,TBB_coverage_text_1)",
             "label": "IA_full_new_sale_text_adresses",
             "name": "IA_full_new_sale_text_adresses",
             "precision": 700,
@@ -3811,7 +3811,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kan få internett på følgende adresse(r):</li><li>'",
+            "formulaExpression": "&#39;Kan få internett på følgende adresse(r):&lt;/li&gt;&lt;li&gt;&#39;",
             "label": "text full adress",
             "name": "text_full_adress",
             "precision": 255,
@@ -3887,7 +3887,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then '1'\r\n    when (Fiber_cost__c = 40000)\r\n    Then '1'\r\n    when (Fiber_cost__c > 40000 and Fiber_cost__c <= 60000)\r\n    Then '1'\r\n\telse\r\n\t'0'\r\nend",
+            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then &#39;1&#39;\r\n    when (Fiber_cost__c = 40000)\r\n    Then &#39;1&#39;\r\n    when (Fiber_cost__c &gt; 40000 and Fiber_cost__c &lt;= 60000)\r\n    Then &#39;1&#39;\r\n\telse\r\n\t&#39;0&#39;\r\nend",
             "label": "Can get fiber on new adress",
             "name": "Can_get_fiber_on_new_adress",
             "precision": 255,
@@ -3906,7 +3906,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n   \twhen \r\n\t(Fiber_cost__c > 60000\tor Fiber_cost__c < 10000\r\n\t\t) and\tCapacity_code__c >= 1 and Coverage_4G__c >2\r\n    Then '1'\r\n\telse\r\n\t'0'\r\nend",
+            "formulaExpression": "case \r\n   \twhen \r\n\t(Fiber_cost__c &gt; 60000\tor Fiber_cost__c &lt; 10000\r\n\t\t) and\tCapacity_code__c &gt;= 1 and Coverage_4G__c &gt;2\r\n    Then &#39;1&#39;\r\n\telse\r\n\t&#39;0&#39;\r\nend",
             "label": "Can get TBB on new address",
             "name": "Can_get_TBB_on_new_adress",
             "precision": 255,
@@ -4604,7 +4604,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen street_calculated ='.'\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,',',Postal_address__c)\r\nend",
+            "formulaExpression": "case \r\nwhen street_calculated =&#39;.&#39;\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,&#39;,&#39;,Postal_address__c)\r\nend",
             "label": "Full_Adress_1",
             "name": "Full_Adress_1",
             "precision": 700,
@@ -4623,7 +4623,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then 'Fiber (10K)'\r\n    when (Fiber_cost__c = 40000)\r\n    Then 'Fiber (40K)'\r\n    when (Fiber_cost__c between 40000 and 60000)\r\n    Then 'Fiber (60K)'\r\n\telse\r\n\t'Fiber ikke tilgjengelig'\r\nend",
+            "formulaExpression": "case \r\n\twhen (Fiber_cost__c = 10000)\r\n    Then &#39;Fiber (10K)&#39;\r\n    when (Fiber_cost__c = 40000)\r\n    Then &#39;Fiber (40K)&#39;\r\n    when (Fiber_cost__c between 40000 and 60000)\r\n    Then &#39;Fiber (60K)&#39;\r\n\telse\r\n\t&#39;Fiber ikke tilgjengelig&#39;\r\nend",
             "label": "Fibercost_text_1",
             "name": "Fibercost_text_1",
             "precision": 255,
@@ -4642,7 +4642,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\n\twhen Capacity_code__c >= 1 and Coverage_5G_P__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 400 MB'\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c >= 1 and Coverage_4GP40__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 60 MB'\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c >= 1 and Coverage_4G_Plus__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 40 MB'\r\n    else\r\n    case\r\n   \twhen Capacity_code__c >= 1 and Coverage_4G__c >2\r\n    Then 'Trådløst Bredbånd Bedrift inntil 20 MB'\r\n\telse\r\n\t'Trådløst Bredbånd Bedrift ikke tilgjengelig'\r\n    end\r\n    end\r\n end\r\n  end",
+            "formulaExpression": "case \r\n\twhen Capacity_code__c &gt;= 1 and Coverage_5G_P__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 400 MB&#39;\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c &gt;= 1 and Coverage_4GP40__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 60 MB&#39;\r\n    ELSE\r\n    case\r\n\twhen Capacity_code__c &gt;= 1 and Coverage_4G_Plus__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 40 MB&#39;\r\n    else\r\n    case\r\n   \twhen Capacity_code__c &gt;= 1 and Coverage_4G__c &gt;2\r\n    Then &#39;Trådløst Bredbånd Bedrift inntil 20 MB&#39;\r\n\telse\r\n\t&#39;Trådløst Bredbånd Bedrift ikke tilgjengelig&#39;\r\n    end\r\n    end\r\n end\r\n  end",
             "label": "TBB_coverage_text_1",
             "name": "TBB_coverage_text_1",
             "precision": 255,
@@ -4661,7 +4661,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(Full_Adress_1,': ',Fibercost_text_1,' - ',TBB_coverage_text_1)",
+            "formulaExpression": "concat(Full_Adress_1,&#39;: &#39;,Fibercost_text_1,&#39; - &#39;,TBB_coverage_text_1)",
             "label": "IA_full_new_sale_text_adresses_1",
             "name": "IA_full_new_sale_text_adresses_1",
             "precision": 700,
@@ -4705,7 +4705,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case \r\nwhen street_calculated ='.'\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,',',Postal_address__c)\r\nend",
+            "formulaExpression": "case \r\nwhen street_calculated =&#39;.&#39;\r\nthen concat(Postal_address__c)\r\nelse\r\nconcat (street_calculated,&#39;,&#39;,Postal_address__c)\r\nend",
             "label": "Mulig Installasjonsadresse_1",
             "name": "Mulig_Installasjonsadresse_1",
             "precision": 255,
@@ -4724,7 +4724,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse1",
             "name": "Adresse1",
             "precision": 255,
@@ -4743,7 +4743,7 @@
         "fields": [
           {
             "defaultValue": ".",
-            "formulaExpression": "case Street_address__c\r\n\twhen Street_address__c =''\r\n\tthen '.'\r\n    else\r\n\tStreet_address__c\r\nend",
+            "formulaExpression": "case Street_address__c\r\n\twhen Street_address__c =&#39;&#39;\r\n\tthen &#39;.&#39;\r\n    else\r\n\tStreet_address__c\r\nend",
             "label": "street calculated",
             "name": "street_calculated",
             "precision": 255,
@@ -4811,7 +4811,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 1\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse1",
             "name": "Adresse1",
             "precision": 255,
@@ -4830,7 +4830,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 2\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 2\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse2",
             "name": "Adresse2",
             "precision": 255,
@@ -4849,7 +4849,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 3\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 3\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse3",
             "name": "Adresse3",
             "precision": 255,
@@ -4868,7 +4868,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 4\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 4\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse4",
             "name": "Adresse4",
             "precision": 255,
@@ -4887,7 +4887,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 5\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 5\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse5",
             "name": "Adresse5",
             "precision": 255,
@@ -4906,7 +4906,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 6\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 6\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse6",
             "name": "Adresse6",
             "precision": 255,
@@ -4925,7 +4925,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 7\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 7\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse7",
             "name": "Adresse7",
             "precision": 255,
@@ -4944,7 +4944,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 8\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 8\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse8",
             "name": "Adresse8",
             "precision": 255,
@@ -4963,7 +4963,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 9\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 9\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse9",
             "name": "Adresse9",
             "precision": 255,
@@ -4982,7 +4982,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 10\r\nthen IA_full_new_sale_text_adresses_1\r\nelse ''\r\nend",
+            "formulaExpression": "case when \r\norder_fibcost_farid_formula = 10\r\nthen IA_full_new_sale_text_adresses_1\r\nelse &#39;&#39;\r\nend",
             "label": "Adresse10",
             "name": "Adresse10",
             "precision": 255,
@@ -5162,7 +5162,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kan få internett på følgende adresse(r):</li><li>'",
+            "formulaExpression": "&#39;Kan få internett på følgende adresse(r):&lt;/li&gt;&lt;li&gt;&#39;",
             "label": "Text_adress_1",
             "name": "Text_adress_1",
             "precision": 255,
@@ -6295,7 +6295,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when\r\nmobile_service_segment__c ='IoT' \r\nthen 'IOT' \r\nwhen\r\n(mobile_service_segment__c ='Central Government' or mobile_service_segment__c ='Governmental Security' or\r\nmobile_service_segment__c ='Health' or\r\nmobile_service_segment__c ='Municipality Central' or\r\nmobile_service_segment__c ='Municipality East' or\r\nmobile_service_segment__c ='Municipality North' or\r\nmobile_service_segment__c ='Municipality South' \r\nor\r\nmobile_service_segment__c ='Municipality West'\r\nor\r\nmobile_service_segment__c ='Business Critical'\r\nor\r\nmobile_service_segment__c ='Municipality Region'\r\nor\r\nmobile_service_segment__c ='State'\r\n) \r\nthen 'Public'\r\nwhen\r\nmobile_service_segment__c ='Public Unassigned' \r\nthen 'Public Unassigned'\r\nwhen\r\n(mobile_service_segment__c ='Mobile XL' \r\nor \r\nmobile_service_segment__c ='Ent 2 Farmer' \r\nor \r\nmobile_service_segment__c ='Ent 2 Hunter')\r\nthen 'XL'\r\nwhen\r\n(mobile_service_segment__c ='Hunter L'\r\nor\r\nmobile_service_segment__c ='Mobile L'\r\nor\r\nmobile_service_segment__c ='Ent 1 Farmer'\r\nor\r\nmobile_service_segment__c ='Ent 1 Hunter')\r\nthen 'L'\r\nwhen\r\n(mobile_service_segment__c ='Hunter M' or\r\nmobile_service_segment__c ='Mobile M'\r\nor\r\nmobile_service_segment__c ='MM M Farmer'\r\nor\r\nmobile_service_segment__c ='MM M Hunter'\r\n)\r\nthen 'M'\r\nwhen\r\n(mobile_service_segment__c ='Hunter S' or\r\nmobile_service_segment__c ='Mobile S' or\r\nmobile_service_segment__c ='Mobile XS'\r\nor\r\nmobile_service_segment__c ='MM S Farmer'\r\nor\r\nmobile_service_segment__c ='MM S Hunter'\r\n)\r\nthen 'S'\r\nwhen\r\n(mobile_service_segment__c='MM TSP' and NumberOfEmployees<=25)\r\nthen 'S'\r\nwhen \r\n(mobile_service_segment__c='MM TSP' and NumberOfEmployees>=26)\r\nthen 'M'\r\nelse ''\r\nend",
+            "formulaExpression": "case when\r\nmobile_service_segment__c =&#39;IoT&#39; \r\nthen &#39;IOT&#39; \r\nwhen\r\n(mobile_service_segment__c =&#39;Central Government&#39; or mobile_service_segment__c =&#39;Governmental Security&#39; or\r\nmobile_service_segment__c =&#39;Health&#39; or\r\nmobile_service_segment__c =&#39;Municipality Central&#39; or\r\nmobile_service_segment__c =&#39;Municipality East&#39; or\r\nmobile_service_segment__c =&#39;Municipality North&#39; or\r\nmobile_service_segment__c =&#39;Municipality South&#39; \r\nor\r\nmobile_service_segment__c =&#39;Municipality West&#39;\r\nor\r\nmobile_service_segment__c =&#39;Business Critical&#39;\r\nor\r\nmobile_service_segment__c =&#39;Municipality Region&#39;\r\nor\r\nmobile_service_segment__c =&#39;State&#39;\r\n) \r\nthen &#39;Public&#39;\r\nwhen\r\nmobile_service_segment__c =&#39;Public Unassigned&#39; \r\nthen &#39;Public Unassigned&#39;\r\nwhen\r\n(mobile_service_segment__c =&#39;Mobile XL&#39; \r\nor \r\nmobile_service_segment__c =&#39;Ent 2 Farmer&#39; \r\nor \r\nmobile_service_segment__c =&#39;Ent 2 Hunter&#39;)\r\nthen &#39;XL&#39;\r\nwhen\r\n(mobile_service_segment__c =&#39;Hunter L&#39;\r\nor\r\nmobile_service_segment__c =&#39;Mobile L&#39;\r\nor\r\nmobile_service_segment__c =&#39;Ent 1 Farmer&#39;\r\nor\r\nmobile_service_segment__c =&#39;Ent 1 Hunter&#39;)\r\nthen &#39;L&#39;\r\nwhen\r\n(mobile_service_segment__c =&#39;Hunter M&#39; or\r\nmobile_service_segment__c =&#39;Mobile M&#39;\r\nor\r\nmobile_service_segment__c =&#39;MM M Farmer&#39;\r\nor\r\nmobile_service_segment__c =&#39;MM M Hunter&#39;\r\n)\r\nthen &#39;M&#39;\r\nwhen\r\n(mobile_service_segment__c =&#39;Hunter S&#39; or\r\nmobile_service_segment__c =&#39;Mobile S&#39; or\r\nmobile_service_segment__c =&#39;Mobile XS&#39;\r\nor\r\nmobile_service_segment__c =&#39;MM S Farmer&#39;\r\nor\r\nmobile_service_segment__c =&#39;MM S Hunter&#39;\r\n)\r\nthen &#39;S&#39;\r\nwhen\r\n(mobile_service_segment__c=&#39;MM TSP&#39; and NumberOfEmployees&lt;=25)\r\nthen &#39;S&#39;\r\nwhen \r\n(mobile_service_segment__c=&#39;MM TSP&#39; and NumberOfEmployees&gt;=26)\r\nthen &#39;M&#39;\r\nelse &#39;&#39;\r\nend",
             "label": "Gruppe Mobile Service Segment",
             "name": "Gruppe_mobil_service_segment",
             "precision": 255,
@@ -6822,7 +6822,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Contact.Id\"",
+            "formulaExpression": "&quot;Contact.Id&quot;",
             "label": "ContactId",
             "name": "ContactId",
             "precision": 255,
@@ -6841,7 +6841,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Contact.AccountId\"",
+            "formulaExpression": "&quot;Contact.AccountId&quot;",
             "label": "AccountId",
             "name": "AccountId",
             "precision": 18,
@@ -7098,7 +7098,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Account.Id\"",
+            "formulaExpression": "&quot;Account.Id&quot;",
             "label": "Account with 5 or more with same phonenumber",
             "name": "Account_5_or_more_phonenumber",
             "precision": 18,
@@ -7201,7 +7201,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Account.Id\"",
+            "formulaExpression": "&quot;Account.Id&quot;",
             "label": "Account i Region",
             "name": "Account_Region",
             "precision": 18,
@@ -7484,7 +7484,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "substr(Parameter_4_Value__c, 1, 2) || ':' ||\r\nsubstr(Parameter_4_Value__c, 3, 4) || ':00'",
+            "formulaExpression": "substr(Parameter_4_Value__c, 1, 2) || &#39;:&#39; ||\r\nsubstr(Parameter_4_Value__c, 3, 4) || &#39;:00&#39;",
             "label": "kl",
             "name": "kl",
             "precision": 255,
@@ -7503,7 +7503,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "Date10||' ' ||kl",
+            "formulaExpression": "Date10||&#39; &#39; ||kl",
             "label": "Full innportdate time",
             "name": "Full_innportdate_time",
             "precision": 255,
@@ -7795,7 +7795,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Antall_main_cancel=\"kurt_unik_.Ant_unik_mainnumber\"\r\nthen 1 \r\nelse 0\r\nend",
+            "formulaExpression": "case when Antall_main_cancel=&quot;kurt_unik_.Ant_unik_mainnumber&quot;\r\nthen 1 \r\nelse 0\r\nend",
             "label": "alle kansellert",
             "name": "alle_kanselert",
             "precision": 10,
@@ -7899,7 +7899,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Account.Id\"",
+            "formulaExpression": "&quot;Account.Id&quot;",
             "label": "AccountId",
             "name": "AccountId",
             "precision": 18,
@@ -7918,7 +7918,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Transform2.Id\"",
+            "formulaExpression": "&quot;Transform2.Id&quot;",
             "label": "ContactId",
             "name": "ContactId",
             "precision": 255,
@@ -7954,7 +7954,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Rebindable_Flag__c = 1 then\r\n\tcase\r\n\twhen Product_Name__c = 'Bedrift Frihet Premium' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Frihet' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Frihet Start' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Flyt 50' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Flyt 20' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Flyt 5' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Basis Data' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Basis Tale' then\r\n\t1\r\n\twhen Product_Name__c = 'Bedrift Basis' then\r\n\t1\r\n\telse\r\n\t0\r\n\tend\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Rebindable_Flag__c = 1 then\r\n\tcase\r\n\twhen Product_Name__c = &#39;Bedrift Frihet Premium&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Frihet&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Frihet Start&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 50&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 20&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 5&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Basis Data&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Basis Tale&#39; then\r\n\t1\r\n\twhen Product_Name__c = &#39;Bedrift Basis&#39; then\r\n\t1\r\n\telse\r\n\t0\r\n\tend\r\nelse\r\n0\r\nend",
             "label": "Rebindable Portugal Flag",
             "name": "Rebindable_Portugal_Flag",
             "precision": 10,
@@ -7974,7 +7974,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Rebindable_Flag__c = 1 then\r\n\tcase\r\n\twhen Product_Name__c = 'Bedrift Frihet Premium' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Frihet' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Frihet Start' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Flyt 50' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Flyt 20' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Flyt 5' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Basis Data' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Basis Tale' then\r\n\t0\r\n\twhen Product_Name__c = 'Bedrift Basis' then\r\n\t0\r\n\telse\r\n\t1\r\n\tend\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Rebindable_Flag__c = 1 then\r\n\tcase\r\n\twhen Product_Name__c = &#39;Bedrift Frihet Premium&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Frihet&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Frihet Start&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 50&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 20&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Flyt 5&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Basis Data&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Basis Tale&#39; then\r\n\t0\r\n\twhen Product_Name__c = &#39;Bedrift Basis&#39; then\r\n\t0\r\n\telse\r\n\t1\r\n\tend\r\nelse\r\n0\r\nend",
             "label": "Rebindable Others Flag",
             "name": "Rebindable_Others_Flag",
             "precision": 10,
@@ -7994,7 +7994,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when SafeZone_Product_Name__c = 'SafeZone' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when SafeZone_Product_Name__c = &#39;SafeZone&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "SafeZone Flag",
             "name": "SafeZone_Flag",
             "precision": 10,
@@ -8014,7 +8014,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen SafeZone_Product_Name__c = 'SafeZone Basis' then\r\n1\r\nwhen SafeZone_Product_Name__c = 'SafeZone Mobil' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case\r\nwhen SafeZone_Product_Name__c = &#39;SafeZone Basis&#39; then\r\n1\r\nwhen SafeZone_Product_Name__c = &#39;SafeZone Mobil&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "SafeZone Basis Flag",
             "name": "SafeZone_Basis_Flag",
             "precision": 10,
@@ -8034,7 +8034,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen SafeZone_Product_Name__c = 'SafeZone' then\r\n1\r\nwhen SafeZone_Product_Name__c = 'SafeZone Basis' then\r\n1\r\nwhen SafeZone_Product_Name__c = 'SafeZone Mobil' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case\r\nwhen SafeZone_Product_Name__c = &#39;SafeZone&#39; then\r\n1\r\nwhen SafeZone_Product_Name__c = &#39;SafeZone Basis&#39; then\r\n1\r\nwhen SafeZone_Product_Name__c = &#39;SafeZone Mobil&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "SafeZone Total Flag",
             "name": "SafeZone_Total_Flag",
             "precision": 10,
@@ -8054,7 +8054,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen (Nbr_SafeZone_Basis >= 1\r\nand Nbr_SafeZone_Hero>= 1)\r\nthen\r\n'SZ_SZB'\r\nwhen (Nbr_SafeZone_Basis = 0\r\nand Nbr_SafeZone_Hero>= 1)\r\nthen\r\n'SZ'\r\nwhen (Nbr_SafeZone_Basis >= 1\r\nand Nbr_SafeZone_Hero= 0)\r\nthen\r\n'SZB'\r\nelse\r\n'IKKE SZ'\r\nend",
+            "formulaExpression": "case\r\nwhen (Nbr_SafeZone_Basis &gt;= 1\r\nand Nbr_SafeZone_Hero&gt;= 1)\r\nthen\r\n&#39;SZ_SZB&#39;\r\nwhen (Nbr_SafeZone_Basis = 0\r\nand Nbr_SafeZone_Hero&gt;= 1)\r\nthen\r\n&#39;SZ&#39;\r\nwhen (Nbr_SafeZone_Basis &gt;= 1\r\nand Nbr_SafeZone_Hero= 0)\r\nthen\r\n&#39;SZB&#39;\r\nelse\r\n&#39;IKKE SZ&#39;\r\nend",
             "label": "Safezone Profil",
             "name": "SAFEZONE_PROFIL",
             "precision": 255,
@@ -8205,7 +8205,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"RatioRebin.Nbr_Rebindable__c\" - Personalization_2__c_to_measure",
+            "formulaExpression": "&quot;RatioRebin.Nbr_Rebindable__c&quot; - Personalization_2__c_to_measure",
             "label": "Diff rebind now and on campaign",
             "name": "Diff_rebind_now_and_on_campaign",
             "precision": 10,
@@ -8276,7 +8276,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen Product_Name__c = 'Bedrift Frihet Basis' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Frihet Standard' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Frihet Maks' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt XS' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt S' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt M' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt M20' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt M25' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt M+' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Flyt L' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri Tale' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 1GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 4GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 8GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 20GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 40GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Fri+ 60GB' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift XS' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift+ M' then\r\n'Legacy'\r\nwhen Product_Name__c = 'Bedrift Basis' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Basis Tale' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Basis Data' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Flyt 5' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Flyt 20' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Flyt 50' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Frihet' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Frihet Premium' then\r\n'Portugal'\r\nwhen Product_Name__c = 'Bedrift Frihet Start' then\r\n'Portugal'\r\nelse\r\n'Others'\r\nend",
+            "formulaExpression": "case\r\nwhen Product_Name__c = &#39;Bedrift Frihet Basis&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Standard&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Maks&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt XS&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt S&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M20&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M25&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M+&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt L&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri Tale&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 1GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 4GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 8GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 20GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 40GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 60GB&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift XS&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift+ M&#39; then\r\n&#39;Legacy&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis Tale&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis Data&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 5&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 20&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 50&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Premium&#39; then\r\n&#39;Portugal&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Start&#39; then\r\n&#39;Portugal&#39;\r\nelse\r\n&#39;Others&#39;\r\nend",
             "label": "Subscription Type",
             "name": "Subscription_Type",
             "precision": 255,
@@ -8295,7 +8295,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Type = 'Legacy' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Type = &#39;Legacy&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Type Legacy",
             "name": "Type_Legacy",
             "precision": 10,
@@ -8315,7 +8315,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Type = 'Portugal' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Type = &#39;Portugal&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Type Portugal",
             "name": "Type_Portugal",
             "precision": 10,
@@ -8335,7 +8335,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Type = 'Others' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Type = &#39;Others&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Type Others",
             "name": "Type_Others",
             "precision": 10,
@@ -8355,7 +8355,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen Product_Name__c = 'Bedrift Total' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total A' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total Ansatt' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total B' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total C' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total D' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total E' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total Ekstra' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total F' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total Norge' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Total Y' then\r\n'Total'\r\nwhen Product_Name__c = 'Bedrift Frihet' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Frihet Basis' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Frihet Maks' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Frihet Premium' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Frihet Standard' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Frihet Start' then\r\n'Frihet'\r\nwhen Product_Name__c = 'Bedrift Flyt XS' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt S' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt M' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt M20' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt M25' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt M+' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt L' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt 5' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt 20' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Flyt 50' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Fri+ 1GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift Fri+ 4GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift Fri+ 8GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift Fri+ 20GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift Fri+ 40GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift Fri+ 60GB' then\r\n'Fri+'\r\nwhen Product_Name__c = 'Bedrift XS' then\r\n'Basis'\r\nwhen Product_Name__c = 'Bedrift+ M' then\r\n'Flyt'\r\nwhen Product_Name__c = 'Bedrift Basis' then\r\n'Basis'\r\nwhen Product_Name__c = 'Bedrift Basis Tale' then\r\n'Basis'\r\nwhen Product_Name__c = 'Bedrift Basis Data' then\r\n'Basis'\r\nwhen Product_Name__c = 'Bedrift Fri Tale' then\r\n'Basis'\r\nelse\r\n'Other'\r\nend\r\n",
+            "formulaExpression": "case\r\nwhen Product_Name__c = &#39;Bedrift Total&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total A&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total Ansatt&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total B&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total C&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total D&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total E&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total Ekstra&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total F&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total Norge&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Total Y&#39; then\r\n&#39;Total&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Basis&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Maks&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Premium&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Standard&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Frihet Start&#39; then\r\n&#39;Frihet&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt XS&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt S&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M20&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M25&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt M+&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt L&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 5&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 20&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Flyt 50&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 1GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 4GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 8GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 20GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 40GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri+ 60GB&#39; then\r\n&#39;Fri+&#39;\r\nwhen Product_Name__c = &#39;Bedrift XS&#39; then\r\n&#39;Basis&#39;\r\nwhen Product_Name__c = &#39;Bedrift+ M&#39; then\r\n&#39;Flyt&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis&#39; then\r\n&#39;Basis&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis Tale&#39; then\r\n&#39;Basis&#39;\r\nwhen Product_Name__c = &#39;Bedrift Basis Data&#39; then\r\n&#39;Basis&#39;\r\nwhen Product_Name__c = &#39;Bedrift Fri Tale&#39; then\r\n&#39;Basis&#39;\r\nelse\r\n&#39;Other&#39;\r\nend\r\n",
             "label": "Subscription Group",
             "name": "Subscription_Group",
             "precision": 255,
@@ -8374,7 +8374,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Total' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Total&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Total",
             "name": "Group_Total",
             "precision": 10,
@@ -8394,7 +8394,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Frihet' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Frihet&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Frihet",
             "name": "Group_Frihet",
             "precision": 10,
@@ -8414,7 +8414,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Flyt' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Flyt&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Flyt",
             "name": "Group_Flyt",
             "precision": 10,
@@ -8434,7 +8434,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Fri+' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Fri+&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Fri Plus",
             "name": "Group_Fri_Plus",
             "precision": 10,
@@ -8454,7 +8454,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Basis' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Basis&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Basis",
             "name": "Group_Basis",
             "precision": 10,
@@ -8474,7 +8474,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Subscription_Group = 'Other' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Subscription_Group = &#39;Other&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Group Other",
             "name": "Group_Other",
             "precision": 10,
@@ -8583,7 +8583,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Nbr_Voice__c > 0 then\r\nNbr_Without_Binding/Nbr_Voice__c\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Nbr_Voice__c &gt; 0 then\r\nNbr_Without_Binding/Nbr_Voice__c\r\nelse\r\n0\r\nend",
             "label": "Ratio Without Binding",
             "name": "Ratio_Without_Binding",
             "precision": 10,
@@ -8603,7 +8603,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case when Stealth_campaign__c = 'true' then\r\n1\r\nelse\r\n0\r\nend",
+            "formulaExpression": "case when Stealth_campaign__c = &#39;true&#39; then\r\n1\r\nelse\r\n0\r\nend",
             "label": "Campaign Price Flag",
             "name": "Campaign_Price_Flag",
             "precision": 10,
@@ -8758,7 +8758,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "case\r\nwhen \"Account_Owner_Full_Name__c\" = 'Abrar Ashgar' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Atle Olav Vekterli' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Caroline Linnerud Westerlund' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Dag Magne Tomterstad' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Fabian Rudaa-Naarstad' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Fredrik Gunnar Cornell' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Jan Roger Johansen' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Kåre Martin Markovic' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Kristina Beck Andersen' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Maja Evjenth' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Robert Tennfjord' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Runar Sjøen' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Susanne Nirisen Olsen' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Tom Erik Røysland' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Vebjørn Rodal' then\r\n'Medium'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ellen Sofie Holth' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Geir Hvidsten' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Lasse Due Brattås' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Mads-Tore Eliassen' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Margrethe Nordlund' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Milan Meradi' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Nic Edvin Nachtnebel' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ole Ingar Aune' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ørjan Hammersland' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Patrik Fugelsnes' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Rune Wollberg' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Thomas Hermann' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Tommy Ottosen' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Tommy Skjeldestad' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Trude Florin Iversen' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Yannig Desmot' then\r\n'Public'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ann Karin Marthinussen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Arve Pedersen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Curt Gleditsch' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Espen Myhre' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Harald Michel Cyren' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Henrik Fodstad' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Irene Vold' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Jesper Pedersen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Jon Petter Kristiansen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Jørgen Steffensen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Morten Charlsen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Richard Sande' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ståle Ness' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Thomas Daljord' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Tom Tønnesten' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Aina Trangsrud' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Balwant Singh Duggal' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Brikt Nærheim' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Daniel Eidesund' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Eirik Hernes' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Frode Bostad' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Ludvig Hallen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Marius Johansen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Øyvind Sandvik' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Paul Morten Hansen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Rehan Malik' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Robert Hansen' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Stian Heldahl' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Viviann Koch' then\r\n'Large and Extra Large'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Harry Hoel' then\r\n'Rådgiverteamet'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Tor-Håkon Hestø' then\r\n'Rådgiverteamet'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Dag Erik Hansen' then\r\n'Rådgiverteamet'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Kim Arne Østby' then\r\n'Rådgiverteamet'\r\nwhen \"Account_Owner_Full_Name__c\" = 'Terje Nyjordet' then\r\n'Rådgiverteamet'\r\nelse\r\n\"Account_Owner_Full_Name__c\"\r\nend",
+            "formulaExpression": "case\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Abrar Ashgar&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Atle Olav Vekterli&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Caroline Linnerud Westerlund&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Dag Magne Tomterstad&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Fabian Rudaa-Naarstad&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Fredrik Gunnar Cornell&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Jan Roger Johansen&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Kåre Martin Markovic&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Kristina Beck Andersen&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Maja Evjenth&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Robert Tennfjord&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Runar Sjøen&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Susanne Nirisen Olsen&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Tom Erik Røysland&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Vebjørn Rodal&#39; then\r\n&#39;Medium&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ellen Sofie Holth&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Geir Hvidsten&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Lasse Due Brattås&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Mads-Tore Eliassen&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Margrethe Nordlund&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Milan Meradi&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Nic Edvin Nachtnebel&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ole Ingar Aune&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ørjan Hammersland&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Patrik Fugelsnes&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Rune Wollberg&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Thomas Hermann&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Tommy Ottosen&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Tommy Skjeldestad&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Trude Florin Iversen&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Yannig Desmot&#39; then\r\n&#39;Public&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ann Karin Marthinussen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Arve Pedersen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Curt Gleditsch&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Espen Myhre&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Harald Michel Cyren&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Henrik Fodstad&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Irene Vold&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Jesper Pedersen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Jon Petter Kristiansen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Jørgen Steffensen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Morten Charlsen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Richard Sande&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ståle Ness&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Thomas Daljord&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Tom Tønnesten&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Aina Trangsrud&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Balwant Singh Duggal&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Brikt Nærheim&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Daniel Eidesund&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Eirik Hernes&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Frode Bostad&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Ludvig Hallen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Marius Johansen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Øyvind Sandvik&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Paul Morten Hansen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Rehan Malik&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Robert Hansen&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Stian Heldahl&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Viviann Koch&#39; then\r\n&#39;Large and Extra Large&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Harry Hoel&#39; then\r\n&#39;Rådgiverteamet&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Tor-Håkon Hestø&#39; then\r\n&#39;Rådgiverteamet&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Dag Erik Hansen&#39; then\r\n&#39;Rådgiverteamet&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Kim Arne Østby&#39; then\r\n&#39;Rådgiverteamet&#39;\r\nwhen &quot;Account_Owner_Full_Name__c&quot; = &#39;Terje Nyjordet&#39; then\r\n&#39;Rådgiverteamet&#39;\r\nelse\r\n&quot;Account_Owner_Full_Name__c&quot;\r\nend",
             "label": "Account Owner Group",
             "name": "Account_Owner_Group",
             "precision": 255,

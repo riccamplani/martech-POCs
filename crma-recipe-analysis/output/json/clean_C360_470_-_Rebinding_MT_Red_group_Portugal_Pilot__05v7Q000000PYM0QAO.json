@@ -1137,7 +1137,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.'",
+            "formulaExpression": "&#39;Kunden har mobilabonnement som kan rebindes/bindes og skal kun anbefales til Frihet. Bruk verdiforslag for ubegrenset data. Husk innsalg til de som ikke har SafeZone, Aktiv bruker eller MBN løsninger. Husk å oppdatere epost adresse.&#39;",
             "label": "Sales tip description template",
             "name": "Sales_tip_description_template",
             "precision": 1024,
@@ -1156,7 +1156,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'C360_63'",
+            "formulaExpression": "&#39;C360_63&#39;",
             "label": "Campaign Key",
             "name": "Campaign_Key",
             "precision": 255,
@@ -1200,7 +1200,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "concat(\"Rebindingo.reporting_tag__c\", '_', KurtID__c)",
+            "formulaExpression": "concat(&quot;Rebindingo.reporting_tag__c&quot;, &#39;_&#39;, KurtID__c)",
             "label": "KSBID",
             "name": "KSBID",
             "precision": 255,
@@ -1219,7 +1219,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Id\"",
+            "formulaExpression": "&quot;Rebindingo.Id&quot;",
             "label": "SFB CampainId",
             "name": "SFB_CampainId",
             "precision": 100,
@@ -1276,7 +1276,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "\"Rebindingo.Name\"",
+            "formulaExpression": "&quot;Rebindingo.Name&quot;",
             "label": "Sales tip title",
             "name": "Sales_tip_title",
             "precision": 255,
@@ -1316,7 +1316,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'TM'",
+            "formulaExpression": "&#39;TM&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -1335,7 +1335,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Loyalty'",
+            "formulaExpression": "&#39;Loyalty&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,
@@ -1377,7 +1377,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'Migrer abonnementet til Frihet. Bruk verdiforslag om ubegrenset datamengde.'",
+            "formulaExpression": "&#39;Migrer abonnementet til Frihet. Bruk verdiforslag om ubegrenset datamengde.&#39;",
             "label": "Campaign_sensitive__c",
             "name": "Campaign_sensitive__c",
             "precision": 255,
@@ -1802,7 +1802,7 @@
         "fields": [
           {
             "defaultValue": "0",
-            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c < 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, '### ### ###')",
+            "formulaExpression": "format_number(case when Diff_new_callplan_rev__c &lt; 0 then\r\nDiff_new_callplan_rev__c * -1\r\nelse\r\nDiff_new_callplan_rev__c\r\nend, &#39;### ### ###&#39;)",
             "label": "Delta New Portfolio",
             "name": "Delta_New_Portfolio",
             "precision": 11,
@@ -3158,7 +3158,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'SPOC'",
+            "formulaExpression": "&#39;SPOC&#39;",
             "label": "Campaign Channels",
             "name": "Campaign_Channels",
             "precision": 255,
@@ -3177,7 +3177,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "'FarmerGjovik'",
+            "formulaExpression": "&#39;FarmerGjovik&#39;",
             "label": "Telesales agency",
             "name": "Telesales_agency",
             "precision": 255,

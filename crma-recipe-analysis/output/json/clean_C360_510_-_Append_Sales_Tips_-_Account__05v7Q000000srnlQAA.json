@@ -215,7 +215,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "array_join(Channels, ',')",
+            "formulaExpression": "array_join(Channels, &#39;,&#39;)",
             "label": "Campaign Channels",
             "name": "CampaignChannels",
             "precision": 500,
@@ -277,7 +277,7 @@
         "fields": [
           {
             "defaultValue": "",
-            "formulaExpression": "array_join(TelesalesAgencyCollection,'')\n\n",
+            "formulaExpression": "array_join(TelesalesAgencyCollection,&#39;&#39;)\n\n",
             "label": "Telesales Agency",
             "name": "TelesalesAgency",
             "precision": 5000,
