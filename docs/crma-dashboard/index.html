@@ -337,17 +337,6 @@
     background: color-mix(in srgb, var(--series-1) 15%, var(--surface-1));
     color: var(--series-1);
   }
-  .import-btn {
-    padding: 8px 16px;
-    background: var(--surface-1);
-    color: var(--series-1);
-    border: 1px solid var(--series-1);
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .import-btn:hover { background: color-mix(in srgb, var(--series-1) 8%, var(--surface-1)); }
 </style>
 </head>
 <body>
@@ -435,9 +424,7 @@
           </select>
           <input type="text" class="search-box" id="cleanup-search" placeholder="Search field names..." style="width:200px">
           <button class="export-btn" onclick="exportCleanupCSV()">Export CSV</button>
-          <button class="export-btn" onclick="exportOverrides()">Save Overrides</button>
-          <button class="import-btn" onclick="document.getElementById('import-overrides-input').click()">Load Overrides</button>
-          <input type="file" id="import-overrides-input" accept=".json" style="display:none" onchange="importOverrides(event)">
+          <button class="export-btn" id="save-overrides-btn" onclick="saveOverrides()">Save Overrides</button>
         </div>
       </div>
       <div class="card-body" id="cleanup-content"></div>
@@ -482,27 +469,59 @@ const noSfRecipes = DATA.recipes.filter(r => r.noTargetObjects);
 
 // Overrides: object -> Set of field names marked "keep by campaign developer"
 let OVERRIDES = {};
+const REPO_OWNER = 'riccamplani';
+const REPO_NAME = 'martech-POCs';
+const OVERRIDES_PATH = 'docs/crma-dashboard/overrides.json';
+let _overridesSha = null;
+let _savingOverrides = false;
 
-function loadOverrides() {
-  try {
-    const saved = localStorage.getItem('crma_field_overrides');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      OVERRIDES = {};
-      Object.keys(parsed).forEach(function(obj) {
-        OVERRIDES[obj] = new Set(parsed[obj]);
-      });
-    }
-  } catch(e) { OVERRIDES = {}; }
+function getGitHubToken() {
+  return localStorage.getItem('crma_github_token') || '';
 }
 
-function saveOverridesToStorage() {
-  const serializable = {};
-  Object.keys(OVERRIDES).forEach(function(obj) {
-    const arr = Array.from(OVERRIDES[obj]);
-    if (arr.length > 0) serializable[obj] = arr;
+function promptForToken() {
+  const token = prompt(
+    'Enter a GitHub Personal Access Token (with "repo" scope) to save overrides to the repository.\n\n' +
+    'Create one at: https://github.com/settings/tokens'
+  );
+  if (token && token.trim()) {
+    localStorage.setItem('crma_github_token', token.trim());
+    return token.trim();
+  }
+  return null;
+}
+
+function serializeOverrides() {
+  const out = { _comment: "Fields marked as required by campaign developers.", overrides: {} };
+  Object.keys(OVERRIDES).sort().forEach(function(obj) {
+    const arr = Array.from(OVERRIDES[obj]).sort();
+    if (arr.length > 0) out.overrides[obj] = arr;
   });
-  localStorage.setItem('crma_field_overrides', JSON.stringify(serializable));
+  return out;
+}
+
+async function loadOverrides() {
+  try {
+    const resp = await fetch(
+      'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + OVERRIDES_PATH,
+      { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' }
+    );
+    if (resp.ok) {
+      const meta = await resp.json();
+      _overridesSha = meta.sha;
+      const decoded = JSON.parse(atob(meta.content));
+      const ovr = decoded.overrides || decoded;
+      OVERRIDES = {};
+      Object.keys(ovr).forEach(function(obj) {
+        if (Array.isArray(ovr[obj]) && ovr[obj].length > 0) {
+          OVERRIDES[obj] = new Set(ovr[obj]);
+        }
+      });
+    }
+  } catch(e) {
+    console.warn('Could not load overrides from repo:', e);
+  }
+  renderCleanupView();
 }
 
 function isOverridden(obj, field) {
@@ -517,45 +536,63 @@ function toggleOverride(obj, field) {
   } else {
     OVERRIDES[obj].add(field);
   }
-  saveOverridesToStorage();
   renderCleanupView();
 }
 
-function exportOverrides() {
-  const out = { _comment: "Fields marked as required by campaign developers.", overrides: {} };
-  Object.keys(OVERRIDES).sort().forEach(function(obj) {
-    const arr = Array.from(OVERRIDES[obj]).sort();
-    if (arr.length > 0) out.overrides[obj] = arr;
-  });
-  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'overrides.json';
-  a.click();
-  URL.revokeObjectURL(url);
-}
+async function saveOverrides() {
+  if (_savingOverrides) return;
+  let token = getGitHubToken();
+  if (!token) {
+    token = promptForToken();
+    if (!token) return;
+  }
+  _savingOverrides = true;
+  const btn = document.getElementById('save-overrides-btn');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
 
-function importOverrides(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      const ovr = data.overrides || data;
-      OVERRIDES = {};
-      Object.keys(ovr).forEach(function(obj) {
-        if (Array.isArray(ovr[obj]) && ovr[obj].length > 0) {
-          OVERRIDES[obj] = new Set(ovr[obj]);
-        }
-      });
-      saveOverridesToStorage();
-      renderCleanupView();
-    } catch(err) { alert('Invalid overrides file: ' + err.message); }
-  };
-  reader.readAsText(file);
-  event.target.value = '';
+  try {
+    const body = {
+      message: 'Update field overrides',
+      content: btoa(JSON.stringify(serializeOverrides(), null, 2) + '\n'),
+      branch: 'main'
+    };
+    if (_overridesSha) body.sha = _overridesSha;
+
+    const resp = await fetch(
+      'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + OVERRIDES_PATH,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    if (resp.status === 401 || resp.status === 403) {
+      localStorage.removeItem('crma_github_token');
+      alert('GitHub token is invalid or expired. Please try again with a valid token.');
+      return;
+    }
+    if (!resp.ok) {
+      const err = await resp.json();
+      throw new Error(err.message || resp.statusText);
+    }
+
+    const result = await resp.json();
+    _overridesSha = result.content.sha;
+    btn.textContent = 'Saved!';
+    setTimeout(function() { btn.textContent = 'Save Overrides'; btn.disabled = false; }, 2000);
+  } catch(e) {
+    alert('Failed to save overrides: ' + e.message);
+    btn.textContent = 'Save Overrides';
+    btn.disabled = false;
+  } finally {
+    _savingOverrides = false;
+  }
 }
 
 loadOverrides();
