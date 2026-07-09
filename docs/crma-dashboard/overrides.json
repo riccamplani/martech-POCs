@@ -7,6 +7,22 @@
       "PostalZipcode__c",
       "VisitingCity__c",
       "VisitingStreet__c"
+    ],
+    "Account_Location__c": [
+      "CreatedDate",
+      "LastModifiedDate"
+    ],
+    "Contact": [
+      "CreatedDate",
+      "Event__c",
+      "FirstName",
+      "LastName",
+      "Legal_Notification_Contact__c",
+      "Legal_Role__c",
+      "Nettverksteknologi__c",
+      "Nyheter_fra_Telenor_Bedrift__c",
+      "Role__c",
+      "Sikkerhet__c"
     ]
   }
 }
