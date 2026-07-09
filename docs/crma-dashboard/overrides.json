@@ -1,4 +1,8 @@
 {
   "_comment": "Fields marked as required by campaign developers.",
-  "overrides": {}
+  "overrides": {
+    "Account": [
+      "PostalCity__c"
+    ]
+  }
 }
