@@ -1,4 +1,8 @@
 {
-  "_comment": "Fields marked as required by campaign developers. These will be excluded from the 'safe to remove' list in the dashboard. Format: object name -> array of field API names.",
-  "overrides": {}
+  "_comment": "Fields marked as required by campaign developers.",
+  "overrides": {
+    "Account": [
+      "PostalCity__c"
+    ]
+  }
 }
